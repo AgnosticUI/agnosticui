@@ -448,7 +448,7 @@ export class AgA2uiStudio extends LitElement {
     mount.appendChild(surfaceEl);
     this.activeSurfaceEl = surfaceEl;
 
-    processor.model.onAction.subscribe((action) => {
+        processor.model.onAction.subscribe((action) => {
       if (
         generation !== this.streamGeneration ||
         this.streamPhase !== 'complete'
@@ -471,9 +471,25 @@ export class AgA2uiStudio extends LitElement {
           processor.processMessages([nextMsg as never]);
         }
         runSurfaceValidation(surfaceEl, true);
-        this.logEvent(
-          'Blocked action: Approver email is required before publishing SLA policy',
-        );
+        this.logEvent(`Blocked action: ${outcome.reason}`);
+        return;
+      }
+
+      if (outcome.kind === 'update_surface') {
+        this.appliedSurfaceMessages = [
+          ...(this.appliedSurfaceMessages ?? messages),
+          ...outcome.messages,
+        ];
+        this.logEvent(`Queue view updated (${outcome.actionName})`, detail);
+        for (const nextMsg of outcome.messages) {
+          processor.processMessages([nextMsg as never]);
+        }
+        const nextModel = processor.model.getSurface('support_surface');
+        if (nextModel) {
+          surfaceEl.surface = nextModel;
+          surfaceEl.requestUpdate();
+          this.syncDataModelInspector(nextModel);
+        }
         return;
       }
 
@@ -491,11 +507,7 @@ export class AgA2uiStudio extends LitElement {
         ...outcome.messages,
       ];
       this.logEvent(
-        'FACE validation passed -> Turn ' +
-          outcome.turn +
-          ' (' +
-          outcome.actionName +
-          ')',
+        `FACE validation passed -> Turn ${outcome.turn} (${outcome.actionName})`,
         detail,
       );
 
@@ -509,6 +521,7 @@ export class AgA2uiStudio extends LitElement {
         this.syncDataModelInspector(nextModel);
       }
     });
+
     const speedMultiplier = this.playbackSpeed === '0.5x' ? 2.4 : 1;
     this.logEvent(
       `Streaming surface: ${streamLabel}${instant ? '' : ` (${this.playbackSpeed})`}`,
@@ -627,8 +640,7 @@ export class AgA2uiStudio extends LitElement {
     const promptBarClass = isLocal
       ? 'live-prompt-bar is-local'
       : 'live-prompt-bar';
-    const slowMoClass =
-      this.playbackSpeed === '0.5x' ? 'pacing-pill is-slowmo' : 'pacing-pill';
+    const isSlowMo = this.playbackSpeed === '0.5x';
     return html`
       <div class="studio-shell">
         <header class="studio-header">
@@ -713,26 +725,32 @@ export class AgA2uiStudio extends LitElement {
 
                   <div class="composer-right-controls">
                     <div class="stream-pacing-group">
-                      <button
-                        type="button"
-                        class=${slowMoClass}
+                      <ag-button
+                        variant="primary"
+                        size="x-sm"
+                        shape="rounded"
+                        .bordered=${!isSlowMo}
                         title="Toggle between 1x standard and 0.5x slow-motion demo streaming"
                         @click=${() => this.handleTogglePlaybackSpeed()}
                       >
-                        ${this.playbackSpeed === '0.5x' ? '0.5x Slow-Mo' : '1x Stream'}
-                      </button>
+                        ${isSlowMo ? '0.5x Slow-Mo' : '1x Stream'}
+                      </ag-button>
 
                       ${this.hasReplayableStream
                         ? html`
-                            <button
-                              type="button"
-                              class="pacing-pill"
+                            <ag-button
+                              variant="primary"
+                              size="x-sm"
+                              shape="rounded"
+                              bordered
                               title="Replay the current A2UI v1.0 stream"
                               @click=${() => this.handleReplayStream()}
                             >
-                              ${REPLAY_ICON}
-                              <span>Replay</span>
-                            </button>
+                              <span class="pacing-btn-inner">
+                                ${REPLAY_ICON}
+                                <span>Replay</span>
+                              </span>
+                            </ag-button>
                           `
                         : ''}
                     </div>
@@ -756,7 +774,6 @@ export class AgA2uiStudio extends LitElement {
                     </div>
                   </div>
                 </div>
-
                 <div class=${promptBarClass}>
                   ${isLocal
                     ? ''
@@ -795,6 +812,7 @@ export class AgA2uiStudio extends LitElement {
                     </span>
                   </ag-button>
                 </div>
+
                 <div class="prompt-chips-row">
                   <span class="prompt-chips-label">Try:</span>
                   ${QUICK_PROMPT_CHIPS.map(

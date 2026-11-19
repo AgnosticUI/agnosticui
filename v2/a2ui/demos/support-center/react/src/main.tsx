@@ -169,6 +169,21 @@ function App() {
       }
 
       const hostEl = surfaceApiRef.current?.getSurfaceEl() ?? null;
+
+      if (outcome.kind === 'rejected') {
+        surfaceApiRef.current?.processMessages(outcome.messages);
+        if (hostEl) runSurfaceValidation(hostEl, true);
+        logEvent('Blocked action: ' + outcome.reason);
+        return;
+      }
+
+      if (outcome.kind === 'update_surface') {
+        logEvent('Queue view updated (' + outcome.actionName + ')', detail);
+        surfaceApiRef.current?.processMessages(outcome.messages);
+        syncDataModelInspector(surfaceApiRef.current?.getDataModel() ?? {});
+        return;
+      }
+
       if (hostEl && !runSurfaceValidation(hostEl, true)) {
         logEvent('Blocked action: FACE validation failed on required fields');
         return;

@@ -1,4 +1,5 @@
 import { ReactKbd } from "agnosticui-core/kbd/react";
+import { ReactButton } from "agnosticui-core/button/react";
 
 export default function KbdReactExamples() {
   return (
@@ -110,7 +111,6 @@ export default function KbdReactExamples() {
           </div>
         </div>
       </div>
-
       <div className="mbe4">
         <h2>With Background</h2>
         <p className="mbs2 mbe3">Add background colors to variants for increased visual emphasis.</p>
@@ -184,6 +184,31 @@ export default function KbdReactExamples() {
             <ReactKbd bordered={false} className="mie2">⇧</ReactKbd>
             <ReactKbd bordered={false}>⌃</ReactKbd>
           </div>
+        </div>
+      </div>
+
+      <div className="mbe4">
+        <h2>Inside Buttons</h2>
+        <p className="mbs2 mbe3">Keyboard shortcuts nested inside buttons automatically inherit button foreground and border contrast.</p>
+        <div className="stacked-mobile">
+          <ReactButton variant="primary" shape="rounded" className="mie3">
+            <span style={{ display: "inline-flex", alignItems: "center", gap: "var(--ag-space-2)" }}>
+              <span>Generate UI</span>
+              <ReactKbd size="sm">⌘ Enter</ReactKbd>
+            </span>
+          </ReactButton>
+          <ReactButton variant="primary" shape="rounded" bordered className="mie3">
+            <span style={{ display: "inline-flex", alignItems: "center", gap: "var(--ag-space-2)" }}>
+              <span>Search</span>
+              <ReactKbd size="sm">⌘ K</ReactKbd>
+            </span>
+          </ReactButton>
+          <ReactButton variant="secondary" shape="rounded">
+            <span style={{ display: "inline-flex", alignItems: "center", gap: "var(--ag-space-2)" }}>
+              <span>Cancel</span>
+              <ReactKbd size="sm">Esc</ReactKbd>
+            </span>
+          </ReactButton>
         </div>
       </div>
 

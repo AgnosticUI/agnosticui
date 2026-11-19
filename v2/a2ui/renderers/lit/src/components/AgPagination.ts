@@ -29,7 +29,9 @@ export class AgA2uiPaginationElement extends A2uiLitElement<typeof AgPaginationA
     return this;
   }
 
-  private handleAction() {
+  private handleTwoWay(e: Event) {
+    const next = Number((e as CustomEvent<{ page?: number }>).detail?.page ?? 1);
+    (this.controller.props as unknown as Record<string, ((v: unknown) => void) | undefined>).setCurrent?.(next);
     void this.controller.props.action?.();
   }
 
@@ -42,7 +44,7 @@ export class AgA2uiPaginationElement extends A2uiLitElement<typeof AgPaginationA
       .ariaLabel=${ifDefined(p.ariaLabel)}
       .bordered=${Boolean(p.bordered)}
       .firstLastNavigation=${Boolean(p.firstLastNavigation)}
-      @click=${this.handleAction}
+      @page-change=${this.handleTwoWay}
     ></ag-pagination>`;
   }
 }

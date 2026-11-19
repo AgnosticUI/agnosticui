@@ -305,6 +305,245 @@ function buildSlaCreditCapSurface(trimmedPrompt: string): A2uiWireMessage[] {
   ];
 }
 
+function buildCallerSpikeSurface(trimmedPrompt: string): A2uiWireMessage[] {
+  return [
+    {
+      version: '1.0',
+      createSurface: {
+        surfaceId: 'support_surface',
+        catalogId: AGNOSTICUI_CATALOG_ID,
+      },
+    },
+    {
+      version: '1.0',
+      updateComponents: {
+        surfaceId: 'support_surface',
+        components: [
+          {
+            id: 'root',
+            component: 'AgCard',
+            stacked: true,
+            children: ['user_prompt_bubble', 'agent_reply_bubble'],
+          },
+          {
+            id: 'user_prompt_bubble',
+            component: 'AgMessageBubble',
+            from: 'me',
+            author: 'Jordan Taylor • Growth Marketing',
+            time: 'Just now',
+            message: trimmedPrompt,
+          },
+          {
+            id: 'agent_reply_bubble',
+            component: 'AgMessageBubble',
+            from: 'them',
+            variant: 'neutral',
+            author: 'CX Insights Agent',
+            time: 'Just now',
+            children: ['incident_card'],
+          },
+          {
+            id: 'incident_card',
+            component: 'AgCard',
+            stacked: true,
+            children: [
+              'queue_breadcrumb',
+              'local_badge',
+              'local_heading',
+              'queue_page_summary',
+              'queue_slot_1_card',
+              'queue_slot_2_card',
+              'queue_pagination',
+              'local_ack_btn',
+            ],
+          },
+          {
+            id: 'queue_breadcrumb',
+            component: 'AgBreadcrumb',
+            type: 'slash',
+            items: [
+              { label: 'Inbound Queue', href: '#queue' },
+              { label: 'High-Intent Surge (Page 1 of 3)', current: true },
+            ],
+            action: {
+              event: {
+                name: 'navigate_queue_breadcrumb',
+                context: {
+                  page: { '@path': '/queue/page' },
+                },
+              },
+            },
+          },
+          {
+            id: 'local_badge',
+            component: 'AgBadge',
+            variant: 'warning',
+            children: ['local_badge_text'],
+          },
+          {
+            id: 'local_badge_text',
+            component: 'AgText',
+            el: 'span',
+            text: 'Live Trend • High-Intent Caller Surge',
+          },
+          {
+            id: 'local_heading',
+            component: 'AgText',
+            el: 'h3',
+            text: { '@path': '/incident/title' },
+          },
+          {
+            id: 'queue_page_summary',
+            component: 'AgText',
+            el: 'p',
+            text: { '@path': '/queue/summary' },
+          },
+          {
+            id: 'queue_slot_1_card',
+            component: 'AgCard',
+            stacked: true,
+            children: ['queue_slot_1_title', 'queue_slot_1_meta', 'queue_slot_1_btn'],
+          },
+          {
+            id: 'queue_slot_1_title',
+            component: 'AgText',
+            el: 'h4',
+            text: { '@path': '/queue/slot1/account' },
+          },
+          {
+            id: 'queue_slot_1_meta',
+            component: 'AgText',
+            el: 'p',
+            text: { '@path': '/queue/slot1/meta' },
+          },
+          {
+            id: 'queue_slot_1_btn',
+            component: 'AgButton',
+            variant: 'secondary',
+            bordered: true,
+            size: 'sm',
+            shape: 'rounded',
+            label: 'Inspect Caller',
+            action: {
+              event: {
+                name: 'inspect_queue_caller',
+                context: {
+                  slot: 1,
+                  page: { '@path': '/queue/page' },
+                  callerId: { '@path': '/queue/slot1/id' },
+                  account: { '@path': '/queue/slot1/account' },
+                },
+              },
+            },
+          },
+          {
+            id: 'queue_slot_2_card',
+            component: 'AgCard',
+            stacked: true,
+            children: ['queue_slot_2_title', 'queue_slot_2_meta', 'queue_slot_2_btn'],
+          },
+          {
+            id: 'queue_slot_2_title',
+            component: 'AgText',
+            el: 'h4',
+            text: { '@path': '/queue/slot2/account' },
+          },
+          {
+            id: 'queue_slot_2_meta',
+            component: 'AgText',
+            el: 'p',
+            text: { '@path': '/queue/slot2/meta' },
+          },
+          {
+            id: 'queue_slot_2_btn',
+            component: 'AgButton',
+            variant: 'secondary',
+            bordered: true,
+            size: 'sm',
+            shape: 'rounded',
+            label: 'Inspect Caller',
+            action: {
+              event: {
+                name: 'inspect_queue_caller',
+                context: {
+                  slot: 2,
+                  page: { '@path': '/queue/page' },
+                  callerId: { '@path': '/queue/slot2/id' },
+                  account: { '@path': '/queue/slot2/account' },
+                },
+              },
+            },
+          },
+          {
+            id: 'queue_pagination',
+            component: 'AgPagination',
+            current: { '@path': '/queue/page' },
+            totalPages: 3,
+            bordered: true,
+            justify: 'center',
+            ariaLabel: 'High-intent caller queue pages',
+            action: {
+              event: {
+                name: 'change_queue_page',
+                context: {
+                  page: { '@path': '/queue/page' },
+                },
+              },
+            },
+          },
+          {
+            id: 'local_ack_btn',
+            component: 'AgButton',
+            variant: 'primary',
+            label: 'Activate Overflow Routing',
+            shape: 'rounded',
+            action: {
+              event: {
+                name: 'activate_overflow_routing',
+                context: {
+                  title: { '@path': '/incident/title' },
+                  overflowActive: true,
+                },
+              },
+            },
+          },
+        ],
+      },
+    },
+    {
+      version: '1.0',
+      updateDataModel: {
+        surfaceId: 'support_surface',
+        path: '/',
+        value: {
+          incident: {
+            title: '42% Surge in Qualified Inbound Sales Calls',
+            severity: 'elevated',
+          },
+          queue: {
+            page: 1,
+            totalPages: 3,
+            totalCallers: 6,
+            view: 'list',
+            selectedCallerId: '',
+            summary: 'Showing callers 1–2 of 6 in the North America Enterprise Surge Queue.',
+            slot1: {
+              id: 'CALL-4810',
+              account: 'Vanguard Logistics • $240k ARR',
+              meta: 'Wait: 00:48 • Intent: Enterprise Fleet Demo • Line: Paid Search',
+            },
+            slot2: {
+              id: 'CALL-4811',
+              account: 'Helios Biotech • $185k ARR',
+              meta: 'Wait: 01:12 • Intent: Security & SOC2 Review • Line: Direct Inbound',
+            },
+          },
+        },
+      },
+    },
+  ];
+}
+
 export async function generateLocalA2uiSurface(
   userPrompt: string,
 ): Promise<LiveGeminiResult> {
@@ -341,119 +580,8 @@ export async function generateLocalA2uiSurface(
   const messages: A2uiWireMessage[] = isSlaPolicy
     ? buildSlaCreditCapSurface(trimmedPrompt)
     : isAlert
-      ? [
-          {
-            version: '1.0',
-            createSurface: {
-              surfaceId: 'support_surface',
-              catalogId: AGNOSTICUI_CATALOG_ID,
-            },
-          },
-          {
-            version: '1.0',
-            updateComponents: {
-              surfaceId: 'support_surface',
-              components: [
-                {
-                  id: 'root',
-                  component: 'AgCard',
-                  stacked: true,
-                  children: ['user_prompt_bubble', 'agent_reply_bubble'],
-                },
-                {
-                  id: 'user_prompt_bubble',
-                  component: 'AgMessageBubble',
-                  from: 'me',
-                  author: 'Jordan Taylor • Growth Marketing',
-                  time: 'Just now',
-                  message: trimmedPrompt,
-                },
-                {
-                  id: 'agent_reply_bubble',
-                  component: 'AgMessageBubble',
-                  from: 'them',
-                  variant: 'neutral',
-                  author: 'CX Insights Agent',
-                  time: 'Just now',
-                  children: ['incident_card'],
-                },
-                {
-                  id: 'incident_card',
-                  component: 'AgCard',
-                  stacked: true,
-                  children: [
-                    'local_badge',
-                    'local_heading',
-                    'local_alert',
-                    'local_ack_btn',
-                  ],
-                },
-                {
-                  id: 'local_badge',
-                  component: 'AgBadge',
-                  variant: 'warning',
-                  children: ['local_badge_text'],
-                },
-                {
-                  id: 'local_badge_text',
-                  component: 'AgText',
-                  el: 'span',
-                  text: 'Live Trend • High-Intent Caller Surge',
-                },
-                {
-                  id: 'local_heading',
-                  component: 'AgText',
-                  el: 'h3',
-                  text: { '@path': '/incident/title' },
-                },
-                {
-                  id: 'local_alert',
-                  component: 'AgAlert',
-                  variant: 'primary',
-                  borderedLeft: true,
-                  children: ['local_alert_copy'],
-                },
-                {
-                  id: 'local_alert_copy',
-                  component: 'AgText',
-                  el: 'p',
-                  text: trimmedPrompt,
-                },
-                {
-                  id: 'local_ack_btn',
-                  component: 'AgButton',
-                  variant: 'primary',
-                  label: 'Activate Overflow Routing',
-                  shape: 'rounded',
-                  action: {
-                    event: {
-                      name: 'activate_overflow_routing',
-                      context: {
-                        title: { '@path': '/incident/title' },
-                        overflowActive: true,
-                      },
-                    },
-                  },
-                },
-              ],
-            },
-          },
-          {
-            version: '1.0',
-            updateDataModel: {
-              surfaceId: 'support_surface',
-              path: '/',
-              value: {
-                incident: {
-                  title: '42% Surge in Qualified Inbound Sales Calls',
-                  severity: 'elevated',
-                },
-              },
-            },
-          },
-        ]
-
-              : isVipRouting
+      ? buildCallerSpikeSurface(trimmedPrompt)
+      : isVipRouting
         ? [
             {
               version: '1.0',
@@ -601,6 +729,7 @@ export async function generateLocalA2uiSurface(
               },
             },
           ]
+
         : [
             {
               version: '1.0',

@@ -1,7 +1,7 @@
 /**
  * AgnosticUI v2 Button - Canonical Implementation
  *
- * �  IMMUTABLE CANONICAL VERSION �
+ *   IMMUTABLE CANONICAL VERSION
  *
  * This file contains the canonical, upgrade-safe implementation of the Button component.
  * It should NEVER be modified directly by users or AI assistants.
@@ -103,6 +103,10 @@ export class AgButton extends LitElement implements ButtonProps {
       font: inherit;
       color: inherit;
 
+      /* Ensure nested <ag-kbd> inherits button foreground & border contrast */
+      --ag-kbd-color: currentColor;
+      --ag-kbd-border-color: color-mix(in srgb, currentColor 45%, transparent);
+
       /* Explicit line-height to prevent extra vertical spacing */
       line-height: 1;
 
@@ -119,8 +123,8 @@ export class AgButton extends LitElement implements ButtonProps {
       transition-property: all;
       transition-duration: var(--ag-motion-medium);
     }
-    
-    /* Secondary inherits font color */
+
+        /* Secondary inherits font color */
     :host([variant="secondary"]) button {
       background: var(--ag-neutral-400);
       /* We lock the text color at neutral-900 for both light/dark modes */
@@ -248,7 +252,6 @@ export class AgButton extends LitElement implements ButtonProps {
       padding: 0;
       min-height: unset;
     }
-
     /* Ghost and Link - minimal/invisible button styles */
     :host([ghost]) button,
     :host([link]) button {
@@ -394,7 +397,6 @@ export class AgButton extends LitElement implements ButtonProps {
       background: var(--ag-background-primary-inverted);
       color: var(--ag-text-primary-inverted);
     }
-
     :host([ghost][variant="monochrome"]) button {
       color: var(--ag-text-primary);
     }

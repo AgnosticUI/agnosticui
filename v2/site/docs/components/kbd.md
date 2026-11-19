@@ -94,8 +94,8 @@ export default function Example() {
 
 | Prop         | Type                                                                                               | Default     | Description                                                                                                                        |
 | ------------ | -------------------------------------------------------------------------------------------------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `variant`    | `'default' \| 'primary' \| 'secondary' \| 'info' \| 'warning' \| 'success' \| 'danger' \| 'error'` | `'default'` | The visual variant of the kbd element (e.g., for color theming).                                                                   |
-| `size`       | `'sm' \| 'md' \| 'lg'`                                                                             | `'sm'`      | The size of the kbd element. Small is suitable for inline text, medium for emphasized shortcuts, and large for prominent displays. |
+| `variant`    | `'default' \| 'inherit' \| 'primary' \| 'secondary' \| 'info' \| 'warning' \| 'success' \| 'danger' \| 'error' \| 'monochrome'` | `'default'` | The visual variant of the kbd element. Use `'inherit'` (or nest inside `<ag-button>`) to inherit foreground and border contrast. |
+| `size`       | `'sm' \| 'md' \| 'lg'`                                                                             | `'md'`      | The size of the kbd element. Small is suitable for inline text or buttons, medium for emphasized shortcuts, and large for displays. |
 | `bordered`   | `boolean`                                                                                          | `true`      | If `true`, displays a border around the kbd element to enhance the key appearance.                                                 |
 | `background` | `boolean`                                                                                          | `false`     | If `true`, adds a background color to the kbd element based on the variant, providing additional visual emphasis.                  |
 
@@ -134,8 +134,8 @@ The kbd component uses the semantic `<kbd>` HTML element, which is automatically
 
 ## Notes
 
-- **Variants**: The 'default' variant provides neutral styling suitable for most contexts. Use semantic variants ('info', 'warning', 'error', 'success') to indicate the nature of the shortcut or action.
-- **Sizes**: Choose 'sm' for inline documentation, 'md' for tutorial content, and 'lg' for hero sections or prominent feature callouts.
+- **Variants**: The 'default' variant provides neutral styling suitable for most contexts (customizable via `--ag-kbd-color` and `--ag-kbd-border-color`). Use `'inherit'` or nest `<ag-kbd>` inside `<ag-button>` to automatically match parent foreground contrast. Use semantic variants ('info', 'warning', 'error', 'success') to indicate the nature of the shortcut or action.
+- **Sizes**: Choose 'sm' for inline documentation or inside buttons, 'md' for tutorial content, and 'lg' for hero sections or prominent feature callouts.
 - **Common Symbols**: Use standard keyboard symbols for better recognition:
   - `⌘` - Command (Mac)
   - `⌥` - Option/Alt (Mac)

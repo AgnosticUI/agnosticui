@@ -1,9 +1,9 @@
 # Implementation Tracking Plan: AgnosticUI A2UI v1.0 Refactor
 
-- **Branch:** `master` (Phases 1–6 merged via PR #517)
+- **Branch:** `master` (Phases 1–9 merged) | Active: `feat/a2ui-phase10-multipage-flows`
 - **Architecture Spec:** `v2/a2ui/docs/PRD-A2UI-REFACTOR.md`
 - **Session Boot Capsule:** `v2/a2ui/docs/NEXT_PROMPT.md`
-- **Overall Status:** Phases 1–9 ✅ (35-Component Catalog Live on npm `2.0.0-alpha.2` & Studio v2.1 Upgraded) | Phase 10 📋 (Planned)
+- **Overall Status:** Phases 1–9 ✅ (Merged to `master`, 35-Component Catalog Live on npm `2.0.0-alpha.2`) | Phase 10 🔄 (Task 10.1 ✅, Hotfix 10.1a & Task 10.2 npm/Netlify Release Next)
 - **Maintenance Rule:** Update both `IMPLEMENTATION_PLAN.md` and `NEXT_PROMPT.md` at the completion of every task before committing the checkpoint.
 ---
 
@@ -17,6 +17,9 @@
 - [Phase 6: Pre-Publish Quality Hardening, npm Release & Official `a2ui-project/a2ui` PR (`v1.0`)](#phase-6-pre-publish-quality-hardening-npm-release--official-a2ui-projecta2ui-pr-v10)
 - [Phase 7: Upstream A2UI Core Contributions, Studio v2 ("Wow Factor") & Homepage Positioning](#phase-7-upstream-a2ui-core-contributions-studio-v2-wow-factor--homepage-positioning)
 - [Phase 8: 35-Component Catalog Expansion (~65% Coverage)](#phase-8-35-component-catalog-expansion-65-coverage)
+- [Phase 9: Studio Streaming & 35-Component Showcase Polish](#phase-9-studio-streaming--35-component-showcase-polish)
+- [Phase 10: Multi-Page Queue Drill-Down, Composer Hotfix & npm/Netlify Release](#phase-10-multi-page-queue-drill-down-composer-hotfix--npmnetlify-release)
+- [Phase 11: Enriched Turn-3 Audit & 45-Component Catalog Expansion](#phase-11-enriched-turn-3-audit--45-component-catalog-expansion)
 
 ---
 
@@ -24,7 +27,7 @@
 
 1. **Full-File Output Only:** Whenever modifying or generating a file, you MUST output the **entire, complete, copy-pasteable file** from line 1 to EOF with all new integrations, types, and logic cleanly injected.
 2. **Zero Truncation / Zero Placeholders:** You are strictly forbidden from using lazy ellipsis comments or placeholders such as `// ... existing code ...`, `/* rest of file */`, `# unchanged`, or `...`. Every line of the target file must be present and syntactically valid.
-3. **Chunking Large Files (Widget Escape Prevention):** If a complete file exceeds ~300 lines (or risks truncating/escaping the markdown code block), split the output sequentially into clearly labeled, contiguous parts (e.g., **Part 1 of 2: Lines 1–250**, **Part 2 of 2: Lines 251–EOF**). Each part MUST be wrapped in its own self-contained fenced code block (with language tag) so it renders a clean Copy-to-Clipboard button, with zero overlap or omitted lines between parts.
+3. **Chunking Large Files (Widget Escape Prevention):** If a complete file exceeds ~150 lines, split the output sequentially into clearly labeled, contiguous parts (e.g., **Part 1 of 2**, **Part 2 of 2**). Each part MUST be wrapped in its own self-contained fenced code block so it renders a clean Copy-to-Clipboard button, with zero overlap or omitted lines between parts.
 4. **Narrow Exceptions:** You may omit the rest of the file **only** when:
    - Appending 1–3 standalone test specs (`it(...)` / `test(...)`) strictly to the very bottom of an existing test file, **OR**
    - Adding 1–3 top-level `import` statements strictly to the very top of a file.
@@ -112,9 +115,9 @@
   * **Micro-Chunk 7.2a:** Upgrade `v2/a2ui/demos/support-center/shared/` with progressive token/JSONL component streaming (skeleton -> bubble typing -> incremental field arrival) and live `@path` JSON diff highlights in the Inspector drawer.
   * **Micro-Chunk 7.2b:** Add multi-turn agentic round-trips (`a2uiaction` validated payload -> dynamic follow-up A2UI confirmation/next-step surface) so users experience a true stateful agent loop.
   * **Micro-Chunk 7.2c:** Configure and deploy a single canonical public Netlify demo (`Local Compiler` default = `$0` token cost + optional BYOK Gemini key with `MAX_SESSION_CALLS = 5` cap) and link it in `v2/a2ui/README.md` and `v2/site/docs/docs/a2ui.md`.
-* **Task 7.3 — Elevate A2UI `v1.0` on the AgnosticUI Homepage & Sidebar Navigation**✅
+* **Task 7.3 — Elevate A2UI `v1.0` on the AgnosticUI Homepage & Sidebar Navigation** ✅
   * **Micro-Chunk 7.3a:** Update `v2/site/docs/index.md` so **CLI Local Components** and **A2UI v1.0 Generative UI** lead the core value proposition (positioning schema-enforced A2UI `v1.0` renderers & 22 skins ahead of probabilistic Playbooks) with direct links to `/docs/a2ui` and the live Studio. ✅
-  * **Micro-Chunk 7.3b:** Elevate A2UI `v1.0` in the VitePress left sidebar navigation (`v2/site/docs/.vitepress/config.mts`). Move `{ text: 'Generative UI (A2UI)', link: '/docs/a2ui' }` out from the bottom of the Documentation section into its own top-level `A2UI v1.0` sidebar group positioned directly above `AI Playbooks`. Also, move `getComponents()` above `AI Playbooks. ✅
+  * **Micro-Chunk 7.3b:** Elevate A2UI `v1.0` in the VitePress left sidebar navigation (`v2/site/docs/.vitepress/config.mts`). Move `{ text: 'Generative UI (A2UI)', link: '/docs/a2ui' }` out from the bottom of the Documentation section into its own top-level `A2UI v1.0` sidebar group positioned directly above `AI Playbooks`. Also, move `getComponents()` above `AI Playbooks`. ✅
 
 ---
 
@@ -139,14 +142,26 @@
 
 ---
 
-## Phase 10: Multi-Page Surface Flows, Turn-3 Audit & 45-Component Catalog Expansion 📋
+## Phase 10: Multi-Page Queue Drill-Down, Composer Hotfix & npm/Netlify Release ✅
 
-* **Task 10.1 — Stateful Multi-Page Queue Drill-Down (`AgBreadcrumb` + `AgPagination`)**
-  * Upgrade the *"High-Intent Caller Spike"* scenario to render an interactive caller queue with `AgPagination` at the bottom and `AgBreadcrumb` at the top, dispatching A2UI `action` events that page through callers inside `<a2ui-surface>`.
-* **Task 10.2 — Enriched Turn-3 Verification Audit (`AgTimeline` + `AgIntlFormatter` + `AgLink`)**
-  * Enhance `buildTurnThreeComponents()` in `agent-roundtrip.ts` to display a timestamped `AgTimeline` audit trail formatted with `AgIntlFormatter` and a trace `AgLink`.
-* **Task 10.3 — Expand A2UI v1.0 Catalog to ~45 Components (~80% Coverage)**
-  * Port 10 additional AgnosticUI v2 components (`Loader`, `Tooltip`, `Popover`, `Drawer`, `Dialog`, `ButtonGroup`, `InputNumber`, `Textarea`, `CopyButton`, `AspectRatio`) into `generate-catalog.ts`, regenerate `agnosticui-catalog.json` + `SKILL.md`, and publish `2.0.0-alpha.3`.
+* **Task 10.1 — Stateful Multi-Page Queue Drill-Down (`AgBreadcrumb` + `AgPagination`)** ✅
+  * **Micro-Chunk 10.1a:** Added `@breadcrumb-click` (`preventDefault()`) and two-way `@page-change` (`setCurrent`) bindings to `generate-catalog.ts` and Lit wrappers (`AgBreadcrumb.ts`, `AgPagination.ts`), and synchronized `AGNOSTICUI_CATALOG_ID` (`https://agnosticui.com`) across `catalog.ts`, `SKILL.md`, and `agnosticui-catalog.json`.
+  * **Micro-Chunk 10.1b:** Implemented `buildCallerSpikeSurface()` in `live-gemini.ts` (3-page, 6-caller surge queue with `AgBreadcrumb` + `AgPagination`) and added `kind: 'update_surface'` list pagination and caller drill-down handlers (`change_queue_page`, `navigate_queue_breadcrumb`, `inspect_queue_caller`) in `agent-roundtrip.ts`.
+  * **Micro-Chunk 10.1c:** Wired `update_surface` and `rejected` handlers across Lit (`lit/src/main.ts`), React (`react/src/main.tsx`), and Vue (`vue/src/App.vue`) Support Center Studios, expanded `agent-roundtrip.spec.ts` and `demos-smoke.spec.ts`, and verified all renderer/demo test suites and production builds pass.
+* **Hotfix 10.1a — Live Netlify Studio Composer UI Regressions (Pacing `<ag-button>`, `<ag-kbd bordered>` Inside `<ag-button variant="primary">`, & Button Gap)** ✅
+  * Added `--ag-kbd-color` / `--ag-kbd-border-color` CSS custom property hooks and `variant="inherit"` in `v2/lib/src/components/Kbd/core/_Kbd.ts`, and cascaded `--ag-kbd-color: currentColor` + `--ag-kbd-border-color` from `v2/lib/src/components/Button/core/_Button.ts` so `<ag-kbd bordered>` inside any filled or outlined `<ag-button>` inherits button foreground contrast automatically (1,843/1,843 `v2/lib` tests passing).
+  * Replaced unstyled native `<button class="pacing-pill">` (`0.5x Slow-Mo` and `Replay`) in `v2/a2ui/demos/support-center/lit/src/main.ts` with `<ag-button variant="primary" size="x-sm" shape="rounded" bordered>`, added `.composer-right-controls`, `.stream-pacing-group`, `.pacing-btn-inner`, and `.generate-btn-inner` gap spacing in `studio.css`, and added **Inside Buttons** examples across Vue, Lit, and React in `v2/site/docs/components/kbd.md`.
+* **Task 10.2 — Publish `agnosticui-core` & `@agnosticui/a2ui-*` npm Releases + Deploy Live Netlify Studio** ✅
+  * Published `agnosticui-core@2.0.0-alpha.32` and `@agnosticui/a2ui-{lit,react,vue}@2.0.0-alpha.3` to npm (`alpha` and `latest` dist-tags), updated `v2/site/package.json` and `v2/a2ui/demos/support-center/{lit,react,vue}/package.json` dependencies + lockfiles, merged Phase 10 to `master`, and deployed to live Netlify Studio (`https://netlify.app`).
+
+---
+
+## Phase 11: Enriched Turn-3 Audit & 45-Component Catalog Expansion 📋
+
+* **Task 11.1 — Enriched Turn-3 Verification Audit (`AgTimeline` + `AgIntlFormatter` + `AgLink`)**
+  * Enhance `buildTurnThreeComponents()` in `v2/a2ui/demos/support-center/shared/agent-roundtrip.ts` to display a timestamped `AgTimeline` audit trail formatted with `AgIntlFormatter` and a trace `AgLink`, with unit tests in `agent-roundtrip.spec.ts`.
+* **Task 11.2 — Expand A2UI v1.0 Catalog to ~45 Components (~80% Coverage)**
+  * Port 10 additional AgnosticUI v2 components (`Loader`, `Tooltip`, `Popover`, `Drawer`, `Dialog`, `ButtonGroup`, `InputNumber`, `Textarea`, `CopyButton`, `AspectRatio`) into `generate-catalog.ts`, regenerate `agnosticui-catalog.json` + `SKILL.md`, and cut `2.0.0-alpha.4`.
 
 ---
 

@@ -119,7 +119,7 @@ const {
 } = useA2uiSurface({
   surfaceId: 'support_surface',
   validateOnAction: false,
-  onAction: (detail) => {
+    onAction: (detail) => {
     if (streamPhase.value !== 'complete') {
       return;
     }
@@ -129,6 +129,20 @@ const {
     if (outcome.kind === 'reset') {
       logEvent('Agent round-trip reset -> Restored Turn 1 surface');
       void runStreamRef(activeMessages, 'Turn 1 Surface (Reset)', true);
+      return;
+    }
+
+    if (outcome.kind === 'rejected') {
+      processMessages(outcome.messages);
+      validate(true);
+      logEvent('Blocked action: ' + outcome.reason);
+      return;
+    }
+
+    if (outcome.kind === 'update_surface') {
+      logEvent('Queue view updated (' + outcome.actionName + ')', detail);
+      processMessages(outcome.messages);
+      syncDataModelInspector(getDataModel());
       return;
     }
 

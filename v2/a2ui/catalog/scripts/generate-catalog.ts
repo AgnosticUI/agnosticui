@@ -70,8 +70,7 @@ export const CATALOG_COMPONENTS = new Set([
   'Slider',
 ]);
 
-
-// Two-way data-binding event map for interactive form controls
+// Two-way data-binding event map for interactive form & navigation controls
 // Event names verified directly against v2/lib/src/components/*/core/_*.ts
 const TWO_WAY_BINDINGS: Record<string, { event: string; setter: string; extract: string }> = {
   AgInput: {
@@ -114,9 +113,20 @@ const TWO_WAY_BINDINGS: Record<string, { event: string; setter: string; extract:
     setter: 'setChecked',
     extract: 'Boolean((e as CustomEvent<{ checked?: boolean }>).detail?.checked)',
   },
+  AgPagination: {
+    event: 'page-change',
+    setter: 'setCurrent',
+    extract: 'Number((e as CustomEvent<{ page?: number }>).detail?.page ?? 1)',
+  },
 };
 
-
+// Semantic custom events for non-button components that dispatch A2UI actions
+const CUSTOM_ACTION_EVENTS: Record<string, { event: string; beforeDispatch?: string }> = {
+  AgBreadcrumb: {
+    event: 'breadcrumb-click',
+    beforeDispatch: '(e as CustomEvent<{ event?: MouseEvent }>).detail?.event?.preventDefault();',
+  },
+};
 type A2uiPropKind = 'dynamicString' | 'dynamicBoolean' | 'dynamicNumber' | 'enum' | 'literal' | 'stringArray' | 'numberArray';
 
 interface A2uiPropInfo {
@@ -139,6 +149,7 @@ function isFunctionSymbol(sym: MorphSymbol): boolean {
   if (!decl) return false;
   return decl.getType().getNonNullableType().getCallSignatures().length > 0;
 }
+
 function mapA2uiType(propName: string, type: Type): Omit<A2uiPropInfo, 'name'> | null {
   const t = type.getNonNullableType();
 
@@ -285,6 +296,7 @@ function extractProps(componentName: string, iface: InterfaceDeclaration): { pro
 
   return { props, hasActions };
 }
+
 function generateWrapperFile(
   componentName: string,
   props: A2uiPropInfo[],
@@ -298,6 +310,7 @@ function generateWrapperFile(
   const elementClass = `AgA2ui${componentName}Element`;
   const noUndef = new Set(noUndefinedProps[sdui] ?? []);
   const twoWay = TWO_WAY_BINDINGS[sdui];
+  const customAction = CUSTOM_ACTION_EVENTS[sdui];
 
   const needsDynamicString = props.some((p) => p.kind === 'dynamicString');
   const needsDynamicBoolean = props.some((p) => p.kind === 'dynamicBoolean');
@@ -340,18 +353,30 @@ function generateWrapperFile(
     }
   }
 
-  if (hasActions) {
+  const usesCustomActionEvent = Boolean(customAction) || (Boolean(twoWay) && twoWay.event === 'page-change');
+
+  if (hasActions && !usesCustomActionEvent) {
     attrLines.push(`      @click=\${this.handleAction}`);
+  } else if (customAction && hasActions) {
+    attrLines.push(`      @${customAction.event}=\${this.handleAction}`);
   }
   if (twoWay) {
     attrLines.push(`      @${twoWay.event}=\${this.handleTwoWay}`);
   }
 
   const handlerLines: string[] = [];
-  if (hasActions) {
+  if (hasActions && !usesCustomActionEvent) {
     handlerLines.push(
       '',
       '  private handleAction() {',
+      '    void this.controller.props.action?.();',
+      '  }',
+    );
+  } else if (customAction && hasActions) {
+    handlerLines.push(
+      '',
+      '  private handleAction(e: Event) {',
+      ...(customAction.beforeDispatch ? [`    ${customAction.beforeDispatch}`] : []),
       '    void this.controller.props.action?.();',
       '  }',
     );
@@ -420,6 +445,7 @@ function generateWrapperFile(
     '',
   ].join('\n');
 }
+
 function generateAgTextFile(): string {
   return [
     GENERATED_HEADER,
@@ -592,7 +618,7 @@ async function main() {
     "import { ValidateSurfaceImplementation } from './functions/validate-surface.js';",
     ...imports,
     '',
-    "export const AGNOSTICUI_CATALOG_ID = 'https://agnosticui.com/a2ui/v1/catalog.json';",
+    "export const AGNOSTICUI_CATALOG_ID = 'https://agnosticui.com';",
     '',
     'export const AgnosticUICatalog: Catalog<LitComponentApi> = new Catalog(',
     '  AGNOSTICUI_CATALOG_ID,',

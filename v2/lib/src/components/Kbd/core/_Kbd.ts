@@ -1,7 +1,7 @@
 import { LitElement, html, css } from 'lit';
 import { property } from 'lit/decorators.js';
 
-export type KbdVariant = 'default' | 'primary' | 'secondary' | 'info' | 'warning' | 'success' | 'danger' | 'error' | 'monochrome';
+export type KbdVariant = 'default' | 'inherit' | 'primary' | 'secondary' | 'info' | 'warning' | 'success' | 'danger' | 'error' | 'monochrome';
 export type KbdSize = 'sm' | 'md' | 'lg';
 
 export interface KbdProps {
@@ -40,7 +40,7 @@ export class AgKbd extends LitElement implements KbdProps {
       user-select: none;
     }
     :host([bordered]) .kbd-wrapper {
-      border: var(--ag-border-width-1) solid var(--ag-border-subtle);
+      border: var(--ag-border-width-1) solid var(--ag-kbd-border-color, var(--ag-border-subtle));
     }
     :host([background]) .kbd-wrapper {
       background-color: var(--ag-background-secondary);
@@ -80,7 +80,11 @@ export class AgKbd extends LitElement implements KbdProps {
     }
     /* Variants */
     :host([variant='default']) .kbd-wrapper {
-      color: var(--ag-text-primary);
+      color: var(--ag-kbd-color, var(--ag-text-primary));
+    }
+    :host([variant='inherit']) .kbd-wrapper {
+      color: inherit;
+      border-color: currentColor;
     }
     :host([variant='primary']) .kbd-wrapper {
       color: var(--ag-primary-text);
