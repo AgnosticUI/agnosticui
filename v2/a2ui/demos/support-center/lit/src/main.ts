@@ -352,6 +352,7 @@ export class AgA2uiStudio extends LitElement {
   }
 
   private handlePromptKeyDown(e: KeyboardEvent): void {
+    if (e.isComposing) return;
     if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') {
       e.preventDefault();
       void this.handleGeneratePrompt();
@@ -604,7 +605,6 @@ export class AgA2uiStudio extends LitElement {
       : 'live-prompt-bar';
     const slowMoClass =
       this.playbackSpeed === '0.5x' ? 'pacing-pill is-slowmo' : 'pacing-pill';
-
     return html`
       <div class="studio-shell">
         <header class="studio-header">
@@ -678,6 +678,7 @@ export class AgA2uiStudio extends LitElement {
               })}
             </div>
           </aside>
+
           <main class="studio-stage">
             <div class="stage-container">
               <div class="live-prompt-card">
