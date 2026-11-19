@@ -42,22 +42,18 @@ const SAMPLE_BATCHED_STREAM: A2uiWireMessage[] = [
 ];
 
 describe('StreamPlayer (Progressive A2UI JSONL Streaming)', () => {
-  it('expands batched updateComponents into single-component wire frames', () => {
-    console.log('\n--- START TEST: expandToGranularStream ---');
-
+  it('expands batched updateComponents and root updateDataModel into granular wire frames', () => {
     const granular = expandToGranularStream(SAMPLE_BATCHED_STREAM);
-    console.log('Input message count:', SAMPLE_BATCHED_STREAM.length);
-    console.log('Expanded frame count:', granular.length);
 
-    // 1 createSurface + 3 split updateComponents + 1 updateDataModel = 5 frames
-    expect(granular).toHaveLength(5);
+    // 1 createSurface + 3 split updateComponents + 1 root reset + 1 leaf updateDataModel = 6 frames
+    expect(granular).toHaveLength(6);
     expect('createSurface' in granular[0]).toBe(true);
     expect('updateComponents' in granular[1]).toBe(true);
     expect('updateComponents' in granular[2]).toBe(true);
     expect('updateComponents' in granular[3]).toBe(true);
     expect('updateDataModel' in granular[4]).toBe(true);
+    expect('updateDataModel' in granular[5]).toBe(true);
 
-    // Narrow the second frame's updateComponents payload cleanly without `any`
     const firstComponentFrame = granular[1];
     if (
       'updateComponents' in firstComponentFrame &&
@@ -72,11 +68,9 @@ describe('StreamPlayer (Progressive A2UI JSONL Streaming)', () => {
     } else {
       throw new Error('Expected granular[1] to contain a single-item updateComponents array');
     }
-
-    console.log('--- END TEST: expandToGranularStream PASSED ---\n');
   });
 
-  it('expands nested root updateDataModel snapshots into sequential leaf @path patches', () => {
+  it('emits a root reset followed by sequential leaf @path patches for nested DataModel snapshots', () => {
     const multiKeyStream: A2uiWireMessage[] = [
       {
         version: '1.0',
@@ -98,6 +92,14 @@ describe('StreamPlayer (Progressive A2UI JSONL Streaming)', () => {
 
     const granular = expandToGranularStream(multiKeyStream);
     expect(granular).toEqual([
+      {
+        version: '1.0',
+        updateDataModel: {
+          surfaceId: 'support_surface',
+          path: '/',
+          value: {},
+        },
+      },
       {
         version: '1.0',
         updateDataModel: {
@@ -154,7 +156,7 @@ describe('StreamPlayer (Progressive A2UI JSONL Streaming)', () => {
 
     expect(completed).toBe(true);
     expect(observedPhases).toEqual(['skeleton', 'typing', 'streaming', 'complete']);
-    expect(receivedFrames).toHaveLength(5);
+    expect(receivedFrames).toHaveLength(6);
     expect(trace).toEqual([
       'phase:skeleton',
       'phase:typing',
@@ -164,13 +166,12 @@ describe('StreamPlayer (Progressive A2UI JSONL Streaming)', () => {
       'frame:2',
       'frame:3',
       'frame:4',
+      'frame:5',
       'phase:complete',
     ]);
   });
 
   it('cancels cleanly mid-stream without emitting stale frames', async () => {
-    console.log('\n--- START TEST: mid-stream cancellation ---');
-
     const onMessageSpy = vi.fn();
     const observedPhases: StreamPhase[] = [];
 
@@ -180,7 +181,6 @@ describe('StreamPlayer (Progressive A2UI JSONL Streaming)', () => {
         onPhaseChange: (phase) => observedPhases.push(phase),
         onMessage: (msg) => {
           onMessageSpy(msg);
-          // Abort right after the 2nd frame arrives
           if (onMessageSpy.mock.calls.length === 2) {
             handle.cancel();
           }
@@ -190,18 +190,14 @@ describe('StreamPlayer (Progressive A2UI JSONL Streaming)', () => {
         skeletonDelayMs: 5,
         typingDelayMs: 5,
         chunkDelayMs: 25,
-        verbose: true,
+        verbose: false,
       },
     );
 
     const completed = await handle.finished;
 
-    // Must resolve to `false` (cancelled) and never reach 'complete' or emit frames 3..5
     expect(completed).toBe(false);
     expect(onMessageSpy).toHaveBeenCalledTimes(2);
     expect(observedPhases).not.toContain('complete');
-
-    console.log('Frames emitted before abort:', onMessageSpy.mock.calls.length);
-    console.log('--- END TEST: mid-stream cancellation PASSED ---\n');
   });
 });

@@ -73,8 +73,9 @@ function collectLeafDataPatches(
 
 /**
  * Pure helper that splits batched `updateComponents` messages into single-component
- * wire envelopes and expands root `updateDataModel` snapshots into sequential leaf
- * `@path` patches so both the UI and Live DataModel inspector build progressively.
+ * wire envelopes and expands root `updateDataModel` snapshots into a root reset
+ * followed by sequential leaf `@path` patches so stale keys are cleared and both
+ * the UI and Live DataModel inspector build progressively.
  *
  * @param messages - Standard A2UI v1.0 wire message array (from local compiler or Gemini).
  * @returns An expanded array of granular A2UI v1.0 wire messages.
@@ -106,7 +107,7 @@ export function expandToGranularStream(
       continue;
     }
 
-    // 2. Expand root `updateDataModel` (`path: '/'` or `''`) into sequential leaf `@path` patches
+    // 2. Expand root `updateDataModel` (`path: '/'` or `''`) into a root reset + sequential leaf `@path` patches
     if (
       'updateDataModel' in msg &&
       msg.updateDataModel &&
@@ -127,11 +128,23 @@ export function expandToGranularStream(
         const patches: Array<{ path: string; value: unknown }> = [];
         collectLeafDataPatches(dm.value, '', patches);
         if (patches.length > 0) {
+          const envelopeVersion = msg.version ?? '1.0';
+          const targetSurface = dm.surfaceId ?? 'support_surface';
+
+          granularFrames.push({
+            version: envelopeVersion,
+            updateDataModel: {
+              surfaceId: targetSurface,
+              path: rawPath,
+              value: {},
+            },
+          } as unknown as A2uiWireMessage);
+
           for (const patch of patches) {
             granularFrames.push({
-              version: msg.version ?? '1.0',
+              version: envelopeVersion,
               updateDataModel: {
-                surfaceId: dm.surfaceId ?? 'support_surface',
+                surfaceId: targetSurface,
                 path: patch.path,
                 value: patch.value,
               },

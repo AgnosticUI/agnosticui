@@ -318,7 +318,7 @@ export async function generateLocalA2uiSurface(
 
   const lower = trimmedPrompt.toLowerCase();
   const isSlaPolicy =
-    lower.includes('sla') ||
+    /\bsla\b/i.test(trimmedPrompt) ||
     lower.includes('credit cap') ||
     lower.includes('slider') ||
     lower.includes('escalation policy');
