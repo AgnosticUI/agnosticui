@@ -3,7 +3,7 @@
 - **Branch:** `master` (Phases 1–6 merged via PR #517)
 - **Architecture Spec:** `v2/a2ui/docs/PRD-A2UI-REFACTOR.md`
 - **Session Boot Capsule:** `v2/a2ui/docs/NEXT_PROMPT.md`
-- **Overall Status:** Phases 1–9 ✅ (35-Component Catalog Live on npm `2.0.0-alpha.2` & Studio v2.1 Upgraded) | Phase 10 📋 (Planned)
+- **Overall Status:** Phases 1–9 ✅ (Merged to `master`, 35-Component Catalog Live on npm `2.0.0-alpha.2`) | Phase 10 🔄 (In Progress on `feat/a2ui-phase10-multipage-flows`)
 - **Maintenance Rule:** Update both `IMPLEMENTATION_PLAN.md` and `NEXT_PROMPT.md` at the completion of every task before committing the checkpoint.
 ---
 
@@ -139,7 +139,7 @@
 
 ---
 
-## Phase 10: Multi-Page Surface Flows, Turn-3 Audit & 45-Component Catalog Expansion 📋
+## Phase 10: Multi-Page Surface Flows, Turn-3 Audit & 45-Component Catalog Expansion 🔄
 
 * **Task 10.1 — Stateful Multi-Page Queue Drill-Down (`AgBreadcrumb` + `AgPagination`)**
   * Upgrade the *"High-Intent Caller Spike"* scenario to render an interactive caller queue with `AgPagination` at the bottom and `AgBreadcrumb` at the top, dispatching A2UI `action` events that page through callers inside `<a2ui-surface>`.
