@@ -5,6 +5,7 @@ on:
     branches:
       - master
     paths:
+      - 'v2/a2ui/renderers/lit/**'
       - 'v2/a2ui/demos/support-center/lit/**'
       - 'v2/a2ui/demos/support-center/shared/**'
       - 'v2/skins/**'
