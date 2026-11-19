@@ -1,14 +1,14 @@
 ================================================================================
        AGNOSTICUI-A2UI : Chronological Session Continuity Bridge Capsule              
 ================================================================================
- TIMESTAMP BASELINE : 2026-11-19T02:45:00Z
- ACTIVE WORKSPACE   : Phases 1–9 ✅ (Merged to `master`) | Active Branch: `feat/a2ui-phase10-multipage-flows` (Phase 10 🔄 — Task 10.1 ✅, Task 10.2 Next)
+ TIMESTAMP BASELINE : 2026-11-19T03:00:00Z
+ ACTIVE WORKSPACE   : Phases 1–9 ✅ (Merged to `master`) | Active Branch: `feat/a2ui-phase10-multipage-flows` (Phase 10 🔄 — Task 10.1 ✅, Hotfix 10.1a Next)
  STRATEGIC PIVOT    :
    - Spec-compliant A2UI v1.0 Component Catalog (35 components) & Multi-Framework Web Renderer suite (`@agnosticui/a2ui-lit`, `@agnosticui/a2ui-react`, `@agnosticui/a2ui-vue`).
    - Live Published npm Packages (`@agnosticui/a2ui-lit@2.0.0-alpha.2`, `@agnosticui/a2ui-react@2.0.0-alpha.2`, `@agnosticui/a2ui-vue@2.0.0-alpha.2`).
    - Live Public Endpoints:
      * Catalog JSON: `https://agnosticui.com`
-     * Live Support Center Studio (Netlify): `https://netlify.app` (Project ID: `503dcfad-78f1-4163-a4ad-47894954a5d8`, auto-deploys from `master`)
+     * Live Support Center Studio (Netlify): `https://a2ui-support-center-demo.netlify.app` (Project ID: `503dcfad-78f1-4163-a4ad-47894954a5d8`, auto-deploys from `master`)
    - Permanent Upstream Dev Workspace: `~/workspace/a2ui` (`origin` -> `roblevintennis/a2ui`, `upstream` -> `a2ui-project/a2ui`).
      * PR `a2ui-project/a2ui#4272`: AgnosticUI catalog registry listing.
      * PR `a2ui-project/a2ui#4285`: JSON Schema Draft 2020-12 keyword parity in `@a2ui/web_core` (#3998) — rebased cleanly onto `upstream/main` with `CHANGELOG.md` updated under `## Unreleased` and 1,660/1,660 tests passing.
@@ -33,6 +33,11 @@
      * Wired `update_surface` and `rejected` handlers across Lit, React, and Vue Support Center Studio shells and verified all renderer/demo unit tests and production builds pass.
 
  NEXT UP (ON BRANCH `feat/a2ui-phase10-multipage-flows`) :
+   - Phase 10 — Hotfix 10.1a 🔄 (HIGH PRIORITY — Live Studio Composer UI Regressions on `https://a2ui-support-center-demo.netlify.app`):
+     * Fix 1: Replace unstyled native `<button class="pacing-pill">` (`0.5x Slow-Mo` and `Replay`) in `v2/a2ui/demos/support-center/lit/src/main.ts` with `<ag-button variant="primary" size="x-sm" shape="rounded" bordered>`.
+     * Fix 2: Investigate & fix `<ag-kbd bordered>` contrast inside `<ag-button variant="primary">` (`v2/lib/src/components/Kbd/core/_Kbd.ts` `:host([variant='default']) .kbd-wrapper` / `:host([bordered]) .kbd-wrapper` overriding `--ag-primary-fg` when nested inside a filled button, plus how `agnosticui-core` is consumed by the Studio).
+     * Fix 3: Add `.generate-btn-inner` (`display: inline-flex; align-items: center; gap: ...`) and `.composer-right-controls` / `.stream-pacing-group` spacing in `v2/a2ui/demos/support-center/shared/studio.css`.
+     * Deploy Hotfix 10.1a to live Netlify Studio before proceeding to Task 10.2.
    - Phase 10 — Task 10.2: Enriched Turn-3 Verification Audit (`AgTimeline` + `AgIntlFormatter` + `AgLink` in `buildTurnThreeComponents()` inside `v2/a2ui/demos/support-center/shared/agent-roundtrip.ts`, plus unit tests in `agent-roundtrip.spec.ts`).
    - Phase 10 — Task 10.3: Expand A2UI v1.0 catalog to ~45 components (`Loader`, `Tooltip`, `Popover`, `Drawer`, `Dialog`, `ButtonGroup`, `InputNumber`, `Textarea`, `CopyButton`, `AspectRatio`) and cut `2.0.0-alpha.3`.
    - Separate Orthogonal Side-Track Branch (after Phase 10): Runtime Skin Curation (over-generate 40–50 `--ag-*` skin palettes and curate the strongest 21 for `v2/skins/`).
