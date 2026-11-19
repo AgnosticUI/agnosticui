@@ -28,6 +28,11 @@ export const QUICK_PROMPT_CHIPS: QuickPromptChip[] = [
     prompt:
       'Create a priority caller routing rule for enterprise demo requests with manager email and instant specialist alerts.',
   },
+  {
+    label: 'Enterprise SLA & Credit Cap',
+    prompt:
+      'Configure an enterprise SLA escalation policy with an auto-approved credit cap slider, live currency formatting, and VP threshold alerts.',
+  },
 ];
 
 export const EMPTY_STATE_SURFACE_MESSAGES: A2uiWireMessage[] = [
@@ -222,6 +227,7 @@ export const SUPPORT_SCENARIOS: SupportScenario[] = [
     ],
   },
 ];
+
 interface UpdateComponentsEnvelope {
   updateComponents?: {
     surfaceId?: string;
@@ -244,13 +250,6 @@ export function buildActionConfirmationMessages(
     ? [...(rootComp.children as string[])]
     : [];
 
-  if (!rootChildren.includes('user_action_bubble')) {
-    rootChildren.push('user_action_bubble');
-  }
-  if (!rootChildren.includes('agent_confirm_bubble')) {
-    rootChildren.push('agent_confirm_bubble');
-  }
-
   const eventObj =
     typeof actionDetail.event === 'object' && actionDetail.event !== null
       ? (actionDetail.event as Record<string, unknown>)
@@ -259,6 +258,41 @@ export function buildActionConfirmationMessages(
   const actionName = String(
     actionDetail.name ?? eventObj?.name ?? 'action_completed',
   );
+
+  const rawContext =
+    typeof actionDetail.context === 'object' && actionDetail.context !== null
+      ? (actionDetail.context as Record<string, unknown>)
+      : typeof eventObj?.context === 'object' && eventObj.context !== null
+        ? (eventObj.context as Record<string, unknown>)
+        : {};
+
+  const ownerEmail =
+    typeof rawContext.ownerEmail === 'string' && rawContext.ownerEmail.trim().length > 0
+      ? rawContext.ownerEmail.trim()
+      : undefined;
+
+  // Reject missing or empty /form/ownerEmail on SLA policy publish, keeping it unpublished and required
+  if (actionName === 'publish_sla_policy' && !ownerEmail) {
+    const enforcedComponents = baseComponents.map((c) =>
+      c.id === 'sla_approver_input' ? { ...c, required: true } : c,
+    );
+    return [
+      {
+        version: '1.0',
+        updateComponents: {
+          surfaceId: 'support_surface',
+          components: enforcedComponents,
+        },
+      } as unknown as A2uiWireMessage,
+    ];
+  }
+
+  if (!rootChildren.includes('user_action_bubble')) {
+    rootChildren.push('user_action_bubble');
+  }
+  if (!rootChildren.includes('agent_confirm_bubble')) {
+    rootChildren.push('agent_confirm_bubble');
+  }
 
   const sourceComponentId =
     typeof actionDetail.sourceComponentId === 'string'
@@ -278,18 +312,6 @@ export function buildActionConfirmationMessages(
           .split('_')
           .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
           .join(' ');
-
-  const rawContext =
-    typeof actionDetail.context === 'object' && actionDetail.context !== null
-      ? (actionDetail.context as Record<string, unknown>)
-      : typeof eventObj?.context === 'object' && eventObj.context !== null
-        ? (eventObj.context as Record<string, unknown>)
-        : {};
-
-  const ownerEmail =
-    typeof rawContext.ownerEmail === 'string' && rawContext.ownerEmail.length > 0
-      ? rawContext.ownerEmail
-      : undefined;
 
   const summaryLine = ownerEmail
     ? `All preferences have been validated and published. Confirmation and live alerts are routed to ${ownerEmail}.`

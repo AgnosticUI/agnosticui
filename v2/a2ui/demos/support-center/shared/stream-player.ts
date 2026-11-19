@@ -45,9 +45,37 @@ export interface StreamPlaybackHandle {
   cancel: () => void;
 }
 
+function encodePointerSegment(segment: string): string {
+  return segment.replaceAll('~', '~0').replaceAll('/', '~1');
+}
+
+function collectLeafDataPatches(
+  value: unknown,
+  basePath: string,
+  out: Array<{ path: string; value: unknown }>,
+): void {
+  if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+    const record = value as Record<string, unknown>;
+    const keys = Object.keys(record);
+    if (keys.length === 0) {
+      out.push({ path: basePath || '/', value: {} });
+      return;
+    }
+    for (const key of keys) {
+      const nextPath = `${basePath}/${encodePointerSegment(key)}`;
+      collectLeafDataPatches(record[key], nextPath, out);
+    }
+    return;
+  }
+
+  out.push({ path: basePath || '/', value });
+}
+
 /**
  * Pure helper that splits batched `updateComponents` messages into single-component
- * wire envelopes so AgnosticUI surfaces build progressively field-by-field.
+ * wire envelopes and expands root `updateDataModel` snapshots into a root reset
+ * followed by sequential leaf `@path` patches so stale keys are cleared and both
+ * the UI and Live DataModel inspector build progressively.
  *
  * @param messages - Standard A2UI v1.0 wire message array (from local compiler or Gemini).
  * @returns An expanded array of granular A2UI v1.0 wire messages.
@@ -55,11 +83,10 @@ export interface StreamPlaybackHandle {
 export function expandToGranularStream(
   messages: readonly A2uiWireMessage[],
 ): A2uiWireMessage[] {
-  // Accumulator for our fine-grained wire frames
   const granularFrames: A2uiWireMessage[] = [];
 
   for (const msg of messages) {
-    // Check if this envelope contains a batch of multiple components
+    // 1. Expand batched `updateComponents` into 1-component envelopes
     if (
       'updateComponents' in msg &&
       msg.updateComponents &&
@@ -68,7 +95,6 @@ export function expandToGranularStream(
     ) {
       const { surfaceId, components } = msg.updateComponents;
 
-      // Emit one `updateComponents` envelope per component so the UI streams incrementally
       for (const singleComponent of components) {
         granularFrames.push({
           version: msg.version ?? '1.0',
@@ -78,10 +104,58 @@ export function expandToGranularStream(
           },
         });
       }
-    } else {
-      // Pass `createSurface`, `updateDataModel`, `deleteSurface`, or 1-item updates as-is
-      granularFrames.push(msg);
+      continue;
     }
+
+    // 2. Expand root `updateDataModel` (`path: '/'` or `''`) into a root reset + sequential leaf `@path` patches
+    if (
+      'updateDataModel' in msg &&
+      msg.updateDataModel &&
+      typeof msg.updateDataModel === 'object'
+    ) {
+      const dm = msg.updateDataModel as {
+        surfaceId?: string;
+        path?: string;
+        value?: unknown;
+      };
+      const rawPath = dm.path ?? '/';
+      if (
+        (rawPath === '/' || rawPath === '') &&
+        typeof dm.value === 'object' &&
+        dm.value !== null &&
+        !Array.isArray(dm.value)
+      ) {
+        const patches: Array<{ path: string; value: unknown }> = [];
+        collectLeafDataPatches(dm.value, '', patches);
+        if (patches.length > 0) {
+          const envelopeVersion = msg.version ?? '1.0';
+          const targetSurface = dm.surfaceId ?? 'support_surface';
+
+          granularFrames.push({
+            version: envelopeVersion,
+            updateDataModel: {
+              surfaceId: targetSurface,
+              path: rawPath,
+              value: {},
+            },
+          } as unknown as A2uiWireMessage);
+
+          for (const patch of patches) {
+            granularFrames.push({
+              version: envelopeVersion,
+              updateDataModel: {
+                surfaceId: targetSurface,
+                path: patch.path,
+                value: patch.value,
+              },
+            } as unknown as A2uiWireMessage);
+          }
+          continue;
+        }
+      }
+    }
+
+    granularFrames.push(msg);
   }
 
   return granularFrames;
@@ -150,7 +224,7 @@ export function playProgressiveA2uiStream(
     }
   }
 
-  // Expand batched component arrays into single-component streaming envelopes
+  // Expand batched component arrays and root DataModel objects into granular streaming envelopes
   const frames = expandToGranularStream(messages);
   const totalFrames = frames.length;
 

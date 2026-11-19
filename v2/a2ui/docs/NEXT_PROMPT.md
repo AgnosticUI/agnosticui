@@ -1,8 +1,8 @@
 ================================================================================
        AGNOSTICUI-A2UI : Chronological Session Continuity Bridge Capsule              
 ================================================================================
- TIMESTAMP BASELINE : 2026-11-18T22:45:00Z
- ACTIVE WORKSPACE   : Phases 1–8 ✅ (100% Complete — 35-Component A2UI v1.0 Catalog)
+ TIMESTAMP BASELINE : 2026-11-18T23:55:00Z
+ ACTIVE WORKSPACE   : Phases 1–9 ✅ (35-Component Catalog & Studio v2.1 Complete) | Next Up: Phase 10 or Skin Curation Side Track
  STRATEGIC PIVOT    :
    - Spec-compliant A2UI v1.0 Component Catalog (35 components) & Multi-Framework Web Renderer suite (`@agnosticui/a2ui-lit`, `@agnosticui/a2ui-react`, `@agnosticui/a2ui-vue`).
    - Live Published npm Packages (`@agnosticui/a2ui-lit@2.0.0-alpha.2`, `@agnosticui/a2ui-react@2.0.0-alpha.2`, `@agnosticui/a2ui-vue@2.0.0-alpha.2`).
@@ -20,11 +20,14 @@
      * Task 7.1 (`~/workspace/a2ui`): Configured permanent upstream workspace and submitted PR `a2ui-project/a2ui#4285` fixing Issue `#3998` (JSON Schema Draft 2020-12 keyword parity in `@a2ui/web_core`, 1,660/1,660 tests passing + Prettier clean).
      * Task 7.2: Built Studio v2 across Lit, React, and Vue (`stream-player.ts`, `data-model-diff.ts`, `agent-roundtrip.ts` + unit tests), deployed canonical public Studio to Netlify, and added `.github/workflows/deploy-a2ui-demo.yml`.
      * Task 7.3: Elevated CLI Local Components and Generative UI (`A2UI v1.0`) on `v2/site/docs/index.md` and `.vitepress/config.mts` above Components and AI Playbooks.
-   - Phase 8 (Task 8.1):
-     * Micro-Chunk 8.1a: Expanded A2UI v1.0 catalog from 25 to 35 components (`AgSlider`, `AgSkeletonLoader`, `AgBreadcrumb`, `AgPagination`, `AgIcon`, `AgImage`, `AgLink`, `AgKbd`, `AgMark`, `AgIntlFormatter`) with `AgSlider` two-way `@path` binding and synced `agnosticui-catalog.json` + `SKILL.md`.
-     * Micro-Chunk 8.1b: Expanded `catalog.spec.ts` to verify all 35 ported components and all 8 two-way `@path` controls; verified Lit, React, Vue, and `v2/mcp-server` test suites pass.
+   - Phase 8: Expanded A2UI v1.0 catalog from 25 to 35 components (`AgSlider`, `AgSkeletonLoader`, `AgBreadcrumb`, `AgPagination`, `AgIcon`, `AgImage`, `AgLink`, `AgKbd`, `AgMark`, `AgIntlFormatter`), verified count-agnostic test suites, and published `2.0.0-alpha.2` to npm (`latest` + `alpha`).
+   - Phase 9:
+     * Task 9.1: Expanded `expandToGranularStream()` to stream root `updateDataModel` leaf `@path` updates sequentially in the Live DataModel inspector; replaced raw shimmers with `<ag-skeleton-loader>` and added `1x Stream / 0.5x Slow-Mo` + `Replay` controls.
+     * Task 9.2: Added 4th quick-prompt chip ("Enterprise SLA & Credit Cap") showcasing `AgBreadcrumb`, two-way bound `AgSlider` (`@path: "/policy/maxCredit"`), live reactive `AgIntlFormatter`, and `AgMark`; expanded `demos-smoke.spec.ts`.
+     * Task 9.3: Added `<ag-kbd>⌘ Enter</ag-kbd>` keyboard submission and one-click **Copy JSONL** in the Studio inspector.
 
  NEXT UP            :
-   - Optional Release Cut: Bump `@agnosticui/a2ui-lit`, `@agnosticui/a2ui-react`, and `@agnosticui/a2ui-vue` to `2.0.0-alpha.2` and publish to npm so the 35-component catalog is live on npm.
-   - Documentation Sync: Update component count mentions (`25` -> `35`) in `v2/a2ui/README.md` and `v2/site/docs/docs/a2ui.md` if referenced.
-   - Verify CI Drift Check: Run `cd v2/a2ui/catalog && npm run check` after committing generated artifacts to confirm zero git drift.
+   - Phase 10 — Task 10.1: Stateful Multi-Page Queue Drill-Down (`AgBreadcrumb` + `AgPagination` inside the "High-Intent Caller Spike" scenario).
+   - Phase 10 — Task 10.2: Enriched Turn-3 Verification Audit (`AgTimeline` + `AgIntlFormatter` + `AgLink` in `agent-roundtrip.ts`).
+   - Phase 10 — Task 10.3: Expand A2UI v1.0 catalog to ~45 components (`Loader`, `Tooltip`, `Popover`, `Drawer`, `Dialog`, `ButtonGroup`, `InputNumber`, `Textarea`, `CopyButton`, `AspectRatio`) and cut `2.0.0-alpha.3`.
+   - Side Track: Runtime Skin Curation (over-generate 40–50 `--ag-*` skin palettes and curate the strongest 21 for `v2/skins/`).

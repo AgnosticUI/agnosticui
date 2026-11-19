@@ -13,6 +13,12 @@ export type AgentRoundTripOutcome =
       messages: A2uiWireMessage[];
     }
   | {
+      kind: 'rejected';
+      turn: 1;
+      actionName: string;
+      messages: A2uiWireMessage[];
+    }
+  | {
       kind: 'reset';
       turn: 1;
       actionName: string;
@@ -107,6 +113,7 @@ function resolveButtonLabel(
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ');
 }
+
 /**
  * Builds the Turn 2 confirmation components + interactive next-step action buttons
  * ("Simulate Live Test Call" and "Reset Conversation").
@@ -116,12 +123,12 @@ function buildTurnTwoComponents(
   rawContext: Record<string, unknown>,
 ): Array<Record<string, unknown>> {
   const emailCandidate =
-    typeof rawContext.verifiedEmail === 'string' && rawContext.verifiedEmail.length > 0
-      ? rawContext.verifiedEmail
-      : typeof rawContext.email === 'string' && rawContext.email.length > 0
-        ? rawContext.email
-        : typeof rawContext.ownerEmail === 'string' && rawContext.ownerEmail.length > 0
-          ? rawContext.ownerEmail
+    typeof rawContext.verifiedEmail === 'string' && rawContext.verifiedEmail.trim().length > 0
+      ? rawContext.verifiedEmail.trim()
+      : typeof rawContext.email === 'string' && rawContext.email.trim().length > 0
+        ? rawContext.email.trim()
+        : typeof rawContext.ownerEmail === 'string' && rawContext.ownerEmail.trim().length > 0
+          ? rawContext.ownerEmail.trim()
           : undefined;
 
   const summaryLine =
@@ -137,7 +144,7 @@ function buildTurnTwoComponents(
             '". Senior specialists have been notified.'
           : 'Your workflow has been validated and published to the active workspace.';
 
-  return [
+            return [
     {
       id: 'user_action_bubble',
       component: 'AgMessageBubble',
@@ -297,6 +304,7 @@ function buildTurnThreeComponents(
 /**
  * Stateful multi-turn A2UI v1.0 round-trip dispatcher:
  * - Primary form submit (`launch_campaign_routing` or any initial button) -> Turn 2 confirmation + next-step buttons
+ * - `publish_sla_policy` with empty `ownerEmail` -> Rejected outcome keeping approver required & unpublished
  * - `simulate_test_call` -> Turn 3 verification receipt + DataModel `/agent` audit patch
  * - `reset_agent_thread` -> Reset outcome returning the initial Turn 1 wire messages
  */
@@ -317,12 +325,40 @@ export function advanceAgentRoundTrip(
   }
 
   const baseComponents = extractBaseComponents(existingMessages);
+  const rawContext = resolveActionContext(actionDetail);
+
+  // Guard SLA policy publication: reject empty /form/ownerEmail and keep approver required
+  if (actionName === 'publish_sla_policy') {
+    const ownerEmail =
+      typeof rawContext.ownerEmail === 'string'
+        ? rawContext.ownerEmail.trim()
+        : '';
+    if (!ownerEmail) {
+      const enforcedComponents = baseComponents.map((c) =>
+        c.id === 'sla_approver_input' ? { ...c, required: true } : c,
+      );
+      return {
+        kind: 'rejected',
+        turn: 1,
+        actionName,
+        messages: [
+          {
+            version: '1.0',
+            updateComponents: {
+              surfaceId: 'support_surface',
+              components: enforcedComponents,
+            },
+          } as unknown as A2uiWireMessage,
+        ],
+      };
+    }
+  }
+
   const rootComp = baseComponents.find((c) => c.id === 'root');
   const rootChildren = Array.isArray(rootComp?.children)
     ? [...(rootComp.children as string[])]
     : [];
 
-  const rawContext = resolveActionContext(actionDetail);
   const buttonDisplayLabel = resolveButtonLabel(
     baseComponents,
     actionDetail,
