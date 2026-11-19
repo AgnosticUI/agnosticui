@@ -11,9 +11,9 @@
   "dependencies": {
     "@a2ui/lit": "^0.15.0",
     "@a2ui/web_core": "^0.15.0",
-    "@agnosticui/a2ui-lit": "file:../../../renderers/lit/agnosticui-a2ui-lit-2.0.0-alpha.1.tgz",
-    "@agnosticui/a2ui-vue": "file:../../../renderers/vue/agnosticui-a2ui-vue-2.0.0-alpha.1.tgz",
-    "agnosticui-core": "file:../../../../lib/agnosticui-core-2.0.0-alpha.31.tgz",
+    "@agnosticui/a2ui-lit": "file:../../../renderers/lit/agnosticui-a2ui-lit-2.0.0-alpha.3.tgz",
+    "@agnosticui/a2ui-vue": "file:../../../renderers/vue/agnosticui-a2ui-vue-2.0.0-alpha.3.tgz",
+    "agnosticui-core": "file:../../../../lib/agnosticui-core-2.0.0-alpha.32.tgz",
     "lit": "^3.3.3",
     "lucide-vue-next": "^0.544.0",
     "vue": "^3.5.22",
