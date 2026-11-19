@@ -1,8 +1,8 @@
 ================================================================================
        AGNOSTICUI-A2UI : Chronological Session Continuity Bridge Capsule              
 ================================================================================
- TIMESTAMP BASELINE : 2026-11-19T03:00:00Z
- ACTIVE WORKSPACE   : Phases 1–9 ✅ (Merged to `master`) | Active Branch: `feat/a2ui-phase10-multipage-flows` (Phase 10 🔄 — Task 10.1 ✅, Hotfix 10.1a Next)
+ TIMESTAMP BASELINE : 2026-11-19T03:05:00Z
+ ACTIVE WORKSPACE   : Phases 1–9 ✅ (Merged to `master`) | Active Branch: `feat/a2ui-phase10-multipage-flows` (Phase 10 🔄 — Task 10.1 ✅, Hotfix 10.1a & Task 10.2 Next)
  STRATEGIC PIVOT    :
    - Spec-compliant A2UI v1.0 Component Catalog (35 components) & Multi-Framework Web Renderer suite (`@agnosticui/a2ui-lit`, `@agnosticui/a2ui-react`, `@agnosticui/a2ui-vue`).
    - Live Published npm Packages (`@agnosticui/a2ui-lit@2.0.0-alpha.2`, `@agnosticui/a2ui-react@2.0.0-alpha.2`, `@agnosticui/a2ui-vue@2.0.0-alpha.2`).
@@ -33,14 +33,14 @@
      * Wired `update_surface` and `rejected` handlers across Lit, React, and Vue Support Center Studio shells and verified all renderer/demo unit tests and production builds pass.
 
  NEXT UP (ON BRANCH `feat/a2ui-phase10-multipage-flows`) :
-   - Phase 10 — Hotfix 10.1a 🔄 (HIGH PRIORITY — Live Studio Composer UI Regressions on `https://a2ui-support-center-demo.netlify.app`):
-     * Fix 1: Replace unstyled native `<button class="pacing-pill">` (`0.5x Slow-Mo` and `Replay`) in `v2/a2ui/demos/support-center/lit/src/main.ts` with `<ag-button variant="primary" size="x-sm" shape="rounded" bordered>`.
-     * Fix 2: Investigate & fix `<ag-kbd bordered>` contrast inside `<ag-button variant="primary">` (`v2/lib/src/components/Kbd/core/_Kbd.ts` `:host([variant='default']) .kbd-wrapper` / `:host([bordered]) .kbd-wrapper` overriding `--ag-primary-fg` when nested inside a filled button, plus how `agnosticui-core` is consumed by the Studio).
-     * Fix 3: Add `.generate-btn-inner` (`display: inline-flex; align-items: center; gap: ...`) and `.composer-right-controls` / `.stream-pacing-group` spacing in `v2/a2ui/demos/support-center/shared/studio.css`.
-     * Deploy Hotfix 10.1a to live Netlify Studio before proceeding to Task 10.2.
-   - Phase 10 — Task 10.2: Enriched Turn-3 Verification Audit (`AgTimeline` + `AgIntlFormatter` + `AgLink` in `buildTurnThreeComponents()` inside `v2/a2ui/demos/support-center/shared/agent-roundtrip.ts`, plus unit tests in `agent-roundtrip.spec.ts`).
-   - Phase 10 — Task 10.3: Expand A2UI v1.0 catalog to ~45 components (`Loader`, `Tooltip`, `Popover`, `Drawer`, `Dialog`, `ButtonGroup`, `InputNumber`, `Textarea`, `CopyButton`, `AspectRatio`) and cut `2.0.0-alpha.3`.
-   - Separate Orthogonal Side-Track Branch (after Phase 10): Runtime Skin Curation (over-generate 40–50 `--ag-*` skin palettes and curate the strongest 21 for `v2/skins/`).
+   - Phase 10 — Hotfix 10.1a 🔄 (PLANNING -> NEXT TO IMPLEMENT): Live Studio Composer UI Regressions on `https://a2ui-support-center-demo.netlify.app`:
+     * 1. Replace unstyled native `<button class="pacing-pill">` (`0.5x Slow-Mo` and `Replay`) in `v2/a2ui/demos/support-center/lit/src/main.ts` with `<ag-button variant="primary" size="x-sm" shape="rounded" bordered>`.
+     * 2. Fix `<ag-kbd bordered>` contrast inside `<ag-button variant="primary">` (`v2/lib/src/components/Kbd/core/_Kbd.ts` `:host([variant='default']) .kbd-wrapper` / `:host([bordered]) .kbd-wrapper` overriding `--ag-primary-fg` when nested inside a filled button; expose `--ag-kbd-color` / `--ag-kbd-border-color` hooks + `variant="inherit"` and cascade `currentColor` from `_Button.ts`).
+     * 3. Add `.generate-btn-inner` (`display: inline-flex; align-items: center; gap: ...`) and `.composer-right-controls` / `.stream-pacing-group` spacing in `v2/a2ui/demos/support-center/shared/studio.css`.
+   - Phase 10 — Task 10.2: Publish `agnosticui-core` + `@agnosticui/a2ui-{lit,react,vue}@2.0.0-alpha.3` to npm, bump `demos/support-center/{lit,react,vue}/package.json` dependencies + lockfiles, merge Phase 10 to `master`, and verify live Netlify deployment (`deploy-a2ui-demo.yml`).
+   - Phase 11 — Task 11.1: Enriched Turn-3 Verification Audit (`AgTimeline` + `AgIntlFormatter` + `AgLink` in `buildTurnThreeComponents()` inside `agent-roundtrip.ts`).
+   - Phase 11 — Task 11.2: Expand A2UI v1.0 catalog to ~45 components (`Loader`, `Tooltip`, `Popover`, `Drawer`, `Dialog`, `ButtonGroup`, `InputNumber`, `Textarea`, `CopyButton`, `AspectRatio`) and cut `2.0.0-alpha.4`.
+   - Separate Orthogonal Side-Track Branch (after Phase 11): Runtime Skin Curation (over-generate 40–50 `--ag-*` skin palettes and curate the strongest 21 for `v2/skins/`).
 
  STRICT SESSION OUTPUT RULES FOR ASSISTANT :
    1. Full-File Output Only (no `// ... existing code ...` placeholders) or full functions only for targeted edits.
