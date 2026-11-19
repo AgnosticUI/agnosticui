@@ -61,6 +61,7 @@ import {
 
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import {
+  expandToGranularStream,
   playProgressiveA2uiStream,
   type StreamPhase,
   type StreamPlaybackHandle,
@@ -173,6 +174,7 @@ export class AgA2uiStudio extends LitElement {
   private lastDataSnapshot: unknown = {};
   private lastSerializedSnapshot = '{}';
   private lastPlayedMessages: A2uiWireMessage[] | null = null;
+  private appliedSurfaceMessages: A2uiWireMessage[] | null = null;
   private lastPlayedLabel = '';
 
   constructor() {
@@ -252,12 +254,18 @@ export class AgA2uiStudio extends LitElement {
   }
 
   private async handleCopyJsonl(): Promise<void> {
-    const payload = this.lastPlayedMessages ?? EMPTY_STATE_SURFACE_MESSAGES;
-    const jsonl = payload.map((msg: A2uiWireMessage) => JSON.stringify(msg)).join('\n');
+    const sourceMessages: readonly A2uiWireMessage[] =
+      this.appliedSurfaceMessages ?? EMPTY_STATE_SURFACE_MESSAGES;
+    const granularFrames = expandToGranularStream(sourceMessages);
+    const jsonl = granularFrames
+      .map((msg: A2uiWireMessage) => JSON.stringify(msg))
+      .join('\n');
     try {
       await navigator.clipboard.writeText(jsonl);
       this.copiedJsonl = true;
-      this.logEvent(`Copied ${payload.length} A2UI v1.0 JSONL frames to clipboard.`);
+      this.logEvent(
+        `Copied ${granularFrames.length} granular A2UI v1.0 JSONL frames to clipboard.`,
+      );
       window.setTimeout(() => {
         this.copiedJsonl = false;
       }, 1800);
@@ -405,11 +413,12 @@ export class AgA2uiStudio extends LitElement {
     }
   }
 
-  private async renderWireMessages(
+    private async renderWireMessages(
     messages: A2uiWireMessage[],
     streamLabel: string,
     instant = false,
   ): Promise<void> {
+    this.appliedSurfaceMessages = [...messages];
     if (!instant) {
       this.lastPlayedMessages = messages;
       this.lastPlayedLabel = streamLabel;
@@ -451,8 +460,20 @@ export class AgA2uiStudio extends LitElement {
       const outcome = advanceAgentRoundTrip(messages, detail);
 
       if (outcome.kind === 'reset') {
+        this.appliedSurfaceMessages = [...messages];
         this.logEvent('Agent round-trip reset -> Restored Turn 1 surface');
         void this.renderWireMessages(messages, streamLabel, true);
+        return;
+      }
+
+      if (outcome.kind === 'rejected') {
+        for (const nextMsg of outcome.messages) {
+          processor.processMessages([nextMsg as never]);
+        }
+        runSurfaceValidation(surfaceEl, true);
+        this.logEvent(
+          'Blocked action: Approver email is required before publishing SLA policy',
+        );
         return;
       }
 
@@ -465,6 +486,10 @@ export class AgA2uiStudio extends LitElement {
       }
 
       this.actionCount += 1;
+      this.appliedSurfaceMessages = [
+        ...(this.appliedSurfaceMessages ?? messages),
+        ...outcome.messages,
+      ];
       this.logEvent(
         'FACE validation passed -> Turn ' +
           outcome.turn +
@@ -484,8 +509,7 @@ export class AgA2uiStudio extends LitElement {
         this.syncDataModelInspector(nextModel);
       }
     });
-
-        const speedMultiplier = this.playbackSpeed === '0.5x' ? 2.4 : 1;
+    const speedMultiplier = this.playbackSpeed === '0.5x' ? 2.4 : 1;
     this.logEvent(
       `Streaming surface: ${streamLabel}${instant ? '' : ` (${this.playbackSpeed})`}`,
     );
