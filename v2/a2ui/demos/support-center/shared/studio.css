@@ -127,7 +127,6 @@ body {
   align-items: center;
   gap: var(--ag-space-2);
 }
-
 .inspector-count-dot {
   display: inline-flex;
   align-items: center;
@@ -332,11 +331,6 @@ a2ui-surface ag-message-bubble::part(ag-header) {
   margin-bottom: var(--ag-space-1);
 }
 
-
-a2ui-surface ag-message-bubble::part(ag-header) {
-  margin-bottom: var(--ag-space-1);
-}
-
 a2ui-surface ag-message-bubble ag-fieldset {
   background: var(--ag-background-primary);
   border-radius: var(--ag-radius-md);
@@ -386,13 +380,31 @@ a2ui-surface ag-fieldset ag-toggle {
   justify-content: space-between;
   gap: var(--ag-space-2);
 }
-
 .live-prompt-title {
   font-size: var(--ag-font-size-xs);
   font-weight: var(--ag-font-weight-semibold);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--ag-text-secondary);
+}
+
+.composer-right-controls {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--ag-space-3);
+}
+
+.stream-pacing-group {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ag-space-2);
+}
+
+.pacing-btn-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ag-space-1);
 }
 
 .compiler-mode-radios {
@@ -410,6 +422,17 @@ a2ui-surface ag-fieldset ag-toggle {
 
 .live-prompt-bar.is-local {
   grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.generate-btn-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ag-space-2);
+}
+
+.generate-btn-inner ag-kbd::part(ag-kbd-wrapper) {
+  padding: 0.1rem 0.35rem;
+  font-size: 0.72rem;
 }
 
 .prompt-chips-row {
@@ -480,7 +503,6 @@ a2ui-surface ag-fieldset ag-toggle {
     animation: a2ui-bubble-agent 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
   }
 }
-
 
 /* Responsive 3 -> 2 -> 1 column studio layout */
 @media (max-width: 1200px) {

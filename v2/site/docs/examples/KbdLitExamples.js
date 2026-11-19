@@ -1,5 +1,6 @@
 import { LitElement, html } from 'lit';
 import 'agnosticui-core/kbd';
+import 'agnosticui-core/button';
 
 export class KbdLitExamples extends LitElement {
   createRenderRoot() {
@@ -116,7 +117,6 @@ export class KbdLitExamples extends LitElement {
             </div>
           </div>
         </div>
-
         <div class="mbe4">
           <h2>With Background</h2>
           <p class="mbs2 mbe3">Add background colors to variants for increased visual emphasis.</p>
@@ -190,6 +190,31 @@ export class KbdLitExamples extends LitElement {
               <ag-kbd .bordered=${false} class="mie2">⇧</ag-kbd>
               <ag-kbd .bordered=${false}>⌃</ag-kbd>
             </div>
+          </div>
+        </div>
+
+        <div class="mbe4">
+          <h2>Inside Buttons</h2>
+          <p class="mbs2 mbe3">Keyboard shortcuts nested inside buttons automatically inherit button foreground and border contrast.</p>
+          <div class="stacked-mobile">
+            <ag-button variant="primary" shape="rounded" class="mie3">
+              <span style="display: inline-flex; align-items: center; gap: var(--ag-space-2);">
+                <span>Generate UI</span>
+                <ag-kbd size="sm">⌘ Enter</ag-kbd>
+              </span>
+            </ag-button>
+            <ag-button variant="primary" shape="rounded" bordered class="mie3">
+              <span style="display: inline-flex; align-items: center; gap: var(--ag-space-2);">
+                <span>Search</span>
+                <ag-kbd size="sm">⌘ K</ag-kbd>
+              </span>
+            </ag-button>
+            <ag-button variant="secondary" shape="rounded">
+              <span style="display: inline-flex; align-items: center; gap: var(--ag-space-2);">
+                <span>Cancel</span>
+                <ag-kbd size="sm">Esc</ag-kbd>
+              </span>
+            </ag-button>
           </div>
         </div>
 

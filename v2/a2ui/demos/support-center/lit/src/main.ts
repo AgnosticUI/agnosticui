@@ -640,8 +640,7 @@ export class AgA2uiStudio extends LitElement {
     const promptBarClass = isLocal
       ? 'live-prompt-bar is-local'
       : 'live-prompt-bar';
-    const slowMoClass =
-      this.playbackSpeed === '0.5x' ? 'pacing-pill is-slowmo' : 'pacing-pill';
+    const isSlowMo = this.playbackSpeed === '0.5x';
     return html`
       <div class="studio-shell">
         <header class="studio-header">
@@ -726,26 +725,32 @@ export class AgA2uiStudio extends LitElement {
 
                   <div class="composer-right-controls">
                     <div class="stream-pacing-group">
-                      <button
-                        type="button"
-                        class=${slowMoClass}
+                      <ag-button
+                        variant="primary"
+                        size="x-sm"
+                        shape="rounded"
+                        .bordered=${!isSlowMo}
                         title="Toggle between 1x standard and 0.5x slow-motion demo streaming"
                         @click=${() => this.handleTogglePlaybackSpeed()}
                       >
-                        ${this.playbackSpeed === '0.5x' ? '0.5x Slow-Mo' : '1x Stream'}
-                      </button>
+                        ${isSlowMo ? '0.5x Slow-Mo' : '1x Stream'}
+                      </ag-button>
 
                       ${this.hasReplayableStream
                         ? html`
-                            <button
-                              type="button"
-                              class="pacing-pill"
+                            <ag-button
+                              variant="primary"
+                              size="x-sm"
+                              shape="rounded"
+                              bordered
                               title="Replay the current A2UI v1.0 stream"
                               @click=${() => this.handleReplayStream()}
                             >
-                              ${REPLAY_ICON}
-                              <span>Replay</span>
-                            </button>
+                              <span class="pacing-btn-inner">
+                                ${REPLAY_ICON}
+                                <span>Replay</span>
+                              </span>
+                            </ag-button>
                           `
                         : ''}
                     </div>
@@ -769,7 +774,6 @@ export class AgA2uiStudio extends LitElement {
                     </div>
                   </div>
                 </div>
-
                 <div class=${promptBarClass}>
                   ${isLocal
                     ? ''
@@ -808,6 +812,7 @@ export class AgA2uiStudio extends LitElement {
                     </span>
                   </ag-button>
                 </div>
+
                 <div class="prompt-chips-row">
                   <span class="prompt-chips-label">Try:</span>
                   ${QUICK_PROMPT_CHIPS.map(

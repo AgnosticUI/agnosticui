@@ -434,6 +434,43 @@
     </div>
 
     <div class="mbe4">
+      <h2>Inside Buttons</h2>
+      <p class="mbs2 mbe3">Keyboard shortcuts nested inside buttons automatically inherit button foreground and border contrast.</p>
+      <div class="stacked-mobile">
+        <VueButton
+          variant="primary"
+          shape="rounded"
+          class="mie3"
+        >
+          <span style="display: inline-flex; align-items: center; gap: var(--ag-space-2);">
+            <span>Generate UI</span>
+            <VueKbd size="sm">⌘ Enter</VueKbd>
+          </span>
+        </VueButton>
+        <VueButton
+          variant="primary"
+          shape="rounded"
+          :bordered="true"
+          class="mie3"
+        >
+          <span style="display: inline-flex; align-items: center; gap: var(--ag-space-2);">
+            <span>Search</span>
+            <VueKbd size="sm">⌘ K</VueKbd>
+          </span>
+        </VueButton>
+        <VueButton
+          variant="secondary"
+          shape="rounded"
+        >
+          <span style="display: inline-flex; align-items: center; gap: var(--ag-space-2);">
+            <span>Cancel</span>
+            <VueKbd size="sm">Esc</VueKbd>
+          </span>
+        </VueButton>
+      </div>
+    </div>
+
+    <div class="mbe4">
       <h2>Combined Examples</h2>
       <p class="mbs2 mbe3">Combining multiple properties for rich presentations.</p>
       <div class="stacked">
@@ -518,4 +555,5 @@
 
 <script setup lang="ts">
 import { VueKbd } from "agnosticui-core/kbd/vue";
+import { VueButton } from "agnosticui-core/button/vue";
 </script>
