@@ -1,6 +1,6 @@
 {
   "name": "@agnosticui/a2ui-vue",
-  "version": "2.0.0-alpha.2",
+  "version": "2.0.0-alpha.3",
   "description": "A2UI v1.0 Vue 3 renderer and surface composable for AgnosticUI",
   "author": "AgnosticUI",
   "license": "Apache-2.0",
@@ -40,19 +40,19 @@
   "peerDependencies": {
     "@a2ui/lit": "^0.15.0",
     "@a2ui/web_core": "^0.15.0",
-    "@agnosticui/a2ui-lit": ">=2.0.0-alpha.1",
-    "agnosticui-core": ">=2.0.0-alpha.31",
+    "@agnosticui/a2ui-lit": ">=2.0.0-alpha.3",
+    "agnosticui-core": ">=2.0.0-alpha.32",
     "lit": "^3.0.0",
     "vue": ">=3"
   },
   "devDependencies": {
     "@a2ui/lit": "^0.15.0",
     "@a2ui/web_core": "^0.15.0",
-    "@agnosticui/a2ui-lit": "^2.0.0-alpha.1",
+    "@agnosticui/a2ui-lit": "^2.0.0-alpha.3",
     "@types/node": "^26.6.6",
     "@vitejs/plugin-vue": "^6.0.1",
     "@vue/test-utils": "^2.4.6",
-    "agnosticui-core": "^2.0.0-alpha.31",
+    "agnosticui-core": "^2.0.0-alpha.32",
     "jsdom": "^26.1.0",
     "lit": "^3.3.3",
     "typescript": "^7.0.2",

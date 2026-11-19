@@ -142,20 +142,17 @@
 
 ---
 
-## Phase 10: Multi-Page Queue Drill-Down, Composer Hotfix & npm/Netlify Release 🔄
+## Phase 10: Multi-Page Queue Drill-Down, Composer Hotfix & npm/Netlify Release ✅
 
 * **Task 10.1 — Stateful Multi-Page Queue Drill-Down (`AgBreadcrumb` + `AgPagination`)** ✅
   * **Micro-Chunk 10.1a:** Added `@breadcrumb-click` (`preventDefault()`) and two-way `@page-change` (`setCurrent`) bindings to `generate-catalog.ts` and Lit wrappers (`AgBreadcrumb.ts`, `AgPagination.ts`), and synchronized `AGNOSTICUI_CATALOG_ID` (`https://agnosticui.com`) across `catalog.ts`, `SKILL.md`, and `agnosticui-catalog.json`.
   * **Micro-Chunk 10.1b:** Implemented `buildCallerSpikeSurface()` in `live-gemini.ts` (3-page, 6-caller surge queue with `AgBreadcrumb` + `AgPagination`) and added `kind: 'update_surface'` list pagination and caller drill-down handlers (`change_queue_page`, `navigate_queue_breadcrumb`, `inspect_queue_caller`) in `agent-roundtrip.ts`.
   * **Micro-Chunk 10.1c:** Wired `update_surface` and `rejected` handlers across Lit (`lit/src/main.ts`), React (`react/src/main.tsx`), and Vue (`vue/src/App.vue`) Support Center Studios, expanded `agent-roundtrip.spec.ts` and `demos-smoke.spec.ts`, and verified all renderer/demo test suites and production builds pass.
-* **Hotfix 10.1a — Live Netlify Studio Composer UI Regressions (Pacing `<ag-button>`, `<ag-kbd bordered>` Inside `<ag-button variant="primary">`, & Button Gap)** 🔄
-  * **Priority:** High — live at `https://netlify.app`; must be fixed, published, and deployed before moving to Phase 11.
-  * **Root Causes & Planned Fix:**
-    1. Replace unstyled user-agent `<button class="pacing-pill">` (`0.5x Slow-Mo` and `Replay`) in `v2/a2ui/demos/support-center/lit/src/main.ts` with `<ag-button variant="primary" size="x-sm" shape="rounded" bordered>`.
-    2. Fix `<ag-kbd bordered>` inside `<ag-button variant="primary">` (`v2/lib/src/components/Kbd/core/_Kbd.ts` `:host([variant='default']) .kbd-wrapper` hardcoding `color: var(--ag-text-primary)` and `:host([bordered])` hardcoding `var(--ag-border-subtle)` over `--ag-primary` fill; expose `--ag-kbd-color` / `--ag-kbd-border-color` token hooks + `variant="inherit"` and cascade `currentColor` from `_Button.ts`).
-    3. Add `.generate-btn-inner` (`display: inline-flex; align-items: center; gap: ...`) and `.composer-right-controls` / `.stream-pacing-group` spacing in `v2/a2ui/demos/support-center/shared/studio.css`.
-* **Task 10.2 — Publish `agnosticui-core` & `@agnosticui/a2ui-*` npm Releases + Deploy Live Netlify Studio**
-  * Bump & publish `agnosticui-core` (with `_Kbd.ts` / `_Button.ts` fix) and `@agnosticui/a2ui-{lit,react,vue}@2.0.0-alpha.3` (shipping `AgBreadcrumb` + `AgPagination` two-way bindings), update `v2/a2ui/demos/support-center/{lit,react,vue}/package.json` dependencies + lockfiles, merge Phase 10 to `master`, and verify the live Netlify deployment (`deploy-a2ui-demo.yml`).
+* **Hotfix 10.1a — Live Netlify Studio Composer UI Regressions (Pacing `<ag-button>`, `<ag-kbd bordered>` Inside `<ag-button variant="primary">`, & Button Gap)** ✅
+  * Added `--ag-kbd-color` / `--ag-kbd-border-color` CSS custom property hooks and `variant="inherit"` in `v2/lib/src/components/Kbd/core/_Kbd.ts`, and cascaded `--ag-kbd-color: currentColor` + `--ag-kbd-border-color` from `v2/lib/src/components/Button/core/_Button.ts` so `<ag-kbd bordered>` inside any filled or outlined `<ag-button>` inherits button foreground contrast automatically (1,843/1,843 `v2/lib` tests passing).
+  * Replaced unstyled native `<button class="pacing-pill">` (`0.5x Slow-Mo` and `Replay`) in `v2/a2ui/demos/support-center/lit/src/main.ts` with `<ag-button variant="primary" size="x-sm" shape="rounded" bordered>`, added `.composer-right-controls`, `.stream-pacing-group`, `.pacing-btn-inner`, and `.generate-btn-inner` gap spacing in `studio.css`, and added **Inside Buttons** examples across Vue, Lit, and React in `v2/site/docs/components/kbd.md`.
+* **Task 10.2 — Publish `agnosticui-core` & `@agnosticui/a2ui-*` npm Releases + Deploy Live Netlify Studio** ✅
+  * Published `agnosticui-core@2.0.0-alpha.32` and `@agnosticui/a2ui-{lit,react,vue}@2.0.0-alpha.3` to npm (`alpha` and `latest` dist-tags), updated `v2/site/package.json` and `v2/a2ui/demos/support-center/{lit,react,vue}/package.json` dependencies + lockfiles, merged Phase 10 to `master`, and deployed to live Netlify Studio (`https://netlify.app`).
 
 ---
 
