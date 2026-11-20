@@ -55,6 +55,7 @@ import {
   diffDataModelSnapshots,
   renderHighlightedJsonHtml,
 } from '../../shared/data-model-diff.js';
+import { createFollowScrollController } from '../../shared/follow-scroll.js';
 
 restorePrefs();
 
@@ -78,6 +79,7 @@ function App() {
     renderHighlightedJsonHtml({}, new Map()),
   );
   const [changedPathCount, setChangedPathCount] = React.useState(0);
+  const [isAutoFollowing, setIsAutoFollowing] = React.useState(true);
   const [streamPhase, setStreamPhase] = React.useState<StreamPhase>('complete');
   const [streamProgress, setStreamProgress] = React.useState({
     current: 0,
@@ -106,6 +108,8 @@ function App() {
   const streamPhaseRef = React.useRef<StreamPhase>('complete');
   const lastSnapshotRef = React.useRef<unknown>({});
   const lastSerializedRef = React.useRef<string>('{}');
+  const jsonViewerRef = React.useRef<HTMLPreElement | null>(null);
+  const followScrollRef = React.useRef(createFollowScrollController());
 
   const syncDataModelInspector = React.useCallback(
     (rawData: unknown, resetBaseline = false) => {
@@ -230,6 +234,7 @@ function App() {
       activeStreamRef.current?.cancel();
       activeMessagesRef.current = messages;
       resetSurface();
+      setIsAutoFollowing(followScrollRef.current.reset());
       syncDataModelInspector({}, true);
       setStreamProgress({ current: 0, total: 0 });
       logEvent('Streaming surface: ' + streamLabel);
@@ -279,6 +284,21 @@ function App() {
     }, 250);
     return () => window.clearInterval(timer);
   }, [getDataModel, syncDataModelInspector]);
+
+  React.useEffect(() => {
+    if (inspectorOpen) {
+      followScrollRef.current.sync(jsonViewerRef.current);
+    }
+  }, [dataModelHtml, inspectorOpen]);
+
+  const handleViewerScroll = (e: React.UIEvent<HTMLPreElement>) => {
+    setIsAutoFollowing(followScrollRef.current.onUserScroll(e.currentTarget));
+  };
+
+  const handleJumpToLatest = () => {
+    setIsAutoFollowing(followScrollRef.current.reset());
+    followScrollRef.current.sync(jsonViewerRef.current);
+  };
 
   const handleSelectSkin = (skin: { id: string; label: string }) => {
     applySkin(skin.id);
@@ -339,8 +359,8 @@ function App() {
     <div className="studio-shell">
       <header className="studio-header">
         <div className="studio-title-group">
-          <h1>Ag × A2UI</h1>
-          <span className="protocol-pill">v1.0 Spec • React 19</span>
+          <h1>Ag &times; A2UI</h1>
+          <span className="protocol-pill">v1.0 Spec &bull; React 19</span>
         </div>
 
         <div className="studio-controls">
@@ -408,7 +428,6 @@ function App() {
             })}
           </div>
         </aside>
-
         <main className="studio-stage">
           <div className="stage-container">
             <div className="live-prompt-card">
@@ -543,6 +562,16 @@ function App() {
             <section className="inspector-panel">
               <div className="panel-header">
                 <h3>Live DataModel (@path)</h3>
+                {!isAutoFollowing && (
+                  <button
+                    type="button"
+                    className="follow-scroll-pill"
+                    title="Resume auto-scrolling to latest DataModel changes"
+                    onClick={handleJumpToLatest}
+                  >
+                    &darr; Jump to latest
+                  </button>
+                )}
                 {changedPathCount > 0 && (
                   <span className="protocol-pill">
                     {changedPathCount} changed
@@ -550,14 +579,16 @@ function App() {
                 )}
               </div>
               <pre
+                ref={jsonViewerRef}
                 className="json-viewer"
+                onScroll={handleViewerScroll}
                 dangerouslySetInnerHTML={{ __html: dataModelHtml }}
               />
             </section>
 
             <section className="inspector-panel">
               <div className="panel-header">
-                                <h3>Action &amp; FACE Log</h3>
+                <h3>Action &amp; FACE Log</h3>
                 <ReactIconButton
                   label="Clear event log"
                   size="sm"

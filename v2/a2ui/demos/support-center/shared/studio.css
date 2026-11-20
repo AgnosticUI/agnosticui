@@ -106,6 +106,31 @@ body {
   border: 1px solid var(--ag-primary-border, rgba(0, 135, 102, 0.25));
 }
 
+.follow-scroll-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.15rem 0.55rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.4;
+  border-radius: 999px;
+  border: 1px solid var(--ag-border, rgba(255, 255, 255, 0.18));
+  background: var(--ag-primary-subtle, rgba(59, 130, 246, 0.16));
+  color: var(--ag-primary, #60a5fa);
+  cursor: pointer;
+  transition: background-color 120ms ease, transform 120ms ease;
+}
+
+.follow-scroll-pill:hover {
+  background: var(--ag-primary-subtle-hover, rgba(59, 130, 246, 0.26));
+}
+
+.follow-scroll-pill:focus-visible {
+  outline: 2px solid var(--ag-primary, #60a5fa);
+  outline-offset: 2px;
+}
+
 .studio-controls {
   display: flex;
   flex-wrap: wrap;
