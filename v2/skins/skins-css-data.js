@@ -1042,16 +1042,16 @@ export const SKINS_CSS = {
   --ag-primary-dark: #238880;
   --ag-primary-border: #2aa198;
   --ag-primary-background: #01343d;
-  --ag-primary-text: #5acec7;
+  --ag-primary-text: #8cebe4;
 
   /* ── Focus ring (teal-derived RGB) ── */
   --ag-focus: 42, 161, 152;
-  --ag-focus-dark: #5acec7;
+  --ag-focus-dark: #8cebe4;
 
   /* ── Semantic text (Solarized dark base colors) ── */
   --ag-text-primary: #eee8d5;
-  --ag-text-secondary: #839496;
-  --ag-text-muted: #657b83;
+  --ag-text-secondary: #b8c4c2;
+  --ag-text-muted: #839496;
   --ag-text-primary-muted: #d6d0be;
 
   /* ── Borders (Solarized base02) ── */
@@ -1078,13 +1078,13 @@ export const SKINS_CSS = {
   --ag-rating-filled-primary: #2aa198;
 
   /* ── Solarized teal/cyan palette (dark mode reversed) ── */
-  --ag-blue-50: #5acec7;
-  --ag-blue-100: #2aa198;
-  --ag-blue-200: #238880;
-  --ag-blue-300: #1c6e67;
-  --ag-blue-400: #155551;
-  --ag-blue-500: #0d3b38;
-  --ag-blue-600: #062220;
+  --ag-blue-50: #8cebe4;
+  --ag-blue-100: #5acec7;
+  --ag-blue-200: #2aa198;
+  --ag-blue-300: #238880;
+  --ag-blue-400: #1c6e67;
+  --ag-blue-500: #155551;
+  --ag-blue-600: #0d3b38;
   --ag-blue-700: #01343d;
   --ag-blue-800: #073642;
   --ag-blue-900: #002b36;
