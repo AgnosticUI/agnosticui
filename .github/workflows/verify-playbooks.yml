@@ -22,11 +22,11 @@ jobs:
     name: Verify playbook health and manifest currency
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
-          node-version: 20
+          node-version: 22
 
       - name: Run playbook verifier
         run: node v2/scripts/verify-playbooks.mjs
