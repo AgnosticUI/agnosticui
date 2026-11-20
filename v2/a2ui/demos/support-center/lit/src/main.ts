@@ -6,12 +6,13 @@
  * Live Gemini 3.8 Flash prompt compilation.
  */
 
+import { createFollowScrollController } from '../../shared/follow-scroll.js';
 import 'agnosticui-core/styles/tokens.css';
 import 'agnosticui-core/styles/tokens-dark.css';
 import '../../../../../skins/skins-bundle.css';
 import '../../shared/studio.css';
 
-import { LitElement, html } from 'lit';
+import { LitElement, html, type PropertyValues } from 'lit';
 import {
   createElement,
   Check,
@@ -121,6 +122,8 @@ const REPLAY_ICON = createElement(RotateCcw, {
 const SESSION_KEY_STORAGE = 'ag-a2ui-gemini-key';
 
 export class AgA2uiStudio extends LitElement {
+  private followScroll = createFollowScrollController();
+
   static override properties = {
     activeSkinId: { state: true },
     isDark: { state: true },
@@ -128,6 +131,7 @@ export class AgA2uiStudio extends LitElement {
     actionCount: { state: true },
     dataModelHtml: { state: true },
     changedPathCount: { state: true },
+    isAutoFollowing: { state: true },
     copiedJsonl: { state: true },
     streamPhase: { state: true },
     streamProgress: { state: true },
@@ -151,6 +155,7 @@ export class AgA2uiStudio extends LitElement {
   private declare actionCount: number;
   private declare dataModelHtml: string;
   private declare changedPathCount: number;
+  private declare isAutoFollowing: boolean;
   private declare copiedJsonl: boolean;
   private declare streamPhase: StreamPhase;
   private declare streamProgress: { current: number; total: number };
@@ -183,6 +188,7 @@ export class AgA2uiStudio extends LitElement {
     this.actionCount = 0;
     this.dataModelHtml = renderHighlightedJsonHtml({}, new Map());
     this.changedPathCount = 0;
+    this.isAutoFollowing = true;
     this.copiedJsonl = false;
     this.streamPhase = 'complete';
     this.streamProgress = { current: 0, total: 0 };
@@ -205,6 +211,17 @@ export class AgA2uiStudio extends LitElement {
     );
   }
 
+  override updated(changed: PropertyValues): void {
+    super.updated(changed);
+    if (
+      changed.has('dataModelHtml') ||
+      (changed.has('inspectorOpen') && this.inspectorOpen)
+    ) {
+      const viewer = this.querySelector<HTMLElement>('.json-viewer');
+      this.followScroll.sync(viewer);
+    }
+  }
+
   override disconnectedCallback(): void {
     super.disconnectedCallback();
     this.streamGeneration += 1;
@@ -215,7 +232,6 @@ export class AgA2uiStudio extends LitElement {
       this.inspectorTimer = null;
     }
   }
-
   private syncDataModelInspector(
     model: { dataModel: { get: (path: string) => unknown } },
     resetBaseline = false,
@@ -248,6 +264,18 @@ export class AgA2uiStudio extends LitElement {
   private handleClearLog(): void {
     this.actionCount = 0;
     this.eventLogText = 'Log cleared.';
+  }
+
+  private handleViewerScroll(e: Event): void {
+    this.isAutoFollowing = this.followScroll.onUserScroll(
+      e.currentTarget as HTMLElement,
+    );
+  }
+
+  private handleJumpToLatest(): void {
+    this.isAutoFollowing = this.followScroll.reset();
+    const viewer = this.querySelector<HTMLElement>('.json-viewer');
+    this.followScroll.sync(viewer);
   }
 
   private async handleCopyJsonl(): Promise<void> {
@@ -315,7 +343,7 @@ export class AgA2uiStudio extends LitElement {
     );
   }
 
-    private handleCompilerModeChange(mode: 'local' | 'live'): void {
+  private handleCompilerModeChange(mode: 'local' | 'live'): void {
     this.compilerMode = mode;
     this.liveErrorText = '';
     this.logEvent(
@@ -410,7 +438,7 @@ export class AgA2uiStudio extends LitElement {
     }
   }
 
-    private async renderWireMessages(
+  private async renderWireMessages(
     messages: A2uiWireMessage[],
     streamLabel: string,
     instant = false,
@@ -437,6 +465,7 @@ export class AgA2uiStudio extends LitElement {
     this.lastDataSnapshot = {};
     this.lastSerializedSnapshot = '{}';
     this.changedPathCount = 0;
+    this.isAutoFollowing = this.followScroll.reset();
     this.dataModelHtml = renderHighlightedJsonHtml({}, new Map());
 
     const processor = new MessageProcessor<LitComponentApi>([AgnosticUICatalog]);
@@ -445,7 +474,7 @@ export class AgA2uiStudio extends LitElement {
     mount.appendChild(surfaceEl);
     this.activeSurfaceEl = surfaceEl;
 
-        processor.model.onAction.subscribe((action) => {
+    processor.model.onAction.subscribe((action) => {
       if (
         generation !== this.streamGeneration ||
         this.streamPhase !== 'complete'
@@ -786,7 +815,7 @@ export class AgA2uiStudio extends LitElement {
                         ></ag-input>
                       `}
 
-                  <ag-input
+                                   <ag-input
                     id="live-prompt-input"
                     label="Describe the agent workflow or support UI"
                     placeholder="Describe a support form or incident alert card..."
@@ -843,6 +872,18 @@ export class AgA2uiStudio extends LitElement {
                   <section class="inspector-panel">
                     <div class="panel-header">
                       <h3>Live DataModel (@path)</h3>
+                      ${!this.isAutoFollowing
+                        ? html`
+                            <button
+                              type="button"
+                              class="follow-scroll-pill"
+                              title="Resume auto-scrolling to latest DataModel changes"
+                              @click=${this.handleJumpToLatest}
+                            >
+                              &darr; Jump to latest
+                            </button>
+                          `
+                        : ''}
                       <ag-icon-button
                         label=${this.copiedJsonl ? 'Copied JSONL' : 'Copy A2UI JSONL payload'}
                         title=${this.copiedJsonl ? 'Copied JSONL!' : 'Copy A2UI v1.0 JSONL payload'}
@@ -853,7 +894,10 @@ export class AgA2uiStudio extends LitElement {
                         ${this.copiedJsonl ? CHECK_ICON : COPY_ICON}
                       </ag-icon-button>
                     </div>
-                    <pre class="json-viewer">${unsafeHTML(this.dataModelHtml)}</pre>
+                    <pre
+                      class="json-viewer"
+                      @scroll=${this.handleViewerScroll}
+                    >${unsafeHTML(this.dataModelHtml)}</pre>
                   </section>
 
                   <section class="inspector-panel">
