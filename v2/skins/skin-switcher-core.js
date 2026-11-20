@@ -8,7 +8,6 @@
 import { SKINS_CSS } from './skins-css-data.js';
 
 export const SKINS = [
-  // Curated Baseline Keepers (8)
   { id: '', label: 'Default', swatch: '#297aff' },
   { id: 'deep-forest', label: 'Deep Forest', swatch: '#1f514c' },
   { id: 'claymorphic', label: 'Claymorphic', swatch: '#c96442' },
@@ -17,6 +16,11 @@ export const SKINS = [
   { id: 'monochromatic', label: 'Monochromatic', swatch: '#000000' },
   { id: 'paper', label: 'Paper', swatch: '#433422' },
   { id: 'solarized', label: 'Solarized', swatch: '#2aa198' },
+  { id: 'tokyo-ink', label: 'Tokyo Ink', swatch: '#c92a38' },
+  { id: 'nordic-aurora', label: 'Nordic Aurora', swatch: '#0f766e' },
+  { id: 'swiss-grid', label: 'Swiss Grid', swatch: '#e03600' },
+  { id: 'velvet-plum', label: 'Velvet Plum', swatch: '#881337' },
+  { id: 'copper-patina', label: 'Copper Patina', swatch: '#1b6b63' },
 ];
 
 /** Apply a skin class to <html> and persist to localStorage. */
