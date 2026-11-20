@@ -32,6 +32,7 @@ import {
   SKINS,
   applySkin,
   applyTheme,
+  getSavedSkinId,
   restorePrefs,
 } from '../../../../../skins/skin-switcher-core.js';
 import {
@@ -63,7 +64,7 @@ const SESSION_KEY_STORAGE = 'ag-a2ui-gemini-key';
 
 function App() {
   const [activeSkinId, setActiveSkinId] = React.useState<string>(() => {
-    const initialSkin = localStorage.getItem('ag-skin') ?? 'evergreen';
+    const initialSkin = getSavedSkinId('evergreen');
     applySkin(initialSkin);
     return initialSkin;
   });

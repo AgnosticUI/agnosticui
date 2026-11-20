@@ -19,12 +19,12 @@ export const SKINS = [
   { id: 'solarized', label: 'Solarized', swatch: '#2aa198' },
   { id: 'tokyo-ink', label: 'Tokyo Ink', swatch: '#c92a38' },
   { id: 'nordic-aurora', label: 'Nordic Aurora', swatch: '#0f766e' },
-  { id: 'swiss-grid', label: 'Swiss Grid', swatch: '#e03600' },
+  { id: 'swiss-grid', label: 'Swiss Grid', swatch: '#d63200' },
   { id: 'velvet-plum', label: 'Velvet Plum', swatch: '#881337' },
   { id: 'copper-patina', label: 'Copper Patina', swatch: '#1b6b63' },
   { id: 'warm-vellum', label: 'Warm Vellum', swatch: '#2c2a26' },
   { id: 'press-crimson', label: 'Press Crimson', swatch: '#b81d24' },
-  { id: 'coral-harbor', label: 'Coral Harbor', swatch: '#e03e52' },
+  { id: 'coral-harbor', label: 'Coral Harbor', swatch: '#c92a3e' },
   { id: 'neon-obsidian', label: 'Neon Obsidian', swatch: '#5200ff' },
   { id: 'ivory-cobalt', label: 'Ivory Cobalt', swatch: '#0b5fff' },
   { id: 'obsidian-minimal', label: 'Obsidian Minimal', swatch: '#171717' },
@@ -86,6 +86,13 @@ export function restoreCustomCSS() {
 }
 
 /** Restore skin + theme preferences from localStorage. Call once on load. */
+export function getSavedSkinId(fallback = '') {
+  const saved = localStorage.getItem('ag-skin');
+  if (saved === null) return fallback;
+  if (saved === '') return '';
+  return SKINS.some((s) => s.id === saved) ? saved : fallback;
+}
+
 export function restorePrefs() {
   const skin = localStorage.getItem('ag-skin');
   if (skin) applySkin(skin);

@@ -64,7 +64,7 @@ export const SKINS_CSS = {
   --ag-blue-800: #6c341c;
   --ag-blue-900: #4a2312;
 
-  /* ── Neutral surfaces (MessageBubble / Badge neutral) ── */
+  /* ── Neutral surfaces (MessageBubble neutral) ── */
   --ag-neutral-background: #ede9de;
   --ag-neutral-text: #2c291d;
   --ag-neutral-border: #cfc9bc;
@@ -132,7 +132,7 @@ export const SKINS_CSS = {
   --ag-blue-800: #4a2312;
   --ag-blue-900: #3a2218;
 
-  /* ── Neutral surfaces (MessageBubble / Badge neutral) ── */
+  /* ── Neutral surfaces (MessageBubble neutral) ── */
   --ag-neutral-background: #363330;
   --ag-neutral-text: #f5f4ee;
   --ag-neutral-border: #524f48;
@@ -202,7 +202,7 @@ export const SKINS_CSS = {
   --ag-blue-800: #362418;
   --ag-blue-900: #221610;
 
-  /* ── Neutral surfaces (MessageBubble / Badge neutral) ── */
+  /* ── Neutral surfaces (MessageBubble neutral) ── */
   --ag-neutral-background: #efe6dc;
   --ag-neutral-text: #221610;
   --ag-neutral-border: #d4c4b4;
@@ -271,7 +271,7 @@ export const SKINS_CSS = {
   --ag-blue-800: #221610;
   --ag-blue-900: #150e08;
 
-  /* ── Neutral surfaces (MessageBubble / Badge neutral) ── */
+  /* ── Neutral surfaces (MessageBubble neutral) ── */
   --ag-neutral-background: #2b1f16;
   --ag-neutral-text: #f5ece3;
   --ag-neutral-border: #5a4434;
@@ -361,9 +361,9 @@ export const SKINS_CSS = {
   },
   'coral-harbor': {
     light: `:where(html).ag-skin-coral-harbor {
-  --ag-primary: #e03e52;
+  --ag-primary: #c92a3e;
   --ag-primary-fg: #ffffff;
-  --ag-primary-dark: #c22d40;
+  --ag-primary-dark: #a61f30;
   --ag-primary-border: #f5b3bc;
   --ag-primary-background: #fff1f3;
   --ag-primary-text: #9e1f30;
@@ -371,7 +371,7 @@ export const SKINS_CSS = {
   --ag-focus-dark: #ff4f64;
   --ag-text-primary: #14233c;
   --ag-text-secondary: #384966;
-  --ag-text-muted: #687894;
+  --ag-text-muted: #52617a;
   --ag-text-primary-muted: #243654;
   --ag-border: #d5dce6;
   --ag-border-subtle: #e6ebf2;
@@ -499,7 +499,7 @@ export const SKINS_CSS = {
   --ag-blue-800: #0f2926;
   --ag-blue-900: #081a17;
 
-  /* ── Neutral surfaces (MessageBubble / Badge neutral) ── */
+  /* ── Neutral surfaces (MessageBubble neutral) ── */
   --ag-neutral-background: #e6f0ee;
   --ag-neutral-text: #143632;
   --ag-neutral-border: #b2d4d0;
@@ -534,6 +534,7 @@ export const SKINS_CSS = {
   --ag-border-subtle: #1f2b29;
 
   /* ── Backgrounds ── */
+  --ag-background-primary: #111113;
   --ag-background-secondary: #16201f;
   --ag-background-tertiary: #1e2b29;
 
@@ -562,7 +563,7 @@ export const SKINS_CSS = {
   --ag-blue-800: #0f3834;
   --ag-blue-900: #0d2926;
 
-  /* ── Neutral surfaces (MessageBubble / Badge neutral) ── */
+  /* ── Neutral surfaces (MessageBubble neutral) ── */
   --ag-neutral-background: #1e2b29;
   --ag-neutral-text: #e6f5f3;
   --ag-neutral-border: #344744;
@@ -692,6 +693,7 @@ export const SKINS_CSS = {
   --ag-success-text: #04291d;
   --ag-warning: #eab308;
   --ag-warning-fg: #031d0e;
+  --ag-warning-dark: #ca8a04;
   --ag-warning-background: #fff4d6;
   --ag-warning-text: #593800;
   --ag-danger: #b42318;
@@ -740,8 +742,12 @@ export const SKINS_CSS = {
 
   --ag-success: #12d99b;
   --ag-success-fg: #042117;
+  --ag-success-dark: #0ea878;
   --ag-success-background: #132b24;
   --ag-success-text: #b8f7df;
+  --ag-warning: #eab308;
+  --ag-warning-fg: #031d0e;
+  --ag-warning-dark: #ca8a04;
 }`,
   },
   'golden-amber': {
@@ -870,7 +876,7 @@ export const SKINS_CSS = {
     dark: `[data-theme="dark"].ag-skin-indigo-dusk {
   --ag-primary: #818cf8;
   --ag-primary-fg: #0d0c26;
-  --ag-primary-dark: #6366f1;
+  --ag-primary-dark: #757df8;
   --ag-primary-border: #818cf8;
   --ag-primary-background: #1b1c3b;
   --ag-primary-text: #e0e7ff;
@@ -1059,7 +1065,7 @@ export const SKINS_CSS = {
   --ag-blue-800: #00838f;
   --ag-blue-900: #006064;
 
-  /* ── Neutral surfaces (MessageBubble / Badge neutral) ── */
+  /* ── Neutral surfaces (MessageBubble neutral) ── */
   --ag-neutral-background: #eeeeee;
   --ag-neutral-text: #000000;
   --ag-neutral-border: #000000;
@@ -1131,7 +1137,7 @@ export const SKINS_CSS = {
   --ag-blue-800: #006064;
   --ag-blue-900: #004d56;
 
-  /* ── Neutral surfaces (MessageBubble / Badge neutral) ── */
+  /* ── Neutral surfaces (MessageBubble neutral) ── */
   --ag-neutral-background: #242424;
   --ag-neutral-text: #ffffff;
   --ag-neutral-border: #5c5c5c;
@@ -1200,7 +1206,7 @@ export const SKINS_CSS = {
   --ag-blue-800: #262626;
   --ag-blue-900: #171717;
 
-  /* ── Neutral surfaces (MessageBubble / Badge neutral) ── */
+  /* ── Neutral surfaces (MessageBubble neutral) ── */
   --ag-neutral-background: #f2f2f2;
   --ag-neutral-text: #000000;
   --ag-neutral-border: #d4d4d4;
@@ -1267,7 +1273,7 @@ export const SKINS_CSS = {
   --ag-blue-800: #262626;
   --ag-blue-900: #1a1a1a;
 
-  /* ── Neutral surfaces (MessageBubble / Badge neutral) ── */
+  /* ── Neutral surfaces (MessageBubble neutral) ── */
   --ag-neutral-background: #1f1f1f;
   --ag-neutral-text: #ffffff;
   --ag-neutral-border: #404040;
@@ -1401,7 +1407,7 @@ export const SKINS_CSS = {
     dark: `[data-theme="dark"].ag-skin-neon-obsidian {
   --ag-primary: #a37aff;
   --ag-primary-fg: #12062b;
-  --ag-primary-dark: #8752ff;
+  --ag-primary-dark: #996bff;
   --ag-primary-border: #a37aff;
   --ag-primary-background: #241347;
   --ag-primary-text: #e3d6ff;
@@ -1453,7 +1459,7 @@ export const SKINS_CSS = {
   --ag-focus-dark: #14b8a6;
   --ag-text-primary: #0f2426;
   --ag-text-secondary: #2d4c50;
-  --ag-text-muted: #5a7b80;
+  --ag-text-muted: #476469;
   --ag-text-primary-muted: #1e393d;
   --ag-border: #c2dce0;
   --ag-border-subtle: #daecee;
@@ -1756,7 +1762,7 @@ export const SKINS_CSS = {
   --ag-blue-800: #2c2012;
   --ag-blue-900: #180f08;
 
-  /* ── Neutral surfaces (MessageBubble / Badge neutral) ── */
+  /* ── Neutral surfaces (MessageBubble neutral) ── */
   --ag-neutral-background: #e6ddc8;
   --ag-neutral-text: #22180e;
   --ag-neutral-border: #c4b498;
@@ -1825,7 +1831,7 @@ export const SKINS_CSS = {
   --ag-blue-800: #2c2012;
   --ag-blue-900: #1f1710;
 
-  /* ── Neutral surfaces (MessageBubble / Badge neutral) ── */
+  /* ── Neutral surfaces (MessageBubble neutral) ── */
   --ag-neutral-background: #312416;
   --ag-neutral-text: #f2e8d5;
   --ag-neutral-border: #523e28;
@@ -1843,7 +1849,7 @@ export const SKINS_CSS = {
   --ag-focus-dark: #1a73e8;
   --ag-text-primary: #1f1f1f;
   --ag-text-secondary: #444746;
-  --ag-text-muted: #747775;
+  --ag-text-muted: #5a5d5b;
   --ag-text-primary-muted: #303030;
   --ag-border: #dadce0;
   --ag-border-subtle: #e8eaed;
@@ -1959,7 +1965,7 @@ export const SKINS_CSS = {
     dark: `[data-theme="dark"].ag-skin-press-crimson {
   --ag-primary: #f2555c;
   --ag-primary-fg: #140304;
-  --ag-primary-dark: #d9363e;
+  --ag-primary-dark: #e84850;
   --ag-primary-border: #f2555c;
   --ag-primary-background: #331012;
   --ag-primary-text: #ffd6d8;
@@ -2228,14 +2234,14 @@ export const SKINS_CSS = {
   --ag-blue-800: #0d3b38;
   --ag-blue-900: #062220;
 
-  /* ── Neutral surfaces (MessageBubble / Badge neutral) ── */
+  /* ── Neutral surfaces (MessageBubble neutral) ── */
   --ag-neutral-background: #e8e2cf;
   --ag-neutral-text: #04252e;
   --ag-neutral-border: #93a1a1;
 }`,
     dark: `[data-theme="dark"].ag-skin-solarized {
   --ag-primary: #2aa198;
-  --ag-primary-fg: #071c1f;
+  --ag-primary-fg: #00171a;
   --ag-primary-dark: #238880;
   --ag-primary-border: #268a82;
   --ag-primary-background: #14282b;
@@ -2276,13 +2282,13 @@ export const SKINS_CSS = {
   },
   'swiss-grid': {
     light: `:where(html).ag-skin-swiss-grid {
-  --ag-primary: #e03600;
+  --ag-primary: #d63200;
   --ag-primary-fg: #ffffff;
   --ag-primary-dark: #b82c00;
   --ag-primary-border: #f5b39d;
   --ag-primary-background: #fff2ed;
   --ag-primary-text: #9e2500;
-  --ag-focus: 224, 54, 0;
+  --ag-focus: 158, 37, 0;
   --ag-focus-dark: #ff450a;
   --ag-text-primary: #111111;
   --ag-text-secondary: #333333;
@@ -2488,7 +2494,7 @@ export const SKINS_CSS = {
     dark: `[data-theme="dark"].ag-skin-tokyo-ink {
   --ag-primary: #f0545e;
   --ag-primary-fg: #1a0709;
-  --ag-primary-dark: #d93846;
+  --ag-primary-dark: #e34654;
   --ag-primary-border: #d94854;
   --ag-primary-background: #2f1518;
   --ag-primary-text: #ffd6d9;
@@ -2622,7 +2628,7 @@ export const SKINS_CSS = {
   --ag-focus-dark: #57534a;
   --ag-text-primary: #191919;
   --ag-text-secondary: #4a4842;
-  --ag-text-muted: #78756c;
+  --ag-text-muted: #66635b;
   --ag-text-primary-muted: #2f2e2a;
   --ag-border: #e3e1da;
   --ag-border-subtle: #eeece6;

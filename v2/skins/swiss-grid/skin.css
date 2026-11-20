@@ -1,11 +1,11 @@
 :where(html).ag-skin-swiss-grid {
-  --ag-primary: #e03600;
+  --ag-primary: #d63200;
   --ag-primary-fg: #ffffff;
   --ag-primary-dark: #b82c00;
   --ag-primary-border: #f5b39d;
   --ag-primary-background: #fff2ed;
   --ag-primary-text: #9e2500;
-  --ag-focus: 224, 54, 0;
+  --ag-focus: 158, 37, 0;
   --ag-focus-dark: #ff450a;
   --ag-text-primary: #111111;
   --ag-text-secondary: #333333;

@@ -44,6 +44,7 @@ import {
   SKINS,
   applySkin,
   applyTheme,
+  getSavedSkinId,
   restorePrefs,
 } from '../../../../../skins/skin-switcher-core.js';
 import {
@@ -175,7 +176,7 @@ export class AgA2uiStudio extends LitElement {
 
   constructor() {
     super();
-    this.activeSkinId = localStorage.getItem('ag-skin') ?? 'evergreen';
+    this.activeSkinId = getSavedSkinId('evergreen');
     applySkin(this.activeSkinId);
     this.isDark = document.documentElement.getAttribute('data-theme') === 'dark';
     this.inspectorOpen = false;

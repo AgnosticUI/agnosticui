@@ -215,13 +215,13 @@ describe("AgnosticUI MCP Server Core Infrastructure Verification Harness", () =>
   test("5. verify resolve_skin_properties parses custom styles regex variables correctly", async () => {
     const tool = getToolHandler("resolve_skin_properties");
 
-    const result = await tool.handler({ skin_name: "autumn-slate", theme_mode: "dark" });
+    const result = await tool.handler({ skin_name: "tokyo-ink", theme_mode: "dark" });
     expect(result).toBeDefined();
     expect(result.content).toBeDefined();
     expect(result.isError).not.toBe(true);
 
     const payload = JSON.parse(result.content[0].text);
-    expect(payload.skin).toBe("autumn-slate");
+    expect(payload.skin).toBe("tokyo-ink");
     expect(payload.mode).toBe("dark");
     expect(payload.overrides).toBeDefined();
   });

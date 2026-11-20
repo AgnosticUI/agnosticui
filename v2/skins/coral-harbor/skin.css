@@ -1,7 +1,7 @@
 :where(html).ag-skin-coral-harbor {
-  --ag-primary: #e03e52;
+  --ag-primary: #c92a3e;
   --ag-primary-fg: #ffffff;
-  --ag-primary-dark: #c22d40;
+  --ag-primary-dark: #a61f30;
   --ag-primary-border: #f5b3bc;
   --ag-primary-background: #fff1f3;
   --ag-primary-text: #9e1f30;
@@ -9,7 +9,7 @@
   --ag-focus-dark: #ff4f64;
   --ag-text-primary: #14233c;
   --ag-text-secondary: #384966;
-  --ag-text-muted: #687894;
+  --ag-text-muted: #52617a;
   --ag-text-primary-muted: #243654;
   --ag-border: #d5dce6;
   --ag-border-subtle: #e6ebf2;

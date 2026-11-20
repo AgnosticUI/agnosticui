@@ -12,7 +12,7 @@
    - Runtime Skin Curation ✅ (`feat/skins-curation`):
      - Curated 29 cohesive runtime skins (`Evergreen`, `Default`, `Deep Forest`, `Claymorphic`, `Mo-Neobrut`, `Coffee Espresso`, `Monochromatic`, `Paper`, `Solarized`, `Tokyo Ink`, `Nordic Aurora`, `Swiss Grid`, `Velvet Plum`, `Copper Patina`, `Warm Vellum`, `Press Crimson`, `Coral Harbor`, `Neon Obsidian`, `Ivory Cobalt`, `Obsidian Minimal`, `Slate Azure`, `Terracotta Clay`, `Emerald Vault`, `Indigo Dusk`, `Golden Amber`, `Rosewood Ink`, `Pebble Cerulean`, `Olive Moss`, `Mulberry Slate`).
      - Promoted `Evergreen` into `v2/skins/evergreen/{skin.css,skin-dark.css}` and `SKINS` (`v2/skins/skin-switcher-core.js`), eliminating separate Studio wrapper overrides.
-     - Harmonized `--ag-neutral-*` tokens for `MessageBubble variant="neutral"` / `Breadcrumb` across all skins and `Default` dark mode, refined dark-mode background saturation across `Evergreen`, `Deep Forest`, `Solarized`, `Nordic Aurora`, `Coral Harbor`, `Velvet Plum`, `Claymorphic`, `Coffee Espresso`, `Paper`, and `Default`, and aligned `v2/lib/package.json` to `2.0.0-alpha.33`.
+     - Harmonized `--ag-neutral-*` tokens for `MessageBubble variant="neutral"` across all skins and `Default` dark mode, refined dark-mode background saturation across `Evergreen`, `Deep Forest`, `Solarized`, `Nordic Aurora`, `Coral Harbor`, `Velvet Plum`, `Claymorphic`, `Coffee Espresso`, `Paper`, and `Default`, and aligned `v2/lib/package.json` to `2.0.0-alpha.33`.
 
  NEXT UP :
    - Merge `feat/skins-curation` PR into `master` once CI / CodeRabbit checks pass, then sync local `master`.

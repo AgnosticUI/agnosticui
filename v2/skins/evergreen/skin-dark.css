@@ -36,6 +36,10 @@
 
   --ag-success: #12d99b;
   --ag-success-fg: #042117;
+  --ag-success-dark: #0ea878;
   --ag-success-background: #132b24;
   --ag-success-text: #b8f7df;
+  --ag-warning: #eab308;
+  --ag-warning-fg: #031d0e;
+  --ag-warning-dark: #ca8a04;
 }

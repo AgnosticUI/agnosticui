@@ -28,6 +28,7 @@
   --ag-border-subtle: #1f2b29;
 
   /* ── Backgrounds ── */
+  --ag-background-primary: #111113;
   --ag-background-secondary: #16201f;
   --ag-background-tertiary: #1e2b29;
 
@@ -56,7 +57,7 @@
   --ag-blue-800: #0f3834;
   --ag-blue-900: #0d2926;
 
-  /* ── Neutral surfaces (MessageBubble / Badge neutral) ── */
+  /* ── Neutral surfaces (MessageBubble neutral) ── */
   --ag-neutral-background: #1e2b29;
   --ag-neutral-text: #e6f5f3;
   --ag-neutral-border: #344744;

@@ -143,7 +143,7 @@ async function runLocalMcpTest() {
     // Guardrail: If Qwen targeted a skin properties tool but dropped layout objects, hydrate defaults
     if (toolName === "resolve_skin_properties") {
       if (!toolArgs.skin_name) {
-        toolArgs.skin_name = "autumn-slate";
+        toolArgs.skin_name = "tokyo-ink";
       }
       if (!toolArgs.theme_mode) {
         toolArgs.theme_mode = "dark";
