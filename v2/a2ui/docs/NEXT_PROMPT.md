@@ -4,26 +4,26 @@
  ================================================================================
   REPO ROOT          : /Users/roblevin/workspace/agnosticui
   CATALOG DOCS & PLAN: v2/a2ui/docs/IMPLEMENTATION_PLAN.md
-  ACTIVE WORKSPACE   : `master` (Phases 1–11 ✅ Merged in PR #523; `2.0.0-alpha.5` Live on npm `latest` & `alpha`)
+  ACTIVE WORKSPACE   : `feat/skins-curation` PR open against `master` (29 Curated Runtime Skins + A2UI v1.0 45-Component Catalog `2.0.0-alpha.5`)
  ================================================================================
 
  COMPLETED MILESTONES :
-   - Phases 1–6 ✅: A2UI v1.0 protocol schema, @agnosticui/a2ui-lit renderer, FACE validateSurface, Vitest harness, VitePress documentation, and MCP server get_a2ui_catalog tool.
-   - Phases 7–10 ✅: Expanded catalog to 35 components, built framework-parity Support Center Studio demos (Lit, React, Vue), added multi-turn agent round-trip harness, and published 2.0.0-alpha.3 to npm.
-   - Phase 11 — Task 11.1 ✅: Enriched Turn-3 Verification Audit (`AgTimeline` declarative `items` support + `AgIntlFormatter` + `AgLink` in `buildTurnThreeComponents()`, verified across `catalog.spec.ts`, `agent-roundtrip.spec.ts`, and tri-framework renderer suites).
-   - Phase 11 — Task 11.2 ✅ (PR #523 Merged): Expanded A2UI v1.0 catalog from 35 to 45 components (`Loader`, `Tooltip`, `Popover`, `Drawer`, `Dialog`, `CopyButton`, `AspectRatio`, `IconButton`, `SelectionButtonGroup`, `SelectionButton`), addressed all CodeRabbit review findings, published `@agnosticui/a2ui-{lit,react,vue}@2.0.0-alpha.5` (`latest` & `alpha`), and locked Support Center Studio demos (`lit`, `react`, `vue`) to `^2.0.0-alpha.5`.
+   - Phases 1–11 ✅ (Merged in PR #523): A2UI v1.0 45-component catalog (`AgText` + 44 `Ag*` wrappers), Enriched Turn-3 Verification Audit, `@agnosticui/a2ui-{lit,react,vue}@2.0.0-alpha.5` published on npm (`latest` & `alpha`), and Support Center Studio demos (`lit`, `react`, `vue`) locked to `^2.0.0-alpha.5`.
+   - Runtime Skin Curation ✅ (`feat/skins-curation`):
+     - Curated 29 cohesive runtime skins (`Evergreen`, `Default`, `Deep Forest`, `Claymorphic`, `Mo-Neobrut`, `Coffee Espresso`, `Monochromatic`, `Paper`, `Solarized`, `Tokyo Ink`, `Nordic Aurora`, `Swiss Grid`, `Velvet Plum`, `Copper Patina`, `Warm Vellum`, `Press Crimson`, `Coral Harbor`, `Neon Obsidian`, `Ivory Cobalt`, `Obsidian Minimal`, `Slate Azure`, `Terracotta Clay`, `Emerald Vault`, `Indigo Dusk`, `Golden Amber`, `Rosewood Ink`, `Pebble Cerulean`, `Olive Moss`, `Mulberry Slate`).
+     - Promoted `Evergreen` into `v2/skins/evergreen/{skin.css,skin-dark.css}` and `SKINS` (`v2/skins/skin-switcher-core.js`), eliminating separate Studio wrapper overrides.
+     - Harmonized `--ag-neutral-*` tokens for `MessageBubble variant="neutral"` / `Breadcrumb` across all skins and `Default` dark mode, refined dark-mode background saturation across `Evergreen`, `Deep Forest`, `Solarized`, `Nordic Aurora`, `Coral Harbor`, `Velvet Plum`, `Claymorphic`, `Coffee Espresso`, `Paper`, and `Default`, and aligned `v2/lib/package.json` to `2.0.0-alpha.33`.
 
- NEXT UP (RUNTIME SKIN CURATION SIDE-TRACK — NEW BRANCH OFF `master`) :
-   - Goal: Over-generate 40–50 cohesive `--ag-*` runtime skin palettes in `v2/skins/` (auditing light & dark WCAG contrast ratios, surface elevation, and accent harmony via `v2/skins/build-bundle.js` and `v2/skins/skin-switcher-core.js`) and curate the strongest 21 skins for `skins-bundle.css` / `skins-css-data.js`.
-   - Step 1 (Tomorrow): Cut `git checkout -b feat/skins-curation` off `master`, inspect `v2/skins/build-bundle.js`, `v2/skins/skin-switcher-core.js`, `v2/skins/README.md`, and existing skin CSS files (`v2/skins/*/`) via a consolidated read-only CLI dump (`~/Downloads/cat.txt`).
+ NEXT UP :
+   - Merge `feat/skins-curation` PR into `master` once CI / CodeRabbit checks pass, then sync local `master`.
 
  STARTUP / VERIFICATION COMMANDS :
+   - Rebuild & verify skins bundle parity:
+       node v2/skins/build-bundle.js && cmp -s v2/skins/skins-bundle.css v2/site/docs/public/skins-bundle.css
    - Verify A2UI catalog codegen & parity:
        (cd v2/a2ui/catalog && npm run check)
-   - Run renderer & Studio test suites:
-       (cd v2/a2ui/renderers/lit && npm test)
-       (cd v2/a2ui/renderers/react && npm test)
-       (cd v2/a2ui/renderers/vue && npm test)
+   - Run Studio & renderer test suites:
        (cd v2/a2ui/demos/support-center/shared && npm test)
+       (cd v2/a2ui/renderers/lit && npm test)
  ================================================================================
 ```
