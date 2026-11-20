@@ -31,12 +31,12 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout Workspace Baseline
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Initialize Node.js Environment
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
-          node-version: 20
+          node-version: 22
           cache: "npm"
           cache-dependency-path: "v2/lib/package-lock.json"
 
@@ -70,7 +70,7 @@ jobs:
 
       - name: Archive Visual Test Artifact Report
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: playwright-visual-report
           path: v2/lib/playwright-report/
