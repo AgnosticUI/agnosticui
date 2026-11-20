@@ -489,7 +489,8 @@ function App() {
                   <button
                     key={chip.label}
                     type="button"
-                    className="prompt-chip"
+                    className={`prompt-chip ${livePromptText.trim() === chip.prompt.trim() ? 'active' : ''}`}
+                    aria-pressed={livePromptText.trim() === chip.prompt.trim()}
                     onClick={() => void handleGeneratePrompt(chip.prompt)}
                   >
                     {chip.label}
