@@ -1,6 +1,6 @@
 {
   "name": "@agnosticui/a2ui-lit",
-  "version": "2.0.0-alpha.3",
+  "version": "2.0.0-alpha.4",
   "description": "A2UI v1.0 component catalog and Lit renderer for AgnosticUI",
   "author": "AgnosticUI",
   "license": "Apache-2.0",
@@ -42,12 +42,12 @@
     "build": "tsc"
   },
   "peerDependencies": {
-    "agnosticui-core": ">=2.0.0-alpha.32",
+    "agnosticui-core": ">=2.0.0-alpha.33",
     "lit": "^3.0.0"
   },
   "devDependencies": {
     "@types/node": "^26.6.6",
-    "agnosticui-core": "^2.0.0-alpha.32",
+    "agnosticui-core": "^2.0.0-alpha.33",
     "jsdom": "^26.1.0",
     "lit": "^3.3.3",
     "typescript": "^7.0.2",

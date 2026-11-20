@@ -37,12 +37,15 @@
 
   /* ── Semantic status tokens ── */
   --ag-success: #008766;
+  --ag-success-fg: #ffffff;
   --ag-success-background: #dcf5ea;
   --ag-success-text: #04291d;
   --ag-warning: #eab308;
+  --ag-warning-fg: #031d0e;
   --ag-warning-background: #fff4d6;
   --ag-warning-text: #593800;
   --ag-danger: #b42318;
+  --ag-danger-fg: #ffffff;
   --ag-danger-background: #feeceb;
   --ag-danger-text: #7a170f;
 
@@ -50,8 +53,8 @@
   --ag-radius-lg: 0.75rem;
 }
 
-:where(html).ag-skin-evergreen[data-theme='dark'] {
-   --ag-radius-md: var(--ag-radius-sm);
+:where(html).ag-skin-evergreen[data-theme="dark"] {
+  --ag-radius-md: var(--ag-radius-sm);
   /* ── Primary color family (Action Green #12d99b on Deep Evergreen) ── */
   --ag-primary: #12d99b;
   --ag-primary-fg: #031d0e;
@@ -79,6 +82,7 @@
   --ag-background-tertiary: #103d32;
 
   --ag-success: #12d99b;
+  --ag-success-fg: #031d0e;
   --ag-success-background: #103d32;
   --ag-success-text: #a9efd3;
 }
