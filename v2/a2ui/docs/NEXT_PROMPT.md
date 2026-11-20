@@ -2,7 +2,7 @@
        AGNOSTICUI-A2UI : Chronological Session Continuity Bridge Capsule              
 ================================================================================
  TIMESTAMP BASELINE : 2026-11-19T22:20:00Z
- ACTIVE WORKSPACE   : Phases 1–10 ✅ (Merged to `master`) | Active Branch: `feat/a2ui-phase11-audit-and-catalog` (Phase 11 🔄: Task 11.1 ✅, Task 11.2 Next)
+ ACTIVE WORKSPACE   : Phases 1–11 ✅ (`feat/a2ui-phase11-audit-and-catalog` ready for PR/merge & npm publish of `2.0.0-alpha.4`; 45-Component Catalog + Enriched Turn-3 Audit)
  STRATEGIC PIVOT    :
    - Spec-compliant A2UI v1.0 Component Catalog (35 components) & Multi-Framework Web Renderer suite (`@agnosticui/a2ui-lit`, `@agnosticui/a2ui-react`, `@agnosticui/a2ui-vue`).
    - Live Published npm Packages (`agnosticui-core@2.0.0-alpha.32`, `@agnosticui/a2ui-lit@2.0.0-alpha.3`, `@agnosticui/a2ui-react@2.0.0-alpha.3`, `@agnosticui/a2ui-vue@2.0.0-alpha.3`).
@@ -31,12 +31,13 @@
      * Task 10.1: Implemented stateful multi-page queue drill-down (`AgBreadcrumb` + `AgPagination` two-way bindings, `buildCallerSpikeSurface()`, `kind: 'update_surface'` pagination/drill-down handlers across Lit/React/Vue Studios).
      * Hotfix 10.1a: Fixed `<ag-kbd bordered>` contrast inside `<ag-button variant="primary">` via `--ag-kbd-color` / `--ag-kbd-border-color` cascade (`_Kbd.ts` + `_Button.ts`), replaced native `<button class="pacing-pill">` controls with `<ag-button variant="primary" size="x-sm" shape="rounded" bordered>`, added `.generate-btn-inner` spacing, and documented `<ag-kbd>` inside `<ag-button>` on VitePress (`kbd.md`).
      * Task 10.2: Published `agnosticui-core@2.0.0-alpha.32` + `@agnosticui/a2ui-{lit,react,vue}@2.0.0-alpha.3` (`alpha` & `latest` dist-tags), updated demo/site lockfiles, merged to `master`, and deployed to live Netlify Studio.
-
- NEXT UP (PHASE 11) :
    - Phase 11 — Task 11.1 ✅: Enriched Turn-3 Verification Audit (`AgTimeline` declarative `items` support + `AgIntlFormatter` + `AgLink` in `buildTurnThreeComponents()`, verified across `catalog.spec.ts`, `agent-roundtrip.spec.ts`, and tri-framework renderer suites).
-   - Phase 11 — Task 11.2 📋: Expand A2UI v1.0 catalog from 35 to ~45 components (`Loader`, `Tooltip`, `Popover`, `Drawer`, `Dialog`, `ButtonGroup`, `InputNumber`, `Textarea`, `CopyButton`, `AspectRatio`), update `catalog.spec.ts`, regenerate `agnosticui-catalog.json` + `SKILL.md`, and cut `2.0.0-alpha.4`.
+   - Phase 11 — Task 11.2 ✅: Expand A2UI v1.0 catalog from 35 to ~45 components (`Loader`, `Tooltip`, `Popover`, `Drawer`, `Dialog`, `ButtonGroup`, `InputNumber`, `Textarea`, `CopyButton`, `AspectRatio`), update `catalog.spec.ts`, regenerate `agnosticui-catalog.json` + `SKILL.md`, and cut `2.0.0-alpha.4`.
    - Separate Orthogonal Side-Track Branch (after Phase 11): Runtime Skin Curation (over-generate 40–50 `--ag-*` skin palettes and curate the strongest 21 for `v2/skins/`).
 
+NEXT UP            :
+   - Merge `feat/a2ui-phase11-audit-and-catalog` -> `master` and publish `@agnosticui/a2ui-lit@2.0.0-alpha.4`, `@agnosticui/a2ui-react@2.0.0-alpha.4`, `@agnosticui/a2ui-vue@2.0.0-alpha.4`.
+   - Separate Orthogonal Side-Track Branch: Runtime Skin Curation (over-generate 40–50 `--ag-*` skin palettes and curate the strongest 21 for `v2/skins/`).
  STRICT SESSION OUTPUT RULES FOR ASSISTANT :
    1. Full-File Output Only (no `// ... existing code ...` placeholders) or full functions only for targeted edits.
    2. Keep EVERY fenced code block (` ``` `) strictly under ~150 lines—split large files into numbered parts (`**Part 1 of N — filename**`), each in its own standalone code block so every part gets a Copy to Clipboard button.

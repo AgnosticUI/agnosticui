@@ -6,7 +6,7 @@ Use this skill when generating **A2UI `v1.0`** JSONL/JSON message streams target
 
 - **Protocol Version:** `1.0`
 - **Catalog ID:** `https://agnosticui.com`
-- **Total Components:** 35 (`AgText`, `Accordion`, `Alert`, `Avatar`, `Badge`, `Breadcrumb`, `Button`, `Card`, `Checkbox`, `Combobox`, `Divider`, `EmptyState`, `Fieldset`, `Header`, `Icon`, `Image`, `Input`, `IntlFormatter`, `Kbd`, `Link`, `Mark`, `MessageBubble`, `Pagination`, `Progress`, `ProgressRing`, `Radio`, `Rating`, `Select`, `SkeletonLoader`, `Slider`, `Spinner`, `Tabs`, `Tag`, `Timeline`, `Toggle`)
+- **Total Components:** 45 (`AgText`, `Accordion`, `Alert`, `AspectRatio`, `Avatar`, `Badge`, `Breadcrumb`, `Button`, `Card`, `Checkbox`, `Combobox`, `CopyButton`, `Dialog`, `Divider`, `Drawer`, `EmptyState`, `Fieldset`, `Header`, `Icon`, `IconButton`, `Image`, `Input`, `IntlFormatter`, `Kbd`, `Link`, `Loader`, `Mark`, `MessageBubble`, `Pagination`, `Popover`, `Progress`, `ProgressRing`, `Radio`, `Rating`, `Select`, `SelectionButton`, `SelectionButtonGroup`, `SkeletonLoader`, `Slider`, `Spinner`, `Tabs`, `Tag`, `Timeline`, `Toggle`, `Tooltip`)
 - **Client Validation Function:** `validateSurface` (validates FACE controls via `reportValidity()`)
 
 ## Strict Authoring Rules

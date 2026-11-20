@@ -65,7 +65,7 @@ interface CatalogComponentCase {
   assertRendered?: (el: HTMLElement) => void;
 }
 
-// Exhaustive test matrix covering AgText + all ported Ag* wrappers
+// Exhaustive test matrix covering AgText + all 44 ported Ag* wrappers (45 total)
 const ALL_CATALOG_COMPONENT_CASES: CatalogComponentCase[] = [
   {
     component: 'AgText',
@@ -75,6 +75,7 @@ const ALL_CATALOG_COMPONENT_CASES: CatalogComponentCase[] = [
   },
   { component: 'AgAccordion', expectedTag: 'ag-accordion', props: {} },
   { component: 'AgAlert', expectedTag: 'ag-alert', props: { variant: 'info' } },
+  { component: 'AgAspectRatio', expectedTag: 'ag-aspect-ratio', props: { width: 16, height: 9 } },
   { component: 'AgAvatar', expectedTag: 'ag-avatar', props: { text: 'JT' } },
   { component: 'AgBadge', expectedTag: 'ag-badge', props: { variant: 'success' } },
   {
@@ -91,11 +92,15 @@ const ALL_CATALOG_COMPONENT_CASES: CatalogComponentCase[] = [
   { component: 'AgCard', expectedTag: 'ag-card', props: { shadow: true } },
   { component: 'AgCheckbox', expectedTag: 'ag-checkbox', props: { labelText: 'Subscribe', checked: true } },
   { component: 'AgCombobox', expectedTag: 'ag-combobox', props: { label: 'Region', value: 'us-east' } },
+  { component: 'AgCopyButton', expectedTag: 'ag-copy-button', props: { text: 'sk_live_123', label: 'Copy API key' } },
+  { component: 'AgDialog', expectedTag: 'ag-dialog', props: { open: false, heading: 'Confirm Action' } },
   { component: 'AgDivider', expectedTag: 'ag-divider', props: {} },
+  { component: 'AgDrawer', expectedTag: 'ag-drawer', props: { open: false, heading: 'Details Drawer', position: 'end' } },
   { component: 'AgEmptyState', expectedTag: 'ag-empty-state', props: { title: 'No records yet' } },
   { component: 'AgFieldset', expectedTag: 'ag-fieldset', props: { legend: 'Account Details' } },
   { component: 'AgHeader', expectedTag: 'ag-header', props: {} },
   { component: 'AgIcon', expectedTag: 'ag-icon', props: { size: '24', type: 'primary' } },
+  { component: 'AgIconButton', expectedTag: 'ag-icon-button', props: { label: 'Settings', unicode: '⚙' } },
   { component: 'AgImage', expectedTag: 'ag-image', props: { src: 'https://example.com', alt: 'Hero preview' } },
   { component: 'AgInput', expectedTag: 'ag-input', props: { label: 'Full Name', value: 'Jordan Taylor' } },
   {
@@ -105,14 +110,27 @@ const ALL_CATALOG_COMPONENT_CASES: CatalogComponentCase[] = [
   },
   { component: 'AgKbd', expectedTag: 'ag-kbd', props: { size: 'md' } },
   { component: 'AgLink', expectedTag: 'ag-link', props: { href: 'https://agnosticui.com', variant: 'primary' } },
+  { component: 'AgLoader', expectedTag: 'ag-loader', props: { size: 'default', ariaLabel: 'Loading items' } },
   { component: 'AgMark', expectedTag: 'ag-mark', props: { variant: 'warning' } },
   { component: 'AgMessageBubble', expectedTag: 'ag-message-bubble', props: { from: 'them', author: 'Concierge' } },
   { component: 'AgPagination', expectedTag: 'ag-pagination', props: { current: 2, totalPages: 10 } },
+  { component: 'AgPopover', expectedTag: 'ag-popover', props: { placement: 'bottom', triggerType: 'click' } },
   { component: 'AgProgress', expectedTag: 'ag-progress', props: { value: 65, max: 100 } },
   { component: 'AgProgressRing', expectedTag: 'ag-progress-ring', props: { value: 80 } },
   { component: 'AgRadio', expectedTag: 'ag-radio', props: { name: 'tier', value: 'pro', labelText: 'Pro Tier' } },
   { component: 'AgRating', expectedTag: 'ag-rating', props: { value: 4, max: 5 } },
   { component: 'AgSelect', expectedTag: 'ag-select', props: { label: 'Priority', value: 'high' } },
+  {
+    component: 'AgSelectionButton',
+    expectedTag: 'ag-selection-button',
+    props: { value: 'standard', label: 'Standard SLA' },
+    assertRendered: (el) => expect(el.textContent?.trim()).toBe('Standard SLA'),
+  },
+  {
+    component: 'AgSelectionButtonGroup',
+    expectedTag: 'ag-selection-button-group',
+    props: { type: 'radio', name: 'sla_tier', legend: 'SLA Tier' },
+  },
   { component: 'AgSkeletonLoader', expectedTag: 'ag-skeleton-loader', props: { variant: 'rounded', height: '24px' } },
   { component: 'AgSlider', expectedTag: 'ag-slider', props: { label: 'Budget', min: 0, max: 100, value: 40 } },
   { component: 'AgSpinner', expectedTag: 'ag-spinner', props: {} },
@@ -120,6 +138,7 @@ const ALL_CATALOG_COMPONENT_CASES: CatalogComponentCase[] = [
   { component: 'AgTag', expectedTag: 'ag-tag', props: { variant: 'info' } },
   { component: 'AgTimeline', expectedTag: 'ag-timeline', props: {} },
   { component: 'AgToggle', expectedTag: 'ag-toggle', props: { label: 'Auto-renew', checked: true } },
+  { component: 'AgTooltip', expectedTag: 'ag-tooltip', props: { content: 'Helpful tip', placement: 'top' } },
 ];
 
 describe('AgnosticUI A2UI v1.0 Catalog & Surface', () => {
@@ -129,7 +148,8 @@ describe('AgnosticUI A2UI v1.0 Catalog & Surface', () => {
   });
 
   it('registers all ported catalog components and mounts every single one cleanly into <a2ui-surface>', async () => {
-    // Verify catalog count matches our ported component test matrix
+    // Verify catalog count matches our 45-component test matrix
+    expect(AgnosticUICatalog.components.size).toBe(45);
     expect(AgnosticUICatalog.components.size).toBe(ALL_CATALOG_COMPONENT_CASES.length);
 
     const registeredNames = Array.from(AgnosticUICatalog.components.keys()).sort();
@@ -189,6 +209,7 @@ describe('AgnosticUI A2UI v1.0 Catalog & Surface', () => {
                 'csat_rating',
                 'alerts_toggle',
                 'budget_slider',
+                'tier_group',
               ],
             },
             { id: 'email_input', component: 'AgInput', label: 'Email', value: { '@path': '/form/email' } },
@@ -199,6 +220,15 @@ describe('AgnosticUI A2UI v1.0 Catalog & Surface', () => {
             { id: 'csat_rating', component: 'AgRating', value: { '@path': '/form/rating' } },
             { id: 'alerts_toggle', component: 'AgToggle', label: 'Alerts', checked: { '@path': '/form/alerts' } },
             { id: 'budget_slider', component: 'AgSlider', label: 'Budget', min: 0, max: 100, value: { '@path': '/form/budget' } },
+            {
+              id: 'tier_group',
+              component: 'AgSelectionButtonGroup',
+              type: 'radio',
+              name: 'tier_choice',
+              value: { '@path': '/form/tier' },
+              children: ['tier_opt_pro'],
+            },
+            { id: 'tier_opt_pro', component: 'AgSelectionButton', value: 'pro', label: 'Pro' },
           ],
         },
       },
@@ -216,6 +246,7 @@ describe('AgnosticUI A2UI v1.0 Catalog & Surface', () => {
             rating: 0,
             alerts: false,
             budget: 25,
+            tier: 'starter',
           },
         },
       },
@@ -246,6 +277,9 @@ describe('AgnosticUI A2UI v1.0 Catalog & Surface', () => {
     surfaceEl.querySelector('ag-slider')!.dispatchEvent(
       new CustomEvent('change', { detail: { value: 75 }, bubbles: true }),
     );
+    surfaceEl.querySelector('ag-selection-button-group')!.dispatchEvent(
+      new CustomEvent('selection-change', { detail: { value: 'pro', checked: true, selectedValues: ['pro'] }, bubbles: true }),
+    );
 
     expect(surfaceModel.dataModel.get('/form/email')).toBe('maya.patel@enterprise.io');
     expect(surfaceModel.dataModel.get('/form/region')).toBe('eu-central');
@@ -255,6 +289,7 @@ describe('AgnosticUI A2UI v1.0 Catalog & Surface', () => {
     expect(surfaceModel.dataModel.get('/form/rating')).toBe(5);
     expect(surfaceModel.dataModel.get('/form/alerts')).toBe(true);
     expect(surfaceModel.dataModel.get('/form/budget')).toBe(75);
+    expect(surfaceModel.dataModel.get('/form/tier')).toBe('pro');
     console.info('[catalog.spec] Verified two-way @path sync across all ported interactive controls.');
   });
 
@@ -286,7 +321,7 @@ describe('AgnosticUI A2UI v1.0 Catalog & Surface', () => {
     expect(ValidateSurfaceImplementation.execute({}, dataCtx)).toBe(true);
   });
 
-  it('renders AgTimeline items into slotted ag-timeline-item elements', async () => {
+    it('renders AgTimeline items into slotted ag-timeline-item elements', async () => {
     const processor = new MessageProcessor<LitComponentApi>([AgnosticUICatalog]);
     const { surfaceEl } = await mountFixture(processor, 'surface_timeline', [
       {
