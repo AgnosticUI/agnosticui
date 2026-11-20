@@ -1,10 +1,10 @@
 # Generative UI (A2UI v1.0)
 
-AgnosticUI provides a spec-compliant **A2UI `v1.0`** component catalog and multi-framework Web Component renderers (**`@agnosticui/a2ui-lit`**, **`@agnosticui/a2ui-react`**, and **`@agnosticui/a2ui-vue`**) that let AI agents stream rich, accessible, form-validated UI surfaces at runtime—while preserving AgnosticUI's **21+ runtime skins** and **Light/Dark mode** CSS custom properties (`--ag-*`).
+AgnosticUI provides a spec-compliant **A2UI `v1.0`** component catalog and multi-framework Web Component renderers (**`@agnosticui/a2ui-lit`**, **`@agnosticui/a2ui-react`**, and **`@agnosticui/a2ui-vue`**) that let AI agents stream rich, accessible, form-validated UI surfaces at runtime—while preserving AgnosticUI's **29 runtime skins** and **Light/Dark mode** CSS custom properties (`--ag-*`).
 
 ::: info Protocol & Catalog Metadata
 - **Upstream A2UI Project:** [a2ui.org](https://a2ui.org/) · [a2ui-project/a2ui on GitHub](https://github.com/a2ui-project/a2ui)
-- **Live Interactive Studio:** [https://a2ui-support-center-demo.netlify.app](https://a2ui-support-center-demo.netlify.app) (`$0` Local UI Compiler default + 22 runtime skins + optional BYOK Gemini key)
+- **Live Interactive Studio:** [https://a2ui-support-center-demo.netlify.app](https://a2ui-support-center-demo.netlify.app) (`$0` Local UI Compiler default + 29 runtime skins + optional BYOK Gemini key)
 - **Supported A2UI Protocol Version:** `v1.0`
 - **Catalog ID:** `https://agnosticui.com/a2ui/v1/catalog.json`
 - **Catalog Schema:** [`v2/a2ui/catalog/agnosticui-catalog.json`](https://github.com/AgnosticUI/agnosticui/blob/master/v2/a2ui/catalog/agnosticui-catalog.json)
@@ -162,7 +162,7 @@ onMounted(() => {
 
 ---
 
-## Supported Catalog Components (35)
+## Supported Catalog Components (45)
 
 Generated deterministically via `ts-morph` from AgnosticUI's core TypeScript prop interfaces:
 
@@ -216,6 +216,6 @@ function handleSurfaceSubmit(surfaceEl: HTMLElement): boolean {
 ## Further Reading
 
 - [Form Association (FACE)](/docs/form-association) — how AgnosticUI form controls implement `ElementInternals`
-- [Theming & 21 Runtime Skins](/docs/theming) — how `--ag-*` tokens re-theme any A2UI surface at runtime
+- [Theming & 29 Runtime Skins](/docs/theming) — how `--ag-*` tokens re-theme any A2UI surface at runtime
 - [A2UI Documentation & Specification (`v1.0`)](https://a2ui.org) — official A2UI generative UI framework docs
 - [A2UI GitHub Repository (`a2ui-project/a2ui`)](https://github.com/a2ui-project/a2ui) — open-source protocol, core packages, and community renderers/catalogs
