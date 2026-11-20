@@ -55,7 +55,7 @@ onUnmounted(() => {
     <p>The entire UI library lives in your project (React, Vue, Lit, Svelte, Solid, and more). No opaque black boxes—every component is readable, customizable, and AI-friendly.</p>
   </div>
   <div class="custom-feature">
-    <h3>2. A2UI v1.0 Generative UI</h3>
+    <h3>2. <a href="https://a2ui.org" target="_blank" rel="noopener noreferrer">A2UI v1.0</a> Generative UI</h3>
     <p>Stream schema-validated agent interfaces at runtime with <code>@agnosticui/a2ui-lit</code>, <code>-react</code>, and <code>-vue</code>. Includes native FACE validation, two-way <code>@path</code> binding, and 22 runtime skins.</p>
   </div>
   <div class="custom-feature">

@@ -593,13 +593,13 @@ This prevents Vue from treating AgnosticUI web components as Vue components.
 
 ## Generative UI (A2UI v1.0)
 
-AgnosticUI supports Google's open **A2UI `v1.0`** protocol, letting AI agents stream interactive, accessible, form-validated UI surfaces at runtime while preserving AgnosticUI's **21+ runtime skins** and **Light/Dark mode** CSS tokens (`--ag-*`).
+AgnosticUI supports the open **[A2UI `v1.0`](https://a2ui.org)** protocol ([GitHub](https://github.com/a2ui-project/a2ui)), letting AI agents stream interactive, accessible, form-validated UI surfaces at runtime while preserving AgnosticUI's **21+ runtime skins** and **Light/Dark mode** CSS tokens (`--ag-*`).
 
 ### Install & Register the Catalog
 
 AgnosticUI ships three A2UI `v1.0` renderer packages:
 
-- **`@agnosticui/a2ui-lit`** — Core 25-component catalog, Light-DOM `<a2ui-surface>` bindings, and FACE validation
+- **`@agnosticui/a2ui-lit`** — Core 35-component catalog, Light-DOM `<a2ui-surface>` bindings, and FACE validation
 - **`@agnosticui/a2ui-react`** — React 18/19 `<AgA2uiSurface>` wrapper and `useA2uiSurface` hook
 - **`@agnosticui/a2ui-vue`** — Vue 3 `<AgA2uiSurface>` component and `useA2uiSurface` composable
 
@@ -669,7 +669,7 @@ processor.processMessages([
 ]);
 ```
 
-For the full 25-component catalog, React & Vue code examples, FACE validation (`validateSurface`), and `SKILL.md` agent setup, see the [Generative UI (A2UI v1.0) guide](/docs/a2ui).
+For the full 35-component catalog, React & Vue code examples, FACE validation (`validateSurface`), and `SKILL.md` agent setup, see the [Generative UI (A2UI v1.0) guide](/docs/a2ui).
 
 
 ## NPM Package (Alternative)

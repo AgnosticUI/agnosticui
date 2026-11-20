@@ -9,7 +9,7 @@ The **AgnosticUI MCP Server** implements the open **Model Context Protocol (MCP)
 The server exposes specialized JSON-RPC capabilities over standard input/output (stdio) channels to prevent property hallucinations during software workflows:
 
 1. **`get_component_schema`**: Returns precise public attributes, slots, events, and framework wrapper imports by analyzing the workspace's metadata manifest.
-2. **`generate_streamed_layout`**: Pre-flight A2UI `v1.0` wire stream and adjacency-list graph validator backed by `v2/a2ui/catalog/agnosticui-catalog.json` (`https://agnosticui.com`). Validates protocol version (`"1.0"`), `catalogId`, UAX #31 component IDs, component props/`@path` bindings, duplicate IDs, dead child pointers, DFS cycles, and `root` reachability.
+2. **`generate_streamed_layout`**: Pre-flight A2UI `v1.0` wire stream and adjacency-list graph validator backed by `v2/a2ui/catalog/agnosticui-catalog.json` (`https://agnosticui.com/a2ui/v1/catalog.json`). Validates protocol version (`"1.0"`), `catalogId`, UAX #31 component IDs, component props/`@path` bindings, duplicate IDs, dead child pointers, DFS cycles, and `root` reachability.
 3. **`get_design_tokens`**: Exposes `--ag-<prop>` variables directly from compiled Style Dictionary dictionaries.
 4. **`resolve_skin_properties`**: Supplies overrides for artistic visuals and visual sub-themes.
 

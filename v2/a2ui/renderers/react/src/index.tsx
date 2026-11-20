@@ -4,8 +4,8 @@
  * for AgnosticUI's A2UI v1.0 catalog and Light-DOM <a2ui-surface>.
  */
 
-import * as React from 'react';
-import { createComponent, type EventName } from '@lit/react';
+import * as React from "react";
+import { createComponent, type EventName } from "@lit/react";
 import {
   A2uiSurface,
   MessageProcessor,
@@ -17,12 +17,12 @@ import {
   type LitComponentApi,
   type SurfaceModel,
   type A2uiWireMessage,
-} from '@agnosticui/a2ui-lit';
+} from "@agnosticui/a2ui-lit";
 
 let catalogRegistered = false;
 
 /**
- * Idempotently registers all 25 AgnosticUI A2UI v1.0 custom elements.
+ * Idempotently registers all 35 AgnosticUI A2UI v1.0 custom elements.
  * Safe to call multiple times under React 18/19 StrictMode.
  */
 export function ensureAgnosticUICatalog(): void {
@@ -38,16 +38,17 @@ export type A2uiActionEvent = CustomEvent<Record<string, unknown>>;
  * Renders any A2UI v1.0 SurfaceModel backed by AgnosticUICatalog.
  */
 const BaseA2uiSurface = createComponent({
-  tagName: 'a2ui-surface',
+  tagName: "a2ui-surface",
   elementClass: A2uiSurface,
   react: React,
   events: {
-    onA2uiAction: 'a2uiaction' as EventName<A2uiActionEvent>,
+    onA2uiAction: "a2uiaction" as EventName<A2uiActionEvent>,
   },
 });
 
-export interface AgA2uiSurfaceProps
-  extends React.ComponentPropsWithoutRef<typeof BaseA2uiSurface> {
+export interface AgA2uiSurfaceProps extends React.ComponentPropsWithoutRef<
+  typeof BaseA2uiSurface
+> {
   surface?: SurfaceModel<LitComponentApi>;
 }
 
@@ -72,7 +73,7 @@ export const AgA2uiSurface = React.forwardRef<A2uiSurface, AgA2uiSurfaceProps>(
         if (node && surface !== undefined) {
           node.surface = surface;
         }
-        if (typeof forwardedRef === 'function') {
+        if (typeof forwardedRef === "function") {
           forwardedRef(node);
         } else if (forwardedRef) {
           forwardedRef.current = node;
@@ -98,7 +99,10 @@ export interface UseA2uiSurfaceResult {
   surface: SurfaceModel<LitComponentApi> | undefined;
   surfaceRef: React.RefObject<A2uiSurface | null>;
   processMessages: (messages: A2uiWireMessage[]) => void;
-  streamMessages: (messages: A2uiWireMessage[], delayMs?: number) => Promise<void>;
+  streamMessages: (
+    messages: A2uiWireMessage[],
+    delayMs?: number,
+  ) => Promise<void>;
   resetSurface: () => void;
   validate: (report?: boolean) => boolean;
   getDataModel: () => unknown;
@@ -111,7 +115,7 @@ export function useA2uiSurface(
   options: UseA2uiSurfaceOptions = {},
 ): UseA2uiSurfaceResult {
   const {
-    surfaceId = 'support_surface',
+    surfaceId = "support_surface",
     onAction,
     validateOnAction = true,
   } = options;
@@ -142,31 +146,28 @@ export function useA2uiSurface(
     forceRender();
   }, []);
 
-  const processMessages = React.useCallback(
-    (messages: A2uiWireMessage[]) => {
-      const processor = processorRef.current;
-      if (!processor) return;
+  const processMessages = React.useCallback((messages: A2uiWireMessage[]) => {
+    const processor = processorRef.current;
+    if (!processor) return;
 
-      for (const msg of messages) {
-        const envelope = msg as unknown as {
-          createSurface?: { surfaceId?: string };
-        };
-        const targetId = envelope.createSurface?.surfaceId;
-        if (targetId && processor.model.getSurface(targetId)) {
-          processor.processMessages([
-            { version: '1.0', deleteSurface: { surfaceId: targetId } } as never,
-          ]);
-        }
-        processor.processMessages([msg as never]);
+    for (const msg of messages) {
+      const envelope = msg as unknown as {
+        createSurface?: { surfaceId?: string };
+      };
+      const targetId = envelope.createSurface?.surfaceId;
+      if (targetId && processor.model.getSurface(targetId)) {
+        processor.processMessages([
+          { version: "1.0", deleteSurface: { surfaceId: targetId } } as never,
+        ]);
       }
+      processor.processMessages([msg as never]);
+    }
 
-      if (surfaceRef.current) {
-        surfaceRef.current.requestUpdate();
-      }
-      forceRender();
-    },
-    [],
-  );
+    if (surfaceRef.current) {
+      surfaceRef.current.requestUpdate();
+    }
+    forceRender();
+  }, []);
 
   const streamMessages = React.useCallback(
     async (messages: A2uiWireMessage[], delayMs = 0) => {
@@ -185,7 +186,7 @@ export function useA2uiSurface(
   const getDataModel = React.useCallback((): unknown => {
     const current = processorRef.current?.model.getSurface(surfaceId);
     if (!current) return {};
-    return current.dataModel.get('') ?? current.dataModel.get('/') ?? {};
+    return current.dataModel.get("") ?? current.dataModel.get("/") ?? {};
   }, [surfaceId]);
 
   const surface = processorRef.current.model.getSurface(surfaceId);
@@ -212,11 +213,11 @@ export function useA2uiSurface(
       const detail = (evt as A2uiActionEvent).detail ?? {};
       handleResolvedAction(detail);
     };
-    el?.addEventListener('a2uiaction', domListener);
+    el?.addEventListener("a2uiaction", domListener);
 
     return () => {
       sub.unsubscribe();
-      el?.removeEventListener('a2uiaction', domListener);
+      el?.removeEventListener("a2uiaction", domListener);
     };
   }, [processorEpoch, validateOnAction, surface]);
 

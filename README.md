@@ -72,11 +72,11 @@ Every tool sees the **raw source**. This creates a high-fidelity environment for
 
 This is the architecture for the next era of development: **context-aware, framework-agnostic, and AI-ready.**
 
-The **A2UI v1.0** generative UI layer ships with three companion resources:
+The **[A2UI v1.0](https://a2ui.org)** ([GitHub](https://github.com/a2ui-project/a2ui)) generative UI layer ships with three companion resources:
 
 - [`v2/a2ui/README.md`](./v2/a2ui/README.md) — full architecture, AST codegen pipeline, multi-framework renderers (`@agnosticui/a2ui-lit`, `@agnosticui/a2ui-react`, `@agnosticui/a2ui-vue`), and Support Center demos
 - [`v2/a2ui/catalog/SKILL.md`](./v2/a2ui/catalog/SKILL.md) — agent skill instructions and prompt rules for streaming valid A2UI `v1.0` surfaces
-- [`v2/a2ui/catalog/agnosticui-catalog.json`](./v2/a2ui/catalog/agnosticui-catalog.json) — 25-component A2UI `v1.0` JSON Schema catalog (`https://agnosticui.com/a2ui/v1/catalog.json`)
+- [`v2/a2ui/catalog/agnosticui-catalog.json`](./v2/a2ui/catalog/agnosticui-catalog.json) — 35-component A2UI `v1.0` JSON Schema catalog (`https://agnosticui.com/a2ui/v1/catalog.json`)
 
 ---
 

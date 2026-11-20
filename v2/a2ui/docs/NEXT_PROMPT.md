@@ -15,7 +15,7 @@
 
  COMPLETED PHASES & TASKS :
    - Phase 1–3: Workspace scaffold, zero-LLM stream harness, AST catalog generator, FACE validation, and 21-skin offline demo.
-   - Phase 4: Expanded 25-component catalog, `SKILL.md` generation, CI drift check, and migration of VitePress documentation.
+   - Phase 4: Expanded 35-component catalog, `SKILL.md` generation, CI drift check, and migration of VitePress documentation.
    - Phase 5: Multi-framework renderers (`lit`, `react`, `vue`) and tri-framework Support Center demos featuring `AgMessageBubble`.
    - Phase 6: Catalog ID standardization, MCP server validation, comprehensive test coverage, npm publishing, VitePress deployment, and submission of `a2ui-project/a2ui#4272`.
    - Phase 7:
