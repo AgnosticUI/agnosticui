@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, onUnmounted, ref } from 'vue';
+import { computed, onMounted, onUnmounted, ref, watch } from 'vue';
 import { CircleSlash2, Code2, Moon, Sun } from 'lucide-vue-next';
 import {
   AgA2uiSurface,
@@ -40,6 +40,7 @@ import {
   diffDataModelSnapshots,
   renderHighlightedJsonHtml,
 } from '../../shared/data-model-diff.js';
+import { createFollowScrollController } from '../../shared/follow-scroll.js';
 
 restorePrefs();
 
@@ -58,6 +59,9 @@ const inspectorOpen = ref(false);
 const actionCount = ref(0);
 const dataModelHtml = ref<string>(renderHighlightedJsonHtml({}, new Map()));
 const changedPathCount = ref(0);
+const isAutoFollowing = ref(true);
+const jsonViewerEl = ref<HTMLElement | null>(null);
+const followScroll = createFollowScrollController();
 const streamPhase = ref<StreamPhase>('complete');
 const streamProgress = ref({ current: 0, total: 0 });
 const eventLogText = ref('Ready.');
@@ -92,7 +96,6 @@ const syncDataModelInspector = (rawData: unknown, resetBaseline = false) => {
   changedPathCount.value = changes.size;
   dataModelHtml.value = renderHighlightedJsonHtml(nextSnapshot, changes);
 };
-
 const logEvent = (message: string, detail?: unknown) => {
   const stamp = new Date().toLocaleTimeString();
   const extra =
@@ -117,7 +120,7 @@ const {
 } = useA2uiSurface({
   surfaceId: 'support_surface',
   validateOnAction: false,
-    onAction: (detail) => {
+  onAction: (detail) => {
     if (streamPhase.value !== 'complete') {
       return;
     }
@@ -164,7 +167,6 @@ const {
   },
 });
 
-
 const runStream = async (
   messages: A2uiWireMessage[],
   streamLabel: string,
@@ -173,6 +175,7 @@ const runStream = async (
   activeStreamHandle?.cancel();
   activeMessages = messages;
   resetSurface();
+  isAutoFollowing.value = followScroll.reset();
   syncDataModelInspector({}, true);
   streamProgress.value = { current: 0, total: 0 };
   logEvent('Streaming surface: ' + streamLabel);
@@ -200,6 +203,27 @@ const runStream = async (
 };
 
 runStreamRef = runStream;
+
+watch(
+  [dataModelHtml, inspectorOpen],
+  ([, isOpen]) => {
+    if (isOpen) {
+      followScroll.sync(jsonViewerEl.value);
+    }
+  },
+  { flush: 'post' },
+);
+
+const handleViewerScroll = (e: Event) => {
+  isAutoFollowing.value = followScroll.onUserScroll(
+    e.currentTarget as HTMLElement,
+  );
+};
+
+const handleJumpToLatest = () => {
+  isAutoFollowing.value = followScroll.reset();
+  followScroll.sync(jsonViewerEl.value);
+};
 
 let pollTimer: number | null = null;
 
@@ -280,13 +304,12 @@ const handleGeneratePrompt = async (overridePrompt?: string) => {
   }
 };
 </script>
-
 <template>
   <div class="studio-shell">
     <header class="studio-header">
       <div class="studio-title-group">
-        <h1>Ag × A2UI</h1>
-        <span class="protocol-pill">v1.0 Spec • Vue 3</span>
+        <h1>Ag &times; A2UI</h1>
+        <span class="protocol-pill">v1.0 Spec &bull; Vue 3</span>
       </div>
 
       <div class="studio-controls">
@@ -432,7 +455,6 @@ const handleGeneratePrompt = async (overridePrompt?: string) => {
               </button>
             </div>
           </div>
-
           <VueAlert v-if="liveErrorText" variant="danger" bordered-left>
             {{ liveErrorText }}
           </VueAlert>
@@ -480,11 +502,25 @@ const handleGeneratePrompt = async (overridePrompt?: string) => {
         <section class="inspector-panel">
           <div class="panel-header">
             <h3>Live DataModel (@path)</h3>
+            <button
+              v-if="!isAutoFollowing"
+              type="button"
+              class="follow-scroll-pill"
+              title="Resume auto-scrolling to latest DataModel changes"
+              @click="handleJumpToLatest"
+            >
+              &darr; Jump to latest
+            </button>
             <span v-if="changedPathCount > 0" class="protocol-pill">
               {{ changedPathCount }} changed
             </span>
           </div>
-          <pre class="json-viewer" v-html="dataModelHtml" />
+          <pre
+            ref="jsonViewerEl"
+            class="json-viewer"
+            @scroll="handleViewerScroll"
+            v-html="dataModelHtml"
+          />
         </section>
 
         <section class="inspector-panel">
