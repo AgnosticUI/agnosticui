@@ -1,40 +1,52 @@
 # Contributing to AgnosticUI
 
-Thanks for your interest in contributing! This guide covers the architecture, the local development workflow, and what to verify before opening a PR.
+Thanks for your interest in contributing! This guide covers the monorepo layout, local development workflows across packages, codegen synchronization, and what to verify before opening a PR.
+
+For deep-dive component implementation rules (WAI-ARIA APG patterns, Lit property initialization, dual-dispatch events, Vue `watchEffect` & slot detection, and Shadow DOM ARIA boundaries), see [`v2/docs/DEVELOPMENT_GUIDE.md`](v2/docs/DEVELOPMENT_GUIDE.md).
 
 ## Prerequisites
 
-- **Node.js v22** (see `.nvmrc`; run `nvm use` if you have nvm)
-- Familiarity with the AgnosticUI CLI: see [Installation docs](https://www.agnosticui.com/installation.html)
+- **Node.js v22** (see `.nvmrc`; run `nvm use` if you use nvm)
+- Familiarity with the AgnosticUI CLI: see the [Installation docs](https://www.agnosticui.com/installation)
 
 ## Repo Structure
 
-```
+```text
 v2/
-├── lib/             Core web components (Lit-based, framework-agnostic)
-├── cli/             The agnosticui-cli tool
-├── theme-registry/  Design tokens: source of truth for all theming
-├── skins/           Pre-built skin themes (skins-bundle.css, skin-switcher)
-├── sdui/            Server-Driven UI: schema, renderers, and demo apps
-├── examples/        Spot-check environment: react-test, vue-test, lit-test
-├── site/            VitePress documentation site
-├── playbooks/       AI-prompt-driven page templates
-├── docs/            Architecture docs, dev guides, SDUI spec, LLM prompt guide
-└── scripts/         Utility scripts (verify, scaffold, build)
+├── lib/             Core web components (Lit-based, framework-agnostic, FACE-enabled)
+├── cli/             The agnosticui-cli scaffolding & sync tool
+├── mcp-server/      Model Context Protocol (MCP) server for component/token/A2UI context
+├── a2ui/            A2UI v1.0 generative UI catalog, renderers (lit/react/vue), and Support Center studios
+├── theme-registry/  Design tokens: single source of truth for all theming (Style Dictionary)
+├── skins/           Pre-built runtime skin themes (skins-bundle.css, skin-switcher)
+├── examples/        Spot-check & Playwright E2E environment: react-test, vue-test, lit-test
+├── site/            VitePress documentation site (agnosticui.com)
+├── playbooks/       AI-prompt-driven page templates & sdui.json schemas
+├── sdui/            Legacy Server-Driven UI packages (superseded by v2/a2ui for A2UI v1.0)
+├── docs/            Architecture guides, DEVELOPMENT_GUIDE.md, CLI.md, and authoring specs
+├── graphics/        Brand assets, architecture diagrams, and Figma sources
+└── scripts/         Monorepo verification, scaffolding, sync, and tarball build scripts
 ```
 
 ## v2/lib Architecture
 
-`v2/lib` is the heart of AgnosticUI. Each component follows a consistent three-layer structure:
+`v2/lib` is the heart of AgnosticUI. New components can be scaffolded automatically via:
 
+```bash
+cd v2/lib
+npm run scaffold -- MyComponent
 ```
+
+Each component follows a consistent three-layer structure:
+
+```text
 v2/lib/src/components/Button/
 ├── core/
 │   ├── _Button.ts       # The Lit element class (private, prefixed with _)
 │   └── Button.ts        # Calls customElements.define('ag-button', ...) and
 │                        # declares the global HTMLElementTagNameMap entry
 ├── react/
-│   ├── ReactButton.tsx  # @lit/react wrapper: bridges Lit events to React props
+│   ├── ReactButton.tsx  # @lit/react wrapper: bridges Lit custom events to React props
 │   └── index.ts         # Barrel: re-exports ReactButton + all public types
 └── vue/
     ├── VueButton.vue    # Custom Vue SFC wrapper (not @lit/react; hand-crafted)
@@ -46,82 +58,142 @@ v2/lib/src/components/Button/
 Always import from the barrel (`react/index.ts` or `vue/index.ts`) rather than directly from the implementation file. Importing the barrel triggers `customElements.define` as a side effect, ensuring the web component is registered before it is used.
 
 ```ts
-// Correct: barrel import ensures ag-button is registered
+// React
 import { ReactButton } from './components/ag/Button/react/ReactButton';
 
-// For Vue
+// Vue
 import VueButton from './components/ag/Button/vue/VueButton.vue';
-```
 
-### Framework-agnostic usage (Svelte, Angular, Solid, etc.)
-
-Other frameworks consume the web component directly. Import `core/Button.ts` to register the element, then use the `<ag-button>` tag in your template:
-
-```ts
+// Vanilla / Svelte / Angular / Solid
 import 'agnosticui-core/components/Button/core/Button';
 ```
 
-No wrapper is needed; the web component works anywhere the DOM does.
+### React & Vue wrappers
 
-### React wrappers and @lit/react
-
-React wrappers use `@lit/react` `createComponent` to map Lit custom events to React-style callback props and handle ref forwarding. If you are adding a new event to a core component, update the React wrapper to expose a corresponding `onXxx` prop.
-
-### Vue wrappers
-
-Vue wrappers are hand-crafted SFCs (not generated by `@lit/react`). They use `defineComponent` or `<script setup>` and emit events in the Vue idiom. The wrapper is also responsible for importing the core file so the custom element is registered.
+- **React wrappers** use `@lit/react` `createComponent` to map custom Lit events (`onXxx`) and handle ref forwarding. Native composed events (`click`, `input`, `change`) work automatically without explicit event mapping.
+- **Vue wrappers** are hand-crafted SFCs using `watchEffect` for reactive property syncing and manual `slotchange` dispatch on mount.
 
 ### FACE (Form Associated Custom Elements)
 
-AgnosticUI form components (Input, Checkbox, Select, Toggle, etc.) implement the FACE API so they participate in native `<form>` submission and constraint validation. This is not widely understood: read the [Form Association docs](https://www.agnosticui.com/docs/form-association.html) before touching any form component. Getting FACE wrong silently breaks native form behavior.
+AgnosticUI form controls (`AgInput`, `AgCheckbox`, `AgSelect`, `AgCombobox`, `AgRadio`, `AgRating`, `AgSlider`, `AgToggle`, etc.) compose `FaceMixin` (`v2/lib/src/shared/face-mixin.ts`) so they participate in native `<form>` submission, session restore, and constraint validation.
 
-## v2/theme-registry: Design Tokens
+Read the [Form Association docs](https://www.agnosticui.com/docs/form-association) before modifying any form component. Ensure `ElementInternals` form values (`setFormValue`) and constraint validity (`setValidity`) are synced both on user input events and on programmatic property updates inside `updated()`.
 
-Design tokens are the single source of truth for all colors, spacing, typography, and motion values. They live in `v2/theme-registry/` and are compiled by **Style Dictionary**.
+## v2/theme-registry & v2/skins: Tokens & Themes
 
-The compiled output is pushed into `v2/lib/src/styles/`:
+Design tokens live in `v2/theme-registry/tokens/` and are compiled by **Style Dictionary**:
 
-- `ag-tokens.css`: CSS custom properties for light mode
-- `ag-tokens-dark.css`: CSS custom properties for dark mode
+```bash
+cd v2/theme-registry
+npm run rebuild     # cleans dist/ and compiles light + dark CSS custom properties
+```
 
-Both files are then imported by components and by the example/playbook projects. If you need to change a color or spacing value, change the token in `v2/theme-registry/`, recompile, and let the change propagate; do not hardcode values in component CSS.
+Running `npm run build` inside `v2/lib` automatically executes `prebuild` (`npm run sync-tokens`), copying `ag-tokens.css` and `ag-tokens-dark.css` into `v2/lib/src/styles/` and compiling motion utilities. Never hardcode color, spacing, or radius values in component CSS.
 
-Full theming documentation: [agnosticui.com/theming.html](https://www.agnosticui.com/theming.html)
+If you add or modify a skin under `v2/skins/`, rebuild the combined skin bundle from the repository root:
+
+```bash
+npm run skins:bundle
+```
+
+Full theming documentation: [Theming](https://www.agnosticui.com/theming)
+
+## v2/a2ui: Generative UI (A2UI v1.0) & Codegen
+
+`v2/a2ui/` provides AgnosticUI's spec-compliant [A2UI `v1.0`](https://a2ui.org) ([GitHub](ttps://github.com/a2ui-project/a2ui)) component catalog generator, multi-framework renderers (`@agnosticui/a2ui-lit`, `@agnosticui/a2ui-react`, `@agnosticui/a2ui-vue`), and Support Center reference studios (`v2/a2ui/demos/support-center/`).
+
+### Single Source of Truth (`generate-catalog.ts`)
+
+`v2/a2ui/catalog/scripts/generate-catalog.ts` inspects `v2/lib/src/components/` via TypeScript AST and generates synchronized artifacts across the monorepo:
+
+- `v2/a2ui/renderers/lit/src/components/Ag*.ts`, `catalog.ts`, and `index.ts`
+- `v2/a2ui/catalog/agnosticui-catalog.json` & `v2/a2ui/catalog/SKILL.md`
+- `v2/a2ui/renderers/lit/agnosticui-catalog.json` & `v2/a2ui/renderers/lit/SKILL.md`
+- `v2/site/docs/public/a2ui/v1/catalog.json`
+
+**Do not edit those generated files by hand.** If you modify a component's public props in `v2/lib` or update catalog generation rules, re-run codegen from the repository root (`generate-catalog.ts` imports `@a2ui/web_core` from `renderers/lit`, so all three packages require dependencies installed):
+
+```bash
+(cd v2/lib && npm ci)
+(cd v2/a2ui/renderers/lit && npm ci)
+(cd v2/a2ui/catalog && npm ci && npm run generate && npm run check)
+```
+
+To regenerate, verify zero drift, and build/pack all three renderers in one step:
+
+```bash
+(cd v2/a2ui/catalog && npm run rebuild:all)
+```
+
+The `Check Codegen Consistency` workflow (`.github/workflows/check-codegen.yml`) enforces zero drift on every push and PR.
+
+### Renderer & Support Center Studio Verification
+
+```bash
+(cd v2/a2ui/renderers/lit && npm test && npm run typecheck && npm run build)
+(cd v2/a2ui/renderers/react && npm ci && npm test && npm run typecheck && npm run build)
+(cd v2/a2ui/renderers/vue && npm ci && npm test && npm run typecheck && npm run build)
+(cd v2/a2ui/demos/support-center/shared && npm ci && npm run typecheck && npm test)
+(cd v2/a2ui/demos/support-center/lit && npm ci && npm run build)
+```
+
+## v2/mcp-server: Model Context Protocol Server
+
+`v2/mcp-server/` exposes AgnosticUI component schemas (`v2/lib/custom-elements.json`), Style Dictionary tokens, skin overrides, and A2UI `v1.0` wire stream validation (`generate_streamed_layout`) over stdio JSON-RPC:
+
+```bash
+cd v2/mcp-server
+npm ci
+npm run typecheck
+npm test
+npm run build
+```
 
 ## v2/site: Documentation Site
 
-The docs site is a **VitePress** project located at `v2/site/docs/`. VitePress itself is Vue-based, so the custom theme components (`v2/site/docs/.vitepress/theme/components/`) are Vue SFCs.
+The docs site is a **VitePress** project at `v2/site/docs/` (custom theme components live in `v2/site/docs/.vitepress/theme/components/`):
 
-### StackBlitz embeds
+```bash
+cd v2/site
+npm ci
+npm run docs:dev       # local dev server at http://localhost:8000
+npm run docs:build     # production static build check
+```
 
-Interactive code examples in the docs use **StackBlitz** to let readers run real React, Vue, or Lit code in the browser. The embed configuration lives in:
+To sync updated tokens/skins or test a locally packed `agnosticui-core` tarball in VitePress:
 
-- `v2/site/docs/.vitepress/theme/components/playbooks-config.ts`: maps playbook names to StackBlitz project IDs and settings
-- `v2/site/docs/.vitepress/theme/components/PlaybookStackBlitz.vue`: the Vue component that renders the embed
-
-This matters for React examples in particular: the docs site is Vue-based, so StackBlitz is the mechanism that proves React wrappers actually work in a real React context.
+```bash
+cd v2/site
+npm run sync-tokens
+# or update the tarball version in package.json's reinstall:lib script and run:
+npm run reinstall:lib
+```
 
 ## v2/playbooks: AI-Prompt Page Templates
 
-`v2/playbooks/` contains prompt-driven page templates that demonstrate how to build complete UI workflows (login, onboarding, dashboard, etc.) using AgnosticUI components across React, Vue, and Lit.
+`v2/playbooks/` contains prompt-driven page templates across React, Vue, and Lit:
 
-Each playbook is noteworthy for two reasons:
-
-1. **Codified AI prompts:** the `PROMPT-3-FRAMEWORKS.md` files show how design intent can be expressed as a reproducible prompt that generates idiomatic code for all three frameworks simultaneously.
-
-2. **Full theming showcase:** every playbook demonstrates the complete theming stack: design-token-based skin switching (`v2/skins/`) and dark/light mode toggling. If you add or modify a component, check that it responds correctly to both skin and dark-mode changes, since playbooks are the canonical demonstration of this.
+1. **Codified AI prompts:** `PROMPT-3-FRAMEWORKS.md` files express design intent as reproducible prompts for all three frameworks.
+2. **Full theming showcase:** every playbook demonstrates runtime skin switching (`v2/skins/`) and dark/light mode toggling.
 
 ## v2/cli: The CLI Tool
 
-The CLI (`v2/cli/`) is what end users run to scaffold and add components to their projects. See the [Installation docs](https://www.agnosticui.com/installation.html) for the user-facing workflow. For contributors modifying the CLI itself, see the CLI Development Cycle section below.
+The CLI (`v2/cli/`) scaffolds and updates components in consumer projects (`init`, `add`, `remove`, `list`, `sync`, `storybook`, `playbook`, `context`):
 
-Available commands: `init`, `add`, `remove`, `list`, `sync`, `storybook`, `playbook`, `context` (and deprecated `view`). Run `npx agnosticui-cli --help` to see the current list.
+```bash
+cd v2/cli
+npm ci
+npm run lint
+npm run typecheck
+npm test
+npm run build
+```
 
 ## Component Development Cycle
 
 Open two terminals.
 
-### Terminal 1: Build and pack the lib
+### Terminal 1: Build and pack `v2/lib`
 
 ```bash
 cd v2/lib
@@ -141,67 +213,49 @@ npm install /path/to/v2/lib/agnosticui-core-2.x.x-alpha.x.tgz
 npx agnosticui-cli sync
 npx agnosticui-cli add <ComponentName> --force
 npm run dev
-# open browser and visually verify the component renders correctly
 ```
 
-`v2/examples` is the official spot-check environment. The example projects are real CLI-installed projects that consume components exactly as end users do, making them a better validation environment and a dogfooding exercise simultaneously.
+`v2/examples` is the official spot-check environment. Restore `package.json` and `package-lock.json` in `v2/examples/*` before committing so temporary tarball paths are never committed.
 
-## Running e2e Tests
-
-Each example project has Playwright tests covering all component categories:
+### Playwright E2E & Visual Regression
 
 ```bash
+# Example E2E suites (see .github/workflows/verify-examples.yml)
 cd v2/examples/react-test   # or vue-test / lit-test
-npm install
+npm ci
 npm run e2e
-```
 
-Or run all three via the CI workflow as reference (`.github/workflows/verify-examples.yml`).
+# Library visual regression (Dockerized Playwright; see .github/workflows/visual-regression.yml)
+cd v2/lib
+npm run test:visual
+```
 
 ## CLI Development Cycle
 
-The example apps in `v2/examples/` reference agnosticui-cli by its **npm registry version** (e.g. `"agnosticui-cli": "^2.0.0-alpha.22"`), not a `file:` path. This creates a chicken-and-egg problem: you cannot test local CLI changes via the normal install path without first publishing to npm.
-
-The workaround is to temporarily override the registry reference with a locally-packed tarball, then **restore** `package.json` and the lock file before committing.
+To test local `v2/cli` changes against `v2/examples/*` without publishing to npm first:
 
 ```bash
-# 1. Build and pack your local CLI changes
+# 1. Build and pack local CLI changes
 cd v2/cli
 npm run build
 npm pack
 # produces agnosticui-cli-2.x.x-alpha.x.tgz in v2/cli/
 
-# 2. Install the local tarball into the example project
+# 2. Install local tarball into an example project
 cd v2/examples/react-test   # or vue-test / lit-test
 npm install ../../cli/agnosticui-cli-2.x.x-alpha.x.tgz
 
-# 3. Run and verify your changes
+# 3. Verify CLI commands
 npx agnosticui-cli <command>
 npm run dev
 
-# 4. Restore package.json and lock file: do NOT commit the local override
+# 4. Restore package.json and lockfile before committing
 git checkout -- package.json package-lock.json
 ```
 
-Repeat steps 1-4 for each example project you need to verify. This workflow lets you iterate on CLI code locally without polluting git history with temporary `file:` or tarball references.
-
 ## Building the v2/lib Reference Tarball
 
-`v2/scripts/build-local-tarball.sh` builds the **component library** reference tarball that the CLI copies into scaffolded projects when a user runs `npx agnosticui-cli init`. It is not a CLI distribution tarball.
-
-If you are working only on `v2/lib` (components, types, styles), a simpler workflow is sufficient:
-
-```bash
-cd v2/lib
-npm run lint
-npm run typecheck
-npm run test
-npm run build
-npm pack
-# produces agnosticui-core-2.x.x-alpha.x.tgz in v2/lib/
-```
-
-Use the script when you need the full structured reference tarball (e.g. for a release or to verify the end-to-end scaffolding flow):
+`v2/scripts/build-local-tarball.sh` builds the component library reference tarball bundled into `npx agnosticui-cli init`:
 
 ```bash
 cd v2
@@ -214,27 +268,23 @@ Skip sanity checks with `SKIP_CHECKS=true bash scripts/build-local-tarball.sh`.
 ## Verification Scripts
 
 ```bash
-node v2/scripts/verify-playbooks.mjs   # check playbook health
-node v2/scripts/verify-examples.mjs   # check example project health
+node v2/scripts/verify-examples.mjs               # audit example project health
+node v2/scripts/verify-playbooks.mjs              # audit playbook health
+node v2/scripts/validate-playbook-schemas.mjs     # validate sdui.json against playbook-sdui.schema.json
 ```
 
-Pass `--fix` to auto-correct version drift in `package.json` and `agnosticui.config.json`.
-
-## SDUI Fixture Health Tests
-
-`v2/sdui/demo/src/a11y/toHtml.spec.ts` runs structural invariant checks on every `fixtureBank` variation. It uses `toHtml()` (the same serializer as the a11y tests) to confirm each variation produces the expected element counts and button labels. Assertions are derived from the fixture data itself, so no manual updates are needed when fixtures change intentionally; the tests will catch genuine regressions and pass for correct changes.
-
-These tests run as part of the existing `validate-fixtures` CI workflow.
+Pass `--fix` to `verify-examples.mjs` or `verify-playbooks.mjs` to auto-correct version drift in `package.json` and `agnosticui.config.json`. See [`v2/scripts/README.md`](v2/scripts/README.md) for additional utilities (`setup-testing-playground.sh`, `bulk-sync.sh`, etc.).
 
 ## PR Checklist
 
 - [ ] `npm run lint && npm run typecheck && npm run test` pass in `v2/lib`
-- [ ] Component renders correctly in at least one `v2/examples` project
+- [ ] `(cd v2/a2ui/catalog && npm run check)` passes with zero drift when `v2/lib` interfaces or A2UI catalog files change
+- [ ] Component renders correctly in both light and dark modes (`data-theme="dark"`) in at least one `v2/examples` project
 - [ ] `node v2/scripts/verify-examples.mjs` passes
-- [ ] `node v2/scripts/verify-playbooks.mjs` passes if playbook files were changed
-- [ ] Design token changes originate in `v2/theme-registry/`, not hardcoded in component CSS
-- [ ] FACE API is preserved if a form component was modified
-- [ ] `agnosticui-core` does not appear as a direct dependency in any example `package.json`
+- [ ] `node v2/scripts/verify-playbooks.mjs` and `node v2/scripts/validate-playbook-schemas.mjs` pass if playbook files or schemas changed
+- [ ] Design token changes originate in `v2/theme-registry/` (not hardcoded in component CSS)
+- [ ] FACE API (`setFormValue`, `setValidity`, `updated()` sync) is preserved if a form component was modified
+- [ ] `agnosticui-core` does not appear as a direct dependency in any example or playbook `package.json`
 
 ## Code of Conduct
 

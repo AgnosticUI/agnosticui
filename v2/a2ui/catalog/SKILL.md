@@ -5,13 +5,13 @@ Use this skill when generating **A2UI `v1.0`** JSONL/JSON message streams target
 ## Catalog Metadata
 
 - **Protocol Version:** `1.0`
-- **Catalog ID:** `https://agnosticui.com`
+- **Catalog ID:** `https://agnosticui.com/a2ui/v1/catalog.json`
 - **Total Components:** 45 (`AgText`, `Accordion`, `Alert`, `AspectRatio`, `Avatar`, `Badge`, `Breadcrumb`, `Button`, `Card`, `Checkbox`, `Combobox`, `CopyButton`, `Dialog`, `Divider`, `Drawer`, `EmptyState`, `Fieldset`, `Header`, `Icon`, `IconButton`, `Image`, `Input`, `IntlFormatter`, `Kbd`, `Link`, `Loader`, `Mark`, `MessageBubble`, `Pagination`, `Popover`, `Progress`, `ProgressRing`, `Radio`, `Rating`, `Select`, `SelectionButton`, `SelectionButtonGroup`, `SkeletonLoader`, `Slider`, `Spinner`, `Tabs`, `Tag`, `Timeline`, `Toggle`, `Tooltip`)
 - **Client Validation Function:** `validateSurface` (validates FACE controls via `reportValidity()`)
 
 ## Strict Authoring Rules
 
-1. **Envelope Version & Catalog ID:** Every wire message MUST include `"version": "1.0"`, and `createSurface` MUST set `"catalogId": "https://agnosticui.com"`.
+1. **Envelope Version & Catalog ID:** Every wire message MUST include `"version": "1.0"`, and `createSurface` MUST set `"catalogId": "https://agnosticui.com/a2ui/v1/catalog.json"`.
 2. **UAX #31 Component IDs:** Every component `id` MUST match `^[A-Za-z_][A-Za-z0-9_]*$` (letters, digits, underscores only; **never** hyphens).
 3. **Adjacency List Children:** Container components (`AgCard`, `AgFieldset`, `AgAccordion`, `AgCollapsible`, `AgTabs`, `AgHeader`, `AgMessageBubble`, `AgAlert`, `AgBadge`, `AgButton`, `AgTag`, `AgProgress`, `AgIcon`, `AgLink`, `AgKbd`, `AgMark`) reference child component IDs via `"children": ["child_id_1", ...]`.
 4. **Two-Way `@path` Data Binding:** Bind interactive form inputs (`AgInput`, `AgCombobox`, `AgSelect`, `AgCheckbox`, `AgRadio`, `AgRating`, `AgToggle`, `AgSlider`) using `{"@path": "/form/field"}` pointers and initialize values via `updateDataModel`.
@@ -25,7 +25,7 @@ Use this skill when generating **A2UI `v1.0`** JSONL/JSON message streams target
     "version": "1.0",
     "createSurface": {
       "surfaceId": "support_surface",
-      "catalogId": "https://agnosticui.com"
+      "catalogId": "https://agnosticui.com/a2ui/v1/catalog.json"
     }
   },
   {

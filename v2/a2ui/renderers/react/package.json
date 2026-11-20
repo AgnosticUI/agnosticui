@@ -40,7 +40,11 @@
     "@a2ui/lit": "^0.15.0",
     "@a2ui/web_core": "^0.15.0",
     "@agnosticui/a2ui-lit": ">=2.0.0-alpha.4",
+<<<<<<< HEAD
     "agnosticui-core": ">=2.0.0-alpha.32",
+=======
+    "agnosticui-core": ">=2.0.0-alpha.33",
+>>>>>>> origin/master
     "lit": "^3.0.0",
     "react": ">=18",
     "react-dom": ">=18"
@@ -56,7 +60,7 @@
     "@types/node": "^26.6.6",
     "@types/react": "^19.1.10",
     "@types/react-dom": "^19.1.9",
-    "agnosticui-core": "^2.0.0-alpha.32",
+    "agnosticui-core": "^2.0.0-alpha.33",
     "jsdom": "^26.1.0",
     "lit": "^3.3.3",
     "react": "^19.1.1",

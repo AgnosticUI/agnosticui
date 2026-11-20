@@ -1,11 +1,11 @@
 # Model Context Protocol (MCP) Server
 
-**AgnosticUI MCP Server** is a local workflow context engine that implements the open **Model Context Protocol (MCP)** specification. It bridges framework-agnostic design artifacts, Style Dictionary token registers, and **A2UI `v1.0`** catalog schemas directly into local AI-native coding environments.
+**AgnosticUI MCP Server** is a local workflow context engine that implements the open **Model Context Protocol (MCP)** specification. It bridges framework-agnostic design artifacts, Style Dictionary token registers, and **[A2UI `v1.0`](https://a2ui.org)** catalog schemas directly into local AI-native coding environments.
 
 By exposing these systems directly over standard input/output channels, an LLM shifts from blind guessing to zero-drift code generation—completely eliminating prop hallucinations and styling drift during software workflows.
 
 ::: tip Early access
-The MCP Server is new and evolving. The server architecture is stable enough to test and build with locally, but not yet published to npm. Feedback welcome via [GitHub issues](https://github.com).
+The MCP Server is new and evolving. The server architecture is stable enough to test and build with locally, but not yet published to npm. Feedback welcome via [GitHub issues]([GitHub issues](https://github.com/AgnosticUI/agnosticui/issues)).
 :::
 
 ---
@@ -65,7 +65,7 @@ The background process connects smoothly to host environments or testing scripts
 
 ## Data Freshness & Synchronization
 
-`generate_streamed_layout` validates incoming A2UI `v1.0` wire streams (`createSurface`, `updateComponents`, `updateDataModel`) and flat component graphs directly against `v2/a2ui/catalog/agnosticui-catalog.json` (`https://agnosticui.com`).
+`generate_streamed_layout` validates incoming A2UI `v1.0` wire streams (`createSurface`, `updateComponents`, `updateDataModel`) and flat component graphs directly against `v2/a2ui/catalog/agnosticui-catalog.json` (`https://agnosticui.com/a2ui/v1/catalog.json`).
 
 ### Manifest & Catalog Synchronization Pipeline
 

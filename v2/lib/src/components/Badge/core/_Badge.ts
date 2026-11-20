@@ -75,19 +75,19 @@ export class AgBadge extends LitElement implements BadgeProps {
     }
     :host([variant="primary"]) .badge {
       background-color: var(--ag-primary);
-      color: var(--ag-white);
+      color: var(--ag-primary-fg);
     }
     :host([variant="success"]) .badge {
       background-color: var(--ag-success);
-      color: var(--ag-white);
+      color: var(--ag-success-fg);
     }
     :host([variant="warning"]) .badge {
       background-color: var(--ag-warning);
-      color: var(--ag-black);
+      color: var(--ag-warning-fg);
     }
     :host([variant="danger"]) .badge {
       background-color: var(--ag-danger);
-      color: var(--ag-white);
+      color: var(--ag-danger-fg);
     }
     :host([variant="info"]) .badge {
       background-color: var(--ag-info-dark);

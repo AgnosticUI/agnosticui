@@ -97,7 +97,7 @@
   * Standardized `AGNOSTICUI_CATALOG_ID` to `https://agnosticui.com` and synchronized `agnosticui-catalog.json` and `SKILL.md` across `catalog/`, `renderers/lit/`, and `v2/site/docs/public/a2ui/v1/catalog.json`.
 * **Task 6.2 — Port MCP Server Validator & Codebase Audit** ✅
   * Upgraded `v2/mcp-server` `generate_streamed_layout` to validate A2UI `v1.0` wire streams and graphs (`10/10` passing) and purged legacy `v2/sdui` files.
-* **Task 6.3 — Comprehensive 25-Component Catalog & Hook Test Suite** ✅
+* **Task 6.3 — Comprehensive 35-component Catalog & Hook Test Suite** ✅
   * Verified all 25 catalog components and two-way `@path` bindings across Lit (`6/6`), React (`3/3`), and Vue (`3/3`) Vitest suites plus demo smoke tests.
 * **Task 6.4 — npm Package Metadata & Public Release** ✅
   * Published `@agnosticui/a2ui-lit@2.0.0-alpha.1`, `@agnosticui/a2ui-react@2.0.0-alpha.1`, and `@agnosticui/a2ui-vue@2.0.0-alpha.1` to npm (`alpha` and `latest` dist-tags).
@@ -145,7 +145,7 @@
 ## Phase 10: Multi-Page Queue Drill-Down, Composer Hotfix & npm/Netlify Release ✅
 
 * **Task 10.1 — Stateful Multi-Page Queue Drill-Down (`AgBreadcrumb` + `AgPagination`)** ✅
-  * **Micro-Chunk 10.1a:** Added `@breadcrumb-click` (`preventDefault()`) and two-way `@page-change` (`setCurrent`) bindings to `generate-catalog.ts` and Lit wrappers (`AgBreadcrumb.ts`, `AgPagination.ts`), and synchronized `AGNOSTICUI_CATALOG_ID` (`https://agnosticui.com`) across `catalog.ts`, `SKILL.md`, and `agnosticui-catalog.json`.
+  * **Micro-Chunk 10.1a:** Added `@breadcrumb-click` (`preventDefault()`) and two-way `@page-change` (`setCurrent`) bindings to `generate-catalog.ts` and Lit wrappers (`AgBreadcrumb.ts`, `AgPagination.ts`), and synchronized `AGNOSTICUI_CATALOG_ID` (`https://agnosticui.com/a2ui/v1/catalog.json`) across `catalog.ts`, `SKILL.md`, and `agnosticui-catalog.json`.
   * **Micro-Chunk 10.1b:** Implemented `buildCallerSpikeSurface()` in `live-gemini.ts` (3-page, 6-caller surge queue with `AgBreadcrumb` + `AgPagination`) and added `kind: 'update_surface'` list pagination and caller drill-down handlers (`change_queue_page`, `navigate_queue_breadcrumb`, `inspect_queue_caller`) in `agent-roundtrip.ts`.
   * **Micro-Chunk 10.1c:** Wired `update_surface` and `rejected` handlers across Lit (`lit/src/main.ts`), React (`react/src/main.tsx`), and Vue (`vue/src/App.vue`) Support Center Studios, expanded `agent-roundtrip.spec.ts` and `demos-smoke.spec.ts`, and verified all renderer/demo test suites and production builds pass.
 * **Hotfix 10.1a — Live Netlify Studio Composer UI Regressions (Pacing `<ag-button>`, `<ag-kbd bordered>` Inside `<ag-button variant="primary">`, & Button Gap)** ✅

@@ -7,7 +7,7 @@ We have implemented and validated all four core tools for the **AgnosticUI MCP S
 ### Current Verified Capabilities:
 
 1. **`get_component_schema`**: Reads `v2/lib/custom-elements.json` dynamically relative to `agnosticui.config.json` to resolve component parameters, slots, attributes, and framework import paths.
-2. **`generate_streamed_layout`**: Validates A2UI `v1.0` wire message streams (`messages`) and flat component adjacency lists (`nodes`) against `v2/a2ui/catalog/agnosticui-catalog.json` (`https://agnosticui.com`), checking protocol version (`"1.0"`), `catalogId`, UAX #31 component IDs, component prop/`@path` conformance, duplicate IDs, dead child pointers, DFS cycles, and `root` reachability.
+2. **`generate_streamed_layout`**: Validates A2UI `v1.0` wire message streams (`messages`) and flat component adjacency lists (`nodes`) against `v2/a2ui/catalog/agnosticui-catalog.json` (`https://agnosticui.com/a2ui/v1/catalog.json`), checking protocol version (`"1.0"`), `catalogId`, UAX #31 component IDs, component prop/`@path` conformance, duplicate IDs, dead child pointers, DFS cycles, and `root` reachability.
 3. **`get_design_tokens`**: Maps `--ag-*` design variables out of `theme-registry/dist/tokens.json` (with fallback to `theme-registry/tokens/<category>.json`).
 4. **`resolve_skin_properties`**: Extracts `--ag-*` CSS custom property overrides from `v2/skins/<skin>/skin.css` or `skin-dark.css`.
 5. **Telemetry & Verification Suite**: Safe `stderr` debug logging (`context.debugLog`) and **10/10 passing Vitest integration tests** (`npm test`).

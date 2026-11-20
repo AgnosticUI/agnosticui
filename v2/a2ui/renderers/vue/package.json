@@ -41,7 +41,11 @@
     "@a2ui/lit": "^0.15.0",
     "@a2ui/web_core": "^0.15.0",
     "@agnosticui/a2ui-lit": ">=2.0.0-alpha.4",
+<<<<<<< HEAD
     "agnosticui-core": ">=2.0.0-alpha.32",
+=======
+    "agnosticui-core": ">=2.0.0-alpha.33",
+>>>>>>> origin/master
     "lit": "^3.0.0",
     "vue": ">=3"
   },
@@ -52,7 +56,7 @@
     "@types/node": "^26.6.6",
     "@vitejs/plugin-vue": "^6.0.1",
     "@vue/test-utils": "^2.4.6",
-    "agnosticui-core": "^2.0.0-alpha.32",
+    "agnosticui-core": "^2.0.0-alpha.33",
     "jsdom": "^26.1.0",
     "lit": "^3.3.3",
     "typescript": "^7.0.2",

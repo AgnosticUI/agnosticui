@@ -33,7 +33,7 @@ import {
 let catalogRegistered = false;
 
 /**
- * Idempotently registers all 25 AgnosticUI A2UI v1.0 custom elements.
+ * Idempotently registers all 35 AgnosticUI A2UI v1.0 custom elements.
  * Safe to call multiple times across Vue 3 components or tests.
  */
 export function ensureAgnosticUICatalog(): void {
