@@ -11,6 +11,7 @@ export const AgTimelineSchema = z
     variant: z.enum(['warning', 'success', 'danger', 'primary', 'monochrome']).optional(),
     compact: DynamicBooleanSchema.describe('REF:#/$defs/DynamicBoolean|Boolean property compact.').optional(),
     ariaLabel: DynamicStringSchema.describe('REF:#/$defs/DynamicString|String property ariaLabel.').optional(),
+    items: z.array(z.object({ start: z.string().optional(), marker: z.string().optional(), end: z.string().optional(), markerAriaLabel: z.string().optional() })).optional(),
   })
   .strict();
 
@@ -33,7 +34,7 @@ export class AgA2uiTimelineElement extends A2uiLitElement<typeof AgTimelineApi> 
       .variant=${ifDefined(p.variant)}
       .compact=${Boolean(p.compact)}
       .ariaLabel=${ifDefined(p.ariaLabel)}
-    ></ag-timeline>`;
+    >${(p.items ?? []).map((item) => html`<ag-timeline-item marker-aria-label=${ifDefined(item.markerAriaLabel)}>${item.start ? html`<span slot="ag-start">${item.start}</span>` : ''}${item.marker ? html`<span slot="ag-marker">${item.marker}</span>` : ''}${item.end ? html`<span slot="ag-end">${item.end}</span>` : ''}</ag-timeline-item>`)}</ag-timeline>`;
   }
 }
 

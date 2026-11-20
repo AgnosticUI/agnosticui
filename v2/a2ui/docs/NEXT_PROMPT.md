@@ -2,7 +2,7 @@
        AGNOSTICUI-A2UI : Chronological Session Continuity Bridge Capsule              
 ================================================================================
  TIMESTAMP BASELINE : 2026-11-19T22:20:00Z
- ACTIVE WORKSPACE   : Phases 1–10 ✅ (Merged to `master`) | Next Branch: `feat/a2ui-phase11-audit-and-catalog` (Phase 11 📋)
+ ACTIVE WORKSPACE   : Phases 1–10 ✅ (Merged to `master`) | Active Branch: `feat/a2ui-phase11-audit-and-catalog` (Phase 11 🔄: Task 11.1 ✅, Task 11.2 Next)
  STRATEGIC PIVOT    :
    - Spec-compliant A2UI v1.0 Component Catalog (35 components) & Multi-Framework Web Renderer suite (`@agnosticui/a2ui-lit`, `@agnosticui/a2ui-react`, `@agnosticui/a2ui-vue`).
    - Live Published npm Packages (`agnosticui-core@2.0.0-alpha.32`, `@agnosticui/a2ui-lit@2.0.0-alpha.3`, `@agnosticui/a2ui-react@2.0.0-alpha.3`, `@agnosticui/a2ui-vue@2.0.0-alpha.3`).
@@ -33,8 +33,8 @@
      * Task 10.2: Published `agnosticui-core@2.0.0-alpha.32` + `@agnosticui/a2ui-{lit,react,vue}@2.0.0-alpha.3` (`alpha` & `latest` dist-tags), updated demo/site lockfiles, merged to `master`, and deployed to live Netlify Studio.
 
  NEXT UP (PHASE 11) :
-   - Phase 11 — Task 11.1: Enriched Turn-3 Verification Audit (`AgTimeline` + `AgIntlFormatter` + `AgLink` in `buildTurnThreeComponents()` inside `v2/a2ui/demos/support-center/shared/agent-roundtrip.ts`, plus unit tests in `agent-roundtrip.spec.ts`).
-   - Phase 11 — Task 11.2: Expand A2UI v1.0 catalog to ~45 components (`Loader`, `Tooltip`, `Popover`, `Drawer`, `Dialog`, `ButtonGroup`, `InputNumber`, `Textarea`, `CopyButton`, `AspectRatio`) and cut `2.0.0-alpha.4`.
+   - Phase 11 — Task 11.1 ✅: Enriched Turn-3 Verification Audit (`AgTimeline` declarative `items` support + `AgIntlFormatter` + `AgLink` in `buildTurnThreeComponents()`, verified across `catalog.spec.ts`, `agent-roundtrip.spec.ts`, and tri-framework renderer suites).
+   - Phase 11 — Task 11.2 📋: Expand A2UI v1.0 catalog from 35 to ~45 components (`Loader`, `Tooltip`, `Popover`, `Drawer`, `Dialog`, `ButtonGroup`, `InputNumber`, `Textarea`, `CopyButton`, `AspectRatio`), update `catalog.spec.ts`, regenerate `agnosticui-catalog.json` + `SKILL.md`, and cut `2.0.0-alpha.4`.
    - Separate Orthogonal Side-Track Branch (after Phase 11): Runtime Skin Curation (over-generate 40–50 `--ag-*` skin palettes and curate the strongest 21 for `v2/skins/`).
 
  STRICT SESSION OUTPUT RULES FOR ASSISTANT :

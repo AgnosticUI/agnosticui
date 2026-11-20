@@ -333,6 +333,11 @@ function generateWrapperFile(
   for (const p of props) {
     schemaLines.push(`    ${quoteName(p.name)}: ${p.zodExpr}.optional(),`);
   }
+  if (sdui === 'AgTimeline') {
+    schemaLines.push(
+      `    items: z.array(z.object({ start: z.string().optional(), marker: z.string().optional(), end: z.string().optional(), markerAriaLabel: z.string().optional() })).optional(),`,
+    );
+  }
   if (hasActions) {
     schemaLines.push(
       `    action: ActionSchema.describe('REF:#/$defs/Action|Action dispatched on user interaction.').optional(),`,
@@ -394,7 +399,9 @@ function generateWrapperFile(
   }
 
   let innerHtml = '';
-  if (slotType === 'label-child') {
+  if (sdui === 'AgTimeline') {
+    innerHtml = `\${(p.items ?? []).map((item) => html\`<ag-timeline-item marker-aria-label=\${ifDefined(item.markerAriaLabel)}>\${item.start ? html\`<span slot="ag-start">\${item.start}</span>\` : ''}\${item.marker ? html\`<span slot="ag-marker">\${item.marker}</span>\` : ''}\${item.end ? html\`<span slot="ag-end">\${item.end}</span>\` : ''}</ag-timeline-item>\`)}`;
+  } else if (slotType === 'label-child') {
     innerHtml = "${p.children?.length ? p.children.map((c) => this.renderNode(c)) : (p.label ?? '')}";
   } else if (slotType === 'children') {
     innerHtml = '${(p.children ?? []).map((c) => this.renderNode(c))}';

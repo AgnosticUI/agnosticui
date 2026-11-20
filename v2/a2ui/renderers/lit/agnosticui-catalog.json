@@ -2190,6 +2190,27 @@
         "ariaLabel": {
           "$ref": "common_types.json#/$defs/DynamicString",
           "description": "String property ariaLabel."
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "start": {
+                "type": "string"
+              },
+              "marker": {
+                "type": "string"
+              },
+              "end": {
+                "type": "string"
+              },
+              "markerAriaLabel": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
         }
       },
       "required": [

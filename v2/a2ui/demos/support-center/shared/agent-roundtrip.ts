@@ -484,6 +484,10 @@ function buildTurnThreeComponents(
     typeof rawContext.cluster === 'string' && rawContext.cluster.length > 0
       ? rawContext.cluster
       : 'na-enterprise';
+  const verifiedAtIso =
+    typeof rawContext.verifiedAt === 'string' && rawContext.verifiedAt.length > 0
+      ? rawContext.verifiedAt
+      : new Date().toISOString();
 
   return [
     {
@@ -507,7 +511,14 @@ function buildTurnThreeComponents(
       id: 'verify_card',
       component: 'AgCard',
       stacked: true,
-      children: ['verify_badge', 'verify_alert'],
+      children: [
+        'verify_badge',
+        'verify_alert',
+        'verify_timestamp_label',
+        'verify_timestamp_fmt',
+        'verify_audit_timeline',
+        'verify_trace_link',
+      ],
     },
     {
       id: 'verify_badge',
@@ -533,6 +544,58 @@ function buildTurnThreeComponents(
       component: 'AgText',
       el: 'p',
       text: `Simulated inbound VIP call routed to ${cluster} desk and logged for ${recipient}.`,
+    },
+    {
+      id: 'verify_timestamp_label',
+      component: 'AgText',
+      el: 'span',
+      text: 'Audit Timestamp (Locale Formatted): ',
+    },
+    {
+      id: 'verify_timestamp_fmt',
+      component: 'AgIntlFormatter',
+      type: 'date',
+      date: verifiedAtIso,
+      lang: 'en-US',
+      dateStyle: 'medium',
+      timeStyle: 'medium',
+    },
+    {
+      id: 'verify_audit_timeline',
+      component: 'AgTimeline',
+      orientation: 'vertical',
+      variant: 'primary',
+      ariaLabel: 'Live Test Call Verification Audit Trail',
+      items: [
+        {
+          start: '+0ms',
+          marker: '1',
+          end: 'Ingress SIP & VIP Caller ID authenticated',
+        },
+        {
+          start: '+42ms',
+          marker: '2',
+          end: `Routed to ${cluster} desk via active SLA policy`,
+        },
+        {
+          start: '+98ms',
+          marker: '3',
+          end: `CRM webhook & audit receipt dispatched to ${recipient}`,
+        },
+      ],
+    },
+    {
+      id: 'verify_trace_link',
+      component: 'AgLink',
+      href: '#trace-vip-98ms',
+      variant: 'primary',
+      children: ['verify_trace_link_text'],
+    },
+    {
+      id: 'verify_trace_link_text',
+      component: 'AgText',
+      el: 'span',
+      text: 'Inspect Distributed Telemetry Trace (#trace-vip-98ms)',
     },
   ];
 }

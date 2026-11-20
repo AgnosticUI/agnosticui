@@ -285,4 +285,42 @@ describe('AgnosticUI A2UI v1.0 Catalog & Surface', () => {
     agInput.reportValidity = () => true;
     expect(ValidateSurfaceImplementation.execute({}, dataCtx)).toBe(true);
   });
+
+  it('renders AgTimeline items into slotted ag-timeline-item elements', async () => {
+    const processor = new MessageProcessor<LitComponentApi>([AgnosticUICatalog]);
+    const { surfaceEl } = await mountFixture(processor, 'surface_timeline', [
+      {
+        version: '1.0',
+        createSurface: {
+          surfaceId: 'surface_timeline',
+          catalogId: AGNOSTICUI_CATALOG_ID,
+        },
+      },
+      {
+        version: '1.0',
+        updateComponents: {
+          surfaceId: 'surface_timeline',
+          components: [
+            {
+              id: 'root',
+              component: 'AgTimeline',
+              orientation: 'vertical',
+              variant: 'primary',
+              items: [
+                { start: '14:22:01', marker: '1', end: 'VIP call connected' },
+                { start: '14:22:02', marker: '2', end: 'CRM record verified' },
+              ],
+            },
+          ],
+        },
+      },
+    ]);
+
+    const timelineItems = surfaceEl.querySelectorAll('ag-timeline-item');
+    expect(timelineItems).toHaveLength(2);
+    expect(timelineItems[0]?.querySelector('[slot="ag-start"]')?.textContent).toBe('14:22:01');
+    expect(timelineItems[0]?.querySelector('[slot="ag-end"]')?.textContent).toBe('VIP call connected');
+    expect(timelineItems[1]?.querySelector('[slot="ag-start"]')?.textContent).toBe('14:22:02');
+    expect(timelineItems[1]?.querySelector('[slot="ag-end"]')?.textContent).toBe('CRM record verified');
+  });
 });
