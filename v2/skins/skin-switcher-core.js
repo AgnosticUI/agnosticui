@@ -8,20 +8,15 @@
 import { SKINS_CSS } from './skins-css-data.js';
 
 export const SKINS = [
-  // Default anchor
+  // Curated Baseline Keepers (8)
   { id: '', label: 'Default', swatch: '#297aff' },
-  // Oranges / terracottas / browns
-  { id: 'claymorphic', label: 'Claymorphic', swatch: '#c96442' },
-  { id: 'coffee-espresso', label: 'Coffee Espresso', swatch: '#6f4e37' },
-  // Greens / teals
   { id: 'deep-forest', label: 'Deep Forest', swatch: '#1f514c' },
-  // Cyans / neons
+  { id: 'claymorphic', label: 'Claymorphic', swatch: '#c96442' },
   { id: 'mo-neobrut', label: 'Mo-Neobrut', swatch: '#00bcd4' },
-  // Eye-comfort themes
-  { id: 'solarized', label: 'Solarized', swatch: '#2aa198' },
-  { id: 'paper', label: 'Paper', swatch: '#433422' },
-  // Neutrals / achromatics
+  { id: 'coffee-espresso', label: 'Coffee Espresso', swatch: '#6f4e37' },
   { id: 'monochromatic', label: 'Monochromatic', swatch: '#000000' },
+  { id: 'paper', label: 'Paper', swatch: '#433422' },
+  { id: 'solarized', label: 'Solarized', swatch: '#2aa198' },
 ];
 
 /** Apply a skin class to <html> and persist to localStorage. */

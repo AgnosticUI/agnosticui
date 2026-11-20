@@ -16,7 +16,7 @@ const path = require('path');
 const skinsDir = __dirname;
 const outFile = path.join(skinsDir, 'skins-bundle.css');
 
-// Discover active skin directories (skip underscore-prefixed archive folders like _legacy)
+// Discover skin directories (alphabetically sorted for deterministic output, excluding _legacy)
 const skinDirs = fs.readdirSync(skinsDir, { withFileTypes: true })
   .filter(d => d.isDirectory() && !d.name.startsWith('_'))
   .map(d => d.name)
@@ -33,7 +33,14 @@ parts.push(`/**
  *
  * All skin CSS files concatenated into one importable file.
  * Import this AFTER ag-tokens-dark.css in your entry point.
- */`);
+ */
+
+/* Default theme dark-mode neutral surface tokens (for MessageBubble / Badge neutral) */
+:where(html)[data-theme="dark"] {
+  --ag-neutral-background: #1f2937;
+  --ag-neutral-text: #f3f4f6;
+  --ag-neutral-border: #374151;
+}`);
 
 for (const dir of skinDirs) {
   const skinCss = path.join(skinsDir, dir, 'skin.css');
@@ -75,7 +82,6 @@ for (const dir of skinDirs) {
     ? fs.readFileSync(darkCss, 'utf8').trim()
     : '';
 
-  // Escape backticks and ${} in CSS content for template literals
   const esc = s => s.replace(/\\/g, '\\\\').replace(/`/g, '\\`').replace(/\$\{/g, '\\${');
 
   entries.push(`  '${dir}': {\n    light: \`${esc(light)}\`,\n    dark: \`${esc(dark)}\`,\n  }`);

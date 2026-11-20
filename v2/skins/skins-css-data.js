@@ -211,7 +211,7 @@ export const SKINS_CSS = {
  * Coffee Espresso Skin — Dark Mode
  *
  * Dark-mode overrides for the Coffee Espresso warm brown aesthetic.
- * Deep espresso backgrounds with cream and mocha highlights.
+ * Deep espresso backgrounds with high-contrast cream and mocha highlights.
  *
  * Activate by adding class="ag-skin-coffee-espresso" to <html>.
  * Load this file AFTER ag-tokens-dark.css so the cascade overrides.
@@ -219,22 +219,22 @@ export const SKINS_CSS = {
 
 [data-theme="dark"].ag-skin-coffee-espresso {
   /* ── Primary color family (brightened for dark backgrounds) ── */
-  --ag-primary: #c4a07c;
+  --ag-primary: #d4b494;
   --ag-primary-fg: #000000;
-  --ag-primary-dark: #a07850;
-  --ag-primary-border: #6f4e37;
+  --ag-primary-dark: #b8926c;
+  --ag-primary-border: #8c6648;
   --ag-primary-background: #221610;
-  --ag-primary-text: #d4b89c;
+  --ag-primary-text: #f0decb;
 
-  /* ── Focus ring (coffee-derived RGB, brightened) ── */
-  --ag-focus: 196, 160, 124;
-  --ag-focus-dark: #d4b89c;
+  /* ── Focus ring (coffee-derived RGB, brightened for high visibility) ── */
+  --ag-focus: 224, 192, 158;
+  --ag-focus-dark: #f0decb;
 
   /* ── Semantic text ── */
   --ag-text-primary: #f5ece3;
-  --ag-text-secondary: #d4c4b4;
-  --ag-text-muted: #a0907e;
-  --ag-text-primary-muted: #e8ddd0;
+  --ag-text-secondary: #e8dcd0;
+  --ag-text-muted: #b5a492;
+  --ag-text-primary-muted: #efe4d8;
 
   /* ── Borders ── */
   --ag-border: #3d2e22;
@@ -257,7 +257,7 @@ export const SKINS_CSS = {
 
   /* ── Rating ── */
   --ag-rating-filled: #d4a055;
-  --ag-rating-filled-primary: #c4a07c;
+  --ag-rating-filled-primary: #d4b494;
 
   /* ── Coffee palette (overrides blue palette) ── */
   --ag-blue-50: #f0e0cc;
@@ -889,7 +889,7 @@ export const SKINS_CSS = {
  * Paper Skin — Dark Mode
  *
  * Dark sepia for night-time reading. Maintains the warm, low-blue-light
- * character of the Paper skin while shifting to a dark background.
+ * character of the Paper skin while shifting to a high-contrast dark background.
  *
  * Activate by adding class="ag-skin-paper" to <html>.
  * Load this file AFTER ag-tokens-dark.css so the cascade overrides.
@@ -897,22 +897,22 @@ export const SKINS_CSS = {
 
 [data-theme="dark"].ag-skin-paper {
   /* ── Primary color family (warm tan/caramel on dark sepia) ── */
-  --ag-primary: #c9a87a;
+  --ag-primary: #d8b98c;
   --ag-primary-fg: #180f08;
-  --ag-primary-dark: #b8946a;
-  --ag-primary-border: #c9a87a;
+  --ag-primary-dark: #c4a070;
+  --ag-primary-border: #d8b98c;
   --ag-primary-background: #2a1e10;
-  --ag-primary-text: #e0c49a;
+  --ag-primary-text: #f3dfc0;
 
-  /* ── Focus ring (warm tan RGB) ── */
-  --ag-focus: 201, 168, 122;
-  --ag-focus-dark: #d9b888;
+  /* ── Focus ring (warm tan RGB, brightened for high visibility) ── */
+  --ag-focus: 228, 198, 154;
+  --ag-focus-dark: #f3dfc0;
 
   /* ── Semantic text (warm light on dark sepia) ── */
-  --ag-text-primary: #e8dcc8;
-  --ag-text-secondary: #d4c4a8;
-  --ag-text-muted: #9a8870;
-  --ag-text-primary-muted: #e0d0b8;
+  --ag-text-primary: #f2e8d5;
+  --ag-text-secondary: #e6dac4;
+  --ag-text-muted: #b09d84;
+  --ag-text-primary-muted: #ece0cc;
 
   /* ── Borders (dark warm) ── */
   --ag-border: #3d3025;
@@ -934,8 +934,8 @@ export const SKINS_CSS = {
   --ag-shadow-xl: 0 8px 28px -4px rgba(201, 168, 122, 0.18);
 
   /* ── Rating ── */
-  --ag-rating-filled: #c9a87a;
-  --ag-rating-filled-primary: #c9a87a;
+  --ag-rating-filled: #d8b98c;
+  --ag-rating-filled-primary: #d8b98c;
 
   /* ── Sepia/brown palette (dark mode, lighter values for dark bg) ── */
   --ag-blue-50: #e0c49a;
