@@ -16,9 +16,9 @@ const path = require('path');
 const skinsDir = __dirname;
 const outFile = path.join(skinsDir, 'skins-bundle.css');
 
-// Discover skin directories (alphabetically sorted for deterministic output)
+// Discover active skin directories (skip underscore-prefixed archive folders like _legacy)
 const skinDirs = fs.readdirSync(skinsDir, { withFileTypes: true })
-  .filter(d => d.isDirectory())
+  .filter(d => d.isDirectory() && !d.name.startsWith('_'))
   .map(d => d.name)
   .sort();
 

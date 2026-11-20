@@ -60,4 +60,9 @@
   --ag-blue-700: #4a3322;
   --ag-blue-800: #362418;
   --ag-blue-900: #221610;
+
+  /* ── Neutral surfaces (MessageBubble / Badge neutral) ── */
+  --ag-neutral-background: #efe6dc;
+  --ag-neutral-text: #221610;
+  --ag-neutral-border: #d4c4b4;
 }

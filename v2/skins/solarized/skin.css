@@ -13,7 +13,7 @@
   /* ── Primary color family (Solarized cyan) ── */
   --ag-primary: #2aa198;
   --ag-primary-fg: #fdf6e3;
-  --ag-primary-dark: #238880;
+  --ag-primary-dark: #1d736c;
   --ag-primary-border: #5acec7;
   --ag-primary-background: #e8f8f7;
   --ag-primary-text: #1c6e67;
@@ -23,7 +23,7 @@
   --ag-focus-dark: #238880;
 
   /* ── Semantic text (Solarized base colors) ── */
-  --ag-text-primary: #073642;
+  --ag-text-primary: #04252e;
   --ag-text-secondary: #586e75;
   --ag-text-muted: #839496;
   --ag-text-primary-muted: #657b83;
@@ -61,4 +61,9 @@
   --ag-blue-700: #155551;
   --ag-blue-800: #0d3b38;
   --ag-blue-900: #062220;
+
+  /* ── Neutral surfaces (MessageBubble / Badge neutral) ── */
+  --ag-neutral-background: #e8e2cf;
+  --ag-neutral-text: #04252e;
+  --ag-neutral-border: #93a1a1;
 }
