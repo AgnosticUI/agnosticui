@@ -1,7 +1,7 @@
 /**
  * @file main.ts
  * @description Declarative Lit studio (<ag-a2ui-studio>) showcasing AgnosticUI's
- * A2UI v1.0 catalog across 22 runtime skins (including Evergreen), Light/Dark
+ * A2UI v1.0 catalog across 26 runtime skins (including Evergreen), Light/Dark
  * modes, live @path DataModel inspection, FACE form validation, and Local vs.
  * Live Gemini 3.8 Flash prompt compilation.
  */

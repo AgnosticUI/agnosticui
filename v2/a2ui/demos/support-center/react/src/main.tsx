@@ -2,7 +2,7 @@
  * @file main.tsx
  * @description React 19 Support Center Studio showcasing @agnosticui/a2ui-react
  * (<AgA2uiSurface> + useA2uiSurface) with AgnosticUI's A2UI v1.0 catalog across
- * 22 runtime skins (including Evergreen), Light/Dark modes, progressive JSONL
+ * 26 runtime skins (including Evergreen), Light/Dark modes, progressive JSONL
  * component streaming, live @path DataModel diff highlighting, FACE validation,
  * and Local vs. Live Gemini 3.8 Flash prompt compilation.
  */

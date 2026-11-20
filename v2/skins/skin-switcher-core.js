@@ -8,7 +8,7 @@
 import { SKINS_CSS } from './skins-css-data.js';
 
 export const SKINS = [
-  // Curated Keepers (13)
+  // Curated Keepers (19)
   { id: '', label: 'Default', swatch: '#297aff' },
   { id: 'deep-forest', label: 'Deep Forest', swatch: '#1f514c' },
   { id: 'claymorphic', label: 'Claymorphic', swatch: '#c96442' },
@@ -22,13 +22,19 @@ export const SKINS = [
   { id: 'swiss-grid', label: 'Swiss Grid', swatch: '#e03600' },
   { id: 'velvet-plum', label: 'Velvet Plum', swatch: '#881337' },
   { id: 'copper-patina', label: 'Copper Patina', swatch: '#1b6b63' },
-  // Batch 3 Candidates (6 — preview & curate!)
   { id: 'warm-vellum', label: 'Warm Vellum', swatch: '#2c2a26' },
   { id: 'press-crimson', label: 'Press Crimson', swatch: '#b81d24' },
   { id: 'coral-harbor', label: 'Coral Harbor', swatch: '#e03e52' },
   { id: 'neon-obsidian', label: 'Neon Obsidian', swatch: '#5200ff' },
   { id: 'ivory-cobalt', label: 'Ivory Cobalt', swatch: '#0b5fff' },
   { id: 'obsidian-minimal', label: 'Obsidian Minimal', swatch: '#171717' },
+  // Batch 4 Candidates (6 — pick 2 to reach 21!)
+  { id: 'slate-azure', label: 'Slate Azure', swatch: '#0369a1' },
+  { id: 'terracotta-clay', label: 'Terracotta Clay', swatch: '#c2410c' },
+  { id: 'emerald-vault', label: 'Emerald Vault', swatch: '#047857' },
+  { id: 'indigo-dusk', label: 'Indigo Dusk', swatch: '#4338ca' },
+  { id: 'golden-amber', label: 'Golden Amber', swatch: '#b45309' },
+  { id: 'rosewood-ink', label: 'Rosewood Ink', swatch: '#9f1239' },
 ];
 
 /** Apply a skin class to <html> and persist to localStorage. */
