@@ -474,8 +474,33 @@ a2ui-surface ag-fieldset ag-toggle {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
 }
 
+.prompt-chip.active,
+.prompt-chip[aria-pressed='true'] {
+  border-color: var(--ag-primary);
+  background: var(--ag-primary-background, var(--ag-background-tertiary));
+  color: var(--ag-primary-text, var(--ag-text-primary));
+  font-weight: var(--ag-font-weight-semibold);
+  box-shadow: 0 0 0 1px var(--ag-primary);
+}
+
 .prompt-chip:active {
   transform: translateY(0) scale(0.97);
+}
+
+/* Lock pagination container width & tabular numerals to prevent page-to-page CLS */
+ag-a2ui-pagination,
+ag-pagination {
+  display: block;
+  width: 100%;
+}
+
+ag-pagination::part(ag-pagination-container) {
+  width: 100%;
+  justify-content: center;
+}
+
+ag-pagination::part(ag-pagination-button) {
+  font-variant-numeric: tabular-nums;
 }
 
 @media (prefers-reduced-motion: no-preference) {

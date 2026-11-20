@@ -424,7 +424,8 @@ const handleGeneratePrompt = async (overridePrompt?: string) => {
                 v-for="chip in QUICK_PROMPT_CHIPS"
                 :key="chip.label"
                 type="button"
-                class="prompt-chip"
+                :class="['prompt-chip', { active: livePromptText.trim() === chip.prompt.trim() }]"
+                :aria-pressed="livePromptText.trim() === chip.prompt.trim()"
                 @click="void handleGeneratePrompt(chip.prompt)"
               >
                 {{ chip.label }}

@@ -816,7 +816,8 @@ export class AgA2uiStudio extends LitElement {
                     (chip) => html`
                       <button
                         type="button"
-                        class="prompt-chip"
+                        class="prompt-chip ${this.livePromptText.trim() === chip.prompt.trim() ? 'active' : ''}"
+                        aria-pressed=${this.livePromptText.trim() === chip.prompt.trim() ? 'true' : 'false'}
                         @click=${() => this.handleSelectChip(chip.prompt)}
                       >
                         ${chip.label}
