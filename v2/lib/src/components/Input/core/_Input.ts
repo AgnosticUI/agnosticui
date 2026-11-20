@@ -727,15 +727,31 @@ export class AgInput extends FaceMixin(LitElement) implements InputProps {
 
   override updated(changedProperties: Map<string, unknown>) {
     super.updated(changedProperties);
+    const validityChanged =
+      changedProperties.has('value') ||
+      changedProperties.has('required') ||
+      changedProperties.has('type') ||
+      changedProperties.has('min') ||
+      changedProperties.has('max');
+
+    if (changedProperties.has('value')) {
+      this._internals.setFormValue(this.value ?? '');
+    }
+
+    if (validityChanged) {
+      this._syncValidity();
+    }
+
     if (
+      validityChanged ||
       changedProperties.has('disabled') ||
       changedProperties.has('readonly') ||
-      changedProperties.has('required') ||
       changedProperties.has('invalid')
     ) {
       this._syncStates();
     }
   }
+
 
   override firstUpdated() {
     // FACE: set initial form value and sync validity after first render

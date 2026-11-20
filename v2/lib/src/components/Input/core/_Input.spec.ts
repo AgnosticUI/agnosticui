@@ -1235,6 +1235,66 @@ describe('AgnosticUI v2 Event Conventions', () => {
 });
 
 describe('AgInput - FACE lifecycle (issue #336)', () => {
+  describe('FACE validity sync on programmatic updates', () => {
+    it('becomes valid when .value is set programmatically on a required input after mount', async () => {
+      const el = new AgInput();
+      el.label = 'Escalation Approver Email';
+      el.type = 'email';
+      el.required = true;
+      document.body.appendChild(el);
+      await el.updateComplete;
+
+      // Initially empty and required -> invalid (valueMissing)
+      expect(el.checkValidity()).toBe(false);
+      expect(el.validity.valueMissing).toBe(true);
+
+      // Programmatically populate valid email (e.g., A2UI updateDataModel)
+      el.value = 'jordan.taylor@brand.io';
+      await el.updateComplete;
+
+      expect(el.checkValidity()).toBe(true);
+      expect(el.validity.valid).toBe(true);
+      expect(el.validity.valueMissing).toBe(false);
+      document.body.removeChild(el);
+    });
+
+    it('becomes invalid when .value is cleared programmatically on a required input', async () => {
+      const el = new AgInput();
+      el.label = 'Campaign Channel';
+      el.required = true;
+      el.value = 'Paid Search — Enterprise Demo';
+      document.body.appendChild(el);
+      await el.updateComplete;
+
+      expect(el.checkValidity()).toBe(true);
+
+      el.value = '';
+      await el.updateComplete;
+
+      expect(el.checkValidity()).toBe(false);
+      expect(el.validity.valueMissing).toBe(true);
+      document.body.removeChild(el);
+    });
+
+    it('re-evaluates validity when .required or .type changes programmatically', async () => {
+      const el = new AgInput();
+      el.label = 'Email';
+      el.type = 'text';
+      el.value = 'not-an-email';
+      document.body.appendChild(el);
+      await el.updateComplete;
+
+      expect(el.checkValidity()).toBe(true);
+
+      el.type = 'email';
+      await el.updateComplete;
+
+      expect(el.checkValidity()).toBe(false);
+      expect(el.validity.typeMismatch).toBe(true);
+      document.body.removeChild(el);
+    });
+  });
+
   describe('formStateRestoreCallback', () => {
     it('restores value from a string state', async () => {
       const el = new AgInput();
