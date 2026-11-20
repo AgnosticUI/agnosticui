@@ -1,0 +1,51 @@
+/**
+ * Evergreen Skin — Light Mode
+ *
+ * Crisp botanical emerald (#008766 / #00a87f) on warm ivory & sage-tinted sand.
+ *
+ * Activate by adding class="ag-skin-evergreen" to <html>.
+ */
+
+:where(html).ag-skin-evergreen {
+  --ag-primary: #008766;
+  --ag-primary-fg: #ffffff;
+  --ag-primary-dark: #006b51;
+  --ag-primary-border: #7fd4bc;
+  --ag-primary-background: #dcf5ea;
+  --ag-primary-text: #006b51;
+
+  --ag-neutral-background: #eef3e6;
+  --ag-neutral-text: #031d0e;
+  --ag-neutral-border: #c6d1c0;
+
+  --ag-focus: 0, 168, 127;
+  --ag-focus-dark: #00a87f;
+
+  --ag-text-primary: #031d0e;
+  --ag-text-secondary: #3b4d42;
+  --ag-text-muted: #5a6d61;
+  --ag-text-primary-muted: #243b2e;
+
+  --ag-border: #d4dace;
+  --ag-border-subtle: #e4e7df;
+
+  --ag-background-primary: #fefefa;
+  --ag-background-secondary: #f8faf1;
+  --ag-background-tertiary: #eef3e6;
+
+  --ag-success: #008766;
+  --ag-success-fg: #ffffff;
+  --ag-success-background: #dcf5ea;
+  --ag-success-text: #04291d;
+  --ag-warning: #eab308;
+  --ag-warning-fg: #031d0e;
+  --ag-warning-background: #fff4d6;
+  --ag-warning-text: #593800;
+  --ag-danger: #b42318;
+  --ag-danger-fg: #ffffff;
+  --ag-danger-background: #feeceb;
+  --ag-danger-text: #7a170f;
+
+  --ag-radius-md: var(--ag-radius-sm);
+  --ag-radius-lg: 0.75rem;
+}

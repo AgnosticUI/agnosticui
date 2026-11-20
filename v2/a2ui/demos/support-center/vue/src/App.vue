@@ -42,10 +42,7 @@ import {
 
 restorePrefs();
 
-const STUDIO_SKINS = [
-  { id: 'evergreen', label: 'Evergreen', swatch: '#00a87f' },
-  ...SKINS,
-];
+const STUDIO_SKINS = SKINS;
 
 const SESSION_KEY_STORAGE = 'ag-a2ui-gemini-key';
 

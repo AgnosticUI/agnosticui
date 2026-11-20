@@ -1,0 +1,41 @@
+/**
+ * Evergreen Skin — Dark Mode
+ *
+ * Vibrant action green (#12d99b) on deep evergreen-charcoal surfaces.
+ *
+ * Activate by adding class="ag-skin-evergreen" and data-theme="dark" to <html>.
+ */
+
+[data-theme="dark"].ag-skin-evergreen {
+  --ag-radius-md: var(--ag-radius-sm);
+  --ag-primary: #12d99b;
+  --ag-primary-fg: #042117;
+  --ag-primary-dark: #07c78c;
+  --ag-primary-border: #1e5e49;
+  --ag-primary-background: #132b24;
+  --ag-primary-text: #86f2cb;
+
+  --ag-neutral-background: #1e2723;
+  --ag-neutral-text: #f3f7f5;
+  --ag-neutral-border: #33423b;
+
+  --ag-focus: 18, 217, 155;
+  --ag-focus-dark: #86f2cb;
+
+  --ag-text-primary: #f3f7f5;
+  --ag-text-secondary: #c9d4ce;
+  --ag-text-muted: #8f9e96;
+  --ag-text-primary-muted: #dce6e0;
+
+  --ag-border: #28332e;
+  --ag-border-subtle: #1d2622;
+
+  --ag-background-primary: #101513;
+  --ag-background-secondary: #161d1a;
+  --ag-background-tertiary: #1e2723;
+
+  --ag-success: #12d99b;
+  --ag-success-fg: #042117;
+  --ag-success-background: #132b24;
+  --ag-success-text: #b8f7df;
+}

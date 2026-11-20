@@ -24,12 +24,12 @@
   --ag-text-primary-muted: #c0e5e0;
 
   /* ── Borders ── */
-  --ag-border: #1f3d3a;
-  --ag-border-subtle: #2d5a54;
+  --ag-border: #293836;
+  --ag-border-subtle: #1f2b29;
 
   /* ── Backgrounds ── */
-  --ag-background-secondary: #0a1f1d;
-  --ag-background-tertiary: #1a3936;
+  --ag-background-secondary: #16201f;
+  --ag-background-tertiary: #1e2b29;
 
   /* ── Border radius (matches light) ── */
   --ag-radius-lg: 1.25rem;
@@ -57,7 +57,7 @@
   --ag-blue-900: #0d2926;
 
   /* ── Neutral surfaces (MessageBubble / Badge neutral) ── */
-  --ag-neutral-background: #13302d;
+  --ag-neutral-background: #1e2b29;
   --ag-neutral-text: #e6f5f3;
-  --ag-neutral-border: #2d5a54;
+  --ag-neutral-border: #344744;
 }

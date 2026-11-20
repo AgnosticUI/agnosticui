@@ -8,7 +8,7 @@
 import { SKINS_CSS } from './skins-css-data.js';
 
 export const SKINS = [
-  // Curated Keepers (19)
+  { id: 'evergreen', label: 'Evergreen', swatch: '#00a87f' },
   { id: '', label: 'Default', swatch: '#297aff' },
   { id: 'deep-forest', label: 'Deep Forest', swatch: '#1f514c' },
   { id: 'claymorphic', label: 'Claymorphic', swatch: '#c96442' },
@@ -28,13 +28,15 @@ export const SKINS = [
   { id: 'neon-obsidian', label: 'Neon Obsidian', swatch: '#5200ff' },
   { id: 'ivory-cobalt', label: 'Ivory Cobalt', swatch: '#0b5fff' },
   { id: 'obsidian-minimal', label: 'Obsidian Minimal', swatch: '#171717' },
-  // Batch 4 Candidates (6 — pick 2 to reach 21!)
   { id: 'slate-azure', label: 'Slate Azure', swatch: '#0369a1' },
   { id: 'terracotta-clay', label: 'Terracotta Clay', swatch: '#c2410c' },
   { id: 'emerald-vault', label: 'Emerald Vault', swatch: '#047857' },
   { id: 'indigo-dusk', label: 'Indigo Dusk', swatch: '#4338ca' },
   { id: 'golden-amber', label: 'Golden Amber', swatch: '#b45309' },
   { id: 'rosewood-ink', label: 'Rosewood Ink', swatch: '#9f1239' },
+  { id: 'pebble-cerulean', label: 'Pebble Cerulean', swatch: '#1a73e8' },
+  { id: 'olive-moss', label: 'Olive Moss', swatch: '#4d6629' },
+  { id: 'mulberry-slate', label: 'Mulberry Slate', swatch: '#86198f' },
 ];
 
 /** Apply a skin class to <html> and persist to localStorage. */
