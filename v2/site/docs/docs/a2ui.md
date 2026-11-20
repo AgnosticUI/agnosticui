@@ -4,7 +4,7 @@ AgnosticUI provides a spec-compliant **A2UI `v1.0`** component catalog and multi
 
 ::: info Protocol & Catalog Metadata
 - **Upstream A2UI Project:** [a2ui.org](https://a2ui.org/) · [a2ui-project/a2ui on GitHub](https://github.com/a2ui-project/a2ui)
-- **Live Interactive Studio:** [https://a2ui-support-center-demo.netlify.app](https://a2ui-support-center-demo.netlify.app) (`$0` Local UI Compiler default + 29 runtime skins + optional BYOK Gemini key)
+- **Live Interactive Studio:** [https://a2ui-support-center-demo.netlify.app](https://a2ui-support-center-demo.netlify.app) (built-in local compiler by default, 29 runtime skins, and optional BYOK Gemini API key)
 - **Supported A2UI Protocol Version:** `v1.0`
 - **Catalog ID:** `https://agnosticui.com/a2ui/v1/catalog.json`
 - **Catalog Schema:** [`v2/a2ui/catalog/agnosticui-catalog.json`](https://github.com/AgnosticUI/agnosticui/blob/master/v2/a2ui/catalog/agnosticui-catalog.json)
