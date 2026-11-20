@@ -4,7 +4,7 @@ Spec-compliant **A2UI `v1.0`** [component catalog](https://github.com/AgnosticUI
 
 ## Features
 
-- **35 Curated AgnosticUI Components:** `AgText` + 34 `Ag*` core components (`AgCard`, `AgInput`, `AgCombobox`, `AgMessageBubble`, `AgSelect`, `AgCheckbox`, `AgRadio`, `AgRating`, `AgToggle`, `AgSlider`, `AgButton`, etc.) rendered in Light DOM so AgnosticUI's **21 runtime skins** and **Light/Dark mode** CSS tokens (`--ag-*`) cascade naturally.
+- **45 Curated AgnosticUI Components:** `AgText` + 44 `Ag*` core components (`AgCard`, `AgInput`, `AgCombobox`, `AgMessageBubble`, `AgSelect`, `AgCheckbox`, `AgRadio`, `AgRating`, `AgToggle`, `AgSlider`, `AgButton`, etc.) rendered in Light DOM so AgnosticUI's **21 runtime skins** and **Light/Dark mode** CSS tokens (`--ag-*`) cascade naturally.
 - **Native FACE Validation (`validateSurface`):** Validates Form-Associated Custom Elements (`ElementInternals`) via `reportValidity()` before dispatching `a2uiaction` events.
 - **Two-Way `@path` DataModel Sync:** Automatically syncs interactive form inputs back into `@a2ui/web_core`'s `DataModel`.
 

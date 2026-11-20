@@ -8,7 +8,7 @@ Spec-compliant **A2UI `v1.0`** component catalog generator, multi-framework web 
 
 ```text
 v2/a2ui/
-├── catalog/                      # ts-morph AST codegen -> 35 Ag* components, agnosticui-catalog.json, SKILL.md, check-codegen.ts
+├── catalog/                      # ts-morph AST codegen -> 45 Ag* components, agnosticui-catalog.json, SKILL.md, check-codegen.ts
 ├── renderers/
 │   ├── lit/                      # @agnosticui/a2ui-lit (<a2ui-surface> Light-DOM catalog & FACE validateSurface)
 │   ├── react/                    # @agnosticui/a2ui-react (<AgA2uiSurface> + useA2uiSurface hook)
