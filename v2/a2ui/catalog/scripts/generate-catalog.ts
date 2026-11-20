@@ -618,7 +618,7 @@ async function main() {
     "import { ValidateSurfaceImplementation } from './functions/validate-surface.js';",
     ...imports,
     '',
-    "export const AGNOSTICUI_CATALOG_ID = 'https://agnosticui.com';",
+    "export const AGNOSTICUI_CATALOG_ID = 'https://agnosticui.com/a2ui/v1/catalog.json';",
     '',
     'export const AgnosticUICatalog: Catalog<LitComponentApi> = new Catalog(',
     '  AGNOSTICUI_CATALOG_ID,',

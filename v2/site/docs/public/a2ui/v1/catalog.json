@@ -30,7 +30,10 @@
           "description": "Semantic HTML tag to render."
         }
       },
-      "required": ["component", "text"],
+      "required": [
+        "component",
+        "text"
+      ],
       "unevaluatedProperties": false
     },
     "AgAccordion": {
@@ -44,7 +47,9 @@
           "description": "Child component IDs rendered inside AgAccordion."
         }
       },
-      "required": ["component"],
+      "required": [
+        "component"
+      ],
       "unevaluatedProperties": false
     },
     "AgAlert": {
@@ -91,7 +96,9 @@
           "description": "Action dispatched on user interaction."
         }
       },
-      "required": ["component"],
+      "required": [
+        "component"
+      ],
       "unevaluatedProperties": false
     },
     "AgAvatar": {
@@ -114,11 +121,21 @@
         },
         "size": {
           "type": "string",
-          "enum": ["xs", "sm", "md", "lg", "xl"]
+          "enum": [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl"
+          ]
         },
         "shape": {
           "type": "string",
-          "enum": ["circle", "square", "rounded"]
+          "enum": [
+            "circle",
+            "square",
+            "rounded"
+          ]
         },
         "variant": {
           "type": "string",
@@ -137,7 +154,9 @@
           "description": "String property ariaLabel."
         }
       },
-      "required": ["component"],
+      "required": [
+        "component"
+      ],
       "unevaluatedProperties": false
     },
     "AgBadge": {
@@ -165,7 +184,11 @@
         },
         "size": {
           "type": "string",
-          "enum": ["xs", "sm", "md"]
+          "enum": [
+            "xs",
+            "sm",
+            "md"
+          ]
         },
         "dot": {
           "$ref": "common_types.json#/$defs/DynamicBoolean",
@@ -189,14 +212,20 @@
         },
         "live": {
           "type": "string",
-          "enum": ["off", "polite", "assertive"]
+          "enum": [
+            "off",
+            "polite",
+            "assertive"
+          ]
         },
         "hiddenFromAT": {
           "$ref": "common_types.json#/$defs/DynamicBoolean",
           "description": "Boolean property hiddenFromAT."
         }
       },
-      "required": ["component"],
+      "required": [
+        "component"
+      ],
       "unevaluatedProperties": false
     },
     "AgBreadcrumb": {
@@ -220,13 +249,20 @@
                 "type": "boolean"
               }
             },
-            "required": ["label"],
+            "required": [
+              "label"
+            ],
             "additionalProperties": false
           }
         },
         "type": {
           "type": "string",
-          "enum": ["default", "slash", "bullet", "arrow"]
+          "enum": [
+            "default",
+            "slash",
+            "bullet",
+            "arrow"
+          ]
         },
         "primary": {
           "$ref": "common_types.json#/$defs/DynamicBoolean",
@@ -241,7 +277,9 @@
           "description": "Action dispatched on user interaction."
         }
       },
-      "required": ["component"],
+      "required": [
+        "component"
+      ],
       "unevaluatedProperties": false
     },
     "AgButton": {
@@ -271,11 +309,23 @@
         },
         "size": {
           "type": "string",
-          "enum": ["sm", "md", "lg", "xl", "x-sm"]
+          "enum": [
+            "sm",
+            "md",
+            "lg",
+            "xl",
+            "x-sm"
+          ]
         },
         "shape": {
           "type": "string",
-          "enum": ["circle", "square", "rounded", "capsule", "rounded-square"]
+          "enum": [
+            "circle",
+            "square",
+            "rounded",
+            "capsule",
+            "rounded-square"
+          ]
         },
         "bordered": {
           "$ref": "common_types.json#/$defs/DynamicBoolean",
@@ -299,7 +349,11 @@
         },
         "type": {
           "type": "string",
-          "enum": ["button", "submit", "reset"]
+          "enum": [
+            "button",
+            "submit",
+            "reset"
+          ]
         },
         "disabled": {
           "$ref": "common_types.json#/$defs/DynamicBoolean",
@@ -318,7 +372,9 @@
           "description": "Action dispatched on user interaction."
         }
       },
-      "required": ["component"],
+      "required": [
+        "component"
+      ],
       "unevaluatedProperties": false
     },
     "AgCard": {
@@ -345,11 +401,21 @@
         },
         "rounded": {
           "type": "string",
-          "enum": ["sm", "md", "lg"]
+          "enum": [
+            "sm",
+            "md",
+            "lg"
+          ]
         },
         "variant": {
           "type": "string",
-          "enum": ["warning", "info", "success", "error", "monochrome"]
+          "enum": [
+            "warning",
+            "info",
+            "success",
+            "error",
+            "monochrome"
+          ]
         },
         "hasMedia": {
           "$ref": "common_types.json#/$defs/DynamicBoolean",
@@ -357,10 +423,15 @@
         },
         "mediaPosition": {
           "type": "string",
-          "enum": ["top", "bottom"]
+          "enum": [
+            "top",
+            "bottom"
+          ]
         }
       },
-      "required": ["component"],
+      "required": [
+        "component"
+      ],
       "unevaluatedProperties": false
     },
     "AgCheckbox": {
@@ -387,7 +458,11 @@
         },
         "size": {
           "type": "string",
-          "enum": ["small", "medium", "large"]
+          "enum": [
+            "small",
+            "medium",
+            "large"
+          ]
         },
         "labelText": {
           "$ref": "common_types.json#/$defs/DynamicString",
@@ -395,7 +470,10 @@
         },
         "labelPosition": {
           "type": "string",
-          "enum": ["end", "start"]
+          "enum": [
+            "end",
+            "start"
+          ]
         },
         "required": {
           "$ref": "common_types.json#/$defs/DynamicBoolean",
@@ -418,7 +496,9 @@
           "description": "Action dispatched on user interaction."
         }
       },
-      "required": ["component"],
+      "required": [
+        "component"
+      ],
       "unevaluatedProperties": false
     },
     "AgCombobox": {
@@ -442,7 +522,10 @@
                 "type": "boolean"
               }
             },
-            "required": ["value", "label"],
+            "required": [
+              "value",
+              "label"
+            ],
             "additionalProperties": false
           }
         },
@@ -470,7 +553,12 @@
         },
         "labelPosition": {
           "type": "string",
-          "enum": ["top", "bottom", "end", "start"]
+          "enum": [
+            "top",
+            "bottom",
+            "end",
+            "start"
+          ]
         },
         "labelHidden": {
           "$ref": "common_types.json#/$defs/DynamicBoolean",
@@ -494,11 +582,18 @@
         },
         "autocomplete": {
           "type": "string",
-          "enum": ["list", "none"]
+          "enum": [
+            "list",
+            "none"
+          ]
         },
         "filterMode": {
           "type": "string",
-          "enum": ["none", "startsWith", "contains"]
+          "enum": [
+            "none",
+            "startsWith",
+            "contains"
+          ]
         },
         "clearable": {
           "$ref": "common_types.json#/$defs/DynamicBoolean",
@@ -522,7 +617,11 @@
         },
         "size": {
           "type": "string",
-          "enum": ["default", "small", "large"]
+          "enum": [
+            "default",
+            "small",
+            "large"
+          ]
         },
         "closeOnSelect": {
           "$ref": "common_types.json#/$defs/DynamicBoolean",
@@ -530,7 +629,10 @@
         },
         "variant": {
           "type": "string",
-          "enum": ["default", "monochrome"]
+          "enum": [
+            "default",
+            "monochrome"
+          ]
         },
         "multiple": {
           "$ref": "common_types.json#/$defs/DynamicBoolean",
@@ -557,7 +659,9 @@
           "description": "Action dispatched on user interaction."
         }
       },
-      "required": ["component"],
+      "required": [
+        "component"
+      ],
       "unevaluatedProperties": false
     },
     "AgDivider": {
@@ -572,11 +676,20 @@
         },
         "justify": {
           "type": "string",
-          "enum": ["end", "start", "center"]
+          "enum": [
+            "end",
+            "start",
+            "center"
+          ]
         },
         "size": {
           "type": "string",
-          "enum": ["default", "small", "large", "xlarge"]
+          "enum": [
+            "default",
+            "small",
+            "large",
+            "xlarge"
+          ]
         },
         "variant": {
           "type": "string",
@@ -590,7 +703,9 @@
           ]
         }
       },
-      "required": ["component"],
+      "required": [
+        "component"
+      ],
       "unevaluatedProperties": false
     },
     "AgEmptyState": {
@@ -613,7 +728,11 @@
         },
         "size": {
           "type": "string",
-          "enum": ["sm", "md", "lg"]
+          "enum": [
+            "sm",
+            "md",
+            "lg"
+          ]
         },
         "bordered": {
           "$ref": "common_types.json#/$defs/DynamicBoolean",
@@ -624,7 +743,9 @@
           "description": "Boolean property rounded."
         }
       },
-      "required": ["component"],
+      "required": [
+        "component"
+      ],
       "unevaluatedProperties": false
     },
     "AgFieldset": {
@@ -647,14 +768,19 @@
         },
         "layout": {
           "type": "string",
-          "enum": ["vertical", "horizontal"]
+          "enum": [
+            "vertical",
+            "horizontal"
+          ]
         },
         "legendHidden": {
           "$ref": "common_types.json#/$defs/DynamicBoolean",
           "description": "Boolean property legendHidden."
         }
       },
-      "required": ["component"],
+      "required": [
+        "component"
+      ],
       "unevaluatedProperties": false
     },
     "AgHeader": {
@@ -673,10 +799,18 @@
         },
         "contentJustify": {
           "type": "string",
-          "enum": ["end", "start", "center", "between", "around"]
+          "enum": [
+            "end",
+            "start",
+            "center",
+            "between",
+            "around"
+          ]
         }
       },
-      "required": ["component"],
+      "required": [
+        "component"
+      ],
       "unevaluatedProperties": false
     },
     "AgIcon": {
@@ -722,7 +856,9 @@
           "description": "Boolean property noFill."
         }
       },
-      "required": ["component"],
+      "required": [
+        "component"
+      ],
       "unevaluatedProperties": false
     },
     "AgImage": {
@@ -757,7 +893,9 @@
                 "type": "string"
               }
             },
-            "required": ["srcset"],
+            "required": [
+              "srcset"
+            ],
             "additionalProperties": false
           }
         },
@@ -775,7 +913,13 @@
         },
         "fit": {
           "type": "string",
-          "enum": ["none", "cover", "contain", "fill", "scale-down"]
+          "enum": [
+            "none",
+            "cover",
+            "contain",
+            "fill",
+            "scale-down"
+          ]
         },
         "position": {
           "$ref": "common_types.json#/$defs/DynamicString",
@@ -783,7 +927,10 @@
         },
         "loading": {
           "type": "string",
-          "enum": ["lazy", "eager"]
+          "enum": [
+            "lazy",
+            "eager"
+          ]
         },
         "fade": {
           "$ref": "common_types.json#/$defs/DynamicBoolean",
@@ -798,7 +945,9 @@
           "description": "String property fallbackSrc."
         }
       },
-      "required": ["component"],
+      "required": [
+        "component"
+      ],
       "unevaluatedProperties": false
     },
     "AgInput": {
@@ -817,7 +966,12 @@
         },
         "labelPosition": {
           "type": "string",
-          "enum": ["top", "bottom", "end", "start"]
+          "enum": [
+            "top",
+            "bottom",
+            "end",
+            "start"
+          ]
         },
         "noLabel": {
           "$ref": "common_types.json#/$defs/DynamicBoolean",
@@ -866,7 +1020,11 @@
         },
         "size": {
           "type": "string",
-          "enum": ["default", "small", "large"]
+          "enum": [
+            "default",
+            "small",
+            "large"
+          ]
         },
         "capsule": {
           "$ref": "common_types.json#/$defs/DynamicBoolean",
@@ -925,7 +1083,9 @@
           "description": "Action dispatched on user interaction."
         }
       },
-      "required": ["component"],
+      "required": [
+        "component"
+      ],
       "unevaluatedProperties": false
     },
     "AgIntlFormatter": {
@@ -936,7 +1096,12 @@
         },
         "type": {
           "type": "string",
-          "enum": ["number", "date", "percent", "currency"]
+          "enum": [
+            "number",
+            "date",
+            "percent",
+            "currency"
+          ]
         },
         "value": {
           "anyOf": [
@@ -960,39 +1125,71 @@
         },
         "weekday": {
           "type": "string",
-          "enum": ["narrow", "short", "long"]
+          "enum": [
+            "narrow",
+            "short",
+            "long"
+          ]
         },
         "era": {
           "type": "string",
-          "enum": ["narrow", "short", "long"]
+          "enum": [
+            "narrow",
+            "short",
+            "long"
+          ]
         },
         "year": {
           "type": "string",
-          "enum": ["numeric", "2-digit"]
+          "enum": [
+            "numeric",
+            "2-digit"
+          ]
         },
         "month": {
           "type": "string",
-          "enum": ["narrow", "short", "long", "numeric", "2-digit"]
+          "enum": [
+            "narrow",
+            "short",
+            "long",
+            "numeric",
+            "2-digit"
+          ]
         },
         "day": {
           "type": "string",
-          "enum": ["numeric", "2-digit"]
+          "enum": [
+            "numeric",
+            "2-digit"
+          ]
         },
         "hour": {
           "type": "string",
-          "enum": ["numeric", "2-digit"]
+          "enum": [
+            "numeric",
+            "2-digit"
+          ]
         },
         "minute": {
           "type": "string",
-          "enum": ["numeric", "2-digit"]
+          "enum": [
+            "numeric",
+            "2-digit"
+          ]
         },
         "second": {
           "type": "string",
-          "enum": ["numeric", "2-digit"]
+          "enum": [
+            "numeric",
+            "2-digit"
+          ]
         },
         "timeZoneName": {
           "type": "string",
-          "enum": ["short", "long"]
+          "enum": [
+            "short",
+            "long"
+          ]
         },
         "timeZone": {
           "$ref": "common_types.json#/$defs/DynamicString",
@@ -1000,15 +1197,29 @@
         },
         "hourFormat": {
           "type": "string",
-          "enum": ["24", "auto", "12"]
+          "enum": [
+            "24",
+            "auto",
+            "12"
+          ]
         },
         "dateStyle": {
           "type": "string",
-          "enum": ["medium", "short", "long", "full"]
+          "enum": [
+            "medium",
+            "short",
+            "long",
+            "full"
+          ]
         },
         "timeStyle": {
           "type": "string",
-          "enum": ["medium", "short", "long", "full"]
+          "enum": [
+            "medium",
+            "short",
+            "long",
+            "full"
+          ]
         },
         "noGrouping": {
           "$ref": "common_types.json#/$defs/DynamicBoolean",
@@ -1020,7 +1231,12 @@
         },
         "currencyDisplay": {
           "type": "string",
-          "enum": ["symbol", "narrowSymbol", "code", "name"]
+          "enum": [
+            "symbol",
+            "narrowSymbol",
+            "code",
+            "name"
+          ]
         },
         "minimumIntegerDigits": {
           "$ref": "common_types.json#/$defs/DynamicNumber",
@@ -1043,7 +1259,9 @@
           "description": "Numeric property maximumSignificantDigits."
         }
       },
-      "required": ["component"],
+      "required": [
+        "component"
+      ],
       "unevaluatedProperties": false
     },
     "AgKbd": {
@@ -1081,10 +1299,16 @@
         },
         "size": {
           "type": "string",
-          "enum": ["sm", "md", "lg"]
+          "enum": [
+            "sm",
+            "md",
+            "lg"
+          ]
         }
       },
-      "required": ["component"],
+      "required": [
+        "component"
+      ],
       "unevaluatedProperties": false
     },
     "AgLink": {
@@ -1103,7 +1327,13 @@
         },
         "variant": {
           "type": "string",
-          "enum": ["warning", "success", "danger", "primary", "monochrome"]
+          "enum": [
+            "warning",
+            "success",
+            "danger",
+            "primary",
+            "monochrome"
+          ]
         },
         "isButton": {
           "$ref": "common_types.json#/$defs/DynamicBoolean",
@@ -1111,11 +1341,23 @@
         },
         "buttonSize": {
           "type": "string",
-          "enum": ["sm", "md", "lg", "xl", "x-sm"]
+          "enum": [
+            "sm",
+            "md",
+            "lg",
+            "xl",
+            "x-sm"
+          ]
         },
         "buttonShape": {
           "type": "string",
-          "enum": ["circle", "square", "rounded", "capsule", "rounded-square"]
+          "enum": [
+            "circle",
+            "square",
+            "rounded",
+            "capsule",
+            "rounded-square"
+          ]
         },
         "buttonBordered": {
           "$ref": "common_types.json#/$defs/DynamicBoolean",
@@ -1138,7 +1380,9 @@
           "description": "Action dispatched on user interaction."
         }
       },
-      "required": ["component"],
+      "required": [
+        "component"
+      ],
       "unevaluatedProperties": false
     },
     "AgMark": {
@@ -1176,7 +1420,9 @@
           "description": "Boolean property matchAll."
         }
       },
-      "required": ["component"],
+      "required": [
+        "component"
+      ],
       "unevaluatedProperties": false
     },
     "AgMessageBubble": {
@@ -1191,7 +1437,10 @@
         },
         "from": {
           "type": "string",
-          "enum": ["me", "them"]
+          "enum": [
+            "me",
+            "them"
+          ]
         },
         "message": {
           "$ref": "common_types.json#/$defs/DynamicString",
@@ -1226,7 +1475,9 @@
           ]
         }
       },
-      "required": ["component"],
+      "required": [
+        "component"
+      ],
       "unevaluatedProperties": false
     },
     "AgPagination": {
@@ -1247,7 +1498,11 @@
           "anyOf": [
             {
               "type": "string",
-              "enum": ["start", "center", "end"]
+              "enum": [
+                "start",
+                "center",
+                "end"
+              ]
             },
             {
               "type": "string",
@@ -1272,7 +1527,9 @@
           "description": "Action dispatched on user interaction."
         }
       },
-      "required": ["component"],
+      "required": [
+        "component"
+      ],
       "unevaluatedProperties": false
     },
     "AgProgress": {
@@ -1299,10 +1556,16 @@
         },
         "size": {
           "type": "string",
-          "enum": ["small", "medium", "large"]
+          "enum": [
+            "small",
+            "medium",
+            "large"
+          ]
         }
       },
-      "required": ["component"],
+      "required": [
+        "component"
+      ],
       "unevaluatedProperties": false
     },
     "AgProgressRing": {
@@ -1317,18 +1580,30 @@
         },
         "size": {
           "type": "string",
-          "enum": ["small", "medium", "large"]
+          "enum": [
+            "small",
+            "medium",
+            "large"
+          ]
         },
         "variant": {
           "type": "string",
-          "enum": ["warning", "info", "success", "danger", "primary"]
+          "enum": [
+            "warning",
+            "info",
+            "success",
+            "danger",
+            "primary"
+          ]
         },
         "label": {
           "$ref": "common_types.json#/$defs/DynamicString",
           "description": "String property label."
         }
       },
-      "required": ["component"],
+      "required": [
+        "component"
+      ],
       "unevaluatedProperties": false
     },
     "AgRadio": {
@@ -1355,11 +1630,20 @@
         },
         "size": {
           "type": "string",
-          "enum": ["small", "medium", "large"]
+          "enum": [
+            "small",
+            "medium",
+            "large"
+          ]
         },
         "theme": {
           "type": "string",
-          "enum": ["success", "primary", "default", "monochrome"]
+          "enum": [
+            "success",
+            "primary",
+            "default",
+            "monochrome"
+          ]
         },
         "labelText": {
           "$ref": "common_types.json#/$defs/DynamicString",
@@ -1367,7 +1651,10 @@
         },
         "labelPosition": {
           "type": "string",
-          "enum": ["end", "start"]
+          "enum": [
+            "end",
+            "start"
+          ]
         },
         "label": {
           "$ref": "common_types.json#/$defs/DynamicString",
@@ -1402,7 +1689,9 @@
           "description": "Action dispatched on user interaction."
         }
       },
-      "required": ["component"],
+      "required": [
+        "component"
+      ],
       "unevaluatedProperties": false
     },
     "AgRating": {
@@ -1421,7 +1710,10 @@
         },
         "precision": {
           "type": "string",
-          "enum": ["whole", "half"]
+          "enum": [
+            "whole",
+            "half"
+          ]
         },
         "readonly": {
           "$ref": "common_types.json#/$defs/DynamicBoolean",
@@ -1433,11 +1725,21 @@
         },
         "variant": {
           "type": "string",
-          "enum": ["primary", "secondary", "success", "warning", "danger"]
+          "enum": [
+            "primary",
+            "secondary",
+            "success",
+            "warning",
+            "danger"
+          ]
         },
         "size": {
           "type": "string",
-          "enum": ["sm", "md", "lg"]
+          "enum": [
+            "sm",
+            "md",
+            "lg"
+          ]
         },
         "name": {
           "$ref": "common_types.json#/$defs/DynamicString",
@@ -1449,7 +1751,12 @@
         },
         "labelPosition": {
           "type": "string",
-          "enum": ["top", "bottom", "end", "start"]
+          "enum": [
+            "top",
+            "bottom",
+            "end",
+            "start"
+          ]
         },
         "labelHidden": {
           "$ref": "common_types.json#/$defs/DynamicBoolean",
@@ -1476,7 +1783,9 @@
           "description": "String property helpText."
         }
       },
-      "required": ["component"],
+      "required": [
+        "component"
+      ],
       "unevaluatedProperties": false
     },
     "AgSelect": {
@@ -1487,7 +1796,10 @@
         },
         "size": {
           "type": "string",
-          "enum": ["small", "large"]
+          "enum": [
+            "small",
+            "large"
+          ]
         },
         "value": {
           "$ref": "common_types.json#/$defs/DynamicString",
@@ -1515,7 +1827,12 @@
         },
         "labelPosition": {
           "type": "string",
-          "enum": ["top", "bottom", "end", "start"]
+          "enum": [
+            "top",
+            "bottom",
+            "end",
+            "start"
+          ]
         },
         "labelHidden": {
           "$ref": "common_types.json#/$defs/DynamicBoolean",
@@ -1546,7 +1863,9 @@
           "description": "Action dispatched on user interaction."
         }
       },
-      "required": ["component"],
+      "required": [
+        "component"
+      ],
       "unevaluatedProperties": false
     },
     "AgSkeletonLoader": {
@@ -1557,15 +1876,27 @@
         },
         "variant": {
           "type": "string",
-          "enum": ["rounded", "text", "circular", "rectangular"]
+          "enum": [
+            "rounded",
+            "text",
+            "circular",
+            "rectangular"
+          ]
         },
         "effect": {
           "type": "string",
-          "enum": ["none", "sheen", "pulse"]
+          "enum": [
+            "none",
+            "sheen",
+            "pulse"
+          ]
         },
         "intensity": {
           "type": "string",
-          "enum": ["medium", "light"]
+          "enum": [
+            "medium",
+            "light"
+          ]
         },
         "width": {
           "$ref": "common_types.json#/$defs/DynamicString",
@@ -1576,7 +1907,9 @@
           "description": "String property height."
         }
       },
-      "required": ["component"],
+      "required": [
+        "component"
+      ],
       "unevaluatedProperties": false
     },
     "AgSlider": {
@@ -1591,7 +1924,12 @@
         },
         "labelPosition": {
           "type": "string",
-          "enum": ["top", "bottom", "end", "start"]
+          "enum": [
+            "top",
+            "bottom",
+            "end",
+            "start"
+          ]
         },
         "labelHidden": {
           "$ref": "common_types.json#/$defs/DynamicBoolean",
@@ -1648,7 +1986,11 @@
         },
         "size": {
           "type": "string",
-          "enum": ["default", "small", "large"]
+          "enum": [
+            "default",
+            "small",
+            "large"
+          ]
         },
         "filled": {
           "$ref": "common_types.json#/$defs/DynamicBoolean",
@@ -1703,7 +2045,9 @@
           "description": "Action dispatched on user interaction."
         }
       },
-      "required": ["component"],
+      "required": [
+        "component"
+      ],
       "unevaluatedProperties": false
     },
     "AgSpinner": {
@@ -1714,14 +2058,21 @@
         },
         "size": {
           "type": "string",
-          "enum": ["default", "small", "large", "xlarge"]
+          "enum": [
+            "default",
+            "small",
+            "large",
+            "xlarge"
+          ]
         },
         "ariaLabel": {
           "$ref": "common_types.json#/$defs/DynamicString",
           "description": "String property ariaLabel."
         }
       },
-      "required": ["component"],
+      "required": [
+        "component"
+      ],
       "unevaluatedProperties": false
     },
     "AgTabs": {
@@ -1736,7 +2087,10 @@
         },
         "activation": {
           "type": "string",
-          "enum": ["manual", "automatic"]
+          "enum": [
+            "manual",
+            "automatic"
+          ]
         },
         "activeTab": {
           "$ref": "common_types.json#/$defs/DynamicNumber",
@@ -1744,14 +2098,19 @@
         },
         "orientation": {
           "type": "string",
-          "enum": ["vertical", "horizontal"]
+          "enum": [
+            "vertical",
+            "horizontal"
+          ]
         },
         "ariaLabel": {
           "$ref": "common_types.json#/$defs/DynamicString",
           "description": "String property ariaLabel."
         }
       },
-      "required": ["component"],
+      "required": [
+        "component"
+      ],
       "unevaluatedProperties": false
     },
     "AgTag": {
@@ -1777,7 +2136,11 @@
         },
         "shape": {
           "type": "string",
-          "enum": ["circle", "pill", "round"]
+          "enum": [
+            "circle",
+            "pill",
+            "round"
+          ]
         },
         "uppercase": {
           "$ref": "common_types.json#/$defs/DynamicBoolean",
@@ -1792,7 +2155,9 @@
           "description": "Action dispatched on user interaction."
         }
       },
-      "required": ["component"],
+      "required": [
+        "component"
+      ],
       "unevaluatedProperties": false
     },
     "AgTimeline": {
@@ -1803,11 +2168,20 @@
         },
         "orientation": {
           "type": "string",
-          "enum": ["vertical", "horizontal"]
+          "enum": [
+            "vertical",
+            "horizontal"
+          ]
         },
         "variant": {
           "type": "string",
-          "enum": ["warning", "success", "danger", "primary", "monochrome"]
+          "enum": [
+            "warning",
+            "success",
+            "danger",
+            "primary",
+            "monochrome"
+          ]
         },
         "compact": {
           "$ref": "common_types.json#/$defs/DynamicBoolean",
@@ -1818,7 +2192,9 @@
           "description": "String property ariaLabel."
         }
       },
-      "required": ["component"],
+      "required": [
+        "component"
+      ],
       "unevaluatedProperties": false
     },
     "AgToggle": {
@@ -1833,7 +2209,12 @@
         },
         "labelPosition": {
           "type": "string",
-          "enum": ["top", "bottom", "end", "start"]
+          "enum": [
+            "top",
+            "bottom",
+            "end",
+            "start"
+          ]
         },
         "labelHidden": {
           "$ref": "common_types.json#/$defs/DynamicBoolean",
@@ -1849,11 +2230,23 @@
         },
         "size": {
           "type": "string",
-          "enum": ["xs", "sm", "md", "lg", "xl"]
+          "enum": [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl"
+          ]
         },
         "variant": {
           "type": "string",
-          "enum": ["warning", "success", "danger", "default", "monochrome"]
+          "enum": [
+            "warning",
+            "success",
+            "danger",
+            "default",
+            "monochrome"
+          ]
         },
         "disabled": {
           "$ref": "common_types.json#/$defs/DynamicBoolean",
@@ -1892,7 +2285,9 @@
           "description": "Action dispatched on user interaction."
         }
       },
-      "required": ["component"],
+      "required": [
+        "component"
+      ],
       "unevaluatedProperties": false
     }
   },
@@ -1912,11 +2307,16 @@
               "description": "The value to check."
             }
           },
-          "required": ["value"],
+          "required": [
+            "value"
+          ],
           "unevaluatedProperties": false
         }
       },
-      "required": ["@call", "args"]
+      "required": [
+        "@call",
+        "args"
+      ]
     },
     "regex": {
       "type": "object",
@@ -1937,11 +2337,17 @@
               "description": "The regex pattern to match against."
             }
           },
-          "required": ["value", "pattern"],
+          "required": [
+            "value",
+            "pattern"
+          ],
           "unevaluatedProperties": false
         }
       },
-      "required": ["@call", "args"]
+      "required": [
+        "@call",
+        "args"
+      ]
     },
     "length": {
       "type": "object",
@@ -1968,19 +2374,28 @@
               "description": "The maximum allowed length."
             }
           },
-          "required": ["value"],
+          "required": [
+            "value"
+          ],
           "unevaluatedProperties": false,
           "anyOf": [
             {
-              "required": ["min"]
+              "required": [
+                "min"
+              ]
             },
             {
-              "required": ["max"]
+              "required": [
+                "max"
+              ]
             }
           ]
         }
       },
-      "required": ["@call", "args"]
+      "required": [
+        "@call",
+        "args"
+      ]
     },
     "numeric": {
       "type": "object",
@@ -2005,19 +2420,28 @@
               "description": "The maximum allowed value."
             }
           },
-          "required": ["value"],
+          "required": [
+            "value"
+          ],
           "unevaluatedProperties": false,
           "anyOf": [
             {
-              "required": ["min"]
+              "required": [
+                "min"
+              ]
             },
             {
-              "required": ["max"]
+              "required": [
+                "max"
+              ]
             }
           ]
         }
       },
-      "required": ["@call", "args"]
+      "required": [
+        "@call",
+        "args"
+      ]
     },
     "email": {
       "type": "object",
@@ -2034,11 +2458,16 @@
               "$ref": "common_types.json#/$defs/DynamicString"
             }
           },
-          "required": ["value"],
+          "required": [
+            "value"
+          ],
           "unevaluatedProperties": false
         }
       },
-      "required": ["@call", "args"]
+      "required": [
+        "@call",
+        "args"
+      ]
     },
     "formatString": {
       "type": "object",
@@ -2055,11 +2484,16 @@
               "$ref": "common_types.json#/$defs/DynamicString"
             }
           },
-          "required": ["value"],
+          "required": [
+            "value"
+          ],
           "unevaluatedProperties": false
         }
       },
-      "required": ["@call", "args"]
+      "required": [
+        "@call",
+        "args"
+      ]
     },
     "formatNumber": {
       "type": "object",
@@ -2085,11 +2519,16 @@
               "description": "Optional. If true, uses locale-specific grouping separators (e.g. '1,000'). If false, returns raw digits (e.g. '1000'). Defaults to true."
             }
           },
-          "required": ["value"],
+          "required": [
+            "value"
+          ],
           "unevaluatedProperties": false
         }
       },
-      "required": ["@call", "args"]
+      "required": [
+        "@call",
+        "args"
+      ]
     },
     "formatCurrency": {
       "type": "object",
@@ -2119,11 +2558,17 @@
               "description": "Optional. If true, uses locale-specific grouping separators (e.g. '1,000'). If false, returns raw digits (e.g. '1000'). Defaults to true."
             }
           },
-          "required": ["currency", "value"],
+          "required": [
+            "currency",
+            "value"
+          ],
           "unevaluatedProperties": false
         }
       },
-      "required": ["@call", "args"]
+      "required": [
+        "@call",
+        "args"
+      ]
     },
     "formatDate": {
       "type": "object",
@@ -2145,11 +2590,17 @@
               "description": "A Unicode TR35 date pattern string.\n\nToken Reference:\n- Year: 'yy' (26), 'yyyy' (2026)\n- Month: 'M' (1), 'MM' (01), 'MMM' (Jan), 'MMMM' (January)\n- Day: 'd' (1), 'dd' (01), 'E' (Tue), 'EEEE' (Tuesday)\n- Hour (12h): 'h' (1-12), 'hh' (01-12) - requires 'a' for AM/PM\n- Hour (24h): 'H' (0-23), 'HH' (00-23) - Military Time\n- Minute: 'mm' (00-59)\n- Second: 'ss' (00-59)\n- Period: 'a' (AM/PM)\n\nExamples:\n- 'MMM dd, yyyy' -> 'Jan 16, 2026'\n- 'HH:mm' -> '14:30' (Military)\n- 'h:mm a' -> '2:30 PM'\n- 'EEEE, d MMMM' -> 'Friday, 16 January'"
             }
           },
-          "required": ["format", "value"],
+          "required": [
+            "format",
+            "value"
+          ],
           "unevaluatedProperties": false
         }
       },
-      "required": ["@call", "args"]
+      "required": [
+        "@call",
+        "args"
+      ]
     },
     "pluralize": {
       "type": "object",
@@ -2191,11 +2642,17 @@
               "description": "The default/fallback string (used for general plural cases)."
             }
           },
-          "required": ["value", "other"],
+          "required": [
+            "value",
+            "other"
+          ],
           "unevaluatedProperties": false
         }
       },
-      "required": ["@call", "args"]
+      "required": [
+        "@call",
+        "args"
+      ]
     },
     "openUrl": {
       "type": "object",
@@ -2225,11 +2682,16 @@
               "description": "The URL to open."
             }
           },
-          "required": ["url"],
+          "required": [
+            "url"
+          ],
           "unevaluatedProperties": false
         }
       },
-      "required": ["@call", "args"]
+      "required": [
+        "@call",
+        "args"
+      ]
     },
     "and": {
       "type": "object",
@@ -2251,11 +2713,16 @@
               "description": "The list of boolean values to evaluate."
             }
           },
-          "required": ["values"],
+          "required": [
+            "values"
+          ],
           "unevaluatedProperties": false
         }
       },
-      "required": ["@call", "args"]
+      "required": [
+        "@call",
+        "args"
+      ]
     },
     "or": {
       "type": "object",
@@ -2277,11 +2744,16 @@
               "description": "The list of boolean values to evaluate."
             }
           },
-          "required": ["values"],
+          "required": [
+            "values"
+          ],
           "unevaluatedProperties": false
         }
       },
-      "required": ["@call", "args"]
+      "required": [
+        "@call",
+        "args"
+      ]
     },
     "not": {
       "type": "object",
@@ -2299,11 +2771,16 @@
               "description": "The boolean value to negate."
             }
           },
-          "required": ["value"],
+          "required": [
+            "value"
+          ],
           "unevaluatedProperties": false
         }
       },
-      "required": ["@call", "args"]
+      "required": [
+        "@call",
+        "args"
+      ]
     },
     "validateSurface": {
       "type": "object",
@@ -2328,7 +2805,9 @@
           "unevaluatedProperties": false
         }
       },
-      "required": ["@call"]
+      "required": [
+        "@call"
+      ]
     }
   },
   "$defs": {

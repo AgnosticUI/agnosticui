@@ -33,35 +33,10 @@ Use this skill when generating **A2UI `v1.0`** JSONL/JSON message streams target
     "updateComponents": {
       "surfaceId": "support_surface",
       "components": [
-        {
-          "id": "root",
-          "component": "AgCard",
-          "shadow": true,
-          "stacked": true,
-          "children": ["title_text", "email_input", "submit_btn"]
-        },
-        {
-          "id": "title_text",
-          "component": "AgText",
-          "el": "h2",
-          "text": "Account Support"
-        },
-        {
-          "id": "email_input",
-          "component": "AgInput",
-          "label": "Work Email",
-          "type": "email",
-          "required": true,
-          "value": { "@path": "/form/email" }
-        },
-        {
-          "id": "submit_btn",
-          "component": "AgButton",
-          "variant": "primary",
-          "shape": "rounded",
-          "label": "Submit",
-          "action": { "event": { "name": "SUBMIT_TICKET" } }
-        }
+        { "id": "root", "component": "AgCard", "shadow": true, "stacked": true, "children": ["title_text", "email_input", "submit_btn"] },
+        { "id": "title_text", "component": "AgText", "el": "h2", "text": "Account Support" },
+        { "id": "email_input", "component": "AgInput", "label": "Work Email", "type": "email", "required": true, "value": { "@path": "/form/email" } },
+        { "id": "submit_btn", "component": "AgButton", "variant": "primary", "shape": "rounded", "label": "Submit", "action": { "event": { "name": "SUBMIT_TICKET" } } }
       ]
     }
   },
