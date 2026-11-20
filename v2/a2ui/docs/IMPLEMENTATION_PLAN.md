@@ -3,7 +3,7 @@
 - **Branch:** `master` (Phases 1–9 merged) | Active: `feat/a2ui-phase10-multipage-flows`
 - **Architecture Spec:** `v2/a2ui/docs/PRD-A2UI-REFACTOR.md`
 - **Session Boot Capsule:** `v2/a2ui/docs/NEXT_PROMPT.md`
-- **Overall Status:** Phases 1–9 ✅ (Merged to `master`, 35-Component Catalog Live on npm `2.0.0-alpha.2`) | Phase 10 🔄 (Task 10.1 ✅, Hotfix 10.1a & Task 10.2 npm/Netlify Release Next)
+- **Overall Status:** Phases 1–11 ✅ (45-Component Catalog + Enriched Turn-3 Audit Complete; Packages bumped to `2.0.0-alpha.4`)
 - **Maintenance Rule:** Update both `IMPLEMENTATION_PLAN.md` and `NEXT_PROMPT.md` at the completion of every task before committing the checkpoint.
 ---
 
@@ -156,12 +156,14 @@
 
 ---
 
-## Phase 11: Enriched Turn-3 Audit & 45-Component Catalog Expansion 📋
+## Phase 11: Enriched Turn-3 Audit & 45-Component Catalog Expansion ✅
 
-* **Task 11.1 — Enriched Turn-3 Verification Audit (`AgTimeline` + `AgIntlFormatter` + `AgLink`)**
-  * Enhance `buildTurnThreeComponents()` in `v2/a2ui/demos/support-center/shared/agent-roundtrip.ts` to display a timestamped `AgTimeline` audit trail formatted with `AgIntlFormatter` and a trace `AgLink`, with unit tests in `agent-roundtrip.spec.ts`.
-* **Task 11.2 — Expand A2UI v1.0 Catalog to ~45 Components (~80% Coverage)**
-  * Port 10 additional AgnosticUI v2 components (`Loader`, `Tooltip`, `Popover`, `Drawer`, `Dialog`, `ButtonGroup`, `InputNumber`, `Textarea`, `CopyButton`, `AspectRatio`) into `generate-catalog.ts`, regenerate `agnosticui-catalog.json` + `SKILL.md`, and cut `2.0.0-alpha.4`.
+* **Task 11.1 — Enriched Turn-3 Verification Audit (`AgTimeline` + `AgIntlFormatter` + `AgLink`)** ✅
+  * Added declarative `items` (`start`, `marker`, `end`, `markerAriaLabel`) rendering support for `AgTimeline` in `v2/a2ui/catalog/scripts/generate-catalog.ts`, regenerated synchronized `agnosticui-catalog.json` / `catalog.json`, and verified `<ag-timeline-item>` slot projection in `v2/a2ui/renderers/lit/src/catalog.spec.ts`.
+  * Enriched `buildTurnThreeComponents()` in `v2/a2ui/demos/support-center/shared/agent-roundtrip.ts` to render a locale-formatted `AgIntlFormatter` timestamp, a 3-step `AgTimeline` telemetry audit trail, and an `AgLink` trace reference, verified in `agent-roundtrip.spec.ts`.
+* **Task 11.2 — Expand A2UI v1.0 Catalog to 45 Components (~80% Coverage)** ✅
+  * Ported 10 additional AgnosticUI v2 components (`Loader`, `Tooltip`, `Popover`, `Drawer`, `Dialog`, `CopyButton`, `AspectRatio`, `IconButton`, `SelectionButtonGroup`, `SelectionButton`) into `codegen.config.ts` and `generate-catalog.ts`, bringing the catalog to 45 components (`AgText` + 44 `Ag*` wrappers).
+  * Updated `catalog.spec.ts` to assert all 45 components + two-way `@path` binding on `AgSelectionButtonGroup`, regenerated synchronized `agnosticui-catalog.json` / `catalog.json` / `SKILL.md`, and bumped renderer packages to `2.0.0-alpha.4`.
 
 ---
 

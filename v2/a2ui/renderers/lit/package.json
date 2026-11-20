@@ -1,6 +1,6 @@
 {
   "name": "@agnosticui/a2ui-lit",
-  "version": "2.0.0-alpha.4",
+  "version": "2.0.0-alpha.5",
   "description": "A2UI v1.0 component catalog and Lit renderer for AgnosticUI",
   "author": "AgnosticUI",
   "license": "Apache-2.0",

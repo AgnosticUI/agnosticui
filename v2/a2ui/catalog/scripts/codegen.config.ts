@@ -262,18 +262,21 @@ export const rendererSlotConfig: Record<string, RendererSlot> = {
   AgBadge:         'children',
   AgBadgeFx:       'children',
 
-  // overlay/modal components — slot content authored as child nodes
+  // overlay/modal & positioning components — slot content authored as child nodes
   AgDialog:        'children',
   AgDrawer:        'children',
   AgPopover:       'children',
+  AgTooltip:       'children',
 
   // container components that wrap child nodes
   AgAccordion:          'children',
   AgAlert:              'children',
+  AgAspectRatio:        'children',
   AgCard:               'children',
   AgFieldset:           'children',
   AgHeader:             'children',
   AgIcon:               'children',
+  AgIconButton:         'children',
   AgKbd:                'children',
   AgLink:               'children',
   AgMark:               'children',

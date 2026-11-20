@@ -51,7 +51,7 @@ describe('AgentRoundTrip (Stateful Multi-Turn Agent Loop)', () => {
     }
   });
 
-  it('advances Turn 2 -> Turn 3 live verification receipt preserving submitted email and desk', () => {
+    it('advances Turn 2 -> Turn 3 live verification receipt with AgTimeline, AgIntlFormatter, and AgLink audit trail', () => {
     const turnTwoOutcome = advanceAgentRoundTrip(baseScenarioMessages, {
       name: 'launch_campaign_routing',
       sourceComponentId: 'submit_btn',
@@ -82,12 +82,39 @@ describe('AgentRoundTrip (Stateful Multi-Turn Agent Loop)', () => {
       expect(ids).toContain('agent_confirm_bubble');
       expect(ids).toContain('user_verify_bubble');
       expect(ids).toContain('agent_verify_bubble');
+      expect(ids).toContain('verify_timestamp_fmt');
+      expect(ids).toContain('verify_audit_timeline');
+      expect(ids).toContain('verify_trace_link');
 
       const confirmAlertText = components.find((c) => c.id === 'confirm_copy')?.text;
       const verifyAlertText = components.find((c) => c.id === 'verify_copy')?.text;
       expect(String(confirmAlertText)).toContain('sarah.chen@enterprise.io');
       expect(String(verifyAlertText)).toContain('sarah.chen@enterprise.io');
       expect(String(verifyAlertText)).toContain('emea-growth');
+
+      const formatterComp = components.find((c) => c.id === 'verify_timestamp_fmt') as
+        | (WireComponentRecord & { component?: string; type?: string; date?: string })
+        | undefined;
+      expect(formatterComp?.component).toBe('AgIntlFormatter');
+      expect(formatterComp?.type).toBe('date');
+      expect(typeof formatterComp?.date).toBe('string');
+
+      const timelineComp = components.find((c) => c.id === 'verify_audit_timeline') as
+        | (WireComponentRecord & {
+            component?: string;
+            items?: Array<{ start?: string; marker?: string; end?: string }>;
+          })
+        | undefined;
+      expect(timelineComp?.component).toBe('AgTimeline');
+      expect(timelineComp?.items).toHaveLength(3);
+      expect(timelineComp?.items?.[1]?.end).toContain('emea-growth');
+      expect(timelineComp?.items?.[2]?.end).toContain('sarah.chen@enterprise.io');
+
+      const linkComp = components.find((c) => c.id === 'verify_trace_link') as
+        | (WireComponentRecord & { component?: string; href?: string })
+        | undefined;
+      expect(linkComp?.component).toBe('AgLink');
+      expect(linkComp?.href).toBe('#trace-vip-98ms');
     }
   });
 
