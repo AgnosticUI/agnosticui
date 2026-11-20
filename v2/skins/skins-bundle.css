@@ -116,10 +116,10 @@
   --ag-focus-dark: #e8b8a3;
 
   /* ── Semantic text ── */
-  --ag-text-primary: #c3c0b6;
-  --ag-text-secondary: #a09d94;
-  --ag-text-muted: #83827d;
-  --ag-text-primary-muted: #a09d94;
+  --ag-text-primary: #e5e2d8;
+  --ag-text-secondary: #cbc7bc;
+  --ag-text-muted: #9e9b92;
+  --ag-text-primary-muted: #d9d5ca;
 
   /* ── Borders ── */
   --ag-border: #3d3b36;
