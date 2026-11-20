@@ -1,9 +1,9 @@
 # Implementation Tracking Plan: AgnosticUI A2UI v1.0 Refactor
 
-- **Branch:** `master` (Phases 1–9 merged) | Active: `feat/a2ui-phase10-multipage-flows`
+- **Branch:** `master` (Phases 1–11 merged via PR #523) | Next Side-Track: `feat/skins-curation`
 - **Architecture Spec:** `v2/a2ui/docs/PRD-A2UI-REFACTOR.md`
 - **Session Boot Capsule:** `v2/a2ui/docs/NEXT_PROMPT.md`
-- **Overall Status:** Phases 1–11 ✅ (45-Component Catalog + Enriched Turn-3 Audit Complete; Packages bumped to `2.0.0-alpha.4`)
+- **Overall Status:** Phases 1–11 ✅ (Merged to `master`, 45-Component Catalog + Enriched Turn-3 Audit Live on npm `2.0.0-alpha.5`) | Next: Runtime Skin Curation Side-Track (`v2/skins/`)
 - **Maintenance Rule:** Update both `IMPLEMENTATION_PLAN.md` and `NEXT_PROMPT.md` at the completion of every task before committing the checkpoint.
 ---
 
