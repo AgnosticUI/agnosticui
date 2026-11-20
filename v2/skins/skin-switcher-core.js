@@ -8,38 +8,35 @@
 import { SKINS_CSS } from './skins-css-data.js';
 
 export const SKINS = [
-  // Default anchor
+  { id: 'evergreen', label: 'Evergreen', swatch: '#00a87f' },
   { id: '', label: 'Default', swatch: '#297aff' },
-  // Reds / pinks (~330–10°)
-  { id: 'rose-blush', label: 'Rose Blush', swatch: '#e11d73' },
-  // Oranges / terracottas (~10–40°)
-  { id: 'terra-soft', label: 'Terra Soft', swatch: '#ff6a3e' },
-  { id: 'claymorphic', label: 'Claymorphic', swatch: '#c96442' },
-  { id: 'autumn-slate', label: 'Autumn Slate', swatch: '#d2691e' },
-  { id: 'coffee-espresso', label: 'Coffee Espresso', swatch: '#6f4e37' },
-  // Yellows (~40–65°)
-  { id: 'retro-brutalist', label: 'Retro Brutalist', swatch: '#ffdb33' },
-  // Greens (~90–160°)
-  { id: 'sage', label: 'Sage', swatch: '#5f8a6e' },
   { id: 'deep-forest', label: 'Deep Forest', swatch: '#1f514c' },
-  // Cyans / teals (~165–195°)
-  { id: 'neons-on-black', label: 'Neons On Black', swatch: '#00ffff' },
+  { id: 'claymorphic', label: 'Claymorphic', swatch: '#c96442' },
   { id: 'mo-neobrut', label: 'Mo-Neobrut', swatch: '#00bcd4' },
-  { id: 'muted-minimal', label: 'Muted Minimal', swatch: '#4a90a4' },
-  // Blues / indigos (~210–260°)
-  { id: 'high-contrast', label: 'High Contrast', swatch: '#0050d8' },
-  { id: 'glassmorphism', label: 'Glassmorphism', swatch: '#6366f1' },
-  // Dark / OLED themes
-  { id: 'midnight', label: 'Midnight', swatch: '#218bff' },
-  { id: 'deep-sea', label: 'Deep Sea', swatch: '#58a6ff' },
-  // Eye-comfort themes
-  { id: 'solarized', label: 'Solarized', swatch: '#2aa198' },
-  { id: 'paper', label: 'Paper', swatch: '#433422' },
-  // Purples / pinks
-  { id: 'cyberpunk', label: 'Cyberpunk', swatch: '#ff7edb' },
-  // Neutrals / achromatics
+  { id: 'coffee-espresso', label: 'Coffee Espresso', swatch: '#6f4e37' },
   { id: 'monochromatic', label: 'Monochromatic', swatch: '#000000' },
-  { id: 'black-cream', label: 'Black Cream', swatch: '#1a1a1a' },
+  { id: 'paper', label: 'Paper', swatch: '#433422' },
+  { id: 'solarized', label: 'Solarized', swatch: '#2aa198' },
+  { id: 'tokyo-ink', label: 'Tokyo Ink', swatch: '#c92a38' },
+  { id: 'nordic-aurora', label: 'Nordic Aurora', swatch: '#0f766e' },
+  { id: 'swiss-grid', label: 'Swiss Grid', swatch: '#d63200' },
+  { id: 'velvet-plum', label: 'Velvet Plum', swatch: '#881337' },
+  { id: 'copper-patina', label: 'Copper Patina', swatch: '#1b6b63' },
+  { id: 'warm-vellum', label: 'Warm Vellum', swatch: '#2c2a26' },
+  { id: 'press-crimson', label: 'Press Crimson', swatch: '#b81d24' },
+  { id: 'coral-harbor', label: 'Coral Harbor', swatch: '#c92a3e' },
+  { id: 'neon-obsidian', label: 'Neon Obsidian', swatch: '#5200ff' },
+  { id: 'ivory-cobalt', label: 'Ivory Cobalt', swatch: '#0b5fff' },
+  { id: 'obsidian-minimal', label: 'Obsidian Minimal', swatch: '#171717' },
+  { id: 'slate-azure', label: 'Slate Azure', swatch: '#0369a1' },
+  { id: 'terracotta-clay', label: 'Terracotta Clay', swatch: '#c2410c' },
+  { id: 'emerald-vault', label: 'Emerald Vault', swatch: '#047857' },
+  { id: 'indigo-dusk', label: 'Indigo Dusk', swatch: '#4338ca' },
+  { id: 'golden-amber', label: 'Golden Amber', swatch: '#b45309' },
+  { id: 'rosewood-ink', label: 'Rosewood Ink', swatch: '#9f1239' },
+  { id: 'pebble-cerulean', label: 'Pebble Cerulean', swatch: '#1a73e8' },
+  { id: 'olive-moss', label: 'Olive Moss', swatch: '#4d6629' },
+  { id: 'mulberry-slate', label: 'Mulberry Slate', swatch: '#86198f' },
 ];
 
 /** Apply a skin class to <html> and persist to localStorage. */
@@ -89,6 +86,13 @@ export function restoreCustomCSS() {
 }
 
 /** Restore skin + theme preferences from localStorage. Call once on load. */
+export function getSavedSkinId(fallback = '') {
+  const saved = localStorage.getItem('ag-skin');
+  if (saved === null) return fallback;
+  if (saved === '') return '';
+  return SKINS.some((s) => s.id === saved) ? saved : fallback;
+}
+
 export function restorePrefs() {
   const skin = localStorage.getItem('ag-skin');
   if (skin) applySkin(skin);

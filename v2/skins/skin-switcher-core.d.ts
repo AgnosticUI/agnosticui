@@ -9,3 +9,4 @@ export declare function applySkin(skinId: string): void;
 export declare function applyTheme(dark: boolean): void;
 export declare function copySkinCSS(skinId: string): Promise<boolean>;
 export declare function restorePrefs(): void;
+export declare function getSavedSkinId(fallback?: string): string;

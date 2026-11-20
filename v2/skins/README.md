@@ -10,13 +10,13 @@ v2/skins/
 ├── deep-forest/
 │   ├── skin.css           ← light-mode overrides
 │   └── skin-dark.css      ← dark-mode overrides
-├── terra-soft/
+├── evergreen/
 │   ├── skin.css           ← light-mode overrides
 │   └── skin-dark.css      ← dark-mode overrides
 ├── claymorphic/
 │   ├── skin.css           ← light-mode overrides
 │   └── skin-dark.css      ← dark-mode overrides
-├── retro-brutalist/
+├── tokyo-ink/
 │   ├── skin.css           ← light-mode overrides
 │   └── skin-dark.css      ← dark-mode overrides
 ```

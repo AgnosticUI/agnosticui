@@ -8,277 +8,16 @@
  * Import this AFTER ag-tokens-dark.css in your entry point.
  */
 
-/* ═══════════════════════════════════════════════════════════════════════════
-   Autumn Slate — Light
-   ═══════════════════════════════════════════════════════════════════════════ */
-
-/**
- * Autumn Slate Skin — Light Mode
- *
- * Warm autumn tones (burnt orange, amber) with cool slate gray accents.
- * Inspired by HTML5UP's Dopetrope magazine/blog aesthetic.
- *
- * Activate by adding class="ag-skin-autumn-slate" to <html>.
- * Load this file AFTER ag-tokens.css so the cascade overrides.
- */
-
-:where(html).ag-skin-autumn-slate {
-  /* ── Primary color family (burnt orange) ── */
-  --ag-primary: #d2691e;
-  --ag-primary-fg: #000000;
-  --ag-primary-dark: #b8571a;
-  --ag-primary-border: #e8b896;
-  --ag-primary-background: #fdf6f0;
-  --ag-primary-text: #a0521a;
-
-  /* ── Focus ring (burnt orange-derived RGB) ── */
-  --ag-focus: 210, 105, 30;
-  --ag-focus-dark: #e8761e;
-
-  /* ── Semantic text (slate gray) ── */
-  --ag-text-primary: #2f4f4f;
-  --ag-text-secondary: #536878;
-  --ag-text-muted: #708090;
-  --ag-text-primary-muted: #3d5a5f;
-
-  /* ── Borders (warm gray) ── */
-  --ag-border: #d5d0c8;
-  --ag-border-subtle: #e5e0d8;
-
-  /* ── Backgrounds (warm neutrals) ── */
-  --ag-background-primary: #fafaf8;
-  --ag-background-secondary: #f5f3f0;
-  --ag-background-tertiary: #ebe8e3;
-
-  /* ── Border radius (moderate) ── */
-  --ag-radius-lg: 0.5rem;
-
-  /* ── Shadows (warm-tinted) ── */
-  --ag-shadow-xs: 0 1px 2px 0 rgba(47, 79, 79, 0.06);
-  --ag-shadow-sm: 0 1px 4px 0 rgba(47, 79, 79, 0.08);
-  --ag-shadow-md: 0 2px 8px 0 rgba(47, 79, 79, 0.1);
-  --ag-shadow-lg: 0 4px 16px 0 rgba(47, 79, 79, 0.12);
-  --ag-shadow-xl: 0 6px 24px 0 rgba(47, 79, 79, 0.14);
-
-  /* ── Rating (amber) ── */
-  --ag-rating-filled: #f4a742;
-  --ag-rating-filled-primary: #d2691e;
-
-  /* ── Autumn palette (overrides blue palette) ── */
-  --ag-blue-50: #fdf6f0;
-  --ag-blue-100: #f8e4d2;
-  --ag-blue-200: #f0cfb3;
-  --ag-blue-300: #e8b896;
-  --ag-blue-400: #e89148;
-  --ag-blue-500: #d2691e;
-  --ag-blue-600: #b8571a;
-  --ag-blue-700: #a0521a;
-  --ag-blue-800: #7a3d14;
-  --ag-blue-900: #5a2d0f;
-}
-
-/* ═══════════════════════════════════════════════════════════════════════════
-   Autumn Slate — Dark
-   ═══════════════════════════════════════════════════════════════════════════ */
-
-/**
- * Autumn Slate Skin — Dark Mode
- *
- * Dark-mode overrides for the Autumn Slate warm/cool aesthetic.
- *
- * Activate by adding class="ag-skin-autumn-slate" to <html>.
- * Load this file AFTER ag-tokens-dark.css so the cascade overrides.
- */
-
-[data-theme="dark"].ag-skin-autumn-slate {
-  /* ── Primary color family (brightened burnt orange) ── */
-  --ag-primary: #e89148;
-  --ag-primary-fg: #000000;
-  --ag-primary-dark: #d2691e;
-  --ag-primary-border: #c86828;
-  --ag-primary-background: #2a1a10;
-  --ag-primary-text: #f0cfb3;
-
-  /* ── Focus ring (brightened orange-derived RGB) ── */
-  --ag-focus: 232, 145, 72;
-  --ag-focus-dark: #f0a860;
-
-  /* ── Semantic text (lighter slate) ── */
-  --ag-text-primary: #d8dfe5;
-  --ag-text-secondary: #b0bec8;
-  --ag-text-muted: #8a9aa8;
-  --ag-text-primary-muted: #c0cbd5;
-
-  /* ── Borders (dark slate) ── */
-  --ag-border: #3a4a52;
-  --ag-border-subtle: #2f3e45;
-
-  /* ── Backgrounds (dark warm neutrals) ── */
-  --ag-background-primary: #1a1612;
-  --ag-background-secondary: #221e18;
-  --ag-background-tertiary: #2a2520;
-
-  /* ── Border radius (matches light) ── */
-  --ag-radius-lg: 0.5rem;
-
-  /* ── Shadows (warm-tinted for dark mode) ── */
-  --ag-shadow-xs: 0 1px 2px 0 rgba(232, 145, 72, 0.08);
-  --ag-shadow-sm: 0 1px 4px 0 rgba(232, 145, 72, 0.1);
-  --ag-shadow-md: 0 2px 8px 0 rgba(232, 145, 72, 0.12);
-  --ag-shadow-lg: 0 4px 16px 0 rgba(232, 145, 72, 0.14);
-  --ag-shadow-xl: 0 6px 24px 0 rgba(232, 145, 72, 0.16);
-
-  /* ── Rating (amber) ── */
-  --ag-rating-filled: #f4a742;
-  --ag-rating-filled-primary: #e89148;
-
-  /* ── Autumn palette (overrides blue palette) ── */
-  --ag-blue-50: #f8e4d2;
-  --ag-blue-100: #f0cfb3;
-  --ag-blue-200: #e8b896;
-  --ag-blue-300: #e8a870;
-  --ag-blue-400: #e89148;
-  --ag-blue-500: #d2691e;
-  --ag-blue-600: #b8571a;
-  --ag-blue-700: #a0521a;
-  --ag-blue-800: #5a2d0f;
-  --ag-blue-900: #2a1a10;
-}
-
-/* ═══════════════════════════════════════════════════════════════════════════
-   Black Cream — Light
-   ═══════════════════════════════════════════════════════════════════════════ */
-
-/**
- * Black Cream Skin — Light Mode
- *
- * Elegant black and cream color scheme with sophisticated contrast.
- * Inspired by modern portfolio templates with refined aesthetics.
- *
- * Activate by adding class="ag-skin-black-cream" to <html>.
- * Load this file AFTER ag-tokens.css so the cascade overrides.
- */
-
-:where(html).ag-skin-black-cream {
-  /* ── Primary color family (rich black) ── */
-  --ag-primary: #1a1a1a;
-  --ag-primary-dark: #0a0a0a;
-  --ag-primary-border: #3a3a3a;
-  --ag-primary-background: #faf8f5;
-  --ag-primary-text: #1a1a1a;
-
-  /* ── Focus ring (black-derived RGB) ── */
-  --ag-focus: 26, 26, 26;
-  --ag-focus-dark: #3a3a3a;
-
-  /* ── Semantic text (warm blacks) ── */
-  --ag-text-primary: #1a1a1a;
-  --ag-text-secondary: #4a4745;
-  --ag-text-muted: #6a6762;
-  --ag-text-primary-muted: #2a2826;
-
-  /* ── Borders (soft warm gray) ── */
-  --ag-border: #e0dcd5;
-  --ag-border-subtle: #ebe8e1;
-
-  /* ── Backgrounds (cream tones) ── */
-  --ag-background-primary: #fffcf7;
-  --ag-background-secondary: #faf8f5;
-  --ag-background-tertiary: #f0ede8;
-
-  /* ── Border radius (refined) ── */
-  --ag-radius-lg: 0.75rem;
-
-  /* ── Shadows (warm, subtle) ── */
-  --ag-shadow-xs: 0 1px 2px 0 rgba(26, 26, 26, 0.04);
-  --ag-shadow-sm: 0 1px 3px 0 rgba(26, 26, 26, 0.06);
-  --ag-shadow-md: 0 2px 8px 0 rgba(26, 26, 26, 0.08);
-  --ag-shadow-lg: 0 4px 16px 0 rgba(26, 26, 26, 0.1);
-  --ag-shadow-xl: 0 8px 24px 0 rgba(26, 26, 26, 0.12);
-
-  /* ── Rating (warm gold) ── */
-  --ag-rating-filled: #d4af37;
-  --ag-rating-filled-primary: #1a1a1a;
-
-  /* ── Warm neutral palette (overrides blue palette) ── */
-  --ag-blue-50: #faf8f5;
-  --ag-blue-100: #f0ede8;
-  --ag-blue-200: #e0dcd5;
-  --ag-blue-300: #ccc6bb;
-  --ag-blue-400: #b3aa9d;
-  --ag-blue-500: #8a8275;
-  --ag-blue-600: #6a6762;
-  --ag-blue-700: #4a4745;
-  --ag-blue-800: #2a2826;
-  --ag-blue-900: #1a1a1a;
-}
-
-/* ═══════════════════════════════════════════════════════════════════════════
-   Black Cream — Dark
-   ═══════════════════════════════════════════════════════════════════════════ */
-
-/**
- * Black Cream Skin — Dark Mode
- *
- * Dark-mode overrides for the Black Cream sophisticated aesthetic.
- *
- * Activate by adding class="ag-skin-black-cream" to <html>.
- * Load this file AFTER ag-tokens-dark.css so the cascade overrides.
- */
-
-[data-theme="dark"].ag-skin-black-cream {
-  /* ── Primary color family (warm cream) ── */
-  --ag-primary: #f0ede8;
-  --ag-primary-fg: #000000;
-  --ag-primary-dark: #e0dcd5;
-  --ag-primary-border: #4a4745;
-  --ag-primary-background: #1a1816;
-  --ag-primary-text: #faf8f5;
-
-  /* ── Focus ring (cream-derived RGB) ── */
-  --ag-focus: 240, 237, 232;
-  --ag-focus-dark: #fffcf7;
-
-  /* ── Semantic text (warm lights) ── */
-  --ag-text-primary: #faf8f5;
-  --ag-text-secondary: #e0dcd5;
-  --ag-text-muted: #b3aa9d;
-  --ag-text-primary-muted: #ebe8e1;
-
-  /* ── Borders (dark warm) ── */
-  --ag-border: #3a3836;
-  --ag-border-subtle: #2a2826;
-
-  /* ── Backgrounds (dark warm neutrals) ── */
-  --ag-background-primary: #0a0a08;
-  --ag-background-secondary: #151412;
-  --ag-background-tertiary: #1f1e1c;
-
-  /* ── Border radius (matches light) ── */
-  --ag-radius-lg: 0.75rem;
-
-  /* ── Shadows (warm-tinted for dark mode) ── */
-  --ag-shadow-xs: 0 1px 2px 0 rgba(240, 237, 232, 0.04);
-  --ag-shadow-sm: 0 1px 3px 0 rgba(240, 237, 232, 0.06);
-  --ag-shadow-md: 0 2px 8px 0 rgba(240, 237, 232, 0.08);
-  --ag-shadow-lg: 0 4px 16px 0 rgba(240, 237, 232, 0.1);
-  --ag-shadow-xl: 0 8px 24px 0 rgba(240, 237, 232, 0.12);
-
-  /* ── Rating (warm gold) ── */
-  --ag-rating-filled: #d4af37;
-  --ag-rating-filled-primary: #f0ede8;
-
-  /* ── Warm neutral palette (overrides blue palette) ── */
-  --ag-blue-50: #faf8f5;
-  --ag-blue-100: #f0ede8;
-  --ag-blue-200: #e0dcd5;
-  --ag-blue-300: #ccc6bb;
-  --ag-blue-400: #b3aa9d;
-  --ag-blue-500: #8a8275;
-  --ag-blue-600: #6a6762;
-  --ag-blue-700: #4a4745;
-  --ag-blue-800: #2a2826;
-  --ag-blue-900: #1a1816;
+/* Default theme dark-mode conservative neutral surfaces */
+:where(html)[data-theme="dark"] {
+  --ag-background-primary: #111113;
+  --ag-background-secondary: #18181b;
+  --ag-background-tertiary: #222226;
+  --ag-border: #2c2c31;
+  --ag-border-subtle: #222226;
+  --ag-neutral-background: #222226;
+  --ag-neutral-text: #f4f4f6;
+  --ag-neutral-border: #36363c;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -347,6 +86,11 @@
   --ag-blue-700: #8e4526;
   --ag-blue-800: #6c341c;
   --ag-blue-900: #4a2312;
+
+  /* ── Neutral surfaces (MessageBubble neutral) ── */
+  --ag-neutral-background: #ede9de;
+  --ag-neutral-text: #2c291d;
+  --ag-neutral-border: #cfc9bc;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -377,10 +121,10 @@
   --ag-focus-dark: #e8b8a3;
 
   /* ── Semantic text ── */
-  --ag-text-primary: #c3c0b6;
-  --ag-text-secondary: #a09d94;
-  --ag-text-muted: #83827d;
-  --ag-text-primary-muted: #a09d94;
+  --ag-text-primary: #e5e2d8;
+  --ag-text-secondary: #cbc7bc;
+  --ag-text-muted: #9e9b92;
+  --ag-text-primary-muted: #d9d5ca;
 
   /* ── Borders ── */
   --ag-border: #3d3b36;
@@ -415,6 +159,11 @@
   --ag-blue-700: #6c341c;
   --ag-blue-800: #4a2312;
   --ag-blue-900: #3a2218;
+
+  /* ── Neutral surfaces (MessageBubble neutral) ── */
+  --ag-neutral-background: #363330;
+  --ag-neutral-text: #f5f4ee;
+  --ag-neutral-border: #524f48;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -483,6 +232,11 @@
   --ag-blue-700: #4a3322;
   --ag-blue-800: #362418;
   --ag-blue-900: #221610;
+
+  /* ── Neutral surfaces (MessageBubble neutral) ── */
+  --ag-neutral-background: #efe6dc;
+  --ag-neutral-text: #221610;
+  --ag-neutral-border: #d4c4b4;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -493,7 +247,7 @@
  * Coffee Espresso Skin — Dark Mode
  *
  * Dark-mode overrides for the Coffee Espresso warm brown aesthetic.
- * Deep espresso backgrounds with cream and mocha highlights.
+ * Deep espresso backgrounds with high-contrast cream and mocha highlights.
  *
  * Activate by adding class="ag-skin-coffee-espresso" to <html>.
  * Load this file AFTER ag-tokens-dark.css so the cascade overrides.
@@ -501,22 +255,22 @@
 
 [data-theme="dark"].ag-skin-coffee-espresso {
   /* ── Primary color family (brightened for dark backgrounds) ── */
-  --ag-primary: #c4a07c;
+  --ag-primary: #d4b494;
   --ag-primary-fg: #000000;
-  --ag-primary-dark: #a07850;
-  --ag-primary-border: #6f4e37;
+  --ag-primary-dark: #b8926c;
+  --ag-primary-border: #8c6648;
   --ag-primary-background: #221610;
-  --ag-primary-text: #d4b89c;
+  --ag-primary-text: #f0decb;
 
-  /* ── Focus ring (coffee-derived RGB, brightened) ── */
-  --ag-focus: 196, 160, 124;
-  --ag-focus-dark: #d4b89c;
+  /* ── Focus ring (coffee-derived RGB, brightened for high visibility) ── */
+  --ag-focus: 224, 192, 158;
+  --ag-focus-dark: #f0decb;
 
   /* ── Semantic text ── */
   --ag-text-primary: #f5ece3;
-  --ag-text-secondary: #d4c4b4;
-  --ag-text-muted: #a0907e;
-  --ag-text-primary-muted: #e8ddd0;
+  --ag-text-secondary: #e8dcd0;
+  --ag-text-muted: #b5a492;
+  --ag-text-primary-muted: #efe4d8;
 
   /* ── Borders ── */
   --ag-border: #3d2e22;
@@ -539,7 +293,7 @@
 
   /* ── Rating ── */
   --ag-rating-filled: #d4a055;
-  --ag-rating-filled-primary: #c4a07c;
+  --ag-rating-filled-primary: #d4b494;
 
   /* ── Coffee palette (overrides blue palette) ── */
   --ag-blue-50: #f0e0cc;
@@ -552,144 +306,191 @@
   --ag-blue-700: #362418;
   --ag-blue-800: #221610;
   --ag-blue-900: #150e08;
+
+  /* ── Neutral surfaces (MessageBubble neutral) ── */
+  --ag-neutral-background: #2b1f16;
+  --ag-neutral-text: #f5ece3;
+  --ag-neutral-border: #5a4434;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   Cyberpunk — Light
+   Copper Patina — Light
    ═══════════════════════════════════════════════════════════════════════════ */
 
-/**
- * Cyberpunk Skin — Light Mode (Purple Dark)
- *
- * Purple/plum base with hot pink accents. Distinct from Neons On Black
- * (purple tones vs cyan) and maintains a cohesive plum-to-magenta palette.
- * Note: "Light mode" uses dark backgrounds to preserve the cyberpunk aesthetic.
- *
- * Activate by adding class="ag-skin-cyberpunk" to <html>.
- * Load this file AFTER ag-tokens.css so the cascade overrides.
- */
-
-:where(html).ag-skin-cyberpunk {
-  /* ── Primary color family (hot pink/magenta) ── */
-  --ag-primary: #ff7edb;
-  --ag-primary-fg: #1a0f2e;
-  --ag-primary-dark: #f050c8;
-  --ag-primary-border: #ff9ee8;
-  --ag-primary-background: #2d0a26;
-  --ag-primary-text: #ffbcec;
-
-  /* ── Focus ring (pink-derived RGB) ── */
-  --ag-focus: 255, 126, 219;
-  --ag-focus-dark: #ff9ee8;
-
-  /* ── Semantic text (lavender on purple) ── */
-  --ag-text-primary: #f0e6ff;
-  --ag-text-secondary: #d4b8f0;
-  --ag-text-muted: #9a78c0;
-  --ag-text-primary-muted: #e0ccf8;
-
-  /* ── Borders (muted purple-grey) ── */
-  --ag-border: #4a3d5c;
-  --ag-border-subtle: #3a2e4a;
-
-  /* ── Backgrounds (purple/plum dark) ── */
-  --ag-background-primary: #2b213a;
-  --ag-background-secondary: #221932;
-  --ag-background-tertiary: #1e1530;
-
-  /* ── Border radius (futuristic, slightly sharp) ── */
-  --ag-radius-lg: 0.375rem;
-
-  /* ── Shadows (pink neon glow) ── */
-  --ag-shadow-xs: 0 0 4px 0 rgba(255, 126, 219, 0.2);
-  --ag-shadow-sm: 0 0 8px 0 rgba(255, 126, 219, 0.28);
-  --ag-shadow-md: 0 0 15px 0 rgba(255, 126, 219, 0.28);
-  --ag-shadow-lg: 0 0 25px -2px rgba(255, 126, 219, 0.32);
-  --ag-shadow-xl: 0 0 35px -4px rgba(255, 126, 219, 0.4);
-
-  /* ── Rating ── */
-  --ag-rating-filled: #ff7edb;
-  --ag-rating-filled-primary: #ff7edb;
-
-  /* ── Cyberpunk pink palette (overrides blue palette) ── */
-  --ag-blue-50: #ffe8f9;
-  --ag-blue-100: #ffccf3;
-  --ag-blue-200: #ffaae8;
-  --ag-blue-300: #ff7edb;
-  --ag-blue-400: #ff52cc;
-  --ag-blue-500: #e034af;
-  --ag-blue-600: #be2090;
-  --ag-blue-700: #9c1375;
-  --ag-blue-800: #7a085a;
-  --ag-blue-900: #580040;
+:where(html).ag-skin-copper-patina {
+  --ag-primary: #1b6b63;
+  --ag-primary-fg: #ffffff;
+  --ag-primary-dark: #14524c;
+  --ag-primary-border: #a7cfc9;
+  --ag-primary-background: #ebf5f3;
+  --ag-primary-text: #114540;
+  --ag-focus: 27, 107, 99;
+  --ag-focus-dark: #25877d;
+  --ag-text-primary: #211f1b;
+  --ag-text-secondary: #4a463d;
+  --ag-text-muted: #787266;
+  --ag-text-primary-muted: #33302a;
+  --ag-border: #d9d3c7;
+  --ag-border-subtle: #e8e3d8;
+  --ag-background-primary: #faf8f3;
+  --ag-background-secondary: #f2efe7;
+  --ag-background-tertiary: #e8e3d8;
+  --ag-neutral-background: #e8e3d8;
+  --ag-neutral-text: #211f1b;
+  --ag-neutral-border: #ccc4b4;
+  --ag-radius-lg: 0.625rem;
+  --ag-shadow-xs: 0 1px 2px 0 rgba(33, 31, 27, 0.05);
+  --ag-shadow-sm: 0 2px 6px 0 rgba(33, 31, 27, 0.07);
+  --ag-shadow-md: 0 4px 12px -1px rgba(33, 31, 27, 0.08);
+  --ag-shadow-lg: 0 8px 20px -2px rgba(33, 31, 27, 0.1);
+  --ag-shadow-xl: 0 12px 28px -4px rgba(33, 31, 27, 0.12);
+  --ag-rating-filled: #b45309;
+  --ag-rating-filled-primary: #1b6b63;
+  --ag-blue-50: #ebf5f3;
+  --ag-blue-100: #d0e8e4;
+  --ag-blue-200: #a7cfc9;
+  --ag-blue-300: #78b3ab;
+  --ag-blue-400: #3d8f86;
+  --ag-blue-500: #1b6b63;
+  --ag-blue-600: #14524c;
+  --ag-blue-700: #114540;
+  --ag-blue-800: #0b302c;
+  --ag-blue-900: #061c19;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   Cyberpunk — Dark
+   Copper Patina — Dark
    ═══════════════════════════════════════════════════════════════════════════ */
 
-/**
- * Cyberpunk Skin — Dark Mode
- *
- * Deeper purple with brighter pink for dark mode preference.
- *
- * Activate by adding class="ag-skin-cyberpunk" to <html>.
- * Load this file AFTER ag-tokens-dark.css so the cascade overrides.
- */
+[data-theme="dark"].ag-skin-copper-patina {
+  --ag-primary: #4fd1c5;
+  --ag-primary-fg: #071f1c;
+  --ag-primary-dark: #38b2ac;
+  --ag-primary-border: #4fd1c5;
+  --ag-primary-background: #12332f;
+  --ag-primary-text: #d6faf5;
+  --ag-focus: 129, 230, 217;
+  --ag-focus-dark: #d6faf5;
+  --ag-text-primary: #f5f2eb;
+  --ag-text-secondary: #d6d0c3;
+  --ag-text-muted: #9c9587;
+  --ag-text-primary-muted: #e6e1d6;
+  --ag-border: #36332c;
+  --ag-border-subtle: #292620;
+  --ag-background-primary: #141310;
+  --ag-background-secondary: #1d1b17;
+  --ag-background-tertiary: #27251f;
+  --ag-neutral-background: #27251f;
+  --ag-neutral-text: #f5f2eb;
+  --ag-neutral-border: #454137;
+  --ag-radius-lg: 0.625rem;
+  --ag-shadow-xs: 0 1px 3px 0 rgba(0, 0, 0, 0.28);
+  --ag-shadow-sm: 0 2px 6px 0 rgba(0, 0, 0, 0.34);
+  --ag-shadow-md: 0 4px 12px -1px rgba(0, 0, 0, 0.38);
+  --ag-shadow-lg: 0 8px 20px -2px rgba(0, 0, 0, 0.44);
+  --ag-shadow-xl: 0 12px 28px -4px rgba(0, 0, 0, 0.5);
+  --ag-rating-filled: #f59e0b;
+  --ag-rating-filled-primary: #4fd1c5;
+  --ag-blue-50: #e6fffa;
+  --ag-blue-100: #d6faf5;
+  --ag-blue-200: #81e6d9;
+  --ag-blue-300: #4fd1c5;
+  --ag-blue-400: #38b2ac;
+  --ag-blue-500: #319795;
+  --ag-blue-600: #1b6b63;
+  --ag-blue-700: #27251f;
+  --ag-blue-800: #1d1b17;
+  --ag-blue-900: #141310;
+}
 
-[data-theme="dark"].ag-skin-cyberpunk {
-  /* ── Primary color family (brighter pink for deeper dark) ── */
-  --ag-primary: #ff9ee8;
-  --ag-primary-fg: #1a0f2e;
-  --ag-primary-dark: #ff7edb;
-  --ag-primary-border: #ffbcec;
-  --ag-primary-background: #27051e;
-  --ag-primary-text: #ffcef2;
+/* ═══════════════════════════════════════════════════════════════════════════
+   Coral Harbor — Light
+   ═══════════════════════════════════════════════════════════════════════════ */
 
-  /* ── Focus ring (brightened pink RGB) ── */
-  --ag-focus: 255, 158, 232;
-  --ag-focus-dark: #ffbcec;
+:where(html).ag-skin-coral-harbor {
+  --ag-primary: #c92a3e;
+  --ag-primary-fg: #ffffff;
+  --ag-primary-dark: #a61f30;
+  --ag-primary-border: #f5b3bc;
+  --ag-primary-background: #fff1f3;
+  --ag-primary-text: #9e1f30;
+  --ag-focus: 224, 62, 82;
+  --ag-focus-dark: #ff4f64;
+  --ag-text-primary: #14233c;
+  --ag-text-secondary: #384966;
+  --ag-text-muted: #52617a;
+  --ag-text-primary-muted: #243654;
+  --ag-border: #d5dce6;
+  --ag-border-subtle: #e6ebf2;
+  --ag-background-primary: #ffffff;
+  --ag-background-secondary: #f4f6f9;
+  --ag-background-tertiary: #eaeef5;
+  --ag-neutral-background: #eaeef5;
+  --ag-neutral-text: #14233c;
+  --ag-neutral-border: #c5cfde;
+  --ag-radius-lg: 0.875rem;
+  --ag-shadow-xs: 0 1px 2px 0 rgba(20, 35, 60, 0.05);
+  --ag-shadow-sm: 0 2px 8px 0 rgba(20, 35, 60, 0.07);
+  --ag-shadow-md: 0 6px 16px -2px rgba(20, 35, 60, 0.09);
+  --ag-shadow-lg: 0 10px 24px -3px rgba(20, 35, 60, 0.11);
+  --ag-shadow-xl: 0 16px 32px -4px rgba(20, 35, 60, 0.14);
+  --ag-rating-filled: #e03e52;
+  --ag-rating-filled-primary: #e03e52;
+  --ag-blue-50: #fff1f3;
+  --ag-blue-100: #ffe0e5;
+  --ag-blue-200: #f5b3bc;
+  --ag-blue-300: #f28593;
+  --ag-blue-400: #ff4f64;
+  --ag-blue-500: #e03e52;
+  --ag-blue-600: #c22d40;
+  --ag-blue-700: #9e1f30;
+  --ag-blue-800: #751421;
+  --ag-blue-900: #4d0a13;
+}
 
-  /* ── Semantic text (bright lavender on deep purple) ── */
-  --ag-text-primary: #f8f0ff;
-  --ag-text-secondary: #e0ccf8;
-  --ag-text-muted: #b090d0;
-  --ag-text-primary-muted: #f0e4ff;
+/* ═══════════════════════════════════════════════════════════════════════════
+   Coral Harbor — Dark
+   ═══════════════════════════════════════════════════════════════════════════ */
 
-  /* ── Borders (visible purple in dark mode) ── */
-  --ag-border: #3d2b54;
-  --ag-border-subtle: #2e1f40;
-
-  /* ── Backgrounds (deepest purple) ── */
-  --ag-background-primary: #1a0f2e;
-  --ag-background-secondary: #150b25;
-  --ag-background-tertiary: #110820;
-
-  /* ── Border radius (matches light) ── */
-  --ag-radius-lg: 0.375rem;
-
-  /* ── Shadows (intensified pink glow) ── */
-  --ag-shadow-xs: 0 0 4px 0 rgba(255, 158, 232, 0.25);
-  --ag-shadow-sm: 0 0 8px 0 rgba(255, 158, 232, 0.32);
-  --ag-shadow-md: 0 0 15px 0 rgba(255, 158, 232, 0.32);
-  --ag-shadow-lg: 0 0 25px -2px rgba(255, 158, 232, 0.38);
-  --ag-shadow-xl: 0 0 35px -4px rgba(255, 158, 232, 0.45);
-
-  /* ── Rating ── */
-  --ag-rating-filled: #ff9ee8;
-  --ag-rating-filled-primary: #ff9ee8;
-
-  /* ── Cyberpunk pink palette (brightened for dark mode) ── */
-  --ag-blue-50: #fff0fc;
-  --ag-blue-100: #ffe8f9;
-  --ag-blue-200: #ffccf3;
-  --ag-blue-300: #ffaae8;
-  --ag-blue-400: #ff9ee8;
-  --ag-blue-500: #ff7edb;
-  --ag-blue-600: #ff52cc;
-  --ag-blue-700: #e034af;
-  --ag-blue-800: #be2090;
-  --ag-blue-900: #9c1375;
+[data-theme="dark"].ag-skin-coral-harbor {
+  --ag-primary: #ff6b7d;
+  --ag-primary-fg: #1c070a;
+  --ag-primary-dark: #f24b60;
+  --ag-primary-border: #e05265;
+  --ag-primary-background: #36171b;
+  --ag-primary-text: #ffd6dc;
+  --ag-focus: 255, 138, 152;
+  --ag-focus-dark: #ffd6dc;
+  --ag-text-primary: #f7f4f4;
+  --ag-text-secondary: #d9d0d0;
+  --ag-text-muted: #9e9393;
+  --ag-text-primary-muted: #e8e0e0;
+  --ag-border: #383131;
+  --ag-border-subtle: #292323;
+  --ag-background-primary: #161414;
+  --ag-background-secondary: #1f1c1c;
+  --ag-background-tertiary: #292525;
+  --ag-neutral-background: #292525;
+  --ag-neutral-text: #f7f4f4;
+  --ag-neutral-border: #473e3e;
+  --ag-radius-lg: 0.875rem;
+  --ag-shadow-xs: 0 1px 3px 0 rgba(0, 0, 0, 0.28);
+  --ag-shadow-sm: 0 2px 8px 0 rgba(0, 0, 0, 0.34);
+  --ag-shadow-md: 0 6px 16px -2px rgba(0, 0, 0, 0.4);
+  --ag-shadow-lg: 0 10px 24px -3px rgba(0, 0, 0, 0.45);
+  --ag-shadow-xl: 0 16px 32px -4px rgba(0, 0, 0, 0.5);
+  --ag-rating-filled: #fbbf24;
+  --ag-rating-filled-primary: #ff6b7d;
+  --ag-blue-50: #ffe5e9;
+  --ag-blue-100: #ffd6dc;
+  --ag-blue-200: #ffa3b0;
+  --ag-blue-300: #ff6b7d;
+  --ag-blue-400: #f24b60;
+  --ag-blue-500: #e03e52;
+  --ag-blue-600: #c22d40;
+  --ag-blue-700: #292525;
+  --ag-blue-800: #1f1c1c;
+  --ag-blue-900: #161414;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -752,6 +553,11 @@
   --ag-blue-700: #173d39;
   --ag-blue-800: #0f2926;
   --ag-blue-900: #081a17;
+
+  /* ── Neutral surfaces (MessageBubble neutral) ── */
+  --ag-neutral-background: #e6f0ee;
+  --ag-neutral-text: #143632;
+  --ag-neutral-border: #b2d4d0;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -784,12 +590,13 @@
   --ag-text-primary-muted: #c0e5e0;
 
   /* ── Borders ── */
-  --ag-border: #1f3d3a;
-  --ag-border-subtle: #2d5a54;
+  --ag-border: #293836;
+  --ag-border-subtle: #1f2b29;
 
   /* ── Backgrounds ── */
-  --ag-background-secondary: #0a1f1d;
-  --ag-background-tertiary: #1a3936;
+  --ag-background-primary: #111113;
+  --ag-background-secondary: #16201f;
+  --ag-background-tertiary: #1e2b29;
 
   /* ── Border radius (matches light) ── */
   --ag-radius-lg: 1.25rem;
@@ -815,273 +622,339 @@
   --ag-blue-700: #174f4a;
   --ag-blue-800: #0f3834;
   --ag-blue-900: #0d2926;
+
+  /* ── Neutral surfaces (MessageBubble neutral) ── */
+  --ag-neutral-background: #1e2b29;
+  --ag-neutral-text: #e6f5f3;
+  --ag-neutral-border: #344744;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   Deep Sea — Light
+   Emerald Vault — Light
    ═══════════════════════════════════════════════════════════════════════════ */
 
-/**
- * Deep Sea Skin — Light Mode (Navy Dark)
- *
- * GitHub dark-inspired navy/blue base with cool blue accents.
- * Distinct from Deep Forest (no green lean) and Midnight (navy, not pure black).
- * Note: "Light mode" uses dark backgrounds to preserve the navy aesthetic.
- *
- * Activate by adding class="ag-skin-deep-sea" to <html>.
- * Load this file AFTER ag-tokens.css so the cascade overrides.
- */
-
-:where(html).ag-skin-deep-sea {
-  /* ── Primary color family (GitHub dark blue) ── */
-  --ag-primary: #58a6ff;
-  --ag-primary-fg: #0d1117;
-  --ag-primary-dark: #388bfd;
-  --ag-primary-border: #79c0ff;
-  --ag-primary-background: #051f40;
-  --ag-primary-text: #79c0ff;
-
-  /* ── Focus ring (blue-derived RGB) ── */
-  --ag-focus: 88, 166, 255;
-  --ag-focus-dark: #79c0ff;
-
-  /* ── Semantic text (light on navy) ── */
-  --ag-text-primary: #e6edf3;
-  --ag-text-secondary: #c9d1d9;
-  --ag-text-muted: #8b949e;
-  --ag-text-primary-muted: #d1dae3;
-
-  /* ── Borders (subtle blue-grey) ── */
-  --ag-border: #30363d;
-  --ag-border-subtle: #21262d;
-
-  /* ── Backgrounds (navy dark, bluish) ── */
-  --ag-background-primary: #0d1117;
-  --ag-background-secondary: #161b22;
-  --ag-background-tertiary: #1c2128;
-
-  /* ── Border radius (clean and modern) ── */
+:where(html).ag-skin-emerald-vault {
+  --ag-primary: #047857;
+  --ag-primary-fg: #ffffff;
+  --ag-primary-dark: #065f46;
+  --ag-primary-border: #a7f3d0;
+  --ag-primary-background: #ecfdf5;
+  --ag-primary-text: #064e3b;
+  --ag-focus: 4, 120, 87;
+  --ag-focus-dark: #059669;
+  --ag-text-primary: #141c18;
+  --ag-text-secondary: #37473f;
+  --ag-text-muted: #64756c;
+  --ag-text-primary-muted: #24332c;
+  --ag-border: #d2dcd6;
+  --ag-border-subtle: #e4ebe7;
+  --ag-background-primary: #fcfdfb;
+  --ag-background-secondary: #f3f7f4;
+  --ag-background-tertiary: #e7efe9;
+  --ag-neutral-background: #e7efe9;
+  --ag-neutral-text: #141c18;
+  --ag-neutral-border: #c2d1c8;
   --ag-radius-lg: 0.5rem;
-
-  /* ── Shadows (blue-grey tinted) ── */
-  --ag-shadow-xs: 0 0 4px 0 rgba(88, 166, 255, 0.12);
-  --ag-shadow-sm: 0 0 8px 0 rgba(88, 166, 255, 0.16);
-  --ag-shadow-md: 0 0 15px 0 rgba(88, 166, 255, 0.16);
-  --ag-shadow-lg: 0 0 25px -2px rgba(88, 166, 255, 0.2);
-  --ag-shadow-xl: 0 0 35px -4px rgba(88, 166, 255, 0.24);
-
-  /* ── Rating ── */
-  --ag-rating-filled-primary: #58a6ff;
-
-  /* ── Deep sea blue palette (overrides blue palette) ── */
-  --ag-blue-50: #cae8ff;
-  --ag-blue-100: #a5d6ff;
-  --ag-blue-200: #79c0ff;
-  --ag-blue-300: #58a6ff;
-  --ag-blue-400: #388bfd;
-  --ag-blue-500: #1f6feb;
-  --ag-blue-600: #1158c7;
-  --ag-blue-700: #0d419d;
-  --ag-blue-800: #0c2d6b;
-  --ag-blue-900: #051d4d;
+  --ag-shadow-xs: 0 1px 2px 0 rgba(20, 28, 24, 0.05);
+  --ag-shadow-sm: 0 2px 6px 0 rgba(20, 28, 24, 0.07);
+  --ag-shadow-md: 0 4px 12px -1px rgba(20, 28, 24, 0.09);
+  --ag-shadow-lg: 0 8px 20px -2px rgba(20, 28, 24, 0.11);
+  --ag-shadow-xl: 0 12px 28px -4px rgba(20, 28, 24, 0.14);
+  --ag-rating-filled: #d97706;
+  --ag-rating-filled-primary: #047857;
+  --ag-blue-50: #ecfdf5;
+  --ag-blue-100: #d1fae5;
+  --ag-blue-200: #a7f3d0;
+  --ag-blue-300: #6ee7b7;
+  --ag-blue-400: #34d399;
+  --ag-blue-500: #10b981;
+  --ag-blue-600: #047857;
+  --ag-blue-700: #065f46;
+  --ag-blue-800: #064e3b;
+  --ag-blue-900: #022c22;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   Deep Sea — Dark
+   Emerald Vault — Dark
    ═══════════════════════════════════════════════════════════════════════════ */
 
-/**
- * Deep Sea Skin — Dark Mode
- *
- * Deeper navy with brighter blue for dark mode preference.
- *
- * Activate by adding class="ag-skin-deep-sea" to <html>.
- * Load this file AFTER ag-tokens-dark.css so the cascade overrides.
- */
-
-[data-theme="dark"].ag-skin-deep-sea {
-  /* ── Primary color family (brighter blue for deeper dark) ── */
-  --ag-primary: #79c0ff;
-  --ag-primary-fg: #010409;
-  --ag-primary-dark: #58a6ff;
-  --ag-primary-border: #a5d6ff;
-  --ag-primary-background: #031526;
-  --ag-primary-text: #a5d6ff;
-
-  /* ── Focus ring (brightened blue RGB) ── */
-  --ag-focus: 121, 192, 255;
-  --ag-focus-dark: #a5d6ff;
-
-  /* ── Semantic text ── */
-  --ag-text-primary: #f0f6fc;
-  --ag-text-secondary: #e6edf3;
-  --ag-text-muted: #8b949e;
-  --ag-text-primary-muted: #e6edf3;
-
-  /* ── Borders (darker navy in full dark mode) ── */
-  --ag-border: #21262d;
-  --ag-border-subtle: #161b22;
-
-  /* ── Backgrounds (deepest navy) ── */
-  --ag-background-primary: #010409;
-  --ag-background-secondary: #0d1117;
-  --ag-background-tertiary: #161b22;
-
-  /* ── Border radius (matches light) ── */
+[data-theme="dark"].ag-skin-emerald-vault {
+  --ag-primary: #34d399;
+  --ag-primary-fg: #042117;
+  --ag-primary-dark: #10b981;
+  --ag-primary-border: #34d399;
+  --ag-primary-background: #0e2b21;
+  --ag-primary-text: #d1fae5;
+  --ag-focus: 110, 231, 183;
+  --ag-focus-dark: #d1fae5;
+  --ag-text-primary: #f2f6f4;
+  --ag-text-secondary: #cbd6d0;
+  --ag-text-muted: #8fa198;
+  --ag-text-primary-muted: #dce6e0;
+  --ag-border: #2a2e2c;
+  --ag-border-subtle: #1f2220;
+  --ag-background-primary: #111312;
+  --ag-background-secondary: #181a19;
+  --ag-background-tertiary: #212422;
+  --ag-neutral-background: #212422;
+  --ag-neutral-text: #f2f6f4;
+  --ag-neutral-border: #353b38;
   --ag-radius-lg: 0.5rem;
-
-  /* ── Shadows (intensified blue glow) ── */
-  --ag-shadow-xs: 0 0 4px 0 rgba(121, 192, 255, 0.16);
-  --ag-shadow-sm: 0 0 8px 0 rgba(121, 192, 255, 0.2);
-  --ag-shadow-md: 0 0 15px 0 rgba(121, 192, 255, 0.2);
-  --ag-shadow-lg: 0 0 25px -2px rgba(121, 192, 255, 0.25);
-  --ag-shadow-xl: 0 0 35px -4px rgba(121, 192, 255, 0.3);
-
-  /* ── Rating ── */
-  --ag-rating-filled-primary: #79c0ff;
-
-  /* ── Deep sea blue palette (brightened for dark mode) ── */
-  --ag-blue-50: #e8f4ff;
-  --ag-blue-100: #cae8ff;
-  --ag-blue-200: #a5d6ff;
-  --ag-blue-300: #79c0ff;
-  --ag-blue-400: #58a6ff;
-  --ag-blue-500: #388bfd;
-  --ag-blue-600: #1f6feb;
-  --ag-blue-700: #1158c7;
-  --ag-blue-800: #0d419d;
-  --ag-blue-900: #0c2d6b;
+  --ag-shadow-xs: 0 1px 3px 0 rgba(0, 0, 0, 0.28);
+  --ag-shadow-sm: 0 2px 6px 0 rgba(0, 0, 0, 0.34);
+  --ag-shadow-md: 0 4px 12px -1px rgba(0, 0, 0, 0.38);
+  --ag-shadow-lg: 0 8px 20px -2px rgba(0, 0, 0, 0.44);
+  --ag-shadow-xl: 0 12px 28px -4px rgba(0, 0, 0, 0.5);
+  --ag-rating-filled: #fbbf24;
+  --ag-rating-filled-primary: #34d399;
+  --ag-blue-50: #ecfdf5;
+  --ag-blue-100: #d1fae5;
+  --ag-blue-200: #6ee7b7;
+  --ag-blue-300: #34d399;
+  --ag-blue-400: #10b981;
+  --ag-blue-500: #059669;
+  --ag-blue-600: #047857;
+  --ag-blue-700: #212422;
+  --ag-blue-800: #181a19;
+  --ag-blue-900: #111312;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   Glassmorphism — Light
+   Evergreen — Light
    ═══════════════════════════════════════════════════════════════════════════ */
 
 /**
- * Glassmorphism Skin — Light Mode
+ * Evergreen Skin — Light Mode
  *
- * Frosted glass panels with blur, translucency, and subtle borders.
- * Inspired by Apple's visionOS and modern glass-card designs.
+ * Crisp botanical emerald (#008766 / #00a87f) on warm ivory & sage-tinted sand.
  *
- * Activate by adding class="ag-skin-glassmorphism" to <html>.
- * Load this file AFTER ag-tokens.css so the cascade overrides.
+ * Activate by adding class="ag-skin-evergreen" to <html>.
  */
 
-:where(html).ag-skin-glassmorphism {
-  /* ── Primary color family (soft violet-blue) ── */
-  --ag-primary: #6366f1;
-  --ag-primary-fg: #000000;
-  --ag-primary-dark: #4f46e5;
+:where(html).ag-skin-evergreen {
+  --ag-primary: #008766;
+  --ag-primary-fg: #ffffff;
+  --ag-primary-dark: #006b51;
+  --ag-primary-border: #7fd4bc;
+  --ag-primary-background: #dcf5ea;
+  --ag-primary-text: #006b51;
+
+  --ag-neutral-background: #eef3e6;
+  --ag-neutral-text: #031d0e;
+  --ag-neutral-border: #c6d1c0;
+
+  --ag-focus: 0, 168, 127;
+  --ag-focus-dark: #00a87f;
+
+  --ag-text-primary: #031d0e;
+  --ag-text-secondary: #3b4d42;
+  --ag-text-muted: #5a6d61;
+  --ag-text-primary-muted: #243b2e;
+
+  --ag-border: #d4dace;
+  --ag-border-subtle: #e4e7df;
+
+  --ag-background-primary: #fefefa;
+  --ag-background-secondary: #f8faf1;
+  --ag-background-tertiary: #eef3e6;
+
+  --ag-success: #008766;
+  --ag-success-fg: #ffffff;
+  --ag-success-background: #dcf5ea;
+  --ag-success-text: #04291d;
+  --ag-warning: #eab308;
+  --ag-warning-fg: #031d0e;
+  --ag-warning-dark: #ca8a04;
+  --ag-warning-background: #fff4d6;
+  --ag-warning-text: #593800;
+  --ag-danger: #b42318;
+  --ag-danger-fg: #ffffff;
+  --ag-danger-background: #feeceb;
+  --ag-danger-text: #7a170f;
+
+  --ag-radius-md: var(--ag-radius-sm);
+  --ag-radius-lg: 0.75rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Evergreen — Dark
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/**
+ * Evergreen Skin — Dark Mode
+ *
+ * Vibrant action green (#12d99b) on deep evergreen-charcoal surfaces.
+ *
+ * Activate by adding class="ag-skin-evergreen" and data-theme="dark" to <html>.
+ */
+
+[data-theme="dark"].ag-skin-evergreen {
+  --ag-radius-md: var(--ag-radius-sm);
+  --ag-primary: #12d99b;
+  --ag-primary-fg: #042117;
+  --ag-primary-dark: #07c78c;
+  --ag-primary-border: #1e5e49;
+  --ag-primary-background: #132b24;
+  --ag-primary-text: #86f2cb;
+
+  --ag-neutral-background: #1e2723;
+  --ag-neutral-text: #f3f7f5;
+  --ag-neutral-border: #33423b;
+
+  --ag-focus: 18, 217, 155;
+  --ag-focus-dark: #86f2cb;
+
+  --ag-text-primary: #f3f7f5;
+  --ag-text-secondary: #c9d4ce;
+  --ag-text-muted: #8f9e96;
+  --ag-text-primary-muted: #dce6e0;
+
+  --ag-border: #28332e;
+  --ag-border-subtle: #1d2622;
+
+  --ag-background-primary: #101513;
+  --ag-background-secondary: #161d1a;
+  --ag-background-tertiary: #1e2723;
+
+  --ag-success: #12d99b;
+  --ag-success-fg: #042117;
+  --ag-success-dark: #0ea878;
+  --ag-success-background: #132b24;
+  --ag-success-text: #b8f7df;
+  --ag-warning: #eab308;
+  --ag-warning-fg: #031d0e;
+  --ag-warning-dark: #ca8a04;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Golden Amber — Light
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:where(html).ag-skin-golden-amber {
+  --ag-primary: #b45309;
+  --ag-primary-fg: #ffffff;
+  --ag-primary-dark: #92400e;
+  --ag-primary-border: #fde68a;
+  --ag-primary-background: #fffbeb;
+  --ag-primary-text: #78350f;
+  --ag-focus: 180, 83, 9;
+  --ag-focus-dark: #d97706;
+  --ag-text-primary: #1f1912;
+  --ag-text-secondary: #4a3e2e;
+  --ag-text-muted: #786a56;
+  --ag-text-primary-muted: #332a1f;
+  --ag-border: #e0d7c8;
+  --ag-border-subtle: #ede6da;
+  --ag-background-primary: #fffefa;
+  --ag-background-secondary: #f9f5ec;
+  --ag-background-tertiary: #f0eadc;
+  --ag-neutral-background: #f0eadc;
+  --ag-neutral-text: #1f1912;
+  --ag-neutral-border: #d4c8b4;
+  --ag-radius-lg: 0.625rem;
+  --ag-shadow-xs: 0 1px 2px 0 rgba(31, 25, 18, 0.05);
+  --ag-shadow-sm: 0 2px 6px 0 rgba(31, 25, 18, 0.07);
+  --ag-shadow-md: 0 4px 12px -1px rgba(31, 25, 18, 0.09);
+  --ag-shadow-lg: 0 8px 20px -2px rgba(31, 25, 18, 0.11);
+  --ag-shadow-xl: 0 12px 28px -4px rgba(31, 25, 18, 0.14);
+  --ag-rating-filled: #d97706;
+  --ag-rating-filled-primary: #b45309;
+  --ag-blue-50: #fffbeb;
+  --ag-blue-100: #fef3c7;
+  --ag-blue-200: #fde68a;
+  --ag-blue-300: #fcd34d;
+  --ag-blue-400: #fbbf24;
+  --ag-blue-500: #f59e0b;
+  --ag-blue-600: #b45309;
+  --ag-blue-700: #92400e;
+  --ag-blue-800: #78350f;
+  --ag-blue-900: #451a03;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Golden Amber — Dark
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+[data-theme="dark"].ag-skin-golden-amber {
+  --ag-primary: #fbbf24;
+  --ag-primary-fg: #1f1302;
+  --ag-primary-dark: #f59e0b;
+  --ag-primary-border: #fbbf24;
+  --ag-primary-background: #30220a;
+  --ag-primary-text: #fef3c7;
+  --ag-focus: 252, 211, 77;
+  --ag-focus-dark: #fef3c7;
+  --ag-text-primary: #f7f4ee;
+  --ag-text-secondary: #d6cfc2;
+  --ag-text-muted: #9c9486;
+  --ag-text-primary-muted: #e8e2d5;
+  --ag-border: #2e2c28;
+  --ag-border-subtle: #22201d;
+  --ag-background-primary: #131210;
+  --ag-background-secondary: #1a1917;
+  --ag-background-tertiary: #23221f;
+  --ag-neutral-background: #23221f;
+  --ag-neutral-text: #f7f4ee;
+  --ag-neutral-border: #3b3934;
+  --ag-radius-lg: 0.625rem;
+  --ag-shadow-xs: 0 1px 3px 0 rgba(0, 0, 0, 0.28);
+  --ag-shadow-sm: 0 2px 6px 0 rgba(0, 0, 0, 0.34);
+  --ag-shadow-md: 0 4px 12px -1px rgba(0, 0, 0, 0.38);
+  --ag-shadow-lg: 0 8px 20px -2px rgba(0, 0, 0, 0.44);
+  --ag-shadow-xl: 0 12px 28px -4px rgba(0, 0, 0, 0.5);
+  --ag-rating-filled: #fbbf24;
+  --ag-rating-filled-primary: #fbbf24;
+  --ag-blue-50: #fffbeb;
+  --ag-blue-100: #fef3c7;
+  --ag-blue-200: #fde68a;
+  --ag-blue-300: #fbbf24;
+  --ag-blue-400: #f59e0b;
+  --ag-blue-500: #d97706;
+  --ag-blue-600: #b45309;
+  --ag-blue-700: #23221f;
+  --ag-blue-800: #1a1917;
+  --ag-blue-900: #131210;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Indigo Dusk — Light
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:where(html).ag-skin-indigo-dusk {
+  --ag-primary: #4338ca;
+  --ag-primary-fg: #ffffff;
+  --ag-primary-dark: #3730a3;
   --ag-primary-border: #c7d2fe;
-  --ag-primary-background: rgba(99, 102, 241, 0.08);
-  --ag-primary-text: #4338ca;
-
-  /* ── Focus ring (indigo-derived RGB) ── */
-  --ag-focus: 99, 102, 241;
+  --ag-primary-background: #eef2ff;
+  --ag-primary-text: #312e81;
+  --ag-focus: 67, 56, 202;
   --ag-focus-dark: #4f46e5;
-
-  /* ── Semantic text ── */
-  --ag-text-primary: #1e1b4b;
-  --ag-text-secondary: #4b5563;
-  --ag-text-muted: #9ca3af;
-  --ag-text-primary-muted: #374151;
-
-  /* ── Borders (subtle, translucent) ── */
-  --ag-border: rgba(255, 255, 255, 0.6);
-  --ag-border-subtle: rgba(255, 255, 255, 0.3);
-
-  /* ── Backgrounds (translucent for glass effect) ── */
-  --ag-background-primary: rgba(255, 255, 255, 0.72);
-  --ag-background-secondary: rgba(255, 255, 255, 0.48);
-  --ag-background-tertiary: rgba(245, 243, 255, 0.6);
-
-  /* ── Border radius (generous for glass cards) ── */
-  --ag-radius-lg: 1.25rem;
-
-  /* ── Shadows (colorful, diffused for glass depth) ── */
-  --ag-shadow-xs: 0 1px 3px 0 rgba(99, 102, 241, 0.06);
-  --ag-shadow-sm: 0 2px 8px 0 rgba(99, 102, 241, 0.08);
-  --ag-shadow-md: 0 4px 16px 0 rgba(99, 102, 241, 0.08);
-  --ag-shadow-lg: 0 8px 24px -4px rgba(99, 102, 241, 0.1);
-  --ag-shadow-xl: 0 12px 40px -8px rgba(99, 102, 241, 0.12);
-
-  /* ── Rating ── */
-  --ag-rating-filled-primary: #6366f1;
-
-  /* ── Indigo palette (overrides blue palette) ── */
+  --ag-text-primary: #141624;
+  --ag-text-secondary: #373b54;
+  --ag-text-muted: #656a87;
+  --ag-text-primary-muted: #24283d;
+  --ag-border: #d4d7e6;
+  --ag-border-subtle: #e6e8f2;
+  --ag-background-primary: #fcfcfe;
+  --ag-background-secondary: #f4f5fa;
+  --ag-background-tertiary: #e9ebf5;
+  --ag-neutral-background: #e9ebf5;
+  --ag-neutral-text: #141624;
+  --ag-neutral-border: #c5c9de;
+  --ag-radius-lg: 0.75rem;
+  --ag-shadow-xs: 0 1px 2px 0 rgba(20, 22, 36, 0.05);
+  --ag-shadow-sm: 0 2px 6px 0 rgba(20, 22, 36, 0.07);
+  --ag-shadow-md: 0 4px 12px -1px rgba(20, 22, 36, 0.09);
+  --ag-shadow-lg: 0 8px 20px -2px rgba(20, 22, 36, 0.11);
+  --ag-shadow-xl: 0 12px 28px -4px rgba(20, 22, 36, 0.14);
+  --ag-rating-filled: #d97706;
+  --ag-rating-filled-primary: #4338ca;
   --ag-blue-50: #eef2ff;
   --ag-blue-100: #e0e7ff;
   --ag-blue-200: #c7d2fe;
   --ag-blue-300: #a5b4fc;
   --ag-blue-400: #818cf8;
   --ag-blue-500: #6366f1;
-  --ag-blue-600: #4f46e5;
-  --ag-blue-700: #4338ca;
-  --ag-blue-800: #3730a3;
-  --ag-blue-900: #312e81;
-}
-
-/* ═══════════════════════════════════════════════════════════════════════════
-   Glassmorphism — Dark
-   ═══════════════════════════════════════════════════════════════════════════ */
-
-/**
- * Glassmorphism Skin — Dark Mode
- *
- * Dark frosted glass with luminous indigo accents and translucent panels.
- *
- * Activate by adding class="ag-skin-glassmorphism" to <html>.
- * Load this file AFTER ag-tokens-dark.css so the cascade overrides.
- */
-
-[data-theme="dark"].ag-skin-glassmorphism {
-  /* ── Primary color family (brightened for dark backgrounds) ── */
-  --ag-primary: #818cf8;
-  --ag-primary-fg: #000000;
-  --ag-primary-dark: #6366f1;
-  --ag-primary-border: #4f46e5;
-  --ag-primary-background: rgba(99, 102, 241, 0.12);
-  --ag-primary-text: #c7d2fe;
-
-  /* ── Focus ring (indigo-derived RGB, brightened) ── */
-  --ag-focus: 129, 140, 248;
-  --ag-focus-dark: #a5b4fc;
-
-  /* ── Semantic text ── */
-  --ag-text-primary: #f1f0ff;
-  --ag-text-secondary: #c4c1e0;
-  --ag-text-muted: #8b87a8;
-  --ag-text-primary-muted: #d8d5f0;
-
-  /* ── Borders (translucent light on dark) ── */
-  --ag-border: rgba(255, 255, 255, 0.1);
-  --ag-border-subtle: rgba(255, 255, 255, 0.06);
-
-  /* ── Backgrounds (translucent dark glass) ── */
-  --ag-background-primary: rgba(15, 15, 35, 0.8);
-  --ag-background-secondary: rgba(20, 20, 50, 0.6);
-  --ag-background-tertiary: rgba(30, 30, 70, 0.5);
-
-  /* ── Border radius (matches light) ── */
-  --ag-radius-lg: 1.25rem;
-
-  /* ── Shadows (indigo-tinted glow) ── */
-  --ag-shadow-xs: 0 1px 3px 0 rgba(99, 102, 241, 0.1);
-  --ag-shadow-sm: 0 2px 8px 0 rgba(99, 102, 241, 0.12);
-  --ag-shadow-md: 0 4px 16px 0 rgba(99, 102, 241, 0.1);
-  --ag-shadow-lg: 0 8px 24px -4px rgba(99, 102, 241, 0.14);
-  --ag-shadow-xl: 0 12px 40px -8px rgba(99, 102, 241, 0.18);
-
-  /* ── Rating ── */
-  --ag-rating-filled-primary: #818cf8;
-
-  /* ── Indigo palette (overrides blue palette) ── */
-  --ag-blue-50: #e0e7ff;
-  --ag-blue-100: #c7d2fe;
-  --ag-blue-200: #a5b4fc;
-  --ag-blue-300: #818cf8;
-  --ag-blue-400: #6366f1;
-  --ag-blue-500: #4f46e5;
   --ag-blue-600: #4338ca;
   --ag-blue-700: #3730a3;
   --ag-blue-800: #312e81;
@@ -1089,285 +962,138 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   High Contrast — Light
+   Indigo Dusk — Dark
    ═══════════════════════════════════════════════════════════════════════════ */
 
-/**
- * High Contrast Skin — Light Mode
- *
- * Accessibility-focused skin with WCAG AAA contrast ratios.
- * Bold borders, strong text, no subtle grays. Clear visual hierarchy.
- *
- * Activate by adding class="ag-skin-high-contrast" to <html>.
- * Load this file AFTER ag-tokens.css so the cascade overrides.
- */
-
-:where(html).ag-skin-high-contrast {
-  /* ── Primary color family (strong blue, high contrast) ── */
-  --ag-primary: #0050d8;
-  --ag-primary-dark: #003da5;
-  --ag-primary-border: #0050d8;
-  --ag-primary-background: #e8f0fe;
-  --ag-primary-text: #003078;
-
-  /* ── Focus ring (bold blue RGB, thick) ── */
-  --ag-focus: 0, 80, 216;
-  --ag-focus-dark: #003da5;
-
-  /* ── Semantic text (maximum contrast) ── */
-  --ag-text-primary: #000000;
-  --ag-text-secondary: #1a1a1a;
-  --ag-text-muted: #333333;
-  --ag-text-primary-muted: #0d0d0d;
-
-  /* ── Borders (strong, visible) ── */
-  --ag-border: #333333;
-  --ag-border-subtle: #666666;
-
-  /* ── Backgrounds ── */
-  --ag-background-primary: #ffffff;
-  --ag-background-secondary: #f5f5f5;
-  --ag-background-tertiary: #ebebeb;
-
-  /* ── Border radius (minimal for clarity) ── */
-  --ag-radius-lg: 0.375rem;
-
-  /* ── Shadows (sharp, defined) ── */
-  --ag-shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.12);
-  --ag-shadow-sm: 0 1px 4px 0 rgba(0, 0, 0, 0.16);
-  --ag-shadow-md: 0 2px 8px 0 rgba(0, 0, 0, 0.18);
-  --ag-shadow-lg: 0 4px 12px 0 rgba(0, 0, 0, 0.2);
-  --ag-shadow-xl: 0 8px 20px 0 rgba(0, 0, 0, 0.22);
-
-  /* ── Rating ── */
-  --ag-rating-filled-primary: #0050d8;
-
-  /* ── Blue palette (high-contrast blue ramp) ── */
-  --ag-blue-50: #e8f0fe;
-  --ag-blue-100: #b8d4fc;
-  --ag-blue-200: #88b8fa;
-  --ag-blue-300: #4890f0;
-  --ag-blue-400: #1a6ee6;
-  --ag-blue-500: #0050d8;
-  --ag-blue-600: #003da5;
-  --ag-blue-700: #003078;
-  --ag-blue-800: #002050;
-  --ag-blue-900: #001030;
-
-  /* ── Disabled & Monochrome states (WCAG AAA) ── */
-  --ag-background-disabled: #e0e0e0;
-  --ag-text-disabled: #1a1a1a;
-  --ag-monochrome-background: #e0e0e0;
-  --ag-monochrome-text: #000000;
+[data-theme="dark"].ag-skin-indigo-dusk {
+  --ag-primary: #818cf8;
+  --ag-primary-fg: #0d0c26;
+  --ag-primary-dark: #757df8;
+  --ag-primary-border: #818cf8;
+  --ag-primary-background: #1b1c3b;
+  --ag-primary-text: #e0e7ff;
+  --ag-focus: 165, 180, 252;
+  --ag-focus-dark: #e0e7ff;
+  --ag-text-primary: #f3f4f8;
+  --ag-text-secondary: #cdd1e0;
+  --ag-text-muted: #9196ab;
+  --ag-text-primary-muted: #dfe2ed;
+  --ag-border: #2b2c33;
+  --ag-border-subtle: #202126;
+  --ag-background-primary: #121215;
+  --ag-background-secondary: #18191d;
+  --ag-background-tertiary: #212228;
+  --ag-neutral-background: #212228;
+  --ag-neutral-text: #f3f4f8;
+  --ag-neutral-border: #363842;
+  --ag-radius-lg: 0.75rem;
+  --ag-shadow-xs: 0 1px 3px 0 rgba(0, 0, 0, 0.28);
+  --ag-shadow-sm: 0 2px 6px 0 rgba(0, 0, 0, 0.34);
+  --ag-shadow-md: 0 4px 12px -1px rgba(0, 0, 0, 0.38);
+  --ag-shadow-lg: 0 8px 20px -2px rgba(0, 0, 0, 0.44);
+  --ag-shadow-xl: 0 12px 28px -4px rgba(0, 0, 0, 0.5);
+  --ag-rating-filled: #fbbf24;
+  --ag-rating-filled-primary: #818cf8;
+  --ag-blue-50: #eef2ff;
+  --ag-blue-100: #e0e7ff;
+  --ag-blue-200: #a5b4fc;
+  --ag-blue-300: #818cf8;
+  --ag-blue-400: #6366f1;
+  --ag-blue-500: #4f46e5;
+  --ag-blue-600: #4338ca;
+  --ag-blue-700: #212228;
+  --ag-blue-800: #18191d;
+  --ag-blue-900: #121215;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   High Contrast — Dark
+   Ivory Cobalt — Light
    ═══════════════════════════════════════════════════════════════════════════ */
 
-/**
- * High Contrast Skin — Dark Mode
- *
- * Dark-mode overrides with maximum contrast for accessibility.
- * Bright text on pure dark backgrounds, strong borders.
- *
- * Activate by adding class="ag-skin-high-contrast" to <html>.
- * Load this file AFTER ag-tokens-dark.css so the cascade overrides.
- */
-
-[data-theme="dark"].ag-skin-high-contrast {
-  /* ── Primary color family (bright for dark backgrounds) ── */
-  --ag-primary: #4890f0;
-  --ag-primary-fg: #000000;
-  --ag-primary-dark: #1a6ee6;
-  --ag-primary-border: #4890f0;
-  --ag-primary-background: #001030;
-  --ag-primary-text: #b8d4fc;
-
-  /* ── Focus ring (bright blue RGB) ── */
-  --ag-focus: 72, 144, 240;
-  --ag-focus-dark: #88b8fa;
-
-  /* ── Semantic text (maximum contrast on dark) ── */
-  --ag-text-primary: #ffffff;
-  --ag-text-secondary: #f0f0f0;
-  --ag-text-muted: #cccccc;
-  --ag-text-primary-muted: #f5f5f5;
-
-  /* ── Borders (strong, visible on dark) ── */
-  --ag-border: #cccccc;
-  --ag-border-subtle: #888888;
-
-  /* ── Backgrounds (pure dark) ── */
-  --ag-background-primary: #000000;
-  --ag-background-secondary: #0a0a0a;
-  --ag-background-tertiary: #141414;
-
-  /* ── Border radius (matches light) ── */
-  --ag-radius-lg: 0.375rem;
-
-  /* ── Shadows (bright edges for definition) ── */
-  --ag-shadow-xs: 0 1px 2px 0 rgba(255, 255, 255, 0.08);
-  --ag-shadow-sm: 0 1px 4px 0 rgba(255, 255, 255, 0.1);
-  --ag-shadow-md: 0 2px 8px 0 rgba(255, 255, 255, 0.1);
-  --ag-shadow-lg: 0 4px 12px 0 rgba(255, 255, 255, 0.12);
-  --ag-shadow-xl: 0 8px 20px 0 rgba(255, 255, 255, 0.14);
-
-  /* ── Rating ── */
-  --ag-rating-filled-primary: #4890f0;
-
-  /* ── Blue palette (high-contrast blue ramp) ── */
-  --ag-blue-50: #e8f0fe;
-  --ag-blue-100: #b8d4fc;
-  --ag-blue-200: #88b8fa;
-  --ag-blue-300: #4890f0;
-  --ag-blue-400: #1a6ee6;
-  --ag-blue-500: #0050d8;
-  --ag-blue-600: #003da5;
-  --ag-blue-700: #003078;
-  --ag-blue-800: #002050;
-  --ag-blue-900: #001030;
-
-  /* ── Disabled & Monochrome states (WCAG AAA) ── */
-  --ag-background-disabled: #1f1f1f;
-  --ag-text-disabled: #f0f0f0;
-  --ag-monochrome-background: #1f1f1f;
-  --ag-monochrome-text: #ffffff;
-}
-
-/* ═══════════════════════════════════════════════════════════════════════════
-   Midnight — Light
-   ═══════════════════════════════════════════════════════════════════════════ */
-
-/**
- * Midnight Skin — Light Mode (OLED Black)
- *
- * Pure black OLED background with GitHub-style blue accents.
- * Note: "Light mode" uses dark backgrounds to preserve the OLED aesthetic.
- *
- * Activate by adding class="ag-skin-midnight" to <html>.
- * Load this file AFTER ag-tokens.css so the cascade overrides.
- */
-
-:where(html).ag-skin-midnight {
-  /* ── Primary color family (GitHub blue) ── */
-  --ag-primary: #218bff;
+:where(html).ag-skin-ivory-cobalt {
+  --ag-primary: #0b5fff;
   --ag-primary-fg: #ffffff;
-  --ag-primary-dark: #1a7aef;
-  --ag-primary-border: #388bfd;
-  --ag-primary-background: #031d40;
-  --ag-primary-text: #79c0ff;
-
-  /* ── Focus ring (blue-derived RGB) ── */
-  --ag-focus: 33, 139, 255;
-  --ag-focus-dark: #4d9fff;
-
-  /* ── Semantic text (light on OLED black) ── */
-  --ag-text-primary: #f0f6fc;
-  --ag-text-secondary: #c9d1d9;
-  --ag-text-muted: #8b949e;
-  --ag-text-primary-muted: #e6edf3;
-
-  /* ── Borders (subtle dark grey-blue) ── */
-  --ag-border: #21262d;
-  --ag-border-subtle: #161b22;
-
-  /* ── Backgrounds (pure OLED black) ── */
-  --ag-background-primary: #000000;
-  --ag-background-secondary: #0d0d0d;
-  --ag-background-tertiary: #141414;
-
-  /* ── Border radius (clean, modern) ── */
-  --ag-radius-lg: 0.5rem;
-
-  /* ── Shadows (blue-tinted on black) ── */
-  --ag-shadow-xs: 0 0 4px 0 rgba(33, 139, 255, 0.15);
-  --ag-shadow-sm: 0 0 8px 0 rgba(33, 139, 255, 0.2);
-  --ag-shadow-md: 0 0 15px 0 rgba(33, 139, 255, 0.2);
-  --ag-shadow-lg: 0 0 25px -2px rgba(33, 139, 255, 0.25);
-  --ag-shadow-xl: 0 0 35px -4px rgba(33, 139, 255, 0.3);
-
-  /* ── Rating ── */
-  --ag-rating-filled-primary: #218bff;
-
-  /* ── GitHub blue palette (overrides blue palette) ── */
-  --ag-blue-50: #ddf4ff;
-  --ag-blue-100: #b6e3ff;
-  --ag-blue-200: #80ccff;
-  --ag-blue-300: #54aeff;
-  --ag-blue-400: #218bff;
-  --ag-blue-500: #0969da;
-  --ag-blue-600: #0550ae;
-  --ag-blue-700: #033d8b;
-  --ag-blue-800: #0a3069;
-  --ag-blue-900: #002155;
+  --ag-primary-dark: #0047cc;
+  --ag-primary-border: #a8c7ff;
+  --ag-primary-background: #edf4ff;
+  --ag-primary-text: #003cb3;
+  --ag-focus: 11, 95, 255;
+  --ag-focus-dark: #2974ff;
+  --ag-text-primary: #1a1a1a;
+  --ag-text-secondary: #454440;
+  --ag-text-muted: #75736c;
+  --ag-text-primary-muted: #2e2d2a;
+  --ag-border: #e0ddd5;
+  --ag-border-subtle: #edeae3;
+  --ag-background-primary: #faf9f6;
+  --ag-background-secondary: #f3f1eb;
+  --ag-background-tertiary: #eae7df;
+  --ag-neutral-background: #eae7df;
+  --ag-neutral-text: #1a1a1a;
+  --ag-neutral-border: #d1cdc2;
+  --ag-radius-lg: 0.75rem;
+  --ag-shadow-xs: 0 1px 2px 0 rgba(26, 26, 26, 0.05);
+  --ag-shadow-sm: 0 2px 6px 0 rgba(26, 26, 26, 0.07);
+  --ag-shadow-md: 0 4px 14px -1px rgba(26, 26, 26, 0.09);
+  --ag-shadow-lg: 0 8px 22px -2px rgba(26, 26, 26, 0.11);
+  --ag-shadow-xl: 0 14px 30px -4px rgba(26, 26, 26, 0.14);
+  --ag-rating-filled: #d97706;
+  --ag-rating-filled-primary: #0b5fff;
+  --ag-blue-50: #edf4ff;
+  --ag-blue-100: #d6e6ff;
+  --ag-blue-200: #a8c7ff;
+  --ag-blue-300: #75a5ff;
+  --ag-blue-400: #3d81ff;
+  --ag-blue-500: #0b5fff;
+  --ag-blue-600: #0047cc;
+  --ag-blue-700: #003cb3;
+  --ag-blue-800: #002b80;
+  --ag-blue-900: #001a4d;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   Midnight — Dark
+   Ivory Cobalt — Dark
    ═══════════════════════════════════════════════════════════════════════════ */
 
-/**
- * Midnight Skin — Dark Mode
- *
- * Intensified OLED black with brighter GitHub blue for dark mode preference.
- *
- * Activate by adding class="ag-skin-midnight" to <html>.
- * Load this file AFTER ag-tokens-dark.css so the cascade overrides.
- */
-
-[data-theme="dark"].ag-skin-midnight {
-  /* ── Primary color family (brighter blue for dark mode) ── */
-  --ag-primary: #4d9fff;
-  --ag-primary-fg: #000000;
-  --ag-primary-dark: #218bff;
-  --ag-primary-border: #54aeff;
-  --ag-primary-background: #021a38;
-  --ag-primary-text: #a5d6ff;
-
-  /* ── Focus ring (brightened blue RGB) ── */
-  --ag-focus: 77, 159, 255;
-  --ag-focus-dark: #80ccff;
-
-  /* ── Semantic text (ultra bright on OLED black) ── */
-  --ag-text-primary: #f0f6fc;
-  --ag-text-secondary: #e6edf3;
-  --ag-text-muted: #8b949e;
-  --ag-text-primary-muted: #f0f6fc;
-
-  /* ── Borders (slightly more visible in dark mode) ── */
-  --ag-border: #30363d;
-  --ag-border-subtle: #21262d;
-
-  /* ── Backgrounds (pure OLED black, intensified) ── */
-  --ag-background-primary: #000000;
-  --ag-background-secondary: #080808;
-  --ag-background-tertiary: #0d0d0d;
-
-  /* ── Border radius (matches light) ── */
-  --ag-radius-lg: 0.5rem;
-
-  /* ── Shadows (intensified blue glow) ── */
-  --ag-shadow-xs: 0 0 4px 0 rgba(77, 159, 255, 0.2);
-  --ag-shadow-sm: 0 0 8px 0 rgba(77, 159, 255, 0.25);
-  --ag-shadow-md: 0 0 15px 0 rgba(77, 159, 255, 0.25);
-  --ag-shadow-lg: 0 0 25px -2px rgba(77, 159, 255, 0.3);
-  --ag-shadow-xl: 0 0 35px -4px rgba(77, 159, 255, 0.35);
-
-  /* ── Rating ── */
-  --ag-rating-filled-primary: #4d9fff;
-
-  /* ── GitHub blue palette (brightened for dark mode) ── */
-  --ag-blue-50: #cae8ff;
-  --ag-blue-100: #a5d6ff;
-  --ag-blue-200: #80ccff;
-  --ag-blue-300: #54aeff;
-  --ag-blue-400: #4d9fff;
-  --ag-blue-500: #218bff;
-  --ag-blue-600: #1a7aef;
-  --ag-blue-700: #0969da;
-  --ag-blue-800: #0550ae;
-  --ag-blue-900: #033d8b;
+[data-theme="dark"].ag-skin-ivory-cobalt {
+  --ag-primary: #5c98ff;
+  --ag-primary-fg: #04122e;
+  --ag-primary-dark: #3b82f6;
+  --ag-primary-border: #5c98ff;
+  --ag-primary-background: #10254d;
+  --ag-primary-text: #d6e6ff;
+  --ag-focus: 138, 180, 255;
+  --ag-focus-dark: #d6e6ff;
+  --ag-text-primary: #f7f6f2;
+  --ag-text-secondary: #d4d1c9;
+  --ag-text-muted: #99968e;
+  --ag-text-primary-muted: #e6e3dc;
+  --ag-border: #2e2d2a;
+  --ag-border-subtle: #22211f;
+  --ag-background-primary: #141413;
+  --ag-background-secondary: #1c1c1a;
+  --ag-background-tertiary: #262523;
+  --ag-neutral-background: #262523;
+  --ag-neutral-text: #f7f6f2;
+  --ag-neutral-border: #3d3c38;
+  --ag-radius-lg: 0.75rem;
+  --ag-shadow-xs: 0 1px 3px 0 rgba(0, 0, 0, 0.28);
+  --ag-shadow-sm: 0 2px 6px 0 rgba(0, 0, 0, 0.34);
+  --ag-shadow-md: 0 4px 12px -1px rgba(0, 0, 0, 0.38);
+  --ag-shadow-lg: 0 8px 20px -2px rgba(0, 0, 0, 0.44);
+  --ag-shadow-xl: 0 12px 28px -4px rgba(0, 0, 0, 0.5);
+  --ag-rating-filled: #fbbf24;
+  --ag-rating-filled-primary: #5c98ff;
+  --ag-blue-50: #ebf3ff;
+  --ag-blue-100: #d6e6ff;
+  --ag-blue-200: #8ab4ff;
+  --ag-blue-300: #5c98ff;
+  --ag-blue-400: #3b82f6;
+  --ag-blue-500: #0b5fff;
+  --ag-blue-600: #0047cc;
+  --ag-blue-700: #262523;
+  --ag-blue-800: #1c1c1a;
+  --ag-blue-900: #141413;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -1441,6 +1167,11 @@
   --ag-blue-700: #0097a7;
   --ag-blue-800: #00838f;
   --ag-blue-900: #006064;
+
+  /* ── Neutral surfaces (MessageBubble neutral) ── */
+  --ag-neutral-background: #eeeeee;
+  --ag-neutral-text: #000000;
+  --ag-neutral-border: #000000;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -1513,6 +1244,11 @@
   --ag-blue-700: #00838f;
   --ag-blue-800: #006064;
   --ag-blue-900: #004d56;
+
+  /* ── Neutral surfaces (MessageBubble neutral) ── */
+  --ag-neutral-background: #242424;
+  --ag-neutral-text: #ffffff;
+  --ag-neutral-border: #5c5c5c;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -1580,6 +1316,11 @@
   --ag-blue-700: #404040;
   --ag-blue-800: #262626;
   --ag-blue-900: #171717;
+
+  /* ── Neutral surfaces (MessageBubble neutral) ── */
+  --ag-neutral-background: #f2f2f2;
+  --ag-neutral-text: #000000;
+  --ag-neutral-border: #d4d4d4;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -1647,294 +1388,469 @@
   --ag-blue-700: #404040;
   --ag-blue-800: #262626;
   --ag-blue-900: #1a1a1a;
+
+  /* ── Neutral surfaces (MessageBubble neutral) ── */
+  --ag-neutral-background: #1f1f1f;
+  --ag-neutral-text: #ffffff;
+  --ag-neutral-border: #404040;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   Muted Minimal — Light
+   Mulberry Slate — Light
    ═══════════════════════════════════════════════════════════════════════════ */
 
-/**
- * Muted Minimal Skin — Light Mode
- *
- * A restrained blue-gray aesthetic inspired by HTML5UP's Read Only template.
- * Soft, professional, with muted colors and understated elegance.
- *
- * Activate by adding class="ag-skin-muted-minimal" to <html>.
- * Load this file AFTER ag-tokens.css so the cascade overrides.
- */
-
-:where(html).ag-skin-muted-minimal {
-  /* ── Primary color family (muted blue) ── */
-  --ag-primary: #4a90a4;
-  --ag-primary-fg: #000000;
-  --ag-primary-dark: #3a7a8c;
-  --ag-primary-border: #c5dde5;
-  --ag-primary-background: #edf5f7;
-  --ag-primary-text: #2d5f6f;
-
-  /* ── Focus ring (muted blue-derived RGB) ── */
-  --ag-focus: 74, 144, 164;
-  --ag-focus-dark: #5fa8be;
-
-  /* ── Semantic text ── */
-  --ag-text-primary: #3a3a3a;
-  --ag-text-secondary: #5a5a5a;
-  --ag-text-muted: #7a7a7a;
-  --ag-text-primary-muted: #4a4a4a;
-
-  /* ── Borders ── */
-  --ag-border: #d8d8d8;
-  --ag-border-subtle: #e8e8e8;
-
-  /* ── Backgrounds ── */
-  --ag-background-primary: #fefefe;
-  --ag-background-secondary: #f8f8f8;
-  --ag-background-tertiary: #f0f0f0;
-
-  /* ── Border radius (minimal) ── */
-  --ag-radius-lg: 0.25rem;
-
-  /* ── Shadows (very soft) ── */
-  --ag-shadow-xs: 0 1px 2px 0 rgba(74, 90, 100, 0.04);
-  --ag-shadow-sm: 0 1px 3px 0 rgba(74, 90, 100, 0.06);
-  --ag-shadow-md: 0 2px 6px 0 rgba(74, 90, 100, 0.08);
-  --ag-shadow-lg: 0 3px 12px 0 rgba(74, 90, 100, 0.1);
-  --ag-shadow-xl: 0 5px 20px 0 rgba(74, 90, 100, 0.12);
-
-  /* ── Rating ── */
-  --ag-rating-filled-primary: #4a90a4;
-
-  /* ── Muted blue-gray palette (overrides blue palette) ── */
-  --ag-blue-50: #edf5f7;
-  --ag-blue-100: #d5e8ed;
-  --ag-blue-200: #b8d7e0;
-  --ag-blue-300: #9ac5d3;
-  --ag-blue-400: #6fa8ba;
-  --ag-blue-500: #4a90a4;
-  --ag-blue-600: #3a7a8c;
-  --ag-blue-700: #2d5f6f;
-  --ag-blue-800: #204552;
-  --ag-blue-900: #162f38;
+:where(html).ag-skin-mulberry-slate {
+  --ag-primary: #86198f;
+  --ag-primary-fg: #ffffff;
+  --ag-primary-dark: #701a75;
+  --ag-primary-border: #f0abfc;
+  --ag-primary-background: #fdf4ff;
+  --ag-primary-text: #701a75;
+  --ag-focus: 134, 25, 143;
+  --ag-focus-dark: #a21caf;
+  --ag-text-primary: #18181b;
+  --ag-text-secondary: #3f3f46;
+  --ag-text-muted: #71717a;
+  --ag-text-primary-muted: #27272a;
+  --ag-border: #d4d4d8;
+  --ag-border-subtle: #e4e4e7;
+  --ag-background-primary: #ffffff;
+  --ag-background-secondary: #f4f4f5;
+  --ag-background-tertiary: #e4e4e7;
+  --ag-neutral-background: #e4e4e7;
+  --ag-neutral-text: #18181b;
+  --ag-neutral-border: #d4d4d8;
+  --ag-radius-lg: 0.75rem;
+  --ag-shadow-xs: 0 1px 2px 0 rgba(24, 24, 27, 0.05);
+  --ag-shadow-sm: 0 2px 6px 0 rgba(24, 24, 27, 0.07);
+  --ag-shadow-md: 0 4px 12px -1px rgba(24, 24, 27, 0.09);
+  --ag-shadow-lg: 0 8px 20px -2px rgba(24, 24, 27, 0.11);
+  --ag-shadow-xl: 0 12px 28px -4px rgba(24, 24, 27, 0.14);
+  --ag-rating-filled: #d97706;
+  --ag-rating-filled-primary: #86198f;
+  --ag-blue-50: #fdf4ff;
+  --ag-blue-100: #fae8ff;
+  --ag-blue-200: #f0abfc;
+  --ag-blue-300: #e879f9;
+  --ag-blue-400: #d946ef;
+  --ag-blue-500: #c026d3;
+  --ag-blue-600: #86198f;
+  --ag-blue-700: #701a75;
+  --ag-blue-800: #4a044e;
+  --ag-blue-900: #2e0230;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   Muted Minimal — Dark
+   Mulberry Slate — Dark
    ═══════════════════════════════════════════════════════════════════════════ */
 
-/**
- * Muted Minimal Skin — Dark Mode
- *
- * Dark-mode overrides for the Muted Minimal blue-gray aesthetic.
- *
- * Activate by adding class="ag-skin-muted-minimal" to <html>.
- * Load this file AFTER ag-tokens-dark.css so the cascade overrides.
- */
-
-[data-theme="dark"].ag-skin-muted-minimal {
-  /* ── Primary color family (brightened muted blue) ── */
-  --ag-primary: #6fa8ba;
-  --ag-primary-fg: #000000;
-  --ag-primary-dark: #5a95a8;
-  --ag-primary-border: #4a7a8a;
-  --ag-primary-background: #1a2830;
-  --ag-primary-text: #b8d7e0;
-
-  /* ── Focus ring (muted blue-derived RGB, brightened) ── */
-  --ag-focus: 111, 168, 186;
-  --ag-focus-dark: #9ac5d3;
-
-  /* ── Semantic text ── */
-  --ag-text-primary: #e5e5e5;
-  --ag-text-secondary: #c0c0c0;
-  --ag-text-muted: #9a9a9a;
-  --ag-text-primary-muted: #d0d0d0;
-
-  /* ── Borders ── */
-  --ag-border: #2a3a42;
-  --ag-border-subtle: #222e35;
-
-  /* ── Backgrounds ── */
-  --ag-background-primary: #0f1518;
-  --ag-background-secondary: #161f24;
-  --ag-background-tertiary: #1f2b32;
-
-  /* ── Border radius (matches light) ── */
-  --ag-radius-lg: 0.25rem;
-
-  /* ── Shadows (muted blue-tinted for dark mode) ── */
-  --ag-shadow-xs: 0 1px 2px 0 rgba(111, 168, 186, 0.08);
-  --ag-shadow-sm: 0 1px 3px 0 rgba(111, 168, 186, 0.1);
-  --ag-shadow-md: 0 2px 6px 0 rgba(111, 168, 186, 0.12);
-  --ag-shadow-lg: 0 3px 12px 0 rgba(111, 168, 186, 0.14);
-  --ag-shadow-xl: 0 5px 20px 0 rgba(111, 168, 186, 0.16);
-
-  /* ── Rating ── */
-  --ag-rating-filled-primary: #6fa8ba;
-
-  /* ── Muted blue-gray palette (overrides blue palette) ── */
-  --ag-blue-50: #d5e8ed;
-  --ag-blue-100: #b8d7e0;
-  --ag-blue-200: #9ac5d3;
-  --ag-blue-300: #7cb3c6;
-  --ag-blue-400: #6fa8ba;
-  --ag-blue-500: #5a95a8;
-  --ag-blue-600: #4a7a8a;
-  --ag-blue-700: #3a606e;
-  --ag-blue-800: #2a4652;
-  --ag-blue-900: #1a2830;
+[data-theme="dark"].ag-skin-mulberry-slate {
+  --ag-primary: #e879f9;
+  --ag-primary-fg: #260329;
+  --ag-primary-dark: #d946ef;
+  --ag-primary-border: #d946ef;
+  --ag-primary-background: #2e1533;
+  --ag-primary-text: #fae8ff;
+  --ag-focus: 240, 171, 252;
+  --ag-focus-dark: #fae8ff;
+  --ag-text-primary: #f4f4f6;
+  --ag-text-secondary: #d4d4d8;
+  --ag-text-muted: #9898a0;
+  --ag-text-primary-muted: #e4e4e7;
+  --ag-border: #2c2c31;
+  --ag-border-subtle: #202024;
+  --ag-background-primary: #121214;
+  --ag-background-secondary: #19191c;
+  --ag-background-tertiary: #222226;
+  --ag-neutral-background: #222226;
+  --ag-neutral-text: #f4f4f6;
+  --ag-neutral-border: #36363c;
+  --ag-radius-lg: 0.75rem;
+  --ag-shadow-xs: 0 1px 3px 0 rgba(0, 0, 0, 0.28);
+  --ag-shadow-sm: 0 2px 6px 0 rgba(0, 0, 0, 0.34);
+  --ag-shadow-md: 0 4px 12px -1px rgba(0, 0, 0, 0.38);
+  --ag-shadow-lg: 0 8px 20px -2px rgba(0, 0, 0, 0.44);
+  --ag-shadow-xl: 0 12px 28px -4px rgba(0, 0, 0, 0.5);
+  --ag-rating-filled: #fbbf24;
+  --ag-rating-filled-primary: #e879f9;
+  --ag-blue-50: #fdf4ff;
+  --ag-blue-100: #fae8ff;
+  --ag-blue-200: #f0abfc;
+  --ag-blue-300: #e879f9;
+  --ag-blue-400: #d946ef;
+  --ag-blue-500: #c026d3;
+  --ag-blue-600: #86198f;
+  --ag-blue-700: #222226;
+  --ag-blue-800: #19191c;
+  --ag-blue-900: #121214;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   Neons On Black — Light
+   Neon Obsidian — Light
    ═══════════════════════════════════════════════════════════════════════════ */
 
-/**
- * Neons On Black Skin — Light Mode
- *
- * Vibrant neon colors on dark backgrounds inspired by cyberpunk aesthetics.
- * Note: "Light mode" here is actually dark to maintain the neon-on-black aesthetic.
- *
- * Activate by adding class="ag-skin-neons-on-black" to <html>.
- * Load this file AFTER ag-tokens.css so the cascade overrides.
- */
+:where(html).ag-skin-neon-obsidian {
+  --ag-primary: #5200ff;
+  --ag-primary-fg: #ffffff;
+  --ag-primary-dark: #4100cc;
+  --ag-primary-border: #c4abff;
+  --ag-primary-background: #f2ecff;
+  --ag-primary-text: #3b00b8;
+  --ag-focus: 82, 0, 255;
+  --ag-focus-dark: #6d28ff;
+  --ag-text-primary: #141110;
+  --ag-text-secondary: #3d3735;
+  --ag-text-muted: #6e6562;
+  --ag-text-primary-muted: #262220;
+  --ag-border: #d9d3d0;
+  --ag-border-subtle: #eae5e3;
+  --ag-background-primary: #fcfbfa;
+  --ag-background-secondary: #f4f1ef;
+  --ag-background-tertiary: #ebe6e3;
+  --ag-neutral-background: #ebe6e3;
+  --ag-neutral-text: #141110;
+  --ag-neutral-border: #ccc4c0;
+  --ag-radius-sm: 0.1875rem;
+  --ag-radius-md: 0.25rem;
+  --ag-radius-lg: 0.375rem;
+  --ag-shadow-xs: 0 1px 2px 0 rgba(20, 17, 16, 0.06);
+  --ag-shadow-sm: 0 2px 6px 0 rgba(82, 0, 255, 0.08);
+  --ag-shadow-md: 0 4px 12px -1px rgba(82, 0, 255, 0.1);
+  --ag-shadow-lg: 0 8px 20px -2px rgba(82, 0, 255, 0.12);
+  --ag-shadow-xl: 0 12px 28px -4px rgba(82, 0, 255, 0.15);
+  --ag-rating-filled: #65a30d;
+  --ag-rating-filled-primary: #5200ff;
+  --ag-blue-50: #f2ecff;
+  --ag-blue-100: #e2d4ff;
+  --ag-blue-200: #c4abff;
+  --ag-blue-300: #9f75ff;
+  --ag-blue-400: #783dff;
+  --ag-blue-500: #5200ff;
+  --ag-blue-600: #4100cc;
+  --ag-blue-700: #3b00b8;
+  --ag-blue-800: #290080;
+  --ag-blue-900: #18004d;
+}
 
-:where(html).ag-skin-neons-on-black {
-  /* ── Primary color family (neon cyan) ── */
-  --ag-primary: #00ffff;
-  --ag-primary-fg: #000000;
-  --ag-primary-dark: #00e5e5;
-  --ag-primary-border: #00cccc;
-  --ag-primary-background: #001a1a;
-  --ag-primary-text: #00ffff;
+/* ═══════════════════════════════════════════════════════════════════════════
+   Neon Obsidian — Dark
+   ═══════════════════════════════════════════════════════════════════════════ */
 
-  /* ── Focus ring (neon cyan-derived RGB) ── */
-  --ag-focus: 0, 255, 255;
-  --ag-focus-dark: #66ffff;
+[data-theme="dark"].ag-skin-neon-obsidian {
+  --ag-primary: #a37aff;
+  --ag-primary-fg: #12062b;
+  --ag-primary-dark: #996bff;
+  --ag-primary-border: #a37aff;
+  --ag-primary-background: #241347;
+  --ag-primary-text: #e3d6ff;
+  --ag-focus: 163, 230, 53;
+  --ag-focus-dark: #bef264;
+  --ag-text-primary: #f7f5f4;
+  --ag-text-secondary: #d6cfcc;
+  --ag-text-muted: #9c928e;
+  --ag-text-primary-muted: #e8e2df;
+  --ag-border: #332c29;
+  --ag-border-subtle: #241f1d;
+  --ag-background-primary: #141110;
+  --ag-background-secondary: #1c1816;
+  --ag-background-tertiary: #26201e;
+  --ag-neutral-background: #26201e;
+  --ag-neutral-text: #f7f5f4;
+  --ag-neutral-border: #423935;
+  --ag-radius-sm: 0.1875rem;
+  --ag-radius-md: 0.25rem;
+  --ag-radius-lg: 0.375rem;
+  --ag-shadow-xs: 0 1px 3px 0 rgba(0, 0, 0, 0.32);
+  --ag-shadow-sm: 0 2px 8px 0 rgba(135, 82, 255, 0.18);
+  --ag-shadow-md: 0 4px 14px -1px rgba(135, 82, 255, 0.22);
+  --ag-shadow-lg: 0 8px 22px -2px rgba(135, 82, 255, 0.26);
+  --ag-shadow-xl: 0 12px 30px -4px rgba(135, 82, 255, 0.3);
+  --ag-rating-filled: #a3e635;
+  --ag-rating-filled-primary: #a37aff;
+  --ag-blue-50: #efe8ff;
+  --ag-blue-100: #e3d6ff;
+  --ag-blue-200: #c4abff;
+  --ag-blue-300: #a37aff;
+  --ag-blue-400: #8752ff;
+  --ag-blue-500: #5200ff;
+  --ag-blue-600: #4100cc;
+  --ag-blue-700: #26201e;
+  --ag-blue-800: #1c1816;
+  --ag-blue-900: #141110;
+}
 
-  /* ── Semantic text (bright on dark) ── */
-  --ag-text-primary: #ffffff;
-  --ag-text-secondary: #e0e0e0;
-  --ag-text-muted: #a0a0a0;
-  --ag-text-primary-muted: #f0f0f0;
+/* ═══════════════════════════════════════════════════════════════════════════
+   Nordic Aurora — Light
+   ═══════════════════════════════════════════════════════════════════════════ */
 
-  /* ── Borders (subtle neon glow) ── */
-  --ag-border: #1a1a2e;
-  --ag-border-subtle: #0f0f1e;
+:where(html).ag-skin-nordic-aurora {
+  --ag-primary: #0f766e;
+  --ag-primary-fg: #ffffff;
+  --ag-primary-dark: #115e59;
+  --ag-primary-border: #99d5cf;
+  --ag-primary-background: #e6f7f5;
+  --ag-primary-text: #0d4f4a;
+  --ag-focus: 15, 118, 110;
+  --ag-focus-dark: #14b8a6;
+  --ag-text-primary: #0f2426;
+  --ag-text-secondary: #2d4c50;
+  --ag-text-muted: #476469;
+  --ag-text-primary-muted: #1e393d;
+  --ag-border: #c2dce0;
+  --ag-border-subtle: #daecee;
+  --ag-background-primary: #f6fbfc;
+  --ag-background-secondary: #ebf5f7;
+  --ag-background-tertiary: #deedf0;
+  --ag-neutral-background: #deedf0;
+  --ag-neutral-text: #0f2426;
+  --ag-neutral-border: #b3d2d7;
+  --ag-radius-lg: 1rem;
+  --ag-shadow-xs: 0 1px 2px 0 rgba(15, 36, 38, 0.05);
+  --ag-shadow-sm: 0 2px 8px 0 rgba(15, 118, 110, 0.08);
+  --ag-shadow-md: 0 4px 14px -1px rgba(15, 118, 110, 0.1);
+  --ag-shadow-lg: 0 8px 22px -2px rgba(15, 118, 110, 0.12);
+  --ag-shadow-xl: 0 14px 30px -4px rgba(15, 118, 110, 0.15);
+  --ag-rating-filled: #d97706;
+  --ag-rating-filled-primary: #0f766e;
+  --ag-blue-50: #e6f7f5;
+  --ag-blue-100: #c4ece8;
+  --ag-blue-200: #99d5cf;
+  --ag-blue-300: #5eead4;
+  --ag-blue-400: #2dd4bf;
+  --ag-blue-500: #14b8a6;
+  --ag-blue-600: #0f766e;
+  --ag-blue-700: #115e59;
+  --ag-blue-800: #134e4a;
+  --ag-blue-900: #082f2d;
+}
 
-  /* ── Backgrounds (deep black/near-black) ── */
+/* ═══════════════════════════════════════════════════════════════════════════
+   Nordic Aurora — Dark
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+[data-theme="dark"].ag-skin-nordic-aurora {
+  --ag-primary: #2dd4bf;
+  --ag-primary-fg: #06211e;
+  --ag-primary-dark: #14b8a6;
+  --ag-primary-border: #269e90;
+  --ag-primary-background: #142927;
+  --ag-primary-text: #ccfbf1;
+  --ag-focus: 94, 234, 212;
+  --ag-focus-dark: #ccfbf1;
+  --ag-text-primary: #f2f5f5;
+  --ag-text-secondary: #cfd6d6;
+  --ag-text-muted: #8f9999;
+  --ag-text-primary-muted: #e1e8e8;
+  --ag-border: #2d3336;
+  --ag-border-subtle: #212527;
+  --ag-background-primary: #111314;
+  --ag-background-secondary: #181b1c;
+  --ag-background-tertiary: #212527;
+  --ag-neutral-background: #212527;
+  --ag-neutral-text: #f2f5f5;
+  --ag-neutral-border: #363d40;
+  --ag-radius-lg: 1rem;
+  --ag-shadow-xs: 0 1px 3px 0 rgba(0, 0, 0, 0.28);
+  --ag-shadow-sm: 0 2px 8px 0 rgba(0, 0, 0, 0.34);
+  --ag-shadow-md: 0 4px 14px -1px rgba(0, 0, 0, 0.38);
+  --ag-shadow-lg: 0 8px 22px -2px rgba(0, 0, 0, 0.44);
+  --ag-shadow-xl: 0 14px 30px -4px rgba(0, 0, 0, 0.5);
+  --ag-rating-filled: #fbbf24;
+  --ag-rating-filled-primary: #2dd4bf;
+  --ag-blue-50: #ccfbf1;
+  --ag-blue-100: #99f6e4;
+  --ag-blue-200: #5eead4;
+  --ag-blue-300: #2dd4bf;
+  --ag-blue-400: #14b8a6;
+  --ag-blue-500: #0d9488;
+  --ag-blue-600: #0f766e;
+  --ag-blue-700: #212527;
+  --ag-blue-800: #181b1c;
+  --ag-blue-900: #111314;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Obsidian Minimal — Light
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:where(html).ag-skin-obsidian-minimal {
+  --ag-primary: #171717;
+  --ag-primary-fg: #ffffff;
+  --ag-primary-dark: #000000;
+  --ag-primary-border: #d4d4d4;
+  --ag-primary-background: #f5f5f5;
+  --ag-primary-text: #171717;
+  --ag-focus: 0, 112, 243;
+  --ag-focus-dark: #0070f3;
+  --ag-text-primary: #0a0a0a;
+  --ag-text-secondary: #404040;
+  --ag-text-muted: #737373;
+  --ag-text-primary-muted: #262626;
+  --ag-border: #e5e5e5;
+  --ag-border-subtle: #f0f0f0;
+  --ag-background-primary: #ffffff;
+  --ag-background-secondary: #fafafa;
+  --ag-background-tertiary: #f4f4f5;
+  --ag-neutral-background: #f4f4f5;
+  --ag-neutral-text: #0a0a0a;
+  --ag-neutral-border: #d4d4d8;
+  --ag-radius-sm: 0.25rem;
+  --ag-radius-md: 0.375rem;
+  --ag-radius-lg: 0.5rem;
+  --ag-shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+  --ag-shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.06);
+  --ag-shadow-md: 0 4px 10px -1px rgba(0, 0, 0, 0.07);
+  --ag-shadow-lg: 0 8px 18px -2px rgba(0, 0, 0, 0.09);
+  --ag-shadow-xl: 0 12px 24px -4px rgba(0, 0, 0, 0.11);
+  --ag-rating-filled: #0070f3;
+  --ag-rating-filled-primary: #171717;
+  --ag-blue-50: #f0f7ff;
+  --ag-blue-100: #dceeff;
+  --ag-blue-200: #b3d7ff;
+  --ag-blue-300: #7ab8ff;
+  --ag-blue-400: #3b93ff;
+  --ag-blue-500: #0070f3;
+  --ag-blue-600: #0058c2;
+  --ag-blue-700: #004396;
+  --ag-blue-800: #002e69;
+  --ag-blue-900: #001a3d;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Obsidian Minimal — Dark
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+[data-theme="dark"].ag-skin-obsidian-minimal {
+  --ag-primary: #ededed;
+  --ag-primary-fg: #0a0a0a;
+  --ag-primary-dark: #d4d4d4;
+  --ag-primary-border: #333333;
+  --ag-primary-background: #1a1a1a;
+  --ag-primary-text: #ffffff;
+  --ag-focus: 50, 145, 255;
+  --ag-focus-dark: #66adff;
+  --ag-text-primary: #ededed;
+  --ag-text-secondary: #b8b8b8;
+  --ag-text-muted: #808080;
+  --ag-text-primary-muted: #d4d4d4;
+  --ag-border: #262626;
+  --ag-border-subtle: #1a1a1a;
   --ag-background-primary: #000000;
   --ag-background-secondary: #0a0a0a;
   --ag-background-tertiary: #141414;
-
-  /* ── Border radius (sharp, modern) ── */
-  --ag-radius-lg: 0.25rem;
-
-  /* ── Shadows (neon glow effects) ── */
-  --ag-shadow-xs: 0 0 4px 0 rgba(0, 255, 255, 0.3);
-  --ag-shadow-sm: 0 0 8px 0 rgba(0, 255, 255, 0.4);
-  --ag-shadow-md: 0 0 12px 0 rgba(0, 255, 255, 0.5);
-  --ag-shadow-lg: 0 0 20px 0 rgba(0, 255, 255, 0.6);
-  --ag-shadow-xl: 0 0 30px 0 rgba(0, 255, 255, 0.7);
-
-  /* ── Rating (neon magenta) ── */
-  --ag-rating-filled: #ff00ff;
-  --ag-rating-filled-primary: #00ffff;
-
-  /* ── Neon color palette (overrides blue palette) ── */
-  --ag-blue-50: #e6ffff;
-  --ag-blue-100: #ccffff;
-  --ag-blue-200: #99ffff;
-  --ag-blue-300: #66ffff;
-  --ag-blue-400: #33ffff;
-  --ag-blue-500: #00ffff;
-  --ag-blue-600: #00e5e5;
-  --ag-blue-700: #00cccc;
-  --ag-blue-800: #009999;
-  --ag-blue-900: #006666;
-
-  /* ── Accent colors (additional neons) ── */
-  --ag-success: #00ff00;
-  --ag-success-fg: #000000;
-  --ag-warning: #ffff00;
-  --ag-danger: #ff00ff;
-  --ag-danger-fg: #000000;
-  --ag-info: #ff00cc;
+  --ag-neutral-background: #141414;
+  --ag-neutral-text: #ededed;
+  --ag-neutral-border: #2e2e2e;
+  --ag-radius-sm: 0.25rem;
+  --ag-radius-md: 0.375rem;
+  --ag-radius-lg: 0.5rem;
+  --ag-shadow-xs: 0 1px 2px 0 rgba(255, 255, 255, 0.04);
+  --ag-shadow-sm: 0 1px 3px 0 rgba(255, 255, 255, 0.06);
+  --ag-shadow-md: 0 4px 10px -1px rgba(255, 255, 255, 0.07);
+  --ag-shadow-lg: 0 8px 18px -2px rgba(255, 255, 255, 0.08);
+  --ag-shadow-xl: 0 12px 24px -4px rgba(255, 255, 255, 0.1);
+  --ag-rating-filled: #3291ff;
+  --ag-rating-filled-primary: #ededed;
+  --ag-blue-50: #e6f2ff;
+  --ag-blue-100: #cce5ff;
+  --ag-blue-200: #80bfff;
+  --ag-blue-300: #3291ff;
+  --ag-blue-400: #0070f3;
+  --ag-blue-500: #0058c2;
+  --ag-blue-600: #004396;
+  --ag-blue-700: #141414;
+  --ag-blue-800: #0a0a0a;
+  --ag-blue-900: #000000;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   Neons On Black — Dark
+   Olive Moss — Light
    ═══════════════════════════════════════════════════════════════════════════ */
 
-/**
- * Neons On Black Skin — Dark Mode
- *
- * Intensified neon effects for dark mode preference.
- *
- * Activate by adding class="ag-skin-neons-on-black" to <html>.
- * Load this file AFTER ag-tokens-dark.css so the cascade overrides.
- */
+:where(html).ag-skin-olive-moss {
+  --ag-primary: #4d6629;
+  --ag-primary-fg: #ffffff;
+  --ag-primary-dark: #3b4f1f;
+  --ag-primary-border: #c5d9a4;
+  --ag-primary-background: #f2f7ea;
+  --ag-primary-text: #35471b;
+  --ag-focus: 77, 102, 41;
+  --ag-focus-dark: #5f7d33;
+  --ag-text-primary: #1c1e17;
+  --ag-text-secondary: #434739;
+  --ag-text-muted: #707563;
+  --ag-text-primary-muted: #2d3026;
+  --ag-border: #d8dcd0;
+  --ag-border-subtle: #e7eae1;
+  --ag-background-primary: #fcfcf9;
+  --ag-background-secondary: #f5f6f0;
+  --ag-background-tertiary: #ebede4;
+  --ag-neutral-background: #ebede4;
+  --ag-neutral-text: #1c1e17;
+  --ag-neutral-border: #c9cec0;
+  --ag-radius-lg: 0.75rem;
+  --ag-shadow-xs: 0 1px 2px 0 rgba(28, 30, 23, 0.05);
+  --ag-shadow-sm: 0 2px 6px 0 rgba(28, 30, 23, 0.07);
+  --ag-shadow-md: 0 4px 12px -1px rgba(28, 30, 23, 0.09);
+  --ag-shadow-lg: 0 8px 20px -2px rgba(28, 30, 23, 0.11);
+  --ag-shadow-xl: 0 12px 28px -4px rgba(28, 30, 23, 0.14);
+  --ag-rating-filled: #ca8a04;
+  --ag-rating-filled-primary: #4d6629;
+  --ag-blue-50: #f2f7ea;
+  --ag-blue-100: #e2edd0;
+  --ag-blue-200: #c5d9a4;
+  --ag-blue-300: #a3c274;
+  --ag-blue-400: #7ea349;
+  --ag-blue-500: #5f7d33;
+  --ag-blue-600: #4d6629;
+  --ag-blue-700: #3b4f1f;
+  --ag-blue-800: #293815;
+  --ag-blue-900: #18210b;
+}
 
-[data-theme="dark"].ag-skin-neons-on-black {
-  /* ── Primary color family (brighter neon cyan) ── */
-  --ag-primary: #33ffff;
-  --ag-primary-fg: #000000;
-  --ag-primary-dark: #00ffff;
-  --ag-primary-border: #00e5e5;
-  --ag-primary-background: #002020;
-  --ag-primary-text: #ccffff;
+/* ═══════════════════════════════════════════════════════════════════════════
+   Olive Moss — Dark
+   ═══════════════════════════════════════════════════════════════════════════ */
 
-  /* ── Focus ring (brightened neon cyan-derived RGB) ── */
-  --ag-focus: 51, 255, 255;
-  --ag-focus-dark: #99ffff;
-
-  /* ── Semantic text (ultra bright on deep black) ── */
-  --ag-text-primary: #ffffff;
-  --ag-text-secondary: #f0f0f0;
-  --ag-text-muted: #b0b0b0;
-  --ag-text-primary-muted: #fafafa;
-
-  /* ── Borders (visible neon glow) ── */
-  --ag-border: #1a2a3a;
-  --ag-border-subtle: #0f1a2a;
-
-  /* ── Backgrounds (pure black) ── */
-  --ag-background-primary: #000000;
-  --ag-background-secondary: #050505;
-  --ag-background-tertiary: #0f0f0f;
-
-  /* ── Border radius (matches light) ── */
-  --ag-radius-lg: 0.25rem;
-
-  /* ── Shadows (intensified neon glow) ── */
-  --ag-shadow-xs: 0 0 6px 0 rgba(51, 255, 255, 0.4);
-  --ag-shadow-sm: 0 0 12px 0 rgba(51, 255, 255, 0.5);
-  --ag-shadow-md: 0 0 18px 0 rgba(51, 255, 255, 0.6);
-  --ag-shadow-lg: 0 0 28px 0 rgba(51, 255, 255, 0.7);
-  --ag-shadow-xl: 0 0 40px 0 rgba(51, 255, 255, 0.8);
-
-  /* ── Rating (neon magenta) ── */
-  --ag-rating-filled: #ff33ff;
-  --ag-rating-filled-primary: #33ffff;
-
-  /* ── Neon color palette (overrides blue palette) ── */
-  --ag-blue-50: #e6ffff;
-  --ag-blue-100: #ccffff;
-  --ag-blue-200: #99ffff;
-  --ag-blue-300: #66ffff;
-  --ag-blue-400: #33ffff;
-  --ag-blue-500: #00ffff;
-  --ag-blue-600: #00e5e5;
-  --ag-blue-700: #00cccc;
-  --ag-blue-800: #009999;
-  --ag-blue-900: #006666;
-
-  /* ── Accent colors (brighter neons) ── */
-  --ag-success: #33ff33;
-  --ag-success-fg: #000000;
-  --ag-warning: #ffff33;
-  --ag-danger: #ff33ff;
-  --ag-danger-fg: #000000;
-  --ag-info: #ff33cc;
+[data-theme="dark"].ag-skin-olive-moss {
+  --ag-primary: #a3c96b;
+  --ag-primary-fg: #151f07;
+  --ag-primary-dark: #8ab350;
+  --ag-primary-border: #a3c96b;
+  --ag-primary-background: #222e14;
+  --ag-primary-text: #e2f2c9;
+  --ag-focus: 163, 201, 107;
+  --ag-focus-dark: #e2f2c9;
+  --ag-text-primary: #f4f5f0;
+  --ag-text-secondary: #cfd2c6;
+  --ag-text-muted: #94998a;
+  --ag-text-primary-muted: #e0e3d8;
+  --ag-border: #2c2e28;
+  --ag-border-subtle: #21231e;
+  --ag-background-primary: #131411;
+  --ag-background-secondary: #1a1b18;
+  --ag-background-tertiary: #232520;
+  --ag-neutral-background: #232520;
+  --ag-neutral-text: #f4f5f0;
+  --ag-neutral-border: #383b33;
+  --ag-radius-lg: 0.75rem;
+  --ag-shadow-xs: 0 1px 3px 0 rgba(0, 0, 0, 0.28);
+  --ag-shadow-sm: 0 2px 6px 0 rgba(0, 0, 0, 0.34);
+  --ag-shadow-md: 0 4px 12px -1px rgba(0, 0, 0, 0.38);
+  --ag-shadow-lg: 0 8px 20px -2px rgba(0, 0, 0, 0.44);
+  --ag-shadow-xl: 0 12px 28px -4px rgba(0, 0, 0, 0.5);
+  --ag-rating-filled: #fbbf24;
+  --ag-rating-filled-primary: #a3c96b;
+  --ag-blue-50: #f2f7ea;
+  --ag-blue-100: #e2f2c9;
+  --ag-blue-200: #c5d9a4;
+  --ag-blue-300: #a3c96b;
+  --ag-blue-400: #8ab350;
+  --ag-blue-500: #5f7d33;
+  --ag-blue-600: #4d6629;
+  --ag-blue-700: #232520;
+  --ag-blue-800: #1a1b18;
+  --ag-blue-900: #131411;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -2004,6 +1920,11 @@
   --ag-blue-700: #433422;
   --ag-blue-800: #2c2012;
   --ag-blue-900: #180f08;
+
+  /* ── Neutral surfaces (MessageBubble neutral) ── */
+  --ag-neutral-background: #e6ddc8;
+  --ag-neutral-text: #22180e;
+  --ag-neutral-border: #c4b498;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -2014,7 +1935,7 @@
  * Paper Skin — Dark Mode
  *
  * Dark sepia for night-time reading. Maintains the warm, low-blue-light
- * character of the Paper skin while shifting to a dark background.
+ * character of the Paper skin while shifting to a high-contrast dark background.
  *
  * Activate by adding class="ag-skin-paper" to <html>.
  * Load this file AFTER ag-tokens-dark.css so the cascade overrides.
@@ -2022,22 +1943,22 @@
 
 [data-theme="dark"].ag-skin-paper {
   /* ── Primary color family (warm tan/caramel on dark sepia) ── */
-  --ag-primary: #c9a87a;
+  --ag-primary: #d8b98c;
   --ag-primary-fg: #180f08;
-  --ag-primary-dark: #b8946a;
-  --ag-primary-border: #c9a87a;
+  --ag-primary-dark: #c4a070;
+  --ag-primary-border: #d8b98c;
   --ag-primary-background: #2a1e10;
-  --ag-primary-text: #e0c49a;
+  --ag-primary-text: #f3dfc0;
 
-  /* ── Focus ring (warm tan RGB) ── */
-  --ag-focus: 201, 168, 122;
-  --ag-focus-dark: #d9b888;
+  /* ── Focus ring (warm tan RGB, brightened for high visibility) ── */
+  --ag-focus: 228, 198, 154;
+  --ag-focus-dark: #f3dfc0;
 
   /* ── Semantic text (warm light on dark sepia) ── */
-  --ag-text-primary: #e8dcc8;
-  --ag-text-secondary: #d4c4a8;
-  --ag-text-muted: #9a8870;
-  --ag-text-primary-muted: #e0d0b8;
+  --ag-text-primary: #f2e8d5;
+  --ag-text-secondary: #e6dac4;
+  --ag-text-muted: #b09d84;
+  --ag-text-primary-muted: #ece0cc;
 
   /* ── Borders (dark warm) ── */
   --ag-border: #3d3025;
@@ -2059,8 +1980,8 @@
   --ag-shadow-xl: 0 8px 28px -4px rgba(201, 168, 122, 0.18);
 
   /* ── Rating ── */
-  --ag-rating-filled: #c9a87a;
-  --ag-rating-filled-primary: #c9a87a;
+  --ag-rating-filled: #d8b98c;
+  --ag-rating-filled-primary: #d8b98c;
 
   /* ── Sepia/brown palette (dark mode, lighter values for dark bg) ── */
   --ag-blue-50: #e0c49a;
@@ -2073,434 +1994,375 @@
   --ag-blue-700: #4a3822;
   --ag-blue-800: #2c2012;
   --ag-blue-900: #1f1710;
+
+  /* ── Neutral surfaces (MessageBubble neutral) ── */
+  --ag-neutral-background: #312416;
+  --ag-neutral-text: #f2e8d5;
+  --ag-neutral-border: #523e28;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   Retro Brutalist — Light
+   Pebble Cerulean — Light
    ═══════════════════════════════════════════════════════════════════════════ */
 
-/**
- * Retro Brutalist Skin — Light Mode
- *
- * A neo-brutalist aesthetic with hard offset shadows, bold yellow primary,
- * thick black borders, and zero border radius. Inspired by retroui.dev.
- *
- * Activate by adding class="ag-skin-retro-brutalist" to <html>.
- * Load this file AFTER ag-tokens.css so the cascade overrides.
- */
+:where(html).ag-skin-pebble-cerulean {
+  --ag-primary: #1a73e8;
+  --ag-primary-fg: #ffffff;
+  --ag-primary-dark: #1557b0;
+  --ag-primary-border: #aecbfa;
+  --ag-primary-background: #e8f0fe;
+  --ag-primary-text: #174ea6;
+  --ag-focus: 26, 115, 232;
+  --ag-focus-dark: #1a73e8;
+  --ag-text-primary: #1f1f1f;
+  --ag-text-secondary: #444746;
+  --ag-text-muted: #5a5d5b;
+  --ag-text-primary-muted: #303030;
+  --ag-border: #dadce0;
+  --ag-border-subtle: #e8eaed;
+  --ag-background-primary: #f8f9fa;
+  --ag-background-secondary: #f1f3f4;
+  --ag-background-tertiary: #e8eaed;
+  --ag-neutral-background: #e8eaed;
+  --ag-neutral-text: #1f1f1f;
+  --ag-neutral-border: #dadce0;
+  --ag-radius-lg: 1rem;
+  --ag-shadow-xs: 0 1px 2px 0 rgba(32, 33, 36, 0.06);
+  --ag-shadow-sm: 0 1px 4px 0 rgba(32, 33, 36, 0.08);
+  --ag-shadow-md: 0 3px 10px -1px rgba(32, 33, 36, 0.1);
+  --ag-shadow-lg: 0 6px 18px -2px rgba(32, 33, 36, 0.12);
+  --ag-shadow-xl: 0 10px 26px -4px rgba(32, 33, 36, 0.14);
+  --ag-rating-filled: #f9ab00;
+  --ag-rating-filled-primary: #1a73e8;
+  --ag-blue-50: #e8f0fe;
+  --ag-blue-100: #d2e3fc;
+  --ag-blue-200: #aecbfa;
+  --ag-blue-300: #8ab4f8;
+  --ag-blue-400: #669df6;
+  --ag-blue-500: #4285f4;
+  --ag-blue-600: #1a73e8;
+  --ag-blue-700: #1967d2;
+  --ag-blue-800: #185abc;
+  --ag-blue-900: #174ea6;
+}
 
-:where(html).ag-skin-retro-brutalist {
-  /* ── Primary color family ── */
-  --ag-primary: #ffdb33;
-  --ag-primary-fg: #000000;
-  --ag-primary-dark: #ffcc00;
-  --ag-primary-border: #000000;
-  --ag-primary-background: #fef9e7;
-  --ag-primary-text: #000000;
+/* ═══════════════════════════════════════════════════════════════════════════
+   Pebble Cerulean — Dark
+   ═══════════════════════════════════════════════════════════════════════════ */
 
-  /* ── Focus ring (black for high contrast) ── */
-  --ag-focus: 0, 0, 0;
-  --ag-focus-dark: #000000;
+[data-theme="dark"].ag-skin-pebble-cerulean {
+  --ag-primary: #8ab4f8;
+  --ag-primary-fg: #062e6f;
+  --ag-primary-dark: #669df6;
+  --ag-primary-border: #8ab4f8;
+  --ag-primary-background: #1b2c47;
+  --ag-primary-text: #d2e3fc;
+  --ag-focus: 138, 180, 248;
+  --ag-focus-dark: #d2e3fc;
+  --ag-text-primary: #e3e3e3;
+  --ag-text-secondary: #c4c7c5;
+  --ag-text-muted: #8e918f;
+  --ag-text-primary-muted: #d3d6d4;
+  --ag-border: #333537;
+  --ag-border-subtle: #252729;
+  --ag-background-primary: #131314;
+  --ag-background-secondary: #1e1f20;
+  --ag-background-tertiary: #282a2c;
+  --ag-neutral-background: #282a2c;
+  --ag-neutral-text: #e3e3e3;
+  --ag-neutral-border: #3c4043;
+  --ag-radius-lg: 1rem;
+  --ag-shadow-xs: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+  --ag-shadow-sm: 0 2px 6px 0 rgba(0, 0, 0, 0.35);
+  --ag-shadow-md: 0 4px 12px -1px rgba(0, 0, 0, 0.4);
+  --ag-shadow-lg: 0 8px 20px -2px rgba(0, 0, 0, 0.45);
+  --ag-shadow-xl: 0 12px 28px -4px rgba(0, 0, 0, 0.5);
+  --ag-rating-filled: #fdd663;
+  --ag-rating-filled-primary: #8ab4f8;
+  --ag-blue-50: #e8f0fe;
+  --ag-blue-100: #d2e3fc;
+  --ag-blue-200: #aecbfa;
+  --ag-blue-300: #8ab4f8;
+  --ag-blue-400: #669df6;
+  --ag-blue-500: #4285f4;
+  --ag-blue-600: #1a73e8;
+  --ag-blue-700: #282a2c;
+  --ag-blue-800: #1e1f20;
+  --ag-blue-900: #131314;
+}
 
-  /* ── Semantic text ── */
-  --ag-text-primary: #000000;
-  --ag-text-secondary: #3a3a3a;
-  --ag-text-muted: #5a5a5a;
-  --ag-text-primary-muted: #3a3a3a;
+/* ═══════════════════════════════════════════════════════════════════════════
+   Press Crimson — Light
+   ═══════════════════════════════════════════════════════════════════════════ */
 
-  /* ── Borders (thick black, neo-brutalist signature) ── */
-  --ag-border: #000000;
-  --ag-border-subtle: #000000;
-  --ag-border-width-1: 2px;
-
-  /* ── Backgrounds ── */
+:where(html).ag-skin-press-crimson {
+  --ag-primary: #b81d24;
+  --ag-primary-fg: #ffffff;
+  --ag-primary-dark: #94151b;
+  --ag-primary-border: #eba6a9;
+  --ag-primary-background: #fdf1f1;
+  --ag-primary-text: #8c1218;
+  --ag-focus: 184, 29, 36;
+  --ag-focus-dark: #d6242c;
+  --ag-text-primary: #0a0a0a;
+  --ag-text-secondary: #333333;
+  --ag-text-muted: #666666;
+  --ag-text-primary-muted: #1f1f1f;
+  --ag-border: #d4d4d4;
+  --ag-border-subtle: #e8e8e8;
   --ag-background-primary: #ffffff;
-  --ag-background-secondary: #f5f5f5;
-  --ag-background-tertiary: #d5d5d5;
-
-  /* ── Border radius (flat/none — brutalist) ── */
-  --ag-radius-sm: 0;
-  --ag-radius-md: 0;
-  --ag-radius-lg: 0;
-
-  /* ── Shadows (hard offset, no blur — neo-brutalist signature) ── */
-  --ag-shadow-xs: 1px 1px 0 0 #000000;
-  --ag-shadow-sm: 2px 2px 0 0 #000000;
-  --ag-shadow-md: 3px 3px 0 0 #000000;
-  --ag-shadow-lg: 4px 4px 0 0 #000000;
-  --ag-shadow-xl: 6px 6px 0 0 #000000;
-  --ag-shadow-2xl: 10px 10px 0 1px #000000;
-
-  /* ── Danger (vivid red) ── */
-  --ag-danger: #e63946;
-  --ag-danger-fg: #000000;
-  --ag-danger-rgb: 230, 57, 70;
-  --ag-danger-dark: #c5303f;
-
-  /* ── Rating ── */
-  --ag-rating-filled: #ffcc00;
-  --ag-rating-filled-primary: #ffdb33;
-
-  /* ── Yellow palette (overrides blue palette for primary usage) ── */
-  --ag-blue-50: #fef9e7;
-  --ag-blue-100: #fdf0c4;
-  --ag-blue-200: #fae583;
-  --ag-blue-300: #ffdb33;
-  --ag-blue-400: #ffcc00;
-  --ag-blue-500: #e6b800;
-  --ag-blue-600: #c49e00;
-  --ag-blue-700: #9a7c00;
-  --ag-blue-800: #705a00;
-  --ag-blue-900: #463800;
+  --ag-background-secondary: #f6f6f6;
+  --ag-background-tertiary: #ededed;
+  --ag-neutral-background: #ededed;
+  --ag-neutral-text: #0a0a0a;
+  --ag-neutral-border: #c7c7c7;
+  --ag-radius-sm: 0.125rem;
+  --ag-radius-md: 0.1875rem;
+  --ag-radius-lg: 0.25rem;
+  --ag-shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --ag-shadow-sm: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+  --ag-shadow-md: 0 3px 8px 0 rgba(0, 0, 0, 0.1);
+  --ag-shadow-lg: 0 6px 16px -1px rgba(0, 0, 0, 0.12);
+  --ag-shadow-xl: 0 10px 24px -2px rgba(0, 0, 0, 0.14);
+  --ag-rating-filled: #b81d24;
+  --ag-rating-filled-primary: #b81d24;
+  --ag-blue-50: #fdf1f1;
+  --ag-blue-100: #fad9da;
+  --ag-blue-200: #eba6a9;
+  --ag-blue-300: #de7378;
+  --ag-blue-400: #d6242c;
+  --ag-blue-500: #b81d24;
+  --ag-blue-600: #94151b;
+  --ag-blue-700: #7a1015;
+  --ag-blue-800: #570a0e;
+  --ag-blue-900: #360507;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   Retro Brutalist — Dark
+   Press Crimson — Dark
    ═══════════════════════════════════════════════════════════════════════════ */
 
-/**
- * Retro Brutalist Skin — Dark Mode
- *
- * Dark-mode overrides for the neo-brutalist hard-shadow aesthetic.
- * Inspired by retroui.dev.
- *
- * Activate by adding class="ag-skin-retro-brutalist" to <html>.
- * Load this file AFTER ag-tokens-dark.css so the cascade overrides.
- */
-
-[data-theme="dark"].ag-skin-retro-brutalist {
-  /* ── Primary color family ── */
-  --ag-primary: #ffdb33;
-  --ag-primary-fg: #000000;
-  --ag-primary-dark: #ffcc00;
-  --ag-primary-border: #5c5c5c;
-  --ag-primary-background: #2e2a1a;
-  --ag-primary-text: #ffdb33;
-
-  /* ── Focus ring (yellow for visibility on dark) ── */
-  --ag-focus: 255, 219, 51;
-  --ag-focus-dark: #ffcc00;
-
-  /* ── Semantic text ── */
-  --ag-text-primary: #f5f5f5;
-  --ag-text-secondary: #d0d0d0;
-  --ag-text-muted: #a0a0a0;
-  --ag-text-primary-muted: #d0d0d0;
-
-  /* ── Borders (gray for dark mode visibility) ── */
-  --ag-border: #5c5c5c;
-  --ag-border-subtle: #3f3f46;
-  --ag-border-width-1: 2px;
-
-  /* ── Backgrounds ── */
-  --ag-background-primary: #1a1a1a;
-  --ag-background-secondary: #242424;
-  --ag-background-tertiary: #3a3a3a;
-
-  /* ── Border radius (flat/none — brutalist) ── */
-  --ag-radius-sm: 0;
-  --ag-radius-md: 0;
-  --ag-radius-lg: 0;
-
-  /* ── Shadows (hard offset with gray border for dark mode) ── */
-  --ag-shadow-xs: 1px 1px 0 0 #5c5c5c;
-  --ag-shadow-sm: 2px 2px 0 0 #5c5c5c;
-  --ag-shadow-md: 3px 3px 0 0 #5c5c5c;
-  --ag-shadow-lg: 4px 4px 0 0 #5c5c5c;
-  --ag-shadow-xl: 6px 6px 0 0 #5c5c5c;
-  --ag-shadow-2xl: 10px 10px 0 1px #5c5c5c;
-
-  /* ── Danger ── */
-  --ag-danger: #e63946;
-  --ag-danger-fg: #000000;
-  --ag-danger-rgb: 230, 57, 70;
-  --ag-danger-dark: #ff5a67;
-
-  /* ── Rating ── */
-  --ag-rating-filled: #ffcc00;
-  --ag-rating-filled-primary: #ffdb33;
-
-  /* ── Yellow palette (overrides blue palette for primary usage) ── */
-  --ag-blue-50: #fdf0c4;
-  --ag-blue-100: #fae583;
-  --ag-blue-200: #ffdb33;
-  --ag-blue-300: #ffcc00;
-  --ag-blue-400: #e6b800;
-  --ag-blue-500: #c49e00;
-  --ag-blue-600: #9a7c00;
-  --ag-blue-700: #705a00;
-  --ag-blue-800: #463800;
-  --ag-blue-900: #2e2a1a;
-}
-
-/* ═══════════════════════════════════════════════════════════════════════════
-   Rose Blush — Light
-   ═══════════════════════════════════════════════════════════════════════════ */
-
-/**
- * Rose Blush Skin — Light Mode
- *
- * Soft pink-rose with warm undertones. Modern, elegant, and approachable.
- * Inspired by rose quartz tones and contemporary SaaS design.
- *
- * Activate by adding class="ag-skin-rose-blush" to <html>.
- * Load this file AFTER ag-tokens.css so the cascade overrides.
- */
-
-:where(html).ag-skin-rose-blush {
-  /* ── Primary color family ── */
-  --ag-primary: #e11d73;
-  --ag-primary-dark: #be185d;
-  --ag-primary-border: #fbb6ce;
-  --ag-primary-background: #fff1f5;
-  --ag-primary-text: #9d174d;
-
-  /* ── Focus ring (rose-derived RGB) ── */
-  --ag-focus: 225, 29, 115;
-  --ag-focus-dark: #be185d;
-
-  /* ── Semantic text ── */
-  --ag-text-primary: #1a1a2e;
-  --ag-text-secondary: #4a4560;
-  --ag-text-muted: #9091a4;
-  --ag-text-primary-muted: #3d3852;
-
-  /* ── Borders ── */
-  --ag-border: #f0e0e6;
-  --ag-border-subtle: #f5eaef;
-
-  /* ── Backgrounds ── */
-  --ag-background-secondary: #fdf6f8;
-  --ag-background-tertiary: #f9eff3;
-
-  /* ── Border radius (soft, rounded) ── */
-  --ag-radius-lg: 1rem;
-
-  /* ── Shadows (warm pink-tinted) ── */
-  --ag-shadow-xs: 0 1px 3px 0 rgba(225, 29, 115, 0.06);
-  --ag-shadow-sm: 0 1px 5px 0 rgba(225, 29, 115, 0.08);
-  --ag-shadow-md: 0 2px 10px 0 rgba(225, 29, 115, 0.08);
-  --ag-shadow-lg: 0 4px 18px -2px rgba(225, 29, 115, 0.1);
-  --ag-shadow-xl: 0 8px 28px -4px rgba(225, 29, 115, 0.12);
-
-  /* ── Rating ── */
-  --ag-rating-filled: #f59e0b;
-  --ag-rating-filled-primary: #e11d73;
-
-  /* ── Rose palette (overrides blue palette) ── */
-  --ag-blue-50: #fff1f5;
-  --ag-blue-100: #ffe4ed;
-  --ag-blue-200: #fbb6ce;
-  --ag-blue-300: #f687a8;
-  --ag-blue-400: #ec4899;
-  --ag-blue-500: #e11d73;
-  --ag-blue-600: #be185d;
-  --ag-blue-700: #9d174d;
-  --ag-blue-800: #831843;
-  --ag-blue-900: #500724;
-}
-
-/* ═══════════════════════════════════════════════════════════════════════════
-   Rose Blush — Dark
-   ═══════════════════════════════════════════════════════════════════════════ */
-
-/**
- * Rose Blush Skin — Dark Mode
- *
- * Dark-mode overrides for the Rose Blush pink-rose aesthetic.
- *
- * Activate by adding class="ag-skin-rose-blush" to <html>.
- * Load this file AFTER ag-tokens-dark.css so the cascade overrides.
- */
-
-[data-theme="dark"].ag-skin-rose-blush {
-  /* ── Primary color family (brightened for dark backgrounds) ── */
-  --ag-primary: #ec4899;
-  --ag-primary-fg: #000000;
-  --ag-primary-dark: #e11d73;
-  --ag-primary-border: #ec4899;
-  --ag-primary-background: #2a0a1e;
-  --ag-primary-text: #fbb6ce;
-
-  /* ── Focus ring (rose-derived RGB, brightened) ── */
-  --ag-focus: 236, 72, 153;
-  --ag-focus-dark: #f687a8;
-
-  /* ── Semantic text ── */
-  --ag-text-primary: #fdf2f6;
-  --ag-text-secondary: #d4b8c8;
-  --ag-text-muted: #a08898;
-  --ag-text-primary-muted: #e8cede;
-
-  /* ── Borders ── */
-  --ag-border: #3d1a2e;
-  --ag-border-subtle: #5a2844;
-
-  /* ── Backgrounds ── */
-  --ag-background-secondary: #1a0a14;
-  --ag-background-tertiary: #2e1424;
-
-  /* ── Border radius (matches light) ── */
-  --ag-radius-lg: 1rem;
-
-  /* ── Shadows (rose-tinted for dark mode) ── */
-  --ag-shadow-xs: 0 1px 3px 0 rgba(236, 72, 153, 0.08);
-  --ag-shadow-sm: 0 1px 5px 0 rgba(236, 72, 153, 0.1);
-  --ag-shadow-md: 0 2px 10px 0 rgba(236, 72, 153, 0.1);
-  --ag-shadow-lg: 0 4px 18px -2px rgba(236, 72, 153, 0.12);
-  --ag-shadow-xl: 0 8px 28px -4px rgba(236, 72, 153, 0.14);
-
-  /* ── Rating ── */
+[data-theme="dark"].ag-skin-press-crimson {
+  --ag-primary: #f2555c;
+  --ag-primary-fg: #140304;
+  --ag-primary-dark: #e84850;
+  --ag-primary-border: #f2555c;
+  --ag-primary-background: #331012;
+  --ag-primary-text: #ffd6d8;
+  --ag-focus: 242, 85, 92;
+  --ag-focus-dark: #ffd6d8;
+  --ag-text-primary: #ffffff;
+  --ag-text-secondary: #d9d9d9;
+  --ag-text-muted: #999999;
+  --ag-text-primary-muted: #ebebeb;
+  --ag-border: #2e2e2e;
+  --ag-border-subtle: #212121;
+  --ag-background-primary: #0a0a0a;
+  --ag-background-secondary: #141414;
+  --ag-background-tertiary: #1f1f1f;
+  --ag-neutral-background: #1f1f1f;
+  --ag-neutral-text: #ffffff;
+  --ag-neutral-border: #3d3d3d;
+  --ag-radius-sm: 0.125rem;
+  --ag-radius-md: 0.1875rem;
+  --ag-radius-lg: 0.25rem;
+  --ag-shadow-xs: 0 1px 3px 0 rgba(0, 0, 0, 0.35);
+  --ag-shadow-sm: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
+  --ag-shadow-md: 0 4px 12px 0 rgba(0, 0, 0, 0.45);
+  --ag-shadow-lg: 0 8px 20px -1px rgba(0, 0, 0, 0.5);
+  --ag-shadow-xl: 0 12px 28px -2px rgba(0, 0, 0, 0.55);
   --ag-rating-filled: #fbbf24;
-  --ag-rating-filled-primary: #ec4899;
-
-  /* ── Rose palette (overrides blue palette) ── */
-  --ag-blue-50: #fbb6ce;
-  --ag-blue-100: #f687a8;
-  --ag-blue-200: #ec4899;
-  --ag-blue-300: #e11d73;
-  --ag-blue-400: #be185d;
-  --ag-blue-500: #9d174d;
-  --ag-blue-600: #831843;
-  --ag-blue-700: #6b1038;
-  --ag-blue-800: #500724;
-  --ag-blue-900: #2a0a1e;
+  --ag-rating-filled-primary: #f2555c;
+  --ag-blue-50: #ffe5e6;
+  --ag-blue-100: #ffd6d8;
+  --ag-blue-200: #ffa3a8;
+  --ag-blue-300: #f2555c;
+  --ag-blue-400: #d9363e;
+  --ag-blue-500: #b81d24;
+  --ag-blue-600: #94151b;
+  --ag-blue-700: #1f1f1f;
+  --ag-blue-800: #141414;
+  --ag-blue-900: #0a0a0a;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   Sage — Light
+   Rosewood Ink — Light
    ═══════════════════════════════════════════════════════════════════════════ */
 
-/**
- * Sage Skin — Light Mode
- *
- * Soft, earthy sage green with muted natural tones. Calm and organic,
- * inspired by botanical gardens and wellness design.
- *
- * Activate by adding class="ag-skin-sage" to <html>.
- * Load this file AFTER ag-tokens.css so the cascade overrides.
- */
-
-:where(html).ag-skin-sage {
-  /* ── Primary color family (muted sage green) ── */
-  --ag-primary: #5f8a6e;
-  --ag-primary-fg: #000000;
-  --ag-primary-dark: #4a7258;
-  --ag-primary-border: #b8d4c0;
-  --ag-primary-background: #f0f7f2;
-  --ag-primary-text: #3a5c44;
-
-  /* ── Focus ring (sage-derived RGB) ── */
-  --ag-focus: 95, 138, 110;
-  --ag-focus-dark: #4a7258;
-
-  /* ── Semantic text ── */
-  --ag-text-primary: #1a2e20;
-  --ag-text-secondary: #4a5c50;
-  --ag-text-muted: #7a8c80;
-  --ag-text-primary-muted: #344a3c;
-
-  /* ── Borders ── */
-  --ag-border: #d8e6dc;
-  --ag-border-subtle: #e4ede7;
-
-  /* ── Backgrounds ── */
-  --ag-background-secondary: #f6faf7;
-  --ag-background-tertiary: #edf4ef;
-
-  /* ── Border radius (organic, rounded) ── */
-  --ag-radius-lg: 1rem;
-
-  /* ── Shadows (green-tinted, soft) ── */
-  --ag-shadow-xs: 0 1px 3px 0 rgba(95, 138, 110, 0.06);
-  --ag-shadow-sm: 0 1px 5px 0 rgba(95, 138, 110, 0.08);
-  --ag-shadow-md: 0 2px 10px 0 rgba(95, 138, 110, 0.08);
-  --ag-shadow-lg: 0 4px 18px -2px rgba(95, 138, 110, 0.1);
-  --ag-shadow-xl: 0 8px 28px -4px rgba(95, 138, 110, 0.12);
-
-  /* ── Rating ── */
-  --ag-rating-filled: #c4a04e;
-  --ag-rating-filled-primary: #5f8a6e;
-
-  /* ── Sage palette (overrides blue palette) ── */
-  --ag-blue-50: #f0f7f2;
-  --ag-blue-100: #d4e8da;
-  --ag-blue-200: #b8d4c0;
-  --ag-blue-300: #8fbc9c;
-  --ag-blue-400: #6ea07e;
-  --ag-blue-500: #5f8a6e;
-  --ag-blue-600: #4a7258;
-  --ag-blue-700: #3a5c44;
-  --ag-blue-800: #2a4432;
-  --ag-blue-900: #1a2e20;
+:where(html).ag-skin-rosewood-ink {
+  --ag-primary: #9f1239;
+  --ag-primary-fg: #ffffff;
+  --ag-primary-dark: #881337;
+  --ag-primary-border: #fecdd3;
+  --ag-primary-background: #fff1f2;
+  --ag-primary-text: #881337;
+  --ag-focus: 159, 18, 57;
+  --ag-focus-dark: #be123c;
+  --ag-text-primary: #1f1417;
+  --ag-text-secondary: #4a353b;
+  --ag-text-muted: #785f66;
+  --ag-text-primary-muted: #332227;
+  --ag-border: #e0d3d6;
+  --ag-border-subtle: #ede3e6;
+  --ag-background-primary: #fffcfd;
+  --ag-background-secondary: #f9f3f5;
+  --ag-background-tertiary: #f0e6e9;
+  --ag-neutral-background: #f0e6e9;
+  --ag-neutral-text: #1f1417;
+  --ag-neutral-border: #d4c1c6;
+  --ag-radius-lg: 0.5rem;
+  --ag-shadow-xs: 0 1px 2px 0 rgba(31, 20, 23, 0.05);
+  --ag-shadow-sm: 0 2px 6px 0 rgba(31, 20, 23, 0.07);
+  --ag-shadow-md: 0 4px 12px -1px rgba(31, 20, 23, 0.09);
+  --ag-shadow-lg: 0 8px 20px -2px rgba(31, 20, 23, 0.11);
+  --ag-shadow-xl: 0 12px 28px -4px rgba(31, 20, 23, 0.14);
+  --ag-rating-filled: #d97706;
+  --ag-rating-filled-primary: #9f1239;
+  --ag-blue-50: #fff1f2;
+  --ag-blue-100: #ffe4e6;
+  --ag-blue-200: #fecdd3;
+  --ag-blue-300: #fda4af;
+  --ag-blue-400: #fb7185;
+  --ag-blue-500: #e11d48;
+  --ag-blue-600: #9f1239;
+  --ag-blue-700: #881337;
+  --ag-blue-800: #4c0519;
+  --ag-blue-900: #2e030f;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   Sage — Dark
+   Rosewood Ink — Dark
    ═══════════════════════════════════════════════════════════════════════════ */
 
-/**
- * Sage Skin — Dark Mode
- *
- * Dark-mode overrides for the Sage green aesthetic.
- * Deep forest backgrounds with luminous sage highlights.
- *
- * Activate by adding class="ag-skin-sage" to <html>.
- * Load this file AFTER ag-tokens-dark.css so the cascade overrides.
- */
+[data-theme="dark"].ag-skin-rosewood-ink {
+  --ag-primary: #fb7185;
+  --ag-primary-fg: #24060d;
+  --ag-primary-dark: #f43f5e;
+  --ag-primary-border: #fb7185;
+  --ag-primary-background: #33121a;
+  --ag-primary-text: #ffe4e6;
+  --ag-focus: 253, 164, 175;
+  --ag-focus-dark: #ffe4e6;
+  --ag-text-primary: #f7f2f4;
+  --ag-text-secondary: #d6cbd0;
+  --ag-text-muted: #9c8e93;
+  --ag-text-primary-muted: #e8dfe2;
+  --ag-border: #2e2a2c;
+  --ag-border-subtle: #221f20;
+  --ag-background-primary: #131112;
+  --ag-background-secondary: #1a1819;
+  --ag-background-tertiary: #232022;
+  --ag-neutral-background: #232022;
+  --ag-neutral-text: #f7f2f4;
+  --ag-neutral-border: #3b3538;
+  --ag-radius-lg: 0.5rem;
+  --ag-shadow-xs: 0 1px 3px 0 rgba(0, 0, 0, 0.28);
+  --ag-shadow-sm: 0 2px 6px 0 rgba(0, 0, 0, 0.34);
+  --ag-shadow-md: 0 4px 12px -1px rgba(0, 0, 0, 0.38);
+  --ag-shadow-lg: 0 8px 20px -2px rgba(0, 0, 0, 0.44);
+  --ag-shadow-xl: 0 12px 28px -4px rgba(0, 0, 0, 0.5);
+  --ag-rating-filled: #fbbf24;
+  --ag-rating-filled-primary: #fb7185;
+  --ag-blue-50: #fff1f2;
+  --ag-blue-100: #ffe4e6;
+  --ag-blue-200: #fda4af;
+  --ag-blue-300: #fb7185;
+  --ag-blue-400: #f43f5e;
+  --ag-blue-500: #e11d48;
+  --ag-blue-600: #9f1239;
+  --ag-blue-700: #232022;
+  --ag-blue-800: #1a1819;
+  --ag-blue-900: #131112;
+}
 
-[data-theme="dark"].ag-skin-sage {
-  /* ── Primary color family (brightened for dark backgrounds) ── */
-  --ag-primary: #8fbc9c;
-  --ag-primary-fg: #000000;
-  --ag-primary-dark: #6ea07e;
-  --ag-primary-border: #5f8a6e;
-  --ag-primary-background: #0e1e14;
-  --ag-primary-text: #b8d4c0;
+/* ═══════════════════════════════════════════════════════════════════════════
+   Slate Azure — Light
+   ═══════════════════════════════════════════════════════════════════════════ */
 
-  /* ── Focus ring (sage-derived RGB, brightened) ── */
-  --ag-focus: 143, 188, 156;
-  --ag-focus-dark: #b8d4c0;
+:where(html).ag-skin-slate-azure {
+  --ag-primary: #0369a1;
+  --ag-primary-fg: #ffffff;
+  --ag-primary-dark: #075985;
+  --ag-primary-border: #bae6fd;
+  --ag-primary-background: #f0f9ff;
+  --ag-primary-text: #0c4a6e;
+  --ag-focus: 3, 105, 161;
+  --ag-focus-dark: #0284c7;
+  --ag-text-primary: #0f172a;
+  --ag-text-secondary: #334155;
+  --ag-text-muted: #64748b;
+  --ag-text-primary-muted: #1e293b;
+  --ag-border: #cbd5e1;
+  --ag-border-subtle: #e2e8f0;
+  --ag-background-primary: #ffffff;
+  --ag-background-secondary: #f4f8fb;
+  --ag-background-tertiary: #e8f1f8;
+  --ag-neutral-background: #e8f1f8;
+  --ag-neutral-text: #0f172a;
+  --ag-neutral-border: #cbd5e1;
+  --ag-radius-lg: 0.625rem;
+  --ag-shadow-xs: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
+  --ag-shadow-sm: 0 2px 5px 0 rgba(15, 23, 42, 0.07);
+  --ag-shadow-md: 0 4px 12px -1px rgba(15, 23, 42, 0.09);
+  --ag-shadow-lg: 0 8px 20px -2px rgba(15, 23, 42, 0.11);
+  --ag-shadow-xl: 0 12px 28px -4px rgba(15, 23, 42, 0.14);
+  --ag-rating-filled: #d97706;
+  --ag-rating-filled-primary: #0369a1;
+  --ag-blue-50: #f0f9ff;
+  --ag-blue-100: #e0f2fe;
+  --ag-blue-200: #bae6fd;
+  --ag-blue-300: #7dd3fc;
+  --ag-blue-400: #38bdf8;
+  --ag-blue-500: #0284c7;
+  --ag-blue-600: #0369a1;
+  --ag-blue-700: #075985;
+  --ag-blue-800: #0c4a6e;
+  --ag-blue-900: #082f49;
+}
 
-  /* ── Semantic text ── */
-  --ag-text-primary: #eaf2ec;
-  --ag-text-secondary: #bccebe;
-  --ag-text-muted: #88a08c;
-  --ag-text-primary-muted: #d4e4d8;
+/* ═══════════════════════════════════════════════════════════════════════════
+   Slate Azure — Dark
+   ═══════════════════════════════════════════════════════════════════════════ */
 
-  /* ── Borders ── */
-  --ag-border: #253830;
-  --ag-border-subtle: #3a5444;
-
-  /* ── Backgrounds ── */
-  --ag-background-secondary: #0c1a12;
-  --ag-background-tertiary: #1e3228;
-
-  /* ── Border radius (matches light) ── */
-  --ag-radius-lg: 1rem;
-
-  /* ── Shadows (sage-tinted for dark mode) ── */
-  --ag-shadow-xs: 0 1px 3px 0 rgba(143, 188, 156, 0.06);
-  --ag-shadow-sm: 0 1px 5px 0 rgba(143, 188, 156, 0.08);
-  --ag-shadow-md: 0 2px 10px 0 rgba(143, 188, 156, 0.08);
-  --ag-shadow-lg: 0 4px 18px -2px rgba(143, 188, 156, 0.1);
-  --ag-shadow-xl: 0 8px 28px -4px rgba(143, 188, 156, 0.12);
-
-  /* ── Rating ── */
-  --ag-rating-filled: #c4a04e;
-  --ag-rating-filled-primary: #8fbc9c;
-
-  /* ── Sage palette (overrides blue palette) ── */
-  --ag-blue-50: #d4e8da;
-  --ag-blue-100: #b8d4c0;
-  --ag-blue-200: #8fbc9c;
-  --ag-blue-300: #6ea07e;
-  --ag-blue-400: #5f8a6e;
-  --ag-blue-500: #4a7258;
-  --ag-blue-600: #3a5c44;
-  --ag-blue-700: #2a4432;
-  --ag-blue-800: #1a2e20;
-  --ag-blue-900: #0e1e14;
+[data-theme="dark"].ag-skin-slate-azure {
+  --ag-primary: #38bdf8;
+  --ag-primary-fg: #061c29;
+  --ag-primary-dark: #0ea5e9;
+  --ag-primary-border: #38bdf8;
+  --ag-primary-background: #102a3a;
+  --ag-primary-text: #e0f2fe;
+  --ag-focus: 125, 211, 252;
+  --ag-focus-dark: #e0f2fe;
+  --ag-text-primary: #f4f6f8;
+  --ag-text-secondary: #cbd5e1;
+  --ag-text-muted: #94a3b8;
+  --ag-text-primary-muted: #e2e8f0;
+  --ag-border: #2b2f36;
+  --ag-border-subtle: #202328;
+  --ag-background-primary: #111214;
+  --ag-background-secondary: #181a1d;
+  --ag-background-tertiary: #212428;
+  --ag-neutral-background: #212428;
+  --ag-neutral-text: #f4f6f8;
+  --ag-neutral-border: #343940;
+  --ag-radius-lg: 0.625rem;
+  --ag-shadow-xs: 0 1px 3px 0 rgba(0, 0, 0, 0.28);
+  --ag-shadow-sm: 0 2px 6px 0 rgba(0, 0, 0, 0.34);
+  --ag-shadow-md: 0 4px 12px -1px rgba(0, 0, 0, 0.38);
+  --ag-shadow-lg: 0 8px 20px -2px rgba(0, 0, 0, 0.44);
+  --ag-shadow-xl: 0 12px 28px -4px rgba(0, 0, 0, 0.5);
+  --ag-rating-filled: #fbbf24;
+  --ag-rating-filled-primary: #38bdf8;
+  --ag-blue-50: #f0f9ff;
+  --ag-blue-100: #e0f2fe;
+  --ag-blue-200: #7dd3fc;
+  --ag-blue-300: #38bdf8;
+  --ag-blue-400: #0ea5e9;
+  --ag-blue-500: #0284c7;
+  --ag-blue-600: #0369a1;
+  --ag-blue-700: #212428;
+  --ag-blue-800: #181a1d;
+  --ag-blue-900: #111214;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -2522,7 +2384,7 @@
   /* ── Primary color family (Solarized cyan) ── */
   --ag-primary: #2aa198;
   --ag-primary-fg: #fdf6e3;
-  --ag-primary-dark: #238880;
+  --ag-primary-dark: #1d736c;
   --ag-primary-border: #5acec7;
   --ag-primary-background: #e8f8f7;
   --ag-primary-text: #1c6e67;
@@ -2532,7 +2394,7 @@
   --ag-focus-dark: #238880;
 
   /* ── Semantic text (Solarized base colors) ── */
-  --ag-text-primary: #073642;
+  --ag-text-primary: #04252e;
   --ag-text-secondary: #586e75;
   --ag-text-muted: #839496;
   --ag-text-primary-muted: #657b83;
@@ -2570,206 +2432,512 @@
   --ag-blue-700: #155551;
   --ag-blue-800: #0d3b38;
   --ag-blue-900: #062220;
+
+  /* ── Neutral surfaces (MessageBubble neutral) ── */
+  --ag-neutral-background: #e8e2cf;
+  --ag-neutral-text: #04252e;
+  --ag-neutral-border: #93a1a1;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
    Solarized — Dark
    ═══════════════════════════════════════════════════════════════════════════ */
 
-/**
- * Solarized Skin — Dark Mode
- *
- * Classic Solarized Dark theme with teal/cyan primary.
- * Deep blue-green background with warm-neutral text.
- *
- * Activate by adding class="ag-skin-solarized" to <html>.
- * Load this file AFTER ag-tokens-dark.css so the cascade overrides.
- */
-
 [data-theme="dark"].ag-skin-solarized {
-  /* ── Primary color family (same cyan, pops on dark bg) ── */
   --ag-primary: #2aa198;
-  --ag-primary-fg: #002b36;
+  --ag-primary-fg: #000000;
   --ag-primary-dark: #238880;
-  --ag-primary-border: #2aa198;
-  --ag-primary-background: #01343d;
-  --ag-primary-text: #5acec7;
-
-  /* ── Focus ring (teal-derived RGB) ── */
+  --ag-primary-border: #268a82;
+  --ag-primary-background: #14282b;
+  --ag-primary-text: #9cebe5;
   --ag-focus: 42, 161, 152;
-  --ag-focus-dark: #5acec7;
-
-  /* ── Semantic text (Solarized dark base colors) ── */
-  --ag-text-primary: #93a1a1;
-  --ag-text-secondary: #839496;
-  --ag-text-muted: #657b83;
-  --ag-text-primary-muted: #93a1a1;
-
-  /* ── Borders (Solarized base02) ── */
-  --ag-border: #073642;
-  --ag-border-subtle: #0d4654;
-
-  /* ── Backgrounds (Solarized dark) ── */
-  --ag-background-primary: #002b36;
-  --ag-background-secondary: #073642;
-  --ag-background-tertiary: #0d4654;
-
-  /* ── Border radius (matches light) ── */
+  --ag-focus-dark: #9cebe5;
+  --ag-text-primary: #eee8d5;
+  --ag-text-secondary: #c7c4b8;
+  --ag-text-muted: #8e9491;
+  --ag-text-primary-muted: #dcd6c4;
+  --ag-border: #2a3234;
+  --ag-border-subtle: #202729;
+  --ag-background-primary: #121617;
+  --ag-background-secondary: #191e20;
+  --ag-background-tertiary: #22292b;
+  --ag-neutral-background: #22292b;
+  --ag-neutral-text: #eee8d5;
+  --ag-neutral-border: #353f42;
   --ag-radius-lg: 0.75rem;
-
-  /* ── Shadows (teal-tinted on dark) ── */
-  --ag-shadow-xs: 0 1px 3px 0 rgba(42, 161, 152, 0.1);
-  --ag-shadow-sm: 0 1px 5px 0 rgba(42, 161, 152, 0.12);
-  --ag-shadow-md: 0 2px 10px 0 rgba(42, 161, 152, 0.12);
-  --ag-shadow-lg: 0 4px 18px -2px rgba(42, 161, 152, 0.15);
-  --ag-shadow-xl: 0 8px 28px -4px rgba(42, 161, 152, 0.18);
-
-  /* ── Rating ── */
+  --ag-shadow-xs: 0 1px 3px 0 rgba(0, 0, 0, 0.28);
+  --ag-shadow-sm: 0 1px 5px 0 rgba(0, 0, 0, 0.34);
+  --ag-shadow-md: 0 2px 10px 0 rgba(0, 0, 0, 0.38);
+  --ag-shadow-lg: 0 4px 18px -2px rgba(0, 0, 0, 0.44);
+  --ag-shadow-xl: 0 8px 28px -4px rgba(0, 0, 0, 0.5);
   --ag-rating-filled: #b58900;
   --ag-rating-filled-primary: #2aa198;
-
-  /* ── Solarized teal/cyan palette (dark mode reversed) ── */
-  --ag-blue-50: #5acec7;
-  --ag-blue-100: #2aa198;
-  --ag-blue-200: #238880;
-  --ag-blue-300: #1c6e67;
-  --ag-blue-400: #155551;
-  --ag-blue-500: #0d3b38;
-  --ag-blue-600: #062220;
-  --ag-blue-700: #01343d;
-  --ag-blue-800: #073642;
-  --ag-blue-900: #002b36;
+  --ag-blue-50: #9cebe5;
+  --ag-blue-100: #5acec7;
+  --ag-blue-200: #2aa198;
+  --ag-blue-300: #238880;
+  --ag-blue-400: #1c6e67;
+  --ag-blue-500: #155551;
+  --ag-blue-600: #0d3b38;
+  --ag-blue-700: #22292b;
+  --ag-blue-800: #191e20;
+  --ag-blue-900: #121617;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   Terra Soft — Light
+   Swiss Grid — Light
    ═══════════════════════════════════════════════════════════════════════════ */
 
-/**
- * Terra Soft Skin — Light Mode
- *
- * A warm orange-coral and golden aesthetic with soft, rounded forms.
- *
- * Activate by adding class="ag-skin-terra-soft" to <html>.
- * Load this file AFTER ag-tokens.css so the cascade overrides.
- */
-
-:where(html).ag-skin-terra-soft {
-  /* ── Primary color family ── */
-  --ag-primary: #ff6a3e;
-  --ag-primary-fg: #000000;
-  --ag-primary-dark: #e55530;
-  --ag-primary-border: #ffd4c4;
-  --ag-primary-background: #fff4f0;
-  --ag-primary-text: #9e3318;
-
-  /* ── Focus ring (orange-derived RGB) ── */
-  --ag-focus: 255, 106, 62;
-  --ag-focus-dark: #e55530;
-
-  /* ── Semantic text ── */
-  --ag-text-primary: #1a1a1a;
-  --ag-text-secondary: #4e4b66;
-  --ag-text-muted: #4e4b66;
-  --ag-text-primary-muted: #4e4b66;
-
-  /* ── Borders ── */
-  --ag-border: #ede5df;
-  --ag-border-subtle: #e0d6ce;
-
-  /* ── Backgrounds ── */
-  --ag-background-secondary: #FBF5F1;
-  --ag-background-tertiary: #f3ebe5;
-
-  /* ── Border radius (rounder, matching CodeStitch's generous radii) ── */
-  --ag-radius-lg: 1.25rem;
-
-  /* ── Shadows (soft, warm) ── */
-  --ag-shadow-xs: 0 1px 3px 0 rgba(149, 157, 165, 0.12);
-  --ag-shadow-sm: 0 1px 5px 0 rgba(149, 157, 165, 0.16);
-  --ag-shadow-md: 0 2px 10px 0 rgba(149, 157, 165, 0.16);
-  --ag-shadow-lg: 0 4px 18px -2px rgba(149, 157, 165, 0.2);
-  --ag-shadow-xl: 0 8px 28px -4px rgba(149, 157, 165, 0.2);
-
-  /* ── Rating ── */
-  --ag-rating-filled: #ffba43;
-  --ag-rating-filled-primary: #ff6a3e;
-
-  /* ── Orange palette (overrides blue palette for primary usage) ── */
-  --ag-blue-50: #fff4f0;
-  --ag-blue-100: #ffd4c4;
-  --ag-blue-200: #ffb89e;
-  --ag-blue-300: #ff9a78;
-  --ag-blue-400: #ff6a3e;
-  --ag-blue-500: #e55530;
-  --ag-blue-600: #c44425;
-  --ag-blue-700: #9e3318;
-  --ag-blue-800: #7a2510;
-  --ag-blue-900: #571808;
+:where(html).ag-skin-swiss-grid {
+  --ag-primary: #d63200;
+  --ag-primary-fg: #ffffff;
+  --ag-primary-dark: #b82c00;
+  --ag-primary-border: #f5b39d;
+  --ag-primary-background: #fff2ed;
+  --ag-primary-text: #9e2500;
+  --ag-focus: 158, 37, 0;
+  --ag-focus-dark: #ff450a;
+  --ag-text-primary: #111111;
+  --ag-text-secondary: #333333;
+  --ag-text-muted: #666666;
+  --ag-text-primary-muted: #222222;
+  --ag-border: #cccccc;
+  --ag-border-subtle: #e2e2e0;
+  --ag-background-primary: #f7f7f5;
+  --ag-background-secondary: #efefec;
+  --ag-background-tertiary: #e5e5e1;
+  --ag-neutral-background: #e5e5e1;
+  --ag-neutral-text: #111111;
+  --ag-neutral-border: #bdbdb8;
+  --ag-radius-sm: 0.125rem;
+  --ag-radius-md: 0.125rem;
+  --ag-radius-lg: 0.1875rem;
+  --ag-shadow-xs: 0 1px 0 0 rgba(17, 17, 17, 0.08);
+  --ag-shadow-sm: 0 2px 0 0 rgba(17, 17, 17, 0.1);
+  --ag-shadow-md: 0 3px 0 0 rgba(17, 17, 17, 0.12);
+  --ag-shadow-lg: 0 4px 0 0 rgba(17, 17, 17, 0.14);
+  --ag-shadow-xl: 0 6px 0 0 rgba(17, 17, 17, 0.16);
+  --ag-rating-filled: #e03600;
+  --ag-rating-filled-primary: #e03600;
+  --ag-blue-50: #fff2ed;
+  --ag-blue-100: #ffe0d4;
+  --ag-blue-200: #f5b39d;
+  --ag-blue-300: #ff855e;
+  --ag-blue-400: #ff5722;
+  --ag-blue-500: #e03600;
+  --ag-blue-600: #b82c00;
+  --ag-blue-700: #9e2500;
+  --ag-blue-800: #731b00;
+  --ag-blue-900: #471000;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   Terra Soft — Dark
+   Swiss Grid — Dark
    ═══════════════════════════════════════════════════════════════════════════ */
 
-/**
- * Terra Soft Skin — Dark Mode
- *
- * Dark-mode overrides for the Terra Soft warm orange-coral aesthetic.
- *
- * Activate by adding class="ag-skin-terra-soft" to <html>.
- * Load this file AFTER ag-tokens-dark.css so the cascade overrides.
- */
+[data-theme="dark"].ag-skin-swiss-grid {
+  --ag-primary: #ff6b3d;
+  --ag-primary-fg: #1a0700;
+  --ag-primary-dark: #ff450a;
+  --ag-primary-border: #ff6b3d;
+  --ag-primary-background: #381205;
+  --ag-primary-text: #ffd6c9;
+  --ag-focus: 255, 134, 97;
+  --ag-focus-dark: #ffd6c9;
+  --ag-text-primary: #f5f5f3;
+  --ag-text-secondary: #d4d4d0;
+  --ag-text-muted: #999994;
+  --ag-text-primary-muted: #e5e5e1;
+  --ag-border: #383836;
+  --ag-border-subtle: #292927;
+  --ag-background-primary: #121211;
+  --ag-background-secondary: #1b1b19;
+  --ag-background-tertiary: #252523;
+  --ag-neutral-background: #252523;
+  --ag-neutral-text: #f5f5f3;
+  --ag-neutral-border: #454542;
+  --ag-radius-sm: 0.125rem;
+  --ag-radius-md: 0.125rem;
+  --ag-radius-lg: 0.1875rem;
+  --ag-shadow-xs: 0 1px 0 0 rgba(255, 255, 255, 0.08);
+  --ag-shadow-sm: 0 2px 0 0 rgba(255, 255, 255, 0.1);
+  --ag-shadow-md: 0 3px 0 0 rgba(255, 255, 255, 0.12);
+  --ag-shadow-lg: 0 4px 0 0 rgba(255, 255, 255, 0.14);
+  --ag-shadow-xl: 0 6px 0 0 rgba(255, 255, 255, 0.16);
+  --ag-rating-filled: #ff6b3d;
+  --ag-rating-filled-primary: #ff6b3d;
+  --ag-blue-50: #ffe8e0;
+  --ag-blue-100: #ffd6c9;
+  --ag-blue-200: #ffa68a;
+  --ag-blue-300: #ff6b3d;
+  --ag-blue-400: #ff450a;
+  --ag-blue-500: #e03600;
+  --ag-blue-600: #b82c00;
+  --ag-blue-700: #252523;
+  --ag-blue-800: #1b1b19;
+  --ag-blue-900: #121211;
+}
 
-[data-theme="dark"].ag-skin-terra-soft {
-  /* ── Primary color family (brightened for dark backgrounds) ── */
-  --ag-primary: #ff8a62;
-  --ag-primary-fg: #000000;
-  --ag-primary-dark: #ff6a3e;
-  --ag-primary-border: #ff8a62;
-  --ag-primary-background: #2e1a12;
-  --ag-primary-text: #ffd4c4;
+/* ═══════════════════════════════════════════════════════════════════════════
+   Terracotta Clay — Light
+   ═══════════════════════════════════════════════════════════════════════════ */
 
-  /* ── Focus ring (orange-derived RGB, brightened) ── */
-  --ag-focus: 255, 138, 98;
-  --ag-focus-dark: #ffb89e;
+:where(html).ag-skin-terracotta-clay {
+  --ag-primary: #c2410c;
+  --ag-primary-fg: #ffffff;
+  --ag-primary-dark: #9a3412;
+  --ag-primary-border: #fed7aa;
+  --ag-primary-background: #fff7ed;
+  --ag-primary-text: #7c2d12;
+  --ag-focus: 194, 65, 12;
+  --ag-focus-dark: #ea580c;
+  --ag-text-primary: #1c1917;
+  --ag-text-secondary: #44403c;
+  --ag-text-muted: #78716c;
+  --ag-text-primary-muted: #292524;
+  --ag-border: #dfd6cc;
+  --ag-border-subtle: #ede6de;
+  --ag-background-primary: #fffdf9;
+  --ag-background-secondary: #f8f3ec;
+  --ag-background-tertiary: #efe7dc;
+  --ag-neutral-background: #efe7dc;
+  --ag-neutral-text: #1c1917;
+  --ag-neutral-border: #d4c8ba;
+  --ag-radius-lg: 0.75rem;
+  --ag-shadow-xs: 0 1px 2px 0 rgba(28, 25, 23, 0.05);
+  --ag-shadow-sm: 0 2px 6px 0 rgba(28, 25, 23, 0.07);
+  --ag-shadow-md: 0 4px 12px -1px rgba(28, 25, 23, 0.09);
+  --ag-shadow-lg: 0 8px 20px -2px rgba(28, 25, 23, 0.11);
+  --ag-shadow-xl: 0 12px 28px -4px rgba(28, 25, 23, 0.14);
+  --ag-rating-filled: #d97706;
+  --ag-rating-filled-primary: #c2410c;
+  --ag-blue-50: #fff7ed;
+  --ag-blue-100: #ffedd5;
+  --ag-blue-200: #fed7aa;
+  --ag-blue-300: #fdba74;
+  --ag-blue-400: #fb923c;
+  --ag-blue-500: #f97316;
+  --ag-blue-600: #c2410c;
+  --ag-blue-700: #9a3412;
+  --ag-blue-800: #7c2d12;
+  --ag-blue-900: #431407;
+}
 
-  /* ── Semantic text ── */
-  --ag-text-primary: #f5ebe4;
-  --ag-text-secondary: #d4c4b8;
-  --ag-text-primary-muted: #e0cfc6;
+/* ═══════════════════════════════════════════════════════════════════════════
+   Terracotta Clay — Dark
+   ═══════════════════════════════════════════════════════════════════════════ */
 
-  /* ── Borders ── */
-  --ag-border: #3d2e26;
-  --ag-border-subtle: #5a4438;
+[data-theme="dark"].ag-skin-terracotta-clay {
+  --ag-primary: #fb923c;
+  --ag-primary-fg: #240c02;
+  --ag-primary-dark: #f97316;
+  --ag-primary-border: #fb923c;
+  --ag-primary-background: #33190c;
+  --ag-primary-text: #ffedd5;
+  --ag-focus: 253, 186, 116;
+  --ag-focus-dark: #ffedd5;
+  --ag-text-primary: #f7f4f0;
+  --ag-text-secondary: #d6cfc7;
+  --ag-text-muted: #9e958c;
+  --ag-text-primary-muted: #e8e2da;
+  --ag-border: #302d2a;
+  --ag-border-subtle: #24211f;
+  --ag-background-primary: #141312;
+  --ag-background-secondary: #1b1a18;
+  --ag-background-tertiary: #242220;
+  --ag-neutral-background: #242220;
+  --ag-neutral-text: #f7f4f0;
+  --ag-neutral-border: #3d3935;
+  --ag-radius-lg: 0.75rem;
+  --ag-shadow-xs: 0 1px 3px 0 rgba(0, 0, 0, 0.28);
+  --ag-shadow-sm: 0 2px 6px 0 rgba(0, 0, 0, 0.34);
+  --ag-shadow-md: 0 4px 12px -1px rgba(0, 0, 0, 0.38);
+  --ag-shadow-lg: 0 8px 20px -2px rgba(0, 0, 0, 0.44);
+  --ag-shadow-xl: 0 12px 28px -4px rgba(0, 0, 0, 0.5);
+  --ag-rating-filled: #fbbf24;
+  --ag-rating-filled-primary: #fb923c;
+  --ag-blue-50: #fff7ed;
+  --ag-blue-100: #ffedd5;
+  --ag-blue-200: #fdba74;
+  --ag-blue-300: #fb923c;
+  --ag-blue-400: #f97316;
+  --ag-blue-500: #ea580c;
+  --ag-blue-600: #c2410c;
+  --ag-blue-700: #242220;
+  --ag-blue-800: #1b1a18;
+  --ag-blue-900: #141312;
+}
 
-  /* ── Backgrounds ── */
-  --ag-background-secondary: #1a1210;
-  --ag-background-tertiary: #2e2420;
+/* ═══════════════════════════════════════════════════════════════════════════
+   Tokyo Ink — Light
+   ═══════════════════════════════════════════════════════════════════════════ */
 
-  /* ── Border radius (matches light) ── */
-  --ag-radius-lg: 1.25rem;
+:where(html).ag-skin-tokyo-ink {
+  --ag-primary: #c92a38;
+  --ag-primary-fg: #ffffff;
+  --ag-primary-dark: #a8202c;
+  --ag-primary-border: #e6a3a9;
+  --ag-primary-background: #fcedee;
+  --ag-primary-text: #8f1924;
+  --ag-focus: 201, 42, 56;
+  --ag-focus-dark: #d93846;
+  --ag-text-primary: #181816;
+  --ag-text-secondary: #3f3e3a;
+  --ag-text-muted: #6e6c65;
+  --ag-text-primary-muted: #292825;
+  --ag-border: #cfcdc4;
+  --ag-border-subtle: #e2e0d8;
+  --ag-background-primary: #f7f6f2;
+  --ag-background-secondary: #efeee8;
+  --ag-background-tertiary: #e5e3db;
+  --ag-neutral-background: #e5e3db;
+  --ag-neutral-text: #181816;
+  --ag-neutral-border: #c4c1b7;
+  --ag-radius-sm: 0.1875rem;
+  --ag-radius-md: 0.25rem;
+  --ag-radius-lg: 0.375rem;
+  --ag-shadow-xs: 0 1px 2px 0 rgba(24, 24, 22, 0.06);
+  --ag-shadow-sm: 0 2px 4px 0 rgba(24, 24, 22, 0.08);
+  --ag-shadow-md: 0 3px 8px 0 rgba(24, 24, 22, 0.09);
+  --ag-shadow-lg: 0 6px 14px -1px rgba(24, 24, 22, 0.11);
+  --ag-shadow-xl: 0 10px 22px -2px rgba(24, 24, 22, 0.13);
+  --ag-rating-filled: #c98a14;
+  --ag-rating-filled-primary: #c92a38;
+  --ag-blue-50: #fcedee;
+  --ag-blue-100: #f7d4d7;
+  --ag-blue-200: #e6a3a9;
+  --ag-blue-300: #db747d;
+  --ag-blue-400: #d93846;
+  --ag-blue-500: #c92a38;
+  --ag-blue-600: #a8202c;
+  --ag-blue-700: #8f1924;
+  --ag-blue-800: #661018;
+  --ag-blue-900: #3d080d;
+}
 
-  /* ── Shadows (warm-tinted for dark mode) ── */
-  --ag-shadow-xs: 0 1px 3px 0 rgba(255, 106, 62, 0.08);
-  --ag-shadow-sm: 0 1px 5px 0 rgba(255, 106, 62, 0.1);
-  --ag-shadow-md: 0 2px 10px 0 rgba(255, 106, 62, 0.1);
-  --ag-shadow-lg: 0 4px 18px -2px rgba(255, 106, 62, 0.12);
-  --ag-shadow-xl: 0 8px 28px -4px rgba(255, 106, 62, 0.14);
+/* ═══════════════════════════════════════════════════════════════════════════
+   Tokyo Ink — Dark
+   ═══════════════════════════════════════════════════════════════════════════ */
 
-  /* ── Rating ── */
-  --ag-rating-filled: #ffba43;
-  --ag-rating-filled-primary: #ff8a62;
+[data-theme="dark"].ag-skin-tokyo-ink {
+  --ag-primary: #f0545e;
+  --ag-primary-fg: #1a0709;
+  --ag-primary-dark: #e34654;
+  --ag-primary-border: #d94854;
+  --ag-primary-background: #2f1518;
+  --ag-primary-text: #ffd6d9;
+  --ag-focus: 245, 118, 126;
+  --ag-focus-dark: #ffd6d9;
+  --ag-text-primary: #f4f3ef;
+  --ag-text-secondary: #dad8d0;
+  --ag-text-muted: #9e9b91;
+  --ag-text-primary-muted: #e6e4dc;
+  --ag-border: #363530;
+  --ag-border-subtle: #282723;
+  --ag-background-primary: #141412;
+  --ag-background-secondary: #1d1c19;
+  --ag-background-tertiary: #272622;
+  --ag-neutral-background: #272622;
+  --ag-neutral-text: #f4f3ef;
+  --ag-neutral-border: #45433c;
+  --ag-radius-sm: 0.1875rem;
+  --ag-radius-md: 0.25rem;
+  --ag-radius-lg: 0.375rem;
+  --ag-shadow-xs: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+  --ag-shadow-sm: 0 2px 6px 0 rgba(0, 0, 0, 0.35);
+  --ag-shadow-md: 0 4px 10px 0 rgba(0, 0, 0, 0.4);
+  --ag-shadow-lg: 0 8px 18px -1px rgba(0, 0, 0, 0.45);
+  --ag-shadow-xl: 0 12px 26px -2px rgba(0, 0, 0, 0.5);
+  --ag-rating-filled: #fbbf24;
+  --ag-rating-filled-primary: #f0545e;
+  --ag-blue-50: #ffe5e7;
+  --ag-blue-100: #ffd6d9;
+  --ag-blue-200: #ffa3aa;
+  --ag-blue-300: #f0545e;
+  --ag-blue-400: #d93846;
+  --ag-blue-500: #c92a38;
+  --ag-blue-600: #a8202c;
+  --ag-blue-700: #272622;
+  --ag-blue-800: #1d1c19;
+  --ag-blue-900: #141412;
+}
 
-  /* ── Orange palette (overrides blue palette for primary usage) ── */
-  --ag-blue-50: #ffd4c4;
-  --ag-blue-100: #ffb89e;
-  --ag-blue-200: #ff9a78;
-  --ag-blue-300: #ff8a62;
-  --ag-blue-400: #ff6a3e;
-  --ag-blue-500: #e55530;
-  --ag-blue-600: #c44425;
-  --ag-blue-700: #9e3318;
-  --ag-blue-800: #5a2210;
-  --ag-blue-900: #2e1a12;
+/* ═══════════════════════════════════════════════════════════════════════════
+   Velvet Plum — Light
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:where(html).ag-skin-velvet-plum {
+  --ag-primary: #881337;
+  --ag-primary-fg: #ffffff;
+  --ag-primary-dark: #6e0f2c;
+  --ag-primary-border: #e5b3c3;
+  --ag-primary-background: #fdf2f6;
+  --ag-primary-text: #6e0f2c;
+  --ag-focus: 136, 19, 55;
+  --ag-focus-dark: #be185d;
+  --ag-text-primary: #24131a;
+  --ag-text-secondary: #4f313e;
+  --ag-text-muted: #7d5d6b;
+  --ag-text-primary-muted: #38202b;
+  --ag-border: #e3ced6;
+  --ag-border-subtle: #efe0e6;
+  --ag-background-primary: #fcf8fa;
+  --ag-background-secondary: #f6edf1;
+  --ag-background-tertiary: #ede0e6;
+  --ag-neutral-background: #ede0e6;
+  --ag-neutral-text: #24131a;
+  --ag-neutral-border: #d4bac5;
+  --ag-radius-lg: 1rem;
+  --ag-shadow-xs: 0 1px 2px 0 rgba(36, 19, 26, 0.05);
+  --ag-shadow-sm: 0 2px 6px 0 rgba(136, 19, 55, 0.07);
+  --ag-shadow-md: 0 4px 12px -1px rgba(136, 19, 55, 0.09);
+  --ag-shadow-lg: 0 8px 20px -2px rgba(136, 19, 55, 0.11);
+  --ag-shadow-xl: 0 12px 28px -4px rgba(136, 19, 55, 0.14);
+  --ag-rating-filled: #d97706;
+  --ag-rating-filled-primary: #881337;
+  --ag-blue-50: #fdf2f6;
+  --ag-blue-100: #fae0e9;
+  --ag-blue-200: #e5b3c3;
+  --ag-blue-300: #d4829c;
+  --ag-blue-400: #be185d;
+  --ag-blue-500: #881337;
+  --ag-blue-600: #6e0f2c;
+  --ag-blue-700: #570b22;
+  --ag-blue-800: #3d0717;
+  --ag-blue-900: #24030d;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Velvet Plum — Dark
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+[data-theme="dark"].ag-skin-velvet-plum {
+  --ag-primary: #e57399;
+  --ag-primary-fg: #1c080f;
+  --ag-primary-dark: #cf567f;
+  --ag-primary-border: #c95b80;
+  --ag-primary-background: #2b181f;
+  --ag-primary-text: #f7d9e3;
+  --ag-focus: 235, 143, 174;
+  --ag-focus-dark: #f7d9e3;
+  --ag-text-primary: #f5f0f2;
+  --ag-text-secondary: #d6ccd0;
+  --ag-text-muted: #9c9095;
+  --ag-text-primary-muted: #e6dce0;
+  --ag-border: #2e2d30;
+  --ag-border-subtle: #222224;
+  --ag-background-primary: #141212;
+  --ag-background-secondary: #19191a;
+  --ag-background-tertiary: #222224;
+  --ag-neutral-background: #222224;
+  --ag-neutral-text: #f5f0f2;
+  --ag-neutral-border: #3b3a3e;
+  --ag-radius-lg: 1rem;
+  --ag-shadow-xs: 0 1px 3px 0 rgba(0, 0, 0, 0.28);
+  --ag-shadow-sm: 0 2px 6px 0 rgba(0, 0, 0, 0.34);
+  --ag-shadow-md: 0 4px 12px -1px rgba(0, 0, 0, 0.38);
+  --ag-shadow-lg: 0 8px 20px -2px rgba(0, 0, 0, 0.44);
+  --ag-shadow-xl: 0 12px 28px -4px rgba(0, 0, 0, 0.5);
+  --ag-rating-filled: #fbbf24;
+  --ag-rating-filled-primary: #e57399;
+  --ag-blue-50: #fcebf1;
+  --ag-blue-100: #f7d9e3;
+  --ag-blue-200: #eb9fb8;
+  --ag-blue-300: #e57399;
+  --ag-blue-400: #cf567f;
+  --ag-blue-500: #ad3960;
+  --ag-blue-600: #881337;
+  --ag-blue-700: #262122;
+  --ag-blue-800: #1d191a;
+  --ag-blue-900: #141212;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Warm Vellum — Light
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:where(html).ag-skin-warm-vellum {
+  --ag-primary: #2c2a26;
+  --ag-primary-fg: #ffffff;
+  --ag-primary-dark: #191815;
+  --ag-primary-border: #d6d3cb;
+  --ag-primary-background: #f1efe9;
+  --ag-primary-text: #1f1e1b;
+  --ag-focus: 44, 42, 38;
+  --ag-focus-dark: #57534a;
+  --ag-text-primary: #191919;
+  --ag-text-secondary: #4a4842;
+  --ag-text-muted: #66635b;
+  --ag-text-primary-muted: #2f2e2a;
+  --ag-border: #e3e1da;
+  --ag-border-subtle: #eeece6;
+  --ag-background-primary: #ffffff;
+  --ag-background-secondary: #f7f6f3;
+  --ag-background-tertiary: #efede7;
+  --ag-neutral-background: #efede7;
+  --ag-neutral-text: #191919;
+  --ag-neutral-border: #d6d3cb;
+  --ag-radius-lg: 0.5rem;
+  --ag-shadow-xs: 0 1px 2px 0 rgba(25, 25, 25, 0.04);
+  --ag-shadow-sm: 0 2px 5px 0 rgba(25, 25, 25, 0.06);
+  --ag-shadow-md: 0 4px 12px -1px rgba(25, 25, 25, 0.07);
+  --ag-shadow-lg: 0 8px 20px -2px rgba(25, 25, 25, 0.09);
+  --ag-shadow-xl: 0 12px 28px -4px rgba(25, 25, 25, 0.11);
+  --ag-rating-filled: #b45309;
+  --ag-rating-filled-primary: #2c2a26;
+  --ag-blue-50: #f7f6f3;
+  --ag-blue-100: #efede7;
+  --ag-blue-200: #dcd9d0;
+  --ag-blue-300: #b8b4a8;
+  --ag-blue-400: #858176;
+  --ag-blue-500: #57534a;
+  --ag-blue-600: #2c2a26;
+  --ag-blue-700: #1f1e1b;
+  --ag-blue-800: #141311;
+  --ag-blue-900: #0a0a09;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Warm Vellum — Dark
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+[data-theme="dark"].ag-skin-warm-vellum {
+  --ag-primary: #ece9e1;
+  --ag-primary-fg: #191919;
+  --ag-primary-dark: #d6d2c7;
+  --ag-primary-border: #4a4842;
+  --ag-primary-background: #292824;
+  --ag-primary-text: #f7f6f3;
+  --ag-focus: 236, 233, 225;
+  --ag-focus-dark: #f7f6f3;
+  --ag-text-primary: #f5f4f0;
+  --ag-text-secondary: #cfccc2;
+  --ag-text-muted: #969389;
+  --ag-text-primary-muted: #e3e0d8;
+  --ag-border: #33322e;
+  --ag-border-subtle: #262522;
+  --ag-background-primary: #191919;
+  --ag-background-secondary: #21201e;
+  --ag-background-tertiary: #2b2a27;
+  --ag-neutral-background: #2b2a27;
+  --ag-neutral-text: #f5f4f0;
+  --ag-neutral-border: #45433e;
+  --ag-radius-lg: 0.5rem;
+  --ag-shadow-xs: 0 1px 3px 0 rgba(0, 0, 0, 0.25);
+  --ag-shadow-sm: 0 2px 6px 0 rgba(0, 0, 0, 0.3);
+  --ag-shadow-md: 0 4px 12px -1px rgba(0, 0, 0, 0.35);
+  --ag-shadow-lg: 0 8px 20px -2px rgba(0, 0, 0, 0.4);
+  --ag-shadow-xl: 0 12px 28px -4px rgba(0, 0, 0, 0.45);
+  --ag-rating-filled: #f59e0b;
+  --ag-rating-filled-primary: #ece9e1;
+  --ag-blue-50: #f7f6f3;
+  --ag-blue-100: #ece9e1;
+  --ag-blue-200: #cfccc2;
+  --ag-blue-300: #a8a499;
+  --ag-blue-400: #7d7a70;
+  --ag-blue-500: #57534a;
+  --ag-blue-600: #3d3b35;
+  --ag-blue-700: #2b2a27;
+  --ag-blue-800: #21201e;
+  --ag-blue-900: #191919;
 }

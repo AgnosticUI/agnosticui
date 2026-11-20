@@ -14,7 +14,7 @@ v2/a2ui/
 │   ├── react/                    # @agnosticui/a2ui-react (<AgA2uiSurface> + useA2uiSurface hook)
 │   └── vue/                      # @agnosticui/a2ui-vue (Vue 3 wrapper + composable)
 ├── demos/support-center/
-│   ├── shared/                   # Shared A2UI v1.0 fixtures, studio.css, evergreen-skin.css & local/live compiler
+│   ├── shared/                   # Shared A2UI v1.0 fixtures, studio.css & local/live compiler
 │   ├── lit/                      # Lit Web Components Support Center Studio
 │   ├── react/                    # React 19 Support Center Studio
 │   └── vue/                      # Vue 3 Support Center Studio

@@ -2,7 +2,7 @@
  * @file main.tsx
  * @description React 19 Support Center Studio showcasing @agnosticui/a2ui-react
  * (<AgA2uiSurface> + useA2uiSurface) with AgnosticUI's A2UI v1.0 catalog across
- * 22 runtime skins (including Evergreen), Light/Dark modes, progressive JSONL
+ * 29 runtime skins, Light/Dark modes, progressive JSONL
  * component streaming, live @path DataModel diff highlighting, FACE validation,
  * and Local vs. Live Gemini 3.8 Flash prompt compilation.
  */
@@ -11,7 +11,6 @@ import 'agnosticui-core/styles/tokens.css';
 import 'agnosticui-core/styles/tokens-dark.css';
 import '../../../../../skins/skins-bundle.css';
 import '../../shared/studio.css';
-import '../../shared/evergreen-skin.css';
 
 import * as React from 'react';
 import { createRoot } from 'react-dom/client';
@@ -33,6 +32,7 @@ import {
   SKINS,
   applySkin,
   applyTheme,
+  getSavedSkinId,
   restorePrefs,
 } from '../../../../../skins/skin-switcher-core.js';
 import {
@@ -58,16 +58,13 @@ import {
 
 restorePrefs();
 
-const STUDIO_SKINS = [
-  { id: 'evergreen', label: 'Evergreen', swatch: '#00a87f' },
-  ...SKINS,
-];
+const STUDIO_SKINS = SKINS;
 
 const SESSION_KEY_STORAGE = 'ag-a2ui-gemini-key';
 
 function App() {
   const [activeSkinId, setActiveSkinId] = React.useState<string>(() => {
-    const initialSkin = localStorage.getItem('ag-skin') ?? 'evergreen';
+    const initialSkin = getSavedSkinId('evergreen');
     applySkin(initialSkin);
     return initialSkin;
   });

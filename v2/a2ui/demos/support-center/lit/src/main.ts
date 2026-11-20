@@ -1,7 +1,7 @@
 /**
  * @file main.ts
  * @description Declarative Lit studio (<ag-a2ui-studio>) showcasing AgnosticUI's
- * A2UI v1.0 catalog across 22 runtime skins (including Evergreen), Light/Dark
+ * A2UI v1.0 catalog across 29 runtime skins, Light/Dark
  * modes, live @path DataModel inspection, FACE form validation, and Local vs.
  * Live Gemini 3.8 Flash prompt compilation.
  */
@@ -10,7 +10,6 @@ import 'agnosticui-core/styles/tokens.css';
 import 'agnosticui-core/styles/tokens-dark.css';
 import '../../../../../skins/skins-bundle.css';
 import '../../shared/studio.css';
-import '../../shared/evergreen-skin.css';
 
 import { LitElement, html } from 'lit';
 import {
@@ -45,6 +44,7 @@ import {
   SKINS,
   applySkin,
   applyTheme,
+  getSavedSkinId,
   restorePrefs,
 } from '../../../../../skins/skin-switcher-core.js';
 import {
@@ -74,10 +74,7 @@ import {
 registerAgnosticUICatalog();
 restorePrefs();
 
-const STUDIO_SKINS = [
-  { id: 'evergreen', label: 'Evergreen', swatch: '#00a87f' },
-  ...SKINS,
-];
+const STUDIO_SKINS = SKINS;
 
 const CLEAR_ICON = createElement(CircleSlash2, {
   width: 15,
@@ -179,7 +176,7 @@ export class AgA2uiStudio extends LitElement {
 
   constructor() {
     super();
-    this.activeSkinId = localStorage.getItem('ag-skin') ?? 'evergreen';
+    this.activeSkinId = getSavedSkinId('evergreen');
     applySkin(this.activeSkinId);
     this.isDark = document.documentElement.getAttribute('data-theme') === 'dark';
     this.inspectorOpen = false;

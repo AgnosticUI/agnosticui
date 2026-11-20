@@ -2,7 +2,7 @@
  * Coffee Espresso Skin — Dark Mode
  *
  * Dark-mode overrides for the Coffee Espresso warm brown aesthetic.
- * Deep espresso backgrounds with cream and mocha highlights.
+ * Deep espresso backgrounds with high-contrast cream and mocha highlights.
  *
  * Activate by adding class="ag-skin-coffee-espresso" to <html>.
  * Load this file AFTER ag-tokens-dark.css so the cascade overrides.
@@ -10,22 +10,22 @@
 
 [data-theme="dark"].ag-skin-coffee-espresso {
   /* ── Primary color family (brightened for dark backgrounds) ── */
-  --ag-primary: #c4a07c;
+  --ag-primary: #d4b494;
   --ag-primary-fg: #000000;
-  --ag-primary-dark: #a07850;
-  --ag-primary-border: #6f4e37;
+  --ag-primary-dark: #b8926c;
+  --ag-primary-border: #8c6648;
   --ag-primary-background: #221610;
-  --ag-primary-text: #d4b89c;
+  --ag-primary-text: #f0decb;
 
-  /* ── Focus ring (coffee-derived RGB, brightened) ── */
-  --ag-focus: 196, 160, 124;
-  --ag-focus-dark: #d4b89c;
+  /* ── Focus ring (coffee-derived RGB, brightened for high visibility) ── */
+  --ag-focus: 224, 192, 158;
+  --ag-focus-dark: #f0decb;
 
   /* ── Semantic text ── */
   --ag-text-primary: #f5ece3;
-  --ag-text-secondary: #d4c4b4;
-  --ag-text-muted: #a0907e;
-  --ag-text-primary-muted: #e8ddd0;
+  --ag-text-secondary: #e8dcd0;
+  --ag-text-muted: #b5a492;
+  --ag-text-primary-muted: #efe4d8;
 
   /* ── Borders ── */
   --ag-border: #3d2e22;
@@ -48,7 +48,7 @@
 
   /* ── Rating ── */
   --ag-rating-filled: #d4a055;
-  --ag-rating-filled-primary: #c4a07c;
+  --ag-rating-filled-primary: #d4b494;
 
   /* ── Coffee palette (overrides blue palette) ── */
   --ag-blue-50: #f0e0cc;
@@ -61,4 +61,9 @@
   --ag-blue-700: #362418;
   --ag-blue-800: #221610;
   --ag-blue-900: #150e08;
+
+  /* ── Neutral surfaces (MessageBubble neutral) ── */
+  --ag-neutral-background: #2b1f16;
+  --ag-neutral-text: #f5ece3;
+  --ag-neutral-border: #5a4434;
 }
