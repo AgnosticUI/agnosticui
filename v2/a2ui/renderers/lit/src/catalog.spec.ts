@@ -2,6 +2,7 @@
 // 1. Verifies all ported catalog components mount into <a2ui-surface> Light DOM & resolve @path bindings
 // 2. Verifies two-way @path data binding across all ported interactive form controls
 // 3. Verifies AgnosticUI FACE validation via validateSurface client function
+// 4. Verifies CodeRabbit review invariants (accessible names, constructor defaults, selection group radio/checkbox modes)
 
 import { describe, it, expect, beforeEach } from 'vitest';
 import { MessageProcessor, DataContext } from '@a2ui/web_core/v1_0';
@@ -140,7 +141,6 @@ const ALL_CATALOG_COMPONENT_CASES: CatalogComponentCase[] = [
   { component: 'AgToggle', expectedTag: 'ag-toggle', props: { label: 'Auto-renew', checked: true } },
   { component: 'AgTooltip', expectedTag: 'ag-tooltip', props: { content: 'Helpful tip', placement: 'top' } },
 ];
-
 describe('AgnosticUI A2UI v1.0 Catalog & Surface', () => {
   beforeEach(() => {
     registerAgnosticUICatalog();
@@ -148,7 +148,6 @@ describe('AgnosticUI A2UI v1.0 Catalog & Surface', () => {
   });
 
   it('registers all ported catalog components and mounts every single one cleanly into <a2ui-surface>', async () => {
-    // Verify catalog count matches our 45-component test matrix
     expect(AgnosticUICatalog.components.size).toBe(45);
     expect(AgnosticUICatalog.components.size).toBe(ALL_CATALOG_COMPONENT_CASES.length);
 
@@ -321,7 +320,7 @@ describe('AgnosticUI A2UI v1.0 Catalog & Surface', () => {
     expect(ValidateSurfaceImplementation.execute({}, dataCtx)).toBe(true);
   });
 
-    it('renders AgTimeline items into slotted ag-timeline-item elements', async () => {
+  it('renders AgTimeline items into slotted ag-timeline-item elements', async () => {
     const processor = new MessageProcessor<LitComponentApi>([AgnosticUICatalog]);
     const { surfaceEl } = await mountFixture(processor, 'surface_timeline', [
       {
@@ -353,9 +352,131 @@ describe('AgnosticUI A2UI v1.0 Catalog & Surface', () => {
 
     const timelineItems = surfaceEl.querySelectorAll('ag-timeline-item');
     expect(timelineItems).toHaveLength(2);
-    expect(timelineItems[0]?.querySelector('[slot="ag-start"]')?.textContent).toBe('14:22:01');
-    expect(timelineItems[0]?.querySelector('[slot="ag-end"]')?.textContent).toBe('VIP call connected');
-    expect(timelineItems[1]?.querySelector('[slot="ag-start"]')?.textContent).toBe('14:22:02');
-    expect(timelineItems[1]?.querySelector('[slot="ag-end"]')?.textContent).toBe('CRM record verified');
+    expect(timelineItems.item(0)?.querySelector('[slot="ag-start"]')?.textContent).toBe('14:22:01');
+    expect(timelineItems.item(0)?.querySelector('[slot="ag-end"]')?.textContent).toBe('VIP call connected');
+    expect(timelineItems.item(1)?.querySelector('[slot="ag-start"]')?.textContent).toBe('14:22:02');
+    expect(timelineItems.item(1)?.querySelector('[slot="ag-end"]')?.textContent).toBe('CRM record verified');
+  });
+
+  it('enforces AgIconButton accessible name, preserves component defaults, and binds AgSelectionButtonGroup radio & checkbox modes', async () => {
+    const { AgIconButtonSchema } = await import('./components/AgIconButton.js');
+    expect(AgIconButtonSchema.safeParse({ icon: 'settings' }).success).toBe(false);
+    expect(AgIconButtonSchema.safeParse({ label: '   ' }).success).toBe(false);
+    expect(AgIconButtonSchema.safeParse({ label: 'Open settings', unicode: '⚙' }).success).toBe(true);
+
+    const processor = new MessageProcessor<LitComponentApi>([AgnosticUICatalog]);
+    const dispatchedActions: unknown[] = [];
+
+    const { surfaceModel, surfaceEl } = await mountFixture(processor, 'coderabbit_fixes_surface', [
+      {
+        version: '1.0',
+        createSurface: {
+          surfaceId: 'coderabbit_fixes_surface',
+          catalogId: AGNOSTICUI_CATALOG_ID,
+        },
+      },
+      {
+        version: '1.0',
+        updateComponents: {
+          surfaceId: 'coderabbit_fixes_surface',
+          components: [
+            {
+              id: 'root',
+              component: 'AgCard',
+              children: [
+                'default_copy_btn',
+                'zero_timeout_copy_btn',
+                'default_tooltip',
+                'default_timeline',
+                'radio_tier_group',
+                'checkbox_addons_group',
+              ],
+            },
+            { id: 'default_copy_btn', component: 'AgCopyButton', text: 'abc' },
+            { id: 'zero_timeout_copy_btn', component: 'AgCopyButton', text: 'abc', timeout: 0 },
+            { id: 'default_tooltip', component: 'AgTooltip', content: 'Hint' },
+            {
+              id: 'default_timeline',
+              component: 'AgTimeline',
+              items: [{ start: 'T0', marker: '1', end: 'Initialized' }],
+            },
+            {
+              id: 'radio_tier_group',
+              component: 'AgSelectionButtonGroup',
+              name: 'tier_radio',
+              value: { '@path': '/form/tier' },
+              children: ['radio_opt_starter', 'radio_opt_pro'],
+              action: {
+                event: {
+                  name: 'TIER_SELECTED',
+                },
+              },
+            },
+            { id: 'radio_opt_starter', component: 'AgSelectionButton', value: 'starter', label: 'Starter' },
+            { id: 'radio_opt_pro', component: 'AgSelectionButton', value: 'pro', label: 'Pro' },
+            {
+              id: 'checkbox_addons_group',
+              component: 'AgSelectionButtonGroup',
+              type: 'checkbox',
+              name: 'addons_checkbox',
+              values: { '@path': '/form/addons' },
+              options: [
+                { value: 'sso', label: 'SSO' },
+                { value: 'audit', label: 'Audit Logs' },
+              ],
+            },
+          ],
+        },
+      },
+      {
+        version: '1.0',
+        updateDataModel: {
+          surfaceId: 'coderabbit_fixes_surface',
+          path: '/form',
+          value: { tier: 'starter', addons: ['sso'] },
+        },
+      },
+    ]);
+
+    const sub = surfaceModel.onAction.subscribe((action) => {
+      dispatchedActions.push(action);
+    });
+
+    const copyBtns = surfaceEl.querySelectorAll('ag-copy-button') as NodeListOf<
+      HTMLElement & { timeout?: number; successLabel?: string }
+    >;
+    expect(copyBtns.item(0)?.timeout).toBe(1000);
+    expect(copyBtns.item(0)?.successLabel).toBe('Copied!');
+    expect(copyBtns.item(1)?.timeout).toBe(0);
+
+    const tooltip = surfaceEl.querySelector('ag-tooltip') as HTMLElement & { trigger?: string };
+    expect(tooltip?.trigger).toBe('hover focus');
+
+    const timeline = surfaceEl.querySelector('ag-timeline') as HTMLElement & { orientation?: string };
+    const timelineItem = surfaceEl.querySelector('ag-timeline-item') as HTMLElement & { orientation?: string };
+    expect(timeline?.orientation).toBe('horizontal');
+    expect(timelineItem?.orientation).toBe('horizontal');
+
+    const radioGroup = surfaceEl.querySelector('ag-selection-button-group[name="tier_radio"]')!;
+    expect(radioGroup.getAttribute('type')).toBe('radio');
+    const radioButtons = radioGroup.querySelectorAll('ag-selection-button');
+    expect(radioButtons).toHaveLength(2);
+
+    const proLabel = radioButtons.item(1)?.shadowRoot?.querySelector('label');
+    expect(proLabel).not.toBeNull();
+    proLabel!.click();
+    await settleTree(surfaceEl);
+    expect(surfaceModel.dataModel.get('/form/tier')).toBe('pro');
+    expect(dispatchedActions).toHaveLength(1);
+    sub.unsubscribe();
+
+    const checkboxGroup = surfaceEl.querySelector('ag-selection-button-group[name="addons_checkbox"]')!;
+    const checkboxButtons = checkboxGroup.querySelectorAll('ag-selection-button');
+    expect(checkboxButtons).toHaveLength(2);
+    const auditLabel = checkboxButtons.item(1)?.shadowRoot?.querySelector('label');
+    expect(auditLabel).not.toBeNull();
+    auditLabel!.click();
+    await settleTree(surfaceEl);
+    expect(surfaceModel.dataModel.get('/form/addons')).toEqual(['sso', 'audit']);
   });
 });

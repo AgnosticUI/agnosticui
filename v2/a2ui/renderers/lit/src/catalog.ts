@@ -49,7 +49,7 @@ import { AgTimeline } from './components/AgTimeline.js';
 import { AgToggle } from './components/AgToggle.js';
 import { AgTooltip } from './components/AgTooltip.js';
 
-export const AGNOSTICUI_CATALOG_ID = 'https://agnosticui.com/a2ui/v1/catalog.json';
+export const AGNOSTICUI_CATALOG_ID = 'https://agnosticui.com';
 
 export const AgnosticUICatalog: Catalog<LitComponentApi> = new Catalog(
   AGNOSTICUI_CATALOG_ID,
@@ -57,7 +57,7 @@ export const AgnosticUICatalog: Catalog<LitComponentApi> = new Catalog(
   [AgText, AgAccordion, AgAlert, AgAspectRatio, AgAvatar, AgBadge, AgBreadcrumb, AgButton, AgCard, AgCheckbox, AgCombobox, AgCopyButton, AgDialog, AgDivider, AgDrawer, AgEmptyState, AgFieldset, AgHeader, AgIcon, AgIconButton, AgImage, AgInput, AgIntlFormatter, AgKbd, AgLink, AgLoader, AgMark, AgMessageBubble, AgPagination, AgPopover, AgProgress, AgProgressRing, AgRadio, AgRating, AgSelect, AgSelectionButton, AgSelectionButtonGroup, AgSkeletonLoader, AgSlider, AgSpinner, AgTabs, AgTag, AgTimeline, AgToggle, AgTooltip] as unknown as LitComponentApi[],
   [...BASIC_FUNCTIONS, ValidateSurfaceImplementation],
   undefined,
-  'Use AgnosticUI components (AgCard, AgFieldset, AgDivider, AgHeader, AgAccordion, AgCollapsible, AgTabs, AgBreadcrumb, AgPagination, AgMessageBubble, AgAlert, AgBadge, AgAvatar, AgTag, AgEmptyState, AgTimeline, AgProgress, AgProgressRing, AgSpinner, AgSkeletonLoader, AgIcon, AgImage, AgLink, AgKbd, AgMark, AgIntlFormatter, AgButton, AgInput, AgCombobox, AgSelect, AgCheckbox, AgRadio, AgRating, AgToggle, AgSlider, AgText). Always use UAX #31 component IDs (letters, digits, underscores only; no hyphens) and bind interactive form fields using {"@path": "/..."} pointers.',
+  'Use AgnosticUI components (AgCard, AgFieldset, AgDivider, AgHeader, AgAccordion, AgCollapsible, AgTabs, AgBreadcrumb, AgPagination, AgAspectRatio, AgDialog, AgDrawer, AgPopover, AgTooltip, AgMessageBubble, AgAlert, AgBadge, AgAvatar, AgTag, AgEmptyState, AgTimeline, AgProgress, AgProgressRing, AgSpinner, AgSkeletonLoader, AgLoader, AgIcon, AgImage, AgLink, AgKbd, AgMark, AgIntlFormatter, AgButton, AgIconButton, AgCopyButton, AgInput, AgCombobox, AgSelect, AgCheckbox, AgRadio, AgRating, AgToggle, AgSlider, AgSelectionButton, AgSelectionButtonGroup, AgText). Always use UAX #31 component IDs (letters, digits, underscores only; no hyphens) and bind interactive form fields using {"@path": "/..."} pointers.',
 );
 
 export function registerAgnosticUICatalog(): void {

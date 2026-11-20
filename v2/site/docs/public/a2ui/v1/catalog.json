@@ -1,7 +1,7 @@
 {
   "protocolVersion": "1.0",
-  "catalogId": "https://agnosticui.com/a2ui/v1/catalog.json",
-  "instructions": "Use AgnosticUI components (AgCard, AgFieldset, AgDivider, AgHeader, AgAccordion, AgCollapsible, AgTabs, AgBreadcrumb, AgPagination, AgMessageBubble, AgAlert, AgBadge, AgAvatar, AgTag, AgEmptyState, AgTimeline, AgProgress, AgProgressRing, AgSpinner, AgSkeletonLoader, AgIcon, AgImage, AgLink, AgKbd, AgMark, AgIntlFormatter, AgButton, AgInput, AgCombobox, AgSelect, AgCheckbox, AgRadio, AgRating, AgToggle, AgSlider, AgText). Always use UAX #31 component IDs (letters, digits, underscores only; no hyphens) and bind interactive form fields using {\"@path\": \"/...\"} pointers.",
+  "catalogId": "https://agnosticui.com",
+  "instructions": "Use AgnosticUI components (AgCard, AgFieldset, AgDivider, AgHeader, AgAccordion, AgCollapsible, AgTabs, AgBreadcrumb, AgPagination, AgAspectRatio, AgDialog, AgDrawer, AgPopover, AgTooltip, AgMessageBubble, AgAlert, AgBadge, AgAvatar, AgTag, AgEmptyState, AgTimeline, AgProgress, AgProgressRing, AgSpinner, AgSkeletonLoader, AgLoader, AgIcon, AgImage, AgLink, AgKbd, AgMark, AgIntlFormatter, AgButton, AgIconButton, AgCopyButton, AgInput, AgCombobox, AgSelect, AgCheckbox, AgRadio, AgRating, AgToggle, AgSlider, AgSelectionButton, AgSelectionButtonGroup, AgText). Always use UAX #31 component IDs (letters, digits, underscores only; no hyphens) and bind interactive form fields using {\"@path\": \"/...\"} pointers.",
   "components": {
     "AgText": {
       "type": "object",
@@ -2322,10 +2322,8 @@
           "description": "String property value."
         },
         "values": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
+          "$ref": "common_types.json#/$defs/DynamicStringList",
+          "description": "String list property values."
         },
         "disabled": {
           "$ref": "common_types.json#/$defs/DynamicBoolean",
@@ -2334,6 +2332,27 @@
         "required": {
           "$ref": "common_types.json#/$defs/DynamicBoolean",
           "description": "Boolean property required."
+        },
+        "options": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "string"
+              },
+              "label": {
+                "type": "string"
+              },
+              "disabled": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "value"
+            ],
+            "additionalProperties": false
+          }
         },
         "action": {
           "$ref": "common_types.json#/$defs/Action",

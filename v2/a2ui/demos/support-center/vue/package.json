@@ -5,17 +5,17 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "typecheck": "vue-tsc --noEmit",
-    "build": "vue-tsc --noEmit && vite build"
+    "typecheck": "tsc --noEmit",
+    "build": "tsc --noEmit && vite build"
   },
   "dependencies": {
     "@a2ui/lit": "^0.15.0",
     "@a2ui/web_core": "^0.15.0",
-    "@agnosticui/a2ui-lit": "file:../../../renderers/lit/agnosticui-a2ui-lit-2.0.0-alpha.4.tgz",
-    "@agnosticui/a2ui-vue": "file:../../../renderers/vue/agnosticui-a2ui-vue-2.0.0-alpha.4.tgz",
-    "agnosticui-core": "file:../../../../lib/agnosticui-core-2.0.0-alpha.33.tgz",
+    "@agnosticui/a2ui-lit": "^2.0.0-alpha.4",
+    "@agnosticui/a2ui-vue": "^2.0.0-alpha.4",
+    "agnosticui-core": "^2.0.0-alpha.33",
     "lit": "^3.3.3",
-    "lucide-vue-next": "^0.544.0",
+    "lucide-vue-next": "^1.73.0",
     "vue": "^3.5.22",
     "zod": "^3.25.76"
   },
@@ -23,6 +23,6 @@
     "@vitejs/plugin-vue": "^6.0.1",
     "typescript": "^5.9.3",
     "vite": "^7.0.0",
-    "vue-tsc": "^3.1.0"
+    "vue-tsc": "^3.0.0"
   }
 }
