@@ -35,11 +35,16 @@ parts.push(`/**
  * Import this AFTER ag-tokens-dark.css in your entry point.
  */
 
-/* Default theme dark-mode neutral surface tokens (for MessageBubble / Badge neutral) */
+/* Default theme dark-mode conservative neutral surfaces */
 :where(html)[data-theme="dark"] {
-  --ag-neutral-background: #1f2937;
-  --ag-neutral-text: #f3f4f6;
-  --ag-neutral-border: #374151;
+  --ag-background-primary: #111113;
+  --ag-background-secondary: #18181b;
+  --ag-background-tertiary: #222226;
+  --ag-border: #2c2c31;
+  --ag-border-subtle: #222226;
+  --ag-neutral-background: #222226;
+  --ag-neutral-text: #f4f4f6;
+  --ag-neutral-border: #36363c;
 }`);
 
 for (const dir of skinDirs) {
