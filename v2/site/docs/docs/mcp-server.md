@@ -5,7 +5,7 @@
 By exposing these systems directly over standard input/output channels, an LLM shifts from blind guessing to zero-drift code generation—completely eliminating prop hallucinations and styling drift during software workflows.
 
 ::: tip Early access
-The MCP Server is new and evolving. The server architecture is stable enough to test and build with locally, but not yet published to npm. Feedback welcome via [GitHub issues](https://github.com).
+The MCP Server is new and evolving. The server architecture is stable enough to test and build with locally, but not yet published to npm. Feedback welcome via [GitHub issues]([GitHub issues](https://github.com/AgnosticUI/agnosticui/issues)).
 :::
 
 ---
