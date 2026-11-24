@@ -1,0 +1,110 @@
+// v2/lib/tests/uirig/planner.spec.ts
+import { describe, expect, it, vi } from 'vitest';
+import { COMPONENT_NAMES } from '../shared/component-registry';
+import { getGitChangedFiles, planAuditScope } from './planner';
+
+describe('uirig/planner', () => {
+  it('targets registered components changed under src/components', () => {
+    const plan = planAuditScope([
+      'v2/lib/src/components/Button/core/Button.ts',
+      'src/components/Dialog/styles.css',
+      'src/components/NotRegistered/index.ts',
+    ]);
+
+    expect(plan.components).toEqual(['Button', 'Dialog']);
+    expect(plan.fullSweep).toBe(false);
+    expect(plan.relevantPaths).toEqual([
+      'src/components/Button/core/Button.ts',
+      'src/components/Dialog/styles.css',
+    ]);
+  });
+
+  it('escalates shared-source paths to the complete registry', () => {
+    const plan = planAuditScope([
+      'src/components/Button/core/Button.ts',
+      'v2/lib/src/styles/ag-tokens.css',
+    ]);
+
+    expect(plan.components).toEqual(COMPONENT_NAMES);
+    expect(plan.fullSweep).toBe(true);
+    expect(plan.relevantPaths).toEqual(['src/styles/ag-tokens.css']);
+  });
+
+  it.each([
+    'src/styles/ag-tokens.css',
+    'v2/theme-registry/src/index.ts',
+    'theme-registry/src/index.ts',
+    'v2/lib/src/shared/dom.ts',
+    'src/utils/color.ts',
+  ])('escalates shared path %s to the complete registry', (path) => {
+    const plan = planAuditScope([path]);
+
+    expect(plan.components).toEqual(COMPONENT_NAMES);
+    expect(plan.fullSweep).toBe(true);
+    expect(plan.relevantPaths).toHaveLength(1);
+  });
+
+  it('ignores documentation, site, test, and unknown component paths', () => {
+    const plan = planAuditScope([
+      'README.md',
+      'site/src/pages/index.ts',
+      'src/components/NotRegistered/index.ts',
+      'tests/uirig/runner.ts',
+    ]);
+
+    expect(plan.components).toEqual([]);
+    expect(plan.fullSweep).toBe(false);
+    expect(plan.relevantPaths).toEqual([]);
+  });
+
+  it('normalizes Windows separators and preserves canonical registry order', () => {
+    const plan = planAuditScope([
+      'src\\components\\Toggle\\Toggle.ts',
+      'src/components/Accordion/Accordion.ts',
+    ]);
+
+    expect(plan.components).toEqual(
+      COMPONENT_NAMES.filter((name) => name === 'Accordion' || name === 'Toggle')
+    );
+    expect(plan.relevantPaths).toEqual([
+      'src/components/Toggle/Toggle.ts',
+      'src/components/Accordion/Accordion.ts',
+    ]);
+  });
+
+  it('reads changed paths from the merge base to HEAD using the supplied executor', () => {
+    const execFile = vi
+      .fn()
+      .mockReturnValueOnce('/repo\n')
+      .mockReturnValueOnce('v2/lib/src/components/Button/Button.ts\nREADME.md\n');
+
+    expect(getGitChangedFiles('origin/main', execFile)).toEqual([
+      'v2/lib/src/components/Button/Button.ts',
+      'README.md',
+    ]);
+    expect(execFile).toHaveBeenNthCalledWith(
+      1,
+      'git',
+      ['rev-parse', '--show-toplevel'],
+      { encoding: 'utf8' }
+    );
+    expect(execFile).toHaveBeenNthCalledWith(
+      2,
+      'git',
+      ['diff', '--name-only', '--diff-filter=ACMR', 'origin/main...HEAD', '--'],
+      {
+        cwd: '/repo',
+        encoding: 'utf8',
+      }
+    );
+  });
+
+  it('rejects an empty Git base reference without invoking the executor', () => {
+    const execFile = vi.fn();
+
+    expect(() => getGitChangedFiles('  ', execFile)).toThrow(
+      'A non-empty Git base reference is required.'
+    );
+    expect(execFile).not.toHaveBeenCalled();
+  });
+});
