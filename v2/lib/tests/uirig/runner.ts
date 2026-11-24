@@ -2,11 +2,10 @@
 import { spawn, spawnSync, type ChildProcess } from 'node:child_process';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import {
-  COMPONENT_NAMES,
-  hasComponentTemplate,
-  type ComponentName,
-} from '../shared/component-registry';
+import type { ComponentName } from '../shared/component-registry';
+import { resolveAuditScope } from './audit-scope';
+import { parseAuditCliArgs } from './cli-args';
+import { getGitChangedFiles } from './planner';
 import { writeCombinedTokenScale } from './token-scale';
 import {
   deduplicateViolations,
@@ -43,27 +42,6 @@ const COMBINED_TOKENS_PATH = resolve(LIB_ROOT, '.uirig/ag-tokens-combined.css');
 const REPORT_OUTPUT_PATH = resolve(LIB_ROOT, '.uirig/audit-report.json');
 const UIRIG_BIN = resolve(LIB_ROOT, 'node_modules/.bin/uirig');
 const VITE_BIN = resolve(LIB_ROOT, 'node_modules/.bin/vite');
-
-function parseTargetComponents(argv: string[]): ComponentName[] {
-  const compArg = argv.find((arg) => arg.startsWith('--components='));
-  if (!compArg) {
-    return [...COMPONENT_NAMES];
-  }
-  const rawNames = compArg
-    .slice('--components='.length)
-    .split(',')
-    .map((s) => s.trim())
-    .filter(Boolean);
-
-  const valid: ComponentName[] = [];
-  for (const name of rawNames) {
-    if (!hasComponentTemplate(name)) {
-      throw new Error(`Unknown component "${name}". Valid components: ${COMPONENT_NAMES.join(', ')}`);
-    }
-    valid.push(name);
-  }
-  return valid;
-}
 
 async function isServerReady(url: string): Promise<boolean> {
   try {
@@ -137,30 +115,52 @@ function runSingleComponentAudit(
 }
 
 async function main(): Promise<void> {
-  const targets = parseTargetComponents(process.argv.slice(2));
+  const options = parseAuditCliArgs(process.argv.slice(2));
+  const changedPaths = options.changed
+    ? getGitChangedFiles(options.baseRef!)
+    : [];
+  const scope = resolveAuditScope(options, changedPaths);
+  const targets = scope.components;
+
+  if (options.changed) {
+    console.log(
+      `[uirig:audit] Changed-file scope: ${scope.changedPlan?.relevantPaths.length ?? 0} relevant path(s); ` +
+        `${scope.changedPlan?.fullSweep ? 'full registry sweep' : 'targeted sweep'}.`
+    );
+  }
+
+  if (targets.length === 0) {
+    console.log('[uirig:audit] No components selected; nothing to audit.');
+  } else {
+    console.log(`[uirig:audit] Components: ${targets.join(', ')}`);
+  }
+
   const { darkRgbValues } = writeCombinedTokenScale(
     LIGHT_TOKENS_PATH,
     DARK_TOKENS_PATH,
     COMBINED_TOKENS_PATH
   );
 
-  const viteProcess = await ensureViteServer();
   const suiteStart = Date.now();
   const results: ComponentAuditSummary[] = [];
 
-  try {
-    for (const component of targets) {
-      const summary = runSingleComponentAudit(component, darkRgbValues);
-      results.push(summary);
-      const defects = summary.findings.filter((f) => f.cause === 'component-defect').length;
-      const upstream = summary.findings.filter((f) => f.cause === 'upstream-tool-bug').length;
-      console.log(
-        `[uirig:audit] ${component}: ${summary.elapsedMs}ms | raw=${summary.rawViolationCount} | defects=${defects} | upstream=${upstream}`
-      );
-    }
-  } finally {
-    if (viteProcess) {
-      viteProcess.kill('SIGKILL');
+  if (targets.length > 0) {
+    const viteProcess = await ensureViteServer();
+
+    try {
+      for (const component of targets) {
+        const summary = runSingleComponentAudit(component, darkRgbValues);
+        results.push(summary);
+        const defects = summary.findings.filter((f) => f.cause === 'component-defect').length;
+        const upstream = summary.findings.filter((f) => f.cause === 'upstream-tool-bug').length;
+        console.log(
+          `[uirig:audit] ${component}: ${summary.elapsedMs}ms | raw=${summary.rawViolationCount} | defects=${defects} | upstream=${upstream}`
+        );
+      }
+    } finally {
+      if (viteProcess) {
+        viteProcess.kill('SIGKILL');
+      }
     }
   }
 
@@ -171,9 +171,9 @@ async function main(): Promise<void> {
     'false-positive': 0,
   };
 
-  for (const r of results) {
-    for (const f of r.findings) {
-      countsByCause[f.cause] += 1;
+  for (const result of results) {
+    for (const finding of result.findings) {
+      countsByCause[finding.cause] += 1;
     }
   }
 

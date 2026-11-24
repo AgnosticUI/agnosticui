@@ -1,3 +1,8 @@
 **/v1/
 playwright-report/
 playwright-results/
+
+# uirig generated artifacts
+.uirig/ag-tokens-combined.css
+.uirig/audit-report.json
+.uirig/github_pr_comment.md
