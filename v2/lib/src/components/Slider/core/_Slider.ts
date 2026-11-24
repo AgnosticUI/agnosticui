@@ -74,7 +74,7 @@ export interface SliderProps {
  * AgSlider - Foundation slider component with single/dual range support
  */
 export class AgSlider extends FaceMixin(LitElement) implements SliderProps {
-  static override styles = [
+    static override styles = [
     formControlStyles,
     css`
     :host {
@@ -222,151 +222,87 @@ export class AgSlider extends FaceMixin(LitElement) implements SliderProps {
       border-color: var(--ag-primary-dark);
       box-shadow: var(--ag-shadow-md);
     }
-
     /* Visual focus state - controlled by internal state */
     .ag-slider__thumb--focused {
-      outline: var(--ag-focus-width) solid rgba(var(--ag-focus), 0.5);
-      outline-offset: var(--ag-focus-offset);
-      border-color: var(--ag-primary-dark);
+      outline: var(--ag-focus-ring-width) solid var(--ag-focus-ring-color);
+      outline-offset: var(--ag-focus-ring-offset);
     }
 
-    /* Active drag state */
-    .ag-slider__thumb--active {
-      transform: translate(-50%, -50%) scale(1.1);
+    /* Hidden native input for accessibility & forms */
+    .ag-slider__input {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+      margin: 0;
       z-index: 1;
     }
 
-    :host([vertical]) .ag-slider__thumb--active {
-      transform: translate(-50%, 50%) scale(1.1);
-    }
-
-    /* Readonly state */
-    :host([readonly]) .ag-slider__thumb {
-      cursor: default;
-      border-color: var(--ag-border-subtle);
-    }
-
-    :host([readonly]) .ag-slider__thumb:hover {
-      border-color: var(--ag-border-subtle);
-      box-shadow: var(--ag-shadow-sm);
-    }
-
-    :host([readonly]) .ag-slider__thumb:active {
-      transform: translate(-50%, -50%);
-      cursor: default;
-    }
-
-    :host([vertical][readonly]) .ag-slider__thumb:active {
-      transform: translate(-50%, 50%);
-    }
-
-    /* Readonly lock indicator (simple inline SVG) */
-    :host([readonly]) .ag-slider__thumb::after {
-      content: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpath d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6z" /%3E%3Cpath d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" /%3E%3Cpath d="M8 11v-4a4 4 0 1 1 8 0v4" /%3E%3C/svg%3E');
-      position: absolute;
-      top: -8px;
-      inset-inline-end: -8px;
-      filter: grayscale(1);
-      opacity: 0.7;
-    }
-
-    /* Input (hidden but accessible) */
-    .ag-slider__input {
-      position: absolute;
-      opacity: 0;
-      pointer-events: none;
+    /* Value Display */
+    .ag-slider__value {
+      font-size: var(--ag-font-size-sm);
+      font-weight: 500;
+      color: var(--ag-text-primary);
+      margin-block-end: var(--ag-space-1);
     }
 
     /* Tooltip */
     .ag-slider__tooltip {
       position: absolute;
-      bottom: var(--ag-slider-tooltip-offset);
-      inset-inline-start: 50%;
+      bottom: calc(100% + var(--ag-space-2));
+      left: 50%;
       transform: translateX(-50%);
-      background: var(--ag-neutral-800);
+      background: var(--ag-neutral-900);
       color: var(--ag-white);
       padding: var(--ag-space-1) var(--ag-space-2);
       border-radius: var(--ag-radius-sm);
-      font-size: var(--ag-font-size-sm);
+      font-size: var(--ag-font-size-xs);
       white-space: nowrap;
       pointer-events: none;
       opacity: 0;
       transition: opacity var(--ag-motion-fast);
-      z-index: 2;
     }
 
-    /* Show tooltip on hover and focus - ensure it works with both thumb and input focus */
     .ag-slider__thumb:hover .ag-slider__tooltip,
     .ag-slider__thumb--focused .ag-slider__tooltip,
-    .ag-slider__thumb--active .ag-slider__tooltip,
-    .ag-slider__input:focus-visible ~ .ag-slider__track .ag-slider__thumb .ag-slider__tooltip {
+    .ag-slider__thumb:active .ag-slider__tooltip {
       opacity: 1;
-    }
-
-    :host([vertical]) .ag-slider__tooltip {
-      bottom: auto;
-      inset-inline-start: var(--ag-slider-tooltip-offset);
-      top: 50%;
-      transform: translateY(-50%);
     }
 
     /* Ticks */
     .ag-slider__ticks {
-      position: absolute;
-      top: 50%;
-      inset-inline: 0;
-      height: var(--ag-space-2);
-      pointer-events: none;
-    }
-
-    :host([vertical]) .ag-slider__ticks {
-      top: 0;
-      bottom: 0;
-      inset-inline-start: 50%;
-      width: var(--ag-space-2);
-      height: auto;
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      margin-block-start: var(--ag-space-2);
+      padding-inline: 2px;
     }
 
     .ag-slider__tick {
-      position: absolute;
-      width: 1px;
-      height: var(--ag-space-2);
-      background: var(--ag-border);
-      transform: translateX(-50%);
-    }
-
-    :host([vertical]) .ag-slider__tick {
-      width: var(--ag-space-2);
-      height: 1px;
-      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 0;
+      font-size: var(--ag-font-size-xs);
+      color: var(--ag-text-secondary);
     }
 
     .ag-slider__tick-label {
-      position: absolute;
-      top: var(--ag-space-3);
-      font-size: var(--ag-font-size-xs);
-      color: var(--ag-text-muted);
-      transform: translateX(-50%);
-      white-space: nowrap;
+      max-inline-size: 100%;
     }
 
-    :host([vertical]) .ag-slider__tick-label {
-      top: auto;
-      inset-inline-start: var(--ag-space-3);
-      transform: translateY(-50%);
+    .ag-slider__tick-mark {
+      width: 1px;
+      height: 4px;
+      background: var(--ag-border);
+      margin-block-end: 2px;
     }
 
-    /* Vertical tick label rotation for better space usage */
-    :host([vertical]) .ag-slider__tick-label {
-      transform: translateY(-50%) rotate(-90deg);
-      transform-origin: left center;
-      inset-inline-start: var(--ag-space-4);
-    }
-
-    /* Sizes */
+    /* Size variants */
     :host([size="small"]) {
       --ag-slider-track-height: var(--ag-space-1);
-      --ag-slider-thumb-size: var(--ag-space-5);
+      --ag-slider-thumb-size: var(--ag-space-6);
     }
 
     :host([size="large"]) {
@@ -374,55 +310,65 @@ export class AgSlider extends FaceMixin(LitElement) implements SliderProps {
       --ag-slider-thumb-size: var(--ag-space-7);
     }
 
-    /* States */
-    :host([disabled]) {
-      opacity: 0.6;
-      pointer-events: none;
+    /* Vertical mode adjustments */
+    :host([vertical]) .ag-slider__ticks {
+      flex-direction: column-reverse;
+      margin-block-start: 0;
+      margin-inline-start: var(--ag-space-2);
+      padding-inline: 0;
+      padding-block: 2px;
+      height: 100%;
     }
 
-    :host([disabled]) .ag-slider__thumb {
-      cursor: not-allowed;
-      border-color: var(--ag-border-subtle);
-      background: var(--ag-background-disabled);
+    :host([vertical]) .ag-slider__tick {
+      flex-direction: row;
     }
 
-    :host([disabled]) .ag-slider__progress {
-      background: var(--ag-border-subtle);
+    :host([vertical]) .ag-slider__tick-mark {
+      width: 4px;
+      height: 1px;
+      margin-block-end: 0;
+      margin-inline-end: 2px;
     }
 
-    :host([invalid]) .ag-slider__progress {
-      background: var(--ag-danger);
-    }
-
-    :host([invalid]) .ag-slider__thumb {
-      border-color: var(--ag-danger);
-    }
-
-    /* Help & Error Text */
-    .ag-slider__help,
-    .ag-slider__error {
-      margin-block-start: var(--ag-space-2);
+    /* Help text and error text */
+    .ag-slider__help-text,
+    .ag-slider__error-message {
       font-size: var(--ag-font-size-sm);
+      margin-block-start: var(--ag-space-1);
     }
 
-    .ag-slider__help {
+    .ag-slider__help-text {
       color: var(--ag-text-secondary);
     }
 
-    .ag-slider__error {
-      color: var(--ag-danger);
+    .ag-slider__error-message {
+      color: var(--ag-error-text);
     }
 
-    /* Live region for value announcements */
-    .ag-slider__live-region {
-      position: absolute;
-      overflow: hidden;
-      clip: rect(0 0 0 0);
-      height: 1px;
-      width: 1px;
-      margin: -1px;
-      padding: 0;
-      border: 0;
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .ag-slider__thumb,
+      .ag-slider__progress,
+      .ag-slider__tooltip {
+        transition: none;
+      }
+    }
+
+    /* High contrast mode */
+    @media (forced-colors: active) {
+      .ag-slider__track {
+        border: 1px solid CanvasText;
+      }
+
+      .ag-slider__thumb {
+        border: 2px solid ButtonText;
+        background: ButtonFace;
+      }
+
+      .ag-slider__progress {
+        background: Highlight;
+      }
     }
   `,
   ];
