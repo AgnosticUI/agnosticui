@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org",
+  "targetUrls": ["http://localhost:4174/tests/uirig/poc-button.html"],
+  "tokensPath": "./src/styles/ag-tokens.css",
+  "thresholdBudgets": {
+    "clsMaxLimit": 0.1,
+    "overflowPixelTolerance": 2,
+    "touchTargetMinSpacingPx": 24,
+    "darkModeMaxSurfaceLuminance": 0.85
+  },
+  "viewports": [
+    {
+      "name": "mobile",
+      "width": 375,
+      "height": 812
+    },
+    {
+      "name": "desktop",
+      "width": 1440,
+      "height": 900
+    }
+  ],
+  "ignore": []
+}

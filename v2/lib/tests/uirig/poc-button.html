@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgnosticUI uirig Step 1 PoC — Button</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 24px;
+      background-color: var(--ag-background-primary, #ffffff);
+      color: var(--ag-text-primary, #09090b);
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    #poc-root {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 24px;
+    }
+  </style>
+</head>
+<body>
+  <main id="poc-root">
+    <ag-button data-testid="poc-btn-primary" variant="primary">Primary Action</ag-button>
+    <ag-button data-testid="poc-btn-secondary" variant="secondary">Secondary Action</ag-button>
+    <ag-button data-testid="poc-btn-bordered" variant="primary" bordered>Bordered Action</ag-button>
+    <ag-button data-testid="poc-btn-disabled" disabled>Disabled Action</ag-button>
+  </main>
+
+  <script type="module">
+    import '/src/styles/ag-tokens.css';
+    import '/src/styles/ag-tokens-dark.css';
+    import '/src/components/Button/core/Button.ts';
+
+    await customElements.whenDefined('ag-button');
+    const buttons = Array.from(document.querySelectorAll('ag-button'));
+    await Promise.all(
+      buttons.map((el) => ('updateComplete' in el ? el.updateComplete : Promise.resolve()))
+    );
+    window.__uirigPocReady = true;
+  </script>
+</body>
+</html>
