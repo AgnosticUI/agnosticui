@@ -12,6 +12,7 @@ import {
   type TriagedFinding,
   type UirigRawReport,
 } from './triage';
+import { getHarnessUrl } from './harness-url';
 
 export interface ComponentAuditSummary {
   component: ComponentName;
@@ -35,7 +36,6 @@ export interface FullAuditReport {
 }
 
 const LIB_ROOT = resolve(import.meta.dirname, '../..');
-const HARNESS_BASE_URL = 'http://localhost:4174/tests/uirig/harness/index.html';
 const LIGHT_TOKENS_PATH = resolve(LIB_ROOT, 'src/styles/ag-tokens.css');
 const DARK_TOKENS_PATH = resolve(LIB_ROOT, 'src/styles/ag-tokens-dark.css');
 const COMBINED_TOKENS_PATH = resolve(LIB_ROOT, '.uirig/ag-tokens-combined.css');
@@ -52,8 +52,10 @@ async function isServerReady(url: string): Promise<boolean> {
   }
 }
 
-async function ensureViteServer(): Promise<ChildProcess | null> {
-  if (await isServerReady(HARNESS_BASE_URL)) {
+async function ensureViteServer(
+  harnessBaseUrl: string
+): Promise<ChildProcess | null> {
+  if (await isServerReady(harnessBaseUrl)) {
     return null;
   }
 
@@ -63,21 +65,23 @@ async function ensureViteServer(): Promise<ChildProcess | null> {
   });
 
   for (let i = 0; i < 30; i += 1) {
-    if (await isServerReady(HARNESS_BASE_URL)) {
+    if (await isServerReady(harnessBaseUrl)) {
       return child;
     }
     await new Promise((r) => setTimeout(r, 250));
   }
 
   child.kill('SIGKILL');
-  throw new Error(`Timed out waiting for Vite uirig server at ${HARNESS_BASE_URL}`);
+  throw new Error(`Timed out waiting for Vite uirig server at ${harnessBaseUrl}`);
 }
 
 function runSingleComponentAudit(
   component: ComponentName,
-  darkRgbValues: ReadonlySet<string>
+  darkRgbValues: ReadonlySet<string>,
+  harnessBaseUrl: string
 ): ComponentAuditSummary {
-  const targetUrl = `${HARNESS_BASE_URL}?component=${encodeURIComponent(component)}`;
+  const targetUrl =
+    `${harnessBaseUrl}?component=${encodeURIComponent(component)}`;
   const start = Date.now();
   const proc = spawnSync(
     UIRIG_BIN,
@@ -115,12 +119,17 @@ function runSingleComponentAudit(
 }
 
 async function main(): Promise<void> {
-  const options = parseAuditCliArgs(process.argv.slice(2));
+  const argv = process.argv.slice(2);
+  const useDist = argv.includes('--dist');
+  const auditArgs = argv.filter((arg) => arg !== '--dist');
+  const options = parseAuditCliArgs(auditArgs);
+
   const changedPaths = options.changed
     ? getGitChangedFiles(options.baseRef!)
     : [];
   const scope = resolveAuditScope(options, changedPaths);
   const targets = scope.components;
+  const harnessBaseUrl = getHarnessUrl({ useDist });
 
   if (options.changed) {
     console.log(
@@ -128,6 +137,8 @@ async function main(): Promise<void> {
         `${scope.changedPlan?.fullSweep ? 'full registry sweep' : 'targeted sweep'}.`
     );
   }
+
+  console.log(`[uirig:audit] Harness: ${useDist ? 'dist' : 'source'} (${harnessBaseUrl})`);
 
   if (targets.length === 0) {
     console.log('[uirig:audit] No components selected; nothing to audit.');
@@ -145,14 +156,24 @@ async function main(): Promise<void> {
   const results: ComponentAuditSummary[] = [];
 
   if (targets.length > 0) {
-    const viteProcess = await ensureViteServer();
+    const viteProcess = await ensureViteServer(harnessBaseUrl);
 
     try {
       for (const component of targets) {
-        const summary = runSingleComponentAudit(component, darkRgbValues);
+        const summary = runSingleComponentAudit(
+          component,
+          darkRgbValues,
+          harnessBaseUrl
+        );
         results.push(summary);
-        const defects = summary.findings.filter((f) => f.cause === 'component-defect').length;
-        const upstream = summary.findings.filter((f) => f.cause === 'upstream-tool-bug').length;
+
+        const defects = summary.findings.filter(
+          (finding) => finding.cause === 'component-defect'
+        ).length;
+        const upstream = summary.findings.filter(
+          (finding) => finding.cause === 'upstream-tool-bug'
+        ).length;
+
         console.log(
           `[uirig:audit] ${component}: ${summary.elapsedMs}ms | raw=${summary.rawViolationCount} | defects=${defects} | upstream=${upstream}`
         );
@@ -164,7 +185,7 @@ async function main(): Promise<void> {
     }
   }
 
-  const countsByCause = {
+  const countsByCause: FullAuditReport['countsByCause'] = {
     'component-defect': 0,
     'upstream-tool-bug': 0,
     'harness-artifact': 0,
@@ -187,6 +208,7 @@ async function main(): Promise<void> {
 
   mkdirSync(resolve(LIB_ROOT, '.uirig'), { recursive: true });
   writeFileSync(REPORT_OUTPUT_PATH, JSON.stringify(report, null, 2), 'utf8');
+
   console.log(
     `[uirig:audit] Complete (${report.auditedComponents} components in ${report.totalElapsedMs}ms). Report: ${REPORT_OUTPUT_PATH}`
   );
