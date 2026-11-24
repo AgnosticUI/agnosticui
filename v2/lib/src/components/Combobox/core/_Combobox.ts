@@ -162,6 +162,12 @@ export class AgCombobox extends FaceMixin(LitElement) implements ComboboxProps {
       flex-direction: column;
       gap: var(--ag-space-2);
     }
+
+    .ag-form-control--horizontal .combobox-wrapper {
+      flex: 1 1 auto;
+      min-inline-size: 0;
+    }
+
     /* Input wrapper */
     .combobox-input-wrapper {
       position: relative;
@@ -287,7 +293,6 @@ export class AgCombobox extends FaceMixin(LitElement) implements ComboboxProps {
     :host([open]) .combobox-toggle-icon {
       transform: rotate(180deg);
     }
-
     /* Listbox */
     .combobox-listbox {
       position: absolute;
@@ -424,7 +429,7 @@ export class AgCombobox extends FaceMixin(LitElement) implements ComboboxProps {
 
     :host([size="small"]) {
       --combobox-option-padding: var(--ag-space-2) var(--ag-space-3);
-      --combobox-toggle-size: var(--ag-space-5);
+      --combobox-toggle-size: var(--ag-space-6);
     }
 
     /* Checkmark size for small */
