@@ -1,0 +1,78 @@
+name: UIRig Accessibility & Layout Spike
+
+on:
+  pull_request:
+    branches:
+      - "master"
+    paths:
+      - "v2/lib/src/components/**"
+      - "v2/lib/src/styles/**"
+      - "v2/lib/src/shared/**"
+      - "v2/lib/tests/uirig/**"
+      - "v2/lib/tests/shared/**"
+      - "v2/lib/vite.uirig.config.ts"
+      - "v2/lib/package.json"
+      - "v2/lib/package-lock.json"
+      - ".github/workflows/uirig-spike.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  uirig-audit-spike:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout PR Branch with Base History
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Initialize Node.js Environment
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: "npm"
+          cache-dependency-path: "v2/lib/package-lock.json"
+
+      - name: Install Runtime Dependencies
+        working-directory: v2/lib
+        run: npm ci
+
+      - name: Cache Playwright Chromium Binary
+        id: playwright-cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-chromium-${{ runner.os }}-${{ hashFiles('v2/lib/package-lock.json') }}
+
+      - name: Install Playwright Chromium & OS Dependencies
+        working-directory: v2/lib
+        run: |
+          if [ "${{ steps.playwright-cache.outputs.cache-hit }}" != "true" ]; then
+            npx playwright install --with-deps chromium
+          else
+            npx playwright install-deps chromium
+          fi
+
+      - name: Run UIRig Harness & Triage Unit Specs
+        working-directory: v2/lib
+        run: npx vitest run tests/uirig tests/shared/component-registry.spec.ts
+
+      - name: Run Diff-Scoped UIRig Audit (Non-Blocking Spike)
+        id: uirig-audit
+        working-directory: v2/lib
+        continue-on-error: true
+        run: |
+          START_SECONDS=$SECONDS
+          npm run uirig:audit -- --changed --base=${{ github.event.pull_request.base.sha }}
+          ELAPSED=$((SECONDS - START_SECONDS))
+          echo "UIRig diff-scoped audit completed in ${ELAPSED}s"
+
+      - name: Upload UIRig Audit Report Artifact
+        if: always()
+        uses: actions/upload-artifact@v5
+        with:
+          name: uirig-audit-report
+          path: v2/lib/.uirig/audit-report.json
+          if-no-files-found: ignore
+          retention-days: 14
