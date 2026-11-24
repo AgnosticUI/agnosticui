@@ -5,6 +5,11 @@ import { resolve } from 'node:path';
 import type { ComponentName } from '../shared/component-registry';
 import { resolveAuditScope } from './audit-scope';
 import { parseAuditCliArgs } from './cli-args';
+import {
+  assertDistArtifactsExist,
+  buildDistPreviewHarness,
+  getViteServerArgs,
+} from './dist-artifacts';
 import { getGitChangedFiles } from './planner';
 import { writeCombinedTokenScale } from './token-scale';
 import {
@@ -53,13 +58,14 @@ async function isServerReady(url: string): Promise<boolean> {
 }
 
 async function ensureViteServer(
-  harnessBaseUrl: string
+  harnessBaseUrl: string,
+  useDist: boolean
 ): Promise<ChildProcess | null> {
   if (await isServerReady(harnessBaseUrl)) {
     return null;
   }
 
-  const child = spawn(VITE_BIN, ['--config', 'vite.uirig.config.ts'], {
+  const child = spawn(VITE_BIN, getViteServerArgs(useDist), {
     cwd: LIB_ROOT,
     stdio: 'ignore',
   });
@@ -138,12 +144,19 @@ async function main(): Promise<void> {
     );
   }
 
-  console.log(`[uirig:audit] Harness: ${useDist ? 'dist' : 'source'} (${harnessBaseUrl})`);
+  console.log(
+    `[uirig:audit] Harness: ${useDist ? 'dist (vite preview)' : 'source (vite dev)'} (${harnessBaseUrl})`
+  );
 
   if (targets.length === 0) {
     console.log('[uirig:audit] No components selected; nothing to audit.');
   } else {
     console.log(`[uirig:audit] Components: ${targets.join(', ')}`);
+  }
+
+  if (useDist) {
+    assertDistArtifactsExist(LIB_ROOT);
+    buildDistPreviewHarness(LIB_ROOT, VITE_BIN);
   }
 
   const { darkRgbValues } = writeCombinedTokenScale(
@@ -156,7 +169,7 @@ async function main(): Promise<void> {
   const results: ComponentAuditSummary[] = [];
 
   if (targets.length > 0) {
-    const viteProcess = await ensureViteServer(harnessBaseUrl);
+    const viteProcess = await ensureViteServer(harnessBaseUrl, useDist);
 
     try {
       for (const component of targets) {

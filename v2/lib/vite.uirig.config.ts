@@ -31,7 +31,14 @@ export default defineConfig({
     devSourcemap: true,
   },
   build: {
+    outDir: '.uirig/preview-dist',
+    emptyOutDir: true,
     sourcemap: true,
+    rollupOptions: {
+      input: {
+        distHarness: resolve(__dirname, 'tests/uirig/harness/dist.html'),
+      },
+    },
   },
   resolve: {
     dedupe: ['lit'],
