@@ -91,27 +91,60 @@ function isLightDomHarnessNode(violation: UirigRawViolation): boolean {
     return false;
   }
 
-  const rootTag = violation.selector.trim().split(/[\s.#[:>]/)[0]?.toLowerCase() ?? '';
+  const rootTag =
+    violation.selector.trim().split(/[\s.#[:>]/)[0]?.toLowerCase() ?? '';
   return rootTag.length > 0 && !rootTag.startsWith('ag-');
 }
 
 /**
- * Matches 1px × 1px visually-hidden screen-reader-only nodes whose contrast or
- * token metrics are non-visual accessibility artifacts.
+ * Matches 1px × 1px visually-hidden screen-reader-only nodes and clipped native
+ * `<input>` elements inside accessible custom controls (AgnosticUI/uirig#56).
  */
-function isVisuallyHiddenScreenReaderNode(selector: string): boolean {
-  return /(?:^|[\s>])span\.(?:visually-hidden|[a-z0-9-]+__label-sr)(?:$|[\s.#[:>])/i.test(
-    selector
+function isVisuallyHiddenControlNode(violation: UirigRawViolation): boolean {
+  if (
+    /(?:^|[\s>])span\.(?:visually-hidden|[a-z0-9-]+__label-sr)(?:$|[\s.#[:>])/i.test(
+      violation.selector
+    )
+  ) {
+    return true;
+  }
+
+  if (!violation.inShadowDom) {
+    return false;
+  }
+
+  return /(?:>>\s*)input(?:#ag-(?:checkbox|radio)-[a-z0-9]+-input|\.(?:selection-button|selection-card)__input)(?:$|[\s.#[:>])/i.test(
+    violation.selector
   );
 }
 
 /**
- * Replaces runtime `generateUniqueId()` 9-character base36 tokens embedded inside
- * element IDs (e.g. `#accordion-item-0cv3q6j2a-button` -> `#accordion-item-<id>-button`)
+ * Matches closed/inactive overlays and tooltips evaluated while visually hidden
+ * (`opacity: 0` / `visibility: hidden`) with 1.00:1 contrast (AgnosticUI/uirig#57).
+ */
+function isHiddenOverlayNode(violation: UirigRawViolation): boolean {
+  if (
+    (violation.engine !== 'contrast' && violation.engine !== 'dark-mode') ||
+    !violation.measuredDelta.includes('contrast 1.00:1')
+  ) {
+    return false;
+  }
+
+  return /(?:>>\s*)div\.(?:ag-combobox__no-results|ag-slider__tooltip)(?:$|[\s.#[:>])/i.test(
+    violation.selector
+  );
+}
+
+/**
+ * Replaces runtime `generateUniqueId()` 8- or 9-character base36 tokens embedded
+ * inside element IDs (e.g. `#accordion-item-0cv3q6j2a-button` -> `#accordion-item-<id>-button`)
  * so repeated component instances collapse into a single deduplicated finding.
  */
 export function normalizeSelectorForFingerprint(selector: string): string {
-  return selector.replace(/(#[a-z0-9-]+-)[a-z0-9]{9}(-[a-z0-9-]+|$)/gi, '$1<id>$2');
+  return selector.replace(
+    /(#[a-z0-9-]+-)[a-z0-9]{8,9}(-[a-z0-9-]+|$)/gi,
+    '$1<id>$2'
+  );
 }
 
 export function classifyViolationCause(
@@ -120,7 +153,8 @@ export function classifyViolationCause(
 ): { cause: FindingCause; upstreamTrackingId: string | null } {
   const isDarkContext = violation.viewport.includes('[theme: dark]');
 
-  // UTB-001: @rlevin/uirig@0.3.0 single tokensPath ignores ag-tokens-dark.css in dark mode
+  // UTB-001 (fixed in @rlevin/uirig@0.3.1, kept for backward compatibility):
+  // single tokensPath ignoring ag-tokens-dark.css in dark mode
   if (violation.engine === 'tokens' && isDarkContext) {
     const colorMatch = violation.measuredDelta.match(/rgb\([^)]+\)/);
     if (colorMatch && knownDarkTokenValues.has(colorMatch[0])) {
@@ -128,7 +162,7 @@ export function classifyViolationCause(
     }
   }
 
-  // UTB-002: Shadow DOM <slot> evaluated against page body background instead of enclosing surface
+  // UTB-002 (AgnosticUI/uirig#54): Shadow DOM <slot> evaluated against outer body background
   if (
     (violation.engine === 'contrast' || violation.engine === 'dark-mode') &&
     violation.inShadowDom &&
@@ -142,12 +176,21 @@ export function classifyViolationCause(
     return { cause: 'harness-artifact', upstreamTrackingId: null };
   }
 
-  // Screen-reader-only 1px clipped spans flagged by visual contrast/dark-mode engines
+  // UTB-004 (AgnosticUI/uirig#56): 1px × 1px visually-hidden SR spans and native inputs
   if (
-    (violation.engine === 'contrast' || violation.engine === 'dark-mode') &&
-    isVisuallyHiddenScreenReaderNode(violation.selector)
+    (violation.engine === 'contrast' ||
+      violation.engine === 'dark-mode' ||
+      violation.engine === 'tokens' ||
+      (violation.engine === 'stress' &&
+        violation.violationType === 'undersized_touch_target')) &&
+    isVisuallyHiddenControlNode(violation)
   ) {
-    return { cause: 'false-positive', upstreamTrackingId: null };
+    return { cause: 'upstream-tool-bug', upstreamTrackingId: 'UTB-004' };
+  }
+
+  // UTB-005 (AgnosticUI/uirig#57): closed/hidden overlays & tooltips at 1.00:1 contrast
+  if (isHiddenOverlayNode(violation)) {
+    return { cause: 'upstream-tool-bug', upstreamTrackingId: 'UTB-005' };
   }
 
   return { cause: 'component-defect', upstreamTrackingId: null };

@@ -98,27 +98,69 @@ describe('uirig/triage', () => {
     }
   });
 
-  it('classifies visually-hidden screen-reader-only spans as false-positive on contrast engines', () => {
-    const srSpan = makeViolation({
-      engine: 'dark-mode',
-      violationType: 'dark_mode_contrast_drop',
-      selector: 'ag-selection-button >> shadow-root >> span.selection-button__label-sr',
-      inShadowDom: true,
-    });
-    const visuallyHiddenSpan = makeViolation({
+  it('classifies 1x1 visually-hidden SR spans and native inputs as UTB-004 upstream-tool-bug', () => {
+    const cases: Array<Partial<UirigRawViolation>> = [
+      {
+        engine: 'dark-mode',
+        violationType: 'dark_mode_contrast_drop',
+        selector: 'ag-selection-button >> shadow-root >> span.selection-button__label-sr',
+        inShadowDom: true,
+      },
+      {
+        engine: 'tokens',
+        violationType: 'token_drift',
+        selector: 'ag-toggle >> shadow-root >> span.visually-hidden',
+        inShadowDom: true,
+        measuredDelta: 'fontSize: 13.3333px',
+      },
+      {
+        engine: 'stress',
+        violationType: 'undersized_touch_target',
+        selector: 'ag-checkbox >> shadow-root >> input#ag-checkbox-k2d6r4xfh-input',
+        inShadowDom: true,
+        measuredDelta: '+23px',
+      },
+      {
+        engine: 'tokens',
+        violationType: 'token_drift',
+        selector: 'ag-selection-card >> shadow-root >> input.selection-card__input',
+        inShadowDom: true,
+        measuredDelta: 'fontSize: 13.3333px',
+      },
+    ];
+
+    for (const overrides of cases) {
+      expect(classifyViolationCause(makeViolation(overrides))).toEqual({
+        cause: 'upstream-tool-bug',
+        upstreamTrackingId: 'UTB-004',
+      });
+    }
+  });
+
+  it('classifies hidden/inactive overlays and tooltips at 1.00:1 contrast as UTB-005 upstream-tool-bug', () => {
+    const comboboxNoResults = makeViolation({
       engine: 'contrast',
       violationType: 'contrast_drop',
-      selector: 'ag-icon-button >> shadow-root >> span.visually-hidden',
+      selector:
+        'ag-combobox >> shadow-root >> div.ag-combobox__no-results.combobox-no-results',
       inShadowDom: true,
+      measuredDelta: 'contrast 1.00:1 (required >= 4.50:1)',
+    });
+    const sliderTooltip = makeViolation({
+      engine: 'dark-mode',
+      violationType: 'dark_mode_contrast_drop',
+      selector: 'ag-slider >> shadow-root >> div.ag-slider__tooltip',
+      inShadowDom: true,
+      measuredDelta: 'dark-mode contrast 1.00:1 (required >= 4.50:1)',
     });
 
-    expect(classifyViolationCause(srSpan)).toEqual({
-      cause: 'false-positive',
-      upstreamTrackingId: null,
+    expect(classifyViolationCause(comboboxNoResults)).toEqual({
+      cause: 'upstream-tool-bug',
+      upstreamTrackingId: 'UTB-005',
     });
-    expect(classifyViolationCause(visuallyHiddenSpan)).toEqual({
-      cause: 'false-positive',
-      upstreamTrackingId: null,
+    expect(classifyViolationCause(sliderTooltip)).toEqual({
+      cause: 'upstream-tool-bug',
+      upstreamTrackingId: 'UTB-005',
     });
   });
 
@@ -137,12 +179,18 @@ describe('uirig/triage', () => {
     });
   });
 
-  it('normalizes random generateUniqueId() suffixes and collapses repeated instances', () => {
+  it('normalizes 8- and 9-char generateUniqueId() suffixes and collapses repeated instances', () => {
     expect(
       normalizeSelectorForFingerprint(
         'ag-accordion-item >> shadow-root >> button#accordion-item-0cv3q6j2a-button'
       )
     ).toBe('ag-accordion-item >> shadow-root >> button#accordion-item-<id>-button');
+
+    expect(
+      normalizeSelectorForFingerprint(
+        'ag-checkbox >> shadow-root >> input#ag-checkbox-p1z8p73s-input'
+      )
+    ).toBe('ag-checkbox >> shadow-root >> input#ag-checkbox-<id>-input');
 
     const report: UirigRawReport = {
       tool: 'uirig',
