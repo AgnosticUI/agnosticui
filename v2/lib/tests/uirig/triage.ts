@@ -71,7 +71,48 @@ export interface TriagedFinding {
   upstreamTrackingId: string | null;
 }
 
-const HARNESS_SELECTORS = new Set(['document', 'body', 'main#uirig-stage']);
+const HARNESS_SELECTORS = new Set([
+  'document',
+  'document.documentElement',
+  'body',
+  'main#uirig-stage',
+]);
+
+/**
+ * Matches light-DOM elements authored by component-registry.ts preview templates
+ * (e.g. `h3`, `div`, `p`, `input.demo-input`) rather than `<ag-*>` custom elements.
+ */
+function isLightDomHarnessNode(violation: UirigRawViolation): boolean {
+  if (HARNESS_SELECTORS.has(violation.selector)) {
+    return true;
+  }
+
+  if (violation.inShadowDom) {
+    return false;
+  }
+
+  const rootTag = violation.selector.trim().split(/[\s.#[:>]/)[0]?.toLowerCase() ?? '';
+  return rootTag.length > 0 && !rootTag.startsWith('ag-');
+}
+
+/**
+ * Matches 1px × 1px visually-hidden screen-reader-only nodes whose contrast or
+ * token metrics are non-visual accessibility artifacts.
+ */
+function isVisuallyHiddenScreenReaderNode(selector: string): boolean {
+  return /(?:^|[\s>])span\.(?:visually-hidden|[a-z0-9-]+__label-sr)(?:$|[\s.#[:>])/i.test(
+    selector
+  );
+}
+
+/**
+ * Replaces runtime `generateUniqueId()` 9-character base36 tokens embedded inside
+ * element IDs (e.g. `#accordion-item-0cv3q6j2a-button` -> `#accordion-item-<id>-button`)
+ * so repeated component instances collapse into a single deduplicated finding.
+ */
+export function normalizeSelectorForFingerprint(selector: string): string {
+  return selector.replace(/(#[a-z0-9-]+-)[a-z0-9]{9}(-[a-z0-9-]+|$)/gi, '$1<id>$2');
+}
 
 export function classifyViolationCause(
   violation: UirigRawViolation,
@@ -87,7 +128,7 @@ export function classifyViolationCause(
     }
   }
 
-  // UTB-002: Shadow DOM <slot> evaluated against page body background instead of enclosing button surface
+  // UTB-002: Shadow DOM <slot> evaluated against page body background instead of enclosing surface
   if (
     (violation.engine === 'contrast' || violation.engine === 'dark-mode') &&
     violation.inShadowDom &&
@@ -96,9 +137,17 @@ export function classifyViolationCause(
     return { cause: 'upstream-tool-bug', upstreamTrackingId: 'UTB-002' };
   }
 
-  // Harness container artifacts
-  if (HARNESS_SELECTORS.has(violation.selector)) {
+  // Harness container and light-DOM preview template wrapper artifacts
+  if (isLightDomHarnessNode(violation)) {
     return { cause: 'harness-artifact', upstreamTrackingId: null };
+  }
+
+  // Screen-reader-only 1px clipped spans flagged by visual contrast/dark-mode engines
+  if (
+    (violation.engine === 'contrast' || violation.engine === 'dark-mode') &&
+    isVisuallyHiddenScreenReaderNode(violation.selector)
+  ) {
+    return { cause: 'false-positive', upstreamTrackingId: null };
   }
 
   return { cause: 'component-defect', upstreamTrackingId: null };
@@ -112,11 +161,12 @@ export function deduplicateViolations(
   const grouped = new Map<string, TriagedFinding>();
 
   for (const v of report.violations) {
+    const normalizedSelector = normalizeSelectorForFingerprint(v.selector);
     const fingerprint = [
       component,
       v.engine,
       v.violationType,
-      v.selector,
+      normalizedSelector,
       v.measuredDelta,
     ].join('::');
 
@@ -135,7 +185,7 @@ export function deduplicateViolations(
       component,
       engine: v.engine,
       violationType: v.violationType,
-      selector: v.selector,
+      selector: normalizedSelector,
       inShadowDom: v.inShadowDom,
       measuredDelta: v.measuredDelta,
       suggestedToken: v.suggestedToken ?? null,

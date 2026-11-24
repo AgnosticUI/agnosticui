@@ -3,6 +3,7 @@ import { describe, it, expect } from 'vitest';
 import {
   classifyViolationCause,
   deduplicateViolations,
+  normalizeSelectorForFingerprint,
   type UirigRawReport,
   type UirigRawViolation,
 } from './triage';
@@ -61,16 +62,62 @@ describe('uirig/triage', () => {
     });
   });
 
-  it('classifies document/body/main#uirig-stage selectors as harness-artifact', () => {
-    const violation = makeViolation({
-      engine: 'dom',
-      violationType: 'missing_frame_header',
-      selector: 'document',
-      inShadowDom: false,
+  it('classifies document, document.documentElement, and light-DOM preview wrappers as harness-artifact', () => {
+    const cases: Array<Partial<UirigRawViolation>> = [
+      {
+        engine: 'dom',
+        violationType: 'missing_frame_header',
+        selector: 'document',
+        inShadowDom: false,
+      },
+      {
+        engine: 'stress',
+        violationType: 'horizontal_scrollbar',
+        selector: 'document.documentElement',
+        inShadowDom: false,
+      },
+      {
+        engine: 'tokens',
+        violationType: 'token_drift',
+        selector: 'h3',
+        inShadowDom: false,
+      },
+      {
+        engine: 'stress',
+        violationType: 'container_overflow',
+        selector: 'div',
+        inShadowDom: false,
+      },
+    ];
+
+    for (const overrides of cases) {
+      expect(classifyViolationCause(makeViolation(overrides))).toEqual({
+        cause: 'harness-artifact',
+        upstreamTrackingId: null,
+      });
+    }
+  });
+
+  it('classifies visually-hidden screen-reader-only spans as false-positive on contrast engines', () => {
+    const srSpan = makeViolation({
+      engine: 'dark-mode',
+      violationType: 'dark_mode_contrast_drop',
+      selector: 'ag-selection-button >> shadow-root >> span.selection-button__label-sr',
+      inShadowDom: true,
+    });
+    const visuallyHiddenSpan = makeViolation({
+      engine: 'contrast',
+      violationType: 'contrast_drop',
+      selector: 'ag-icon-button >> shadow-root >> span.visually-hidden',
+      inShadowDom: true,
     });
 
-    expect(classifyViolationCause(violation)).toEqual({
-      cause: 'harness-artifact',
+    expect(classifyViolationCause(srSpan)).toEqual({
+      cause: 'false-positive',
+      upstreamTrackingId: null,
+    });
+    expect(classifyViolationCause(visuallyHiddenSpan)).toEqual({
+      cause: 'false-positive',
       upstreamTrackingId: null,
     });
   });
@@ -88,6 +135,54 @@ describe('uirig/triage', () => {
       cause: 'component-defect',
       upstreamTrackingId: null,
     });
+  });
+
+  it('normalizes random generateUniqueId() suffixes and collapses repeated instances', () => {
+    expect(
+      normalizeSelectorForFingerprint(
+        'ag-accordion-item >> shadow-root >> button#accordion-item-0cv3q6j2a-button'
+      )
+    ).toBe('ag-accordion-item >> shadow-root >> button#accordion-item-<id>-button');
+
+    const report: UirigRawReport = {
+      tool: 'uirig',
+      exitCode: 1,
+      passed: false,
+      timestamp: '2026-11-24T02:00:00.000Z',
+      summary: {
+        totalViewportsAudited: 1,
+        totalTokenViolations: 2,
+        totalContrastViolations: 0,
+        totalDarkModeViolations: 0,
+        totalStressViolations: 0,
+        totalClsViolations: 0,
+        totalDomViolations: 0,
+        totalRuntimeErrors: 0,
+      },
+      violations: [
+        makeViolation({
+          engine: 'tokens',
+          violationType: 'token_drift',
+          selector:
+            'ag-accordion-item >> shadow-root >> button#accordion-item-0cv3q6j2a-button',
+          occurrenceCount: 1,
+        }),
+        makeViolation({
+          engine: 'tokens',
+          violationType: 'token_drift',
+          selector:
+            'ag-accordion-item >> shadow-root >> button#accordion-item-a100zxa3s-button',
+          occurrenceCount: 1,
+        }),
+      ],
+    };
+
+    const triaged = deduplicateViolations('Accordion', report);
+    expect(triaged).toHaveLength(1);
+    expect(triaged[0].selector).toBe(
+      'ag-accordion-item >> shadow-root >> button#accordion-item-<id>-button'
+    );
+    expect(triaged[0].totalOccurrences).toBe(2);
   });
 
   it('deduplicates identical findings across mobile and desktop viewports while summing occurrences', () => {
