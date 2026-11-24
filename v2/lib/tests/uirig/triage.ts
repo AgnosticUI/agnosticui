@@ -97,6 +97,25 @@ function isLightDomHarnessNode(violation: UirigRawViolation): boolean {
 }
 
 /**
+ * Matches touch-target spacing collisions caused by adjacent standalone demo
+ * instances inside `component-registry.ts` flex rows (`gap: 16px` < `24px`),
+ * as opposed to internal multi-thumb collisions inside a single component.
+ */
+function isSiblingDemoCollision(violation: UirigRawViolation): boolean {
+  if (
+    violation.engine !== 'stress' ||
+    violation.violationType !== 'touch_target_collision'
+  ) {
+    return false;
+  }
+
+  return (
+    violation.selector === 'ag-button >> shadow-root >> button' ||
+    violation.selector === 'ag-icon-button >> shadow-root >> button'
+  );
+}
+
+/**
  * Matches 1px × 1px visually-hidden screen-reader-only nodes and clipped native
  * `<input>` elements inside accessible custom controls (AgnosticUI/uirig#56).
  */
@@ -171,8 +190,8 @@ export function classifyViolationCause(
     return { cause: 'upstream-tool-bug', upstreamTrackingId: 'UTB-002' };
   }
 
-  // Harness container and light-DOM preview template wrapper artifacts
-  if (isLightDomHarnessNode(violation)) {
+  // Harness container, light-DOM template wrappers, and multi-instance row spacing
+  if (isLightDomHarnessNode(violation) || isSiblingDemoCollision(violation)) {
     return { cause: 'harness-artifact', upstreamTrackingId: null };
   }
 

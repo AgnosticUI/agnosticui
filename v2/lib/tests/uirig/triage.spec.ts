@@ -62,7 +62,7 @@ describe('uirig/triage', () => {
     });
   });
 
-  it('classifies document, document.documentElement, and light-DOM preview wrappers as harness-artifact', () => {
+  it('classifies document, light-DOM preview wrappers, and sibling demo collisions as harness-artifact', () => {
     const cases: Array<Partial<UirigRawViolation>> = [
       {
         engine: 'dom',
@@ -87,6 +87,20 @@ describe('uirig/triage', () => {
         violationType: 'container_overflow',
         selector: 'div',
         inShadowDom: false,
+      },
+      {
+        engine: 'stress',
+        violationType: 'touch_target_collision',
+        selector: 'ag-button >> shadow-root >> button',
+        inShadowDom: true,
+        measuredDelta: '+8px',
+      },
+      {
+        engine: 'stress',
+        violationType: 'touch_target_collision',
+        selector: 'ag-icon-button >> shadow-root >> button',
+        inShadowDom: true,
+        measuredDelta: '+8px',
       },
     ];
 
