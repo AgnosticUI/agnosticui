@@ -163,14 +163,22 @@ Step 1 inventories every engine bundled in `@rlevin/uirig@0.3.0` and binds **one
 
 ---
 
-## 8. Risk-Adjusted 7-Step Execution Sequence & Definition of Done
+## 8. Risk-Adjusted 8-Step Execution Sequence & Definition of Done
 
 The PoC page is the URL for the vertical-slice test.
 
-1. **Step 1 — Mandatory Go/No-Go Compatibility Gate & Vertical Slice Timing (`v2/lib/tests/uirig/poc-button.html`):** Install exact `@rlevin/uirig` (`0.3.0`), measure single-component vertical-slice latency at `http://127.0.0.1:4174/tests/uirig/poc-button.html`, verify CLI (Command-Line Interface) flags, config schema, bundled engines, source attribution across all 5 targets, `--changed` behavior, and readiness hooks, and revise provisional contracts accordingly.
+1. **Step 1 — Mandatory Go/No-Go Compatibility Gate & Vertical Slice Timing (`v2/lib/tests/uirig/poc-button.html`):** Install exact `@rlevin/uirig` (`0.3.0`), measure single-component vertical-slice latency at `http://127.0.0`, verify CLI (Command-Line Interface) flags, config schema, bundled engines, source attribution across all 5 targets, `--changed` behavior, and readiness hooks, and revise provisional contracts accordingly.
 2. **Step 2 — Extract Shared Component Registry & Verify Visual Baselines:** Move `COMPONENT_REGISTRY` to `v2/lib/tests/shared/component-registry.ts`, re-export in `v2/lib/tests/visual/preview/registry.ts`, and verify `npm run test:visual` passes with `0` snapshot diffs.
 3. **Step 3 — Build Shadow-Inclusive Harness, Typed Fixtures, & Audit Planner:** Implement `vite.uirig.config.ts`, `uirig-harness.html`, `harness-entry.ts`, `state-fixtures.ts`, `expansion-fixtures.ts`, `canary-fixtures.ts`, `audit-plan.ts`, `run-audit.ts`, and `v2/lib/.uirig/dogfood-log.md`.
 4. **Step 4 — Calibrate on 4 Pilot Components + 5 Seeded Canary Faults:** Run `Button`, `Input`, `Checkbox`, and `Select` plus all `5` seeded canary fixtures (`origin: 'canary'`), confirming `5/5` canary detection and tuning `harness-artifact` ignore rules.
 5. **Step 5 — Execute Complete Phase 1 Matrix & Triage Findings:** Execute all eligible Phase 1 `AuditCase` items, deduplicate findings into orthogonal fields, complete second-pass evidence review, patch approved `component-defect` findings (updating Docker visual baselines where inspected), and file deduplicated `upstream-tool-bug` issues in `rlevin/uirig`.
 6. **Step 6 — Execute Non-Blocking CI Investigative Spike:** Run `.github/workflows/uirig-spike.yml` on representative Phase 1 component PRs and shared-token PRs, recording stage-by-stage cold vs. warm timings and selector accuracy.
 7. **Step 7 — Conduct Gate 1 Post-Mortem & Quantitative ROI (Return on Investment) Assessment:** Evaluate all seven Section 3.2 thresholds (including `100%` Execution Disposition Coverage, `>= 90%` Auditable Coverage, and `>= 95%` 20-case result reproducibility) and record a formal **Go / Narrow / Stop** decision in `v2/lib/.uirig/dogfood-log.md`.
+8. **Step 8 — Human-in-the-Loop (`v2/site`) Manual Sanity Check (Pre-Merge Gate):** Whenever a phase modifies component code in `v2/lib/src/`, pack a local tarball and manually verify every audited component page in `v2/site` across light/dark modes and desktop/mobile viewports before merging:
+   ```bash
+   # Tab 1 -- from <root> of project
+   (cd v2/lib && npm run lint && npm run typecheck && npm run test && npm run build && npm pack)
+
+   # Tab 2 -- from <root> of project (after Tab 1 succeeds)
+   (cd v2/site && npm run reinstall:lib && npm run docs:dev)
+   ```
