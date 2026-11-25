@@ -14,6 +14,7 @@ export type UirigEngine =
   | 'stress'
   | 'cls'
   | 'dom'
+  | 'states'
   | 'runtime';
 
 export interface UirigRawViolation {
@@ -49,6 +50,7 @@ export interface UirigRawReport {
     totalStressViolations: number;
     totalClsViolations: number;
     totalDomViolations: number;
+    totalStateViolations?: number;
     totalRuntimeErrors: number;
   };
   violations: UirigRawViolation[];
@@ -117,77 +119,27 @@ function isSiblingDemoCollision(violation: UirigRawViolation): boolean {
 }
 
 /**
- * Matches 1px × 1px visually-hidden screen-reader-only nodes and clipped native
- * `<input>` elements inside accessible custom controls (AgnosticUI/uirig#56).
- */
-function isVisuallyHiddenControlNode(violation: UirigRawViolation): boolean {
-  if (
-    /(?:^|[\s>])span\.(?:visually-hidden|[a-z0-9-]+__label-sr)(?:$|[\s.#[:>])/i.test(
-      violation.selector
-    )
-  ) {
-    return true;
-  }
-
-  if (!violation.inShadowDom) {
-    return false;
-  }
-
-  return /(?:>>\s*)input(?:#ag-(?:checkbox|radio)-[a-z0-9]+-input|\.(?:selection-button|selection-card)__input)(?:$|[\s.#[:>])/i.test(
-    violation.selector
-  );
-}
-
-/**
- * Matches closed/inactive overlays and tooltips evaluated while visually hidden
- * (`opacity: 0` / `visibility: hidden`) with 1.00:1 contrast (AgnosticUI/uirig#57).
- */
-function isHiddenOverlayNode(violation: UirigRawViolation): boolean {
-  if (
-    (violation.engine !== 'contrast' && violation.engine !== 'dark-mode') ||
-    !violation.measuredDelta.includes('contrast 1.00:1')
-  ) {
-    return false;
-  }
-
-  return /(?:>>\s*)div\.(?:ag-combobox__no-results|ag-slider__tooltip)(?:$|[\s.#[:>])/i.test(
-    violation.selector
-  );
-}
-
-/**
  * Replaces runtime `generateUniqueId()` 8- or 9-character base36 tokens embedded
  * inside element IDs (e.g. `#accordion-item-0cv3q6j2a-button` -> `#accordion-item-<id>-button`)
  * so repeated component instances collapse into a single deduplicated finding.
  */
-export function normalizeSelectorForFingerprint(selector: string): string {
-  return selector.replace(
-    /(#[a-z0-9-]+-)[a-z0-9]{8,9}(-[a-z0-9-]+|$)/gi,
+export function normalizeSelectorForFingerprint(value: string): string {
+  return value.replace(
+    /(#[a-z0-9-]+-)[a-z0-9]{8,9}(-[a-z0-9-]+|['"]|$)/gi,
     '$1<id>$2'
   );
 }
 
 export function classifyViolationCause(
-  violation: UirigRawViolation,
-  knownDarkTokenValues: ReadonlySet<string> = new Set()
+  violation: UirigRawViolation
 ): { cause: FindingCause; upstreamTrackingId: string | null } {
-  const isDarkContext = violation.viewport.includes('[theme: dark]');
-
   // Runtime JavaScript errors are genuine defects, never harness artifacts
   if (violation.engine === 'runtime') {
     return { cause: 'component-defect', upstreamTrackingId: null };
   }
 
-  // UTB-001 (fixed in @rlevin/uirig@0.3.1, kept for backward compatibility):
-  // single tokensPath ignoring ag-tokens-dark.css in dark mode
-  if (violation.engine === 'tokens' && isDarkContext) {
-    const colorMatch = violation.measuredDelta.match(/rgb\([^)]+\)/);
-    if (colorMatch && knownDarkTokenValues.has(colorMatch[0])) {
-      return { cause: 'upstream-tool-bug', upstreamTrackingId: 'UTB-001' };
-    }
-  }
-
-  // UTB-002 (AgnosticUI/uirig#54): Shadow DOM <slot> evaluated against outer body background
+  // UTB-002 (AgnosticUI/uirig#54): Shadow DOM <slot> inside native <button>
+  // evaluated against outer document body background in dark mode
   if (
     (violation.engine === 'contrast' || violation.engine === 'dark-mode') &&
     violation.inShadowDom &&
@@ -201,43 +153,26 @@ export function classifyViolationCause(
     return { cause: 'harness-artifact', upstreamTrackingId: null };
   }
 
-  // UTB-004 (AgnosticUI/uirig#56): 1px × 1px visually-hidden SR spans and native inputs
-  if (
-    (violation.engine === 'contrast' ||
-      violation.engine === 'dark-mode' ||
-      violation.engine === 'tokens' ||
-      (violation.engine === 'stress' &&
-        violation.violationType === 'undersized_touch_target')) &&
-    isVisuallyHiddenControlNode(violation)
-  ) {
-    return { cause: 'upstream-tool-bug', upstreamTrackingId: 'UTB-004' };
-  }
-
-  // UTB-005 (AgnosticUI/uirig#57): closed/hidden overlays & tooltips at 1.00:1 contrast
-  if (isHiddenOverlayNode(violation)) {
-    return { cause: 'upstream-tool-bug', upstreamTrackingId: 'UTB-005' };
-  }
-
   return { cause: 'component-defect', upstreamTrackingId: null };
 }
-
 
 export function deduplicateViolations(
   component: ComponentName,
   report: UirigRawReport,
-  knownDarkTokenValues: ReadonlySet<string> = new Set()
+  _knownDarkTokenValues: ReadonlySet<string> = new Set()
 ): TriagedFinding[] {
   const grouped = new Map<string, TriagedFinding>();
 
   for (const v of report.violations) {
     const normalizedSelector = normalizeSelectorForFingerprint(v.selector);
-    const classification = classifyViolationCause(v, knownDarkTokenValues);
+    const normalizedDelta = normalizeSelectorForFingerprint(v.measuredDelta);
+    const classification = classifyViolationCause(v);
     const fingerprint = [
       component,
       v.engine,
       v.violationType,
       normalizedSelector,
-      v.measuredDelta,
+      normalizedDelta,
       classification.cause,
       classification.upstreamTrackingId ?? '',
     ].join('::');
@@ -258,7 +193,7 @@ export function deduplicateViolations(
       violationType: v.violationType,
       selector: normalizedSelector,
       inShadowDom: v.inShadowDom,
-      measuredDelta: v.measuredDelta,
+      measuredDelta: normalizedDelta,
       suggestedToken: v.suggestedToken ?? null,
       remediationAdvice: v.remediationAdvice,
       sourceFile: v.sourceFile,
