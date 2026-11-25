@@ -4,7 +4,7 @@
 - **Pull Request:** [AgnosticUI/agnosticui#529](https://github.com)
 - **Branch:** `feat/uirig-dogfooding`
 - **Governing PRD:** `v2/lib/docs/uirig-dogfooding-prd.md`
-- **Last Checkpoint:** 2026-11-24 — **Steps 1–7 Completed; Step 8 (HITL `v2/site` Sanity Check) Active**
+- **Last Checkpoint:** 2026-11-24 — **All Steps 1–8 Completed & Ready to Merge**
 
 ---
 
@@ -16,7 +16,7 @@
 
 ---
 
-## Issue #528 End-to-End Roadmap
+## Issue #528 End-to-End Roadmap (100% Complete)
 
 | PRD Step | Status | Milestone & Evidence |
 | :--- | :--- | :--- |
@@ -26,42 +26,8 @@
 | **Step 4: Calibration & Triage Noise Filtering** | ✅ **Completed** | Upgraded to `@rlevin/uirig@0.3.1` (verifying `UTB-001` dark-mode token drift fixed), filed remaining upstream issues ([`#54`](https://github.com), [`#55`](https://github.com), [`#56`](https://github.com), [`#57`](https://github.com), [`#58`](https://github.com)), and calibrated `triage.ts` (`8/8` specs passing) to filter light-DOM wrappers, sibling demo collisions (`gap: 16px`), `1px × 1px` SR-only inputs/spans, hidden `1.00:1` overlays, and 8–9 char `generateUniqueId()` suffixes. |
 | **Step 5: Phase 1 FACE Component Audit & Fixes** | ✅ **Completed** | Audited all 14 Phase 1 FACE controls (`12` registry templates), verified 6 clean out of the box (`Input`, `Checkbox`, `Radio`, `Fieldset`, `SelectionButtonGroup`, `SelectionCardGroup`), and shipped surgical WCAG 2.5.8 target-size & `+30%` text-expansion layout fixes (`9ebce1056`, `646f15b5f`) for `Select`, `Combobox`, and `Slider`, verified via `npm run build:no-sync` + `npm run uirig:audit -- --dist`. |
 | **Step 6: Non-Blocking CI Spike Workflow** | ✅ **Completed** | Added read-only `.github/workflows/uirig-spike.yml` (`ubuntu-24.04`, `Node 22`, `permissions: contents: read`, `continue-on-error: true`, Playwright Chromium cache, diff-scoped `npm run uirig:audit -- --changed --base=${{ github.event.pull_request.base.sha }}`, and `.uirig/audit-report.json` artifact upload, `67826f142`). |
-| **Step 7: Gate 1 Post-Mortem & Issue #528 Closeout** | ✅ **Completed** | Recorded the full Gate 1 quantitative evaluation below (also mirrored locally in gitignored `v2/lib/.uirig/dogfood-log.md`), verified `55/55` unit specs + `tsc --noEmit`, and closed [AgnosticUI/agnosticui#528](https://github.com). |
-| **Step 8: Human-in-the-Loop (`v2/site`) Manual Sanity Check** | 🎯 **In Focus / Active** | Pack `v2/lib`, reinstall the local tarball into `v2/site`, and manually verify all 14 Phase 1 FACE component docs pages in the browser (especially `Select`, `Combobox`, and `Slider` across light/dark modes and mobile/desktop viewports) before merging [PR #529](https://github.com). |
-
----
-
-## 🎯 Active Focus: Human-in-the-Loop (`v2/site`) Manual Verification Protocol
-
-Whenever a rollout phase modifies component code in `v2/lib/src/`, run this two-tab verification workflow from the repository root before merging:
-
-### Tab 1 — Validate & Pack `v2/lib` Tarball
-```bash
-# Tab 1 -- from <root> of project
-(cd v2/lib && npm run lint && npm run typecheck && npm run test && npm run build && npm pack)
-```
-
-### Tab 2 — Reinstall Local Tarball in `v2/site` & Launch Docs Dev Server
-Once all checks pass and `npm pack` builds the `.tgz` tarball in `v2/lib/`:
-```bash
-# Tab 2 -- from <root> of project
-(cd v2/site && npm run reinstall:lib && npm run docs:dev)
-```
-
-### Phase 1 Component Docs Checklist (`14 / 14` Controls)
-Manually inspect each component page in `v2/site` (checking light/dark theme toggle, desktop + narrow mobile width, and keyboard/pointer interaction):
-- [ ] `Button` (`ag-button`)
-- [ ] `IconButton` (`ag-icon-button`)
-- [ ] `Input` (`ag-input`)
-- [ ] `Checkbox` (`ag-checkbox`)
-- [ ] `Radio` (`ag-radio`)
-- [ ] `Select` (`ag-select`) — verify horizontal label layout (`label-position="start"` / `"end"`) does not overflow narrow viewports
-- [ ] `Combobox` (`ag-combobox`) — verify `size="small"` toggle button (`24px × 24px`) and horizontal label layout at narrow widths
-- [ ] `Slider` (`ag-slider`) — verify `size="small"` thumb (`24px × 24px`), keyboard focus tooltip, ticks, and live-region announcements
-- [ ] `Toggle` (`ag-toggle`)
-- [ ] `Fieldset` (`ag-fieldset`)
-- [ ] `SelectionButton` & `SelectionButtonGroup`
-- [ ] `SelectionCard` & `SelectionCardGroup`
+| **Step 7: Gate 1 Post-Mortem & Issue #528 Closeout** | ✅ **Completed** | Recorded the full Gate 1 quantitative evaluation below (also mirrored locally in gitignored `v2/lib/.uirig/dogfood-log.md`), verified `82/82` test suites (`1,901` tests) + `tsc --noEmit` + `npm run build`, and closed [AgnosticUI/agnosticui#528](https://github.com). |
+| **Step 8: Human-in-the-Loop (`v2/site`) Manual Sanity Check** | ✅ **Completed** | Packed `agnosticui-core-2.0.0-alpha.33.tgz`, installed into `v2/site`, and manually verified all **14 / 14** Phase 1 FACE component docs pages in the browser (`Button`, `IconButton`, `Input`, `Checkbox`, `Radio`, `Select`, `Combobox`, `Slider`, `Toggle`, `Fieldset`, `SelectionButton`, `SelectionButtonGroup`, `SelectionCard`, `SelectionCardGroup`). |
 
 ---
 
@@ -81,6 +47,6 @@ Manually inspect each component page in `v2/site` (checking light/dark theme tog
 
 ---
 
-## Follow-Up Backlog (Post-Issue #528)
-1. **Upstream `@rlevin/uirig@0.3.2` Enhancements:** Implement [`AgnosticUI/uirig#54`](https://github.com), [`#55`](https://github.com), [`#56`](https://github.com), [`#57`](https://github.com), and [`#58`](https://github.com), then simplify `v2/lib/tests/uirig/triage.ts`.
+## Follow-Up Backlog (Post-PR #529)
+1. **Upstream `@rlevin/uirig@0.3.2` Enhancements:** Implement [`AgnosticUI/uirig#54`](https://github.com) (`<slot>` surface background resolution), [`#55`](https://github.com) (IPv4 URL normalization), [`#56`](https://github.com) (skip `1px × 1px` SR-only nodes), [`#57`](https://github.com) (skip `opacity: 0` / `visibility: hidden` nodes), and [`#58`](https://github.com) (`--scope` / `--exclude` audit boundaries), then simplify `v2/lib/tests/uirig/triage.ts`.
 2. **Optional Polish & Phase 2 Rollout:** Evaluate `.ag-slider__tick` `--ag-text-muted` contrast and Phase 2 rollout (`Card`, `Alert`, `Badge`, `Dialog`, `Drawer`, `Tabs`, `Menu`, `Popover`, `Tooltip`, `Toast`, `Header`, `Sidebar`, `Pagination`, `Table`), including the mandatory HITL `v2/site` tarball sanity check before merging.
