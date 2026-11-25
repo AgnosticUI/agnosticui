@@ -1,7 +1,5 @@
 // v2/lib/tests/uirig/harness/main.ts
 import { render } from 'lit';
-import '/src/styles/ag-tokens.css';
-import '/src/styles/ag-tokens-dark.css';
 import { COMPONENT_REGISTRY } from '../../shared/component-registry';
 import { parseHarnessParams } from './query-params';
 
