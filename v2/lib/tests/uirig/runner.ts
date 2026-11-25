@@ -29,6 +29,8 @@ export interface ComponentAuditSummary {
 
 export interface FullAuditReport {
   generatedAt: string;
+  failed: boolean;
+  failureReason: string | null;
   auditedComponents: number;
   totalElapsedMs: number;
   countsByCause: {
@@ -41,12 +43,45 @@ export interface FullAuditReport {
 }
 
 const LIB_ROOT = resolve(import.meta.dirname, '../..');
-const LIGHT_TOKENS_PATH = resolve(LIB_ROOT, 'src/styles/ag-tokens.css');
-const DARK_TOKENS_PATH = resolve(LIB_ROOT, 'src/styles/ag-tokens-dark.css');
 const COMBINED_TOKENS_PATH = resolve(LIB_ROOT, '.uirig/ag-tokens-combined.css');
 const REPORT_OUTPUT_PATH = resolve(LIB_ROOT, '.uirig/audit-report.json');
 const UIRIG_BIN = resolve(LIB_ROOT, 'node_modules/.bin/uirig');
 const VITE_BIN = resolve(LIB_ROOT, 'node_modules/.bin/vite');
+
+function getTokenSourcePaths(useDist: boolean): {
+  lightPath: string;
+  darkPath: string;
+} {
+  const dir = useDist ? 'dist/styles' : 'src/styles';
+  return {
+    lightPath: resolve(LIB_ROOT, dir, 'ag-tokens.css'),
+    darkPath: resolve(LIB_ROOT, dir, 'ag-tokens-dark.css'),
+  };
+}
+
+function summarizeCounts(
+  results: readonly ComponentAuditSummary[]
+): FullAuditReport['countsByCause'] {
+  const countsByCause: FullAuditReport['countsByCause'] = {
+    'component-defect': 0,
+    'upstream-tool-bug': 0,
+    'harness-artifact': 0,
+    'false-positive': 0,
+  };
+
+  for (const result of results) {
+    for (const finding of result.findings) {
+      countsByCause[finding.cause] += 1;
+    }
+  }
+
+  return countsByCause;
+}
+
+function writeAuditReport(report: FullAuditReport): void {
+  mkdirSync(resolve(LIB_ROOT, '.uirig'), { recursive: true });
+  writeFileSync(REPORT_OUTPUT_PATH, JSON.stringify(report, null, 2), 'utf8');
+}
 
 async function isServerReady(url: string): Promise<boolean> {
   try {
@@ -80,7 +115,6 @@ async function ensureViteServer(
   child.kill('SIGKILL');
   throw new Error(`Timed out waiting for Vite uirig server at ${harnessBaseUrl}`);
 }
-
 function runSingleComponentAudit(
   component: ComponentName,
   darkRgbValues: ReadonlySet<string>,
@@ -112,7 +146,15 @@ function runSingleComponentAudit(
     );
   }
 
-  const rawReport = JSON.parse(proc.stdout) as UirigRawReport;
+  let rawReport: UirigRawReport;
+  try {
+    rawReport = JSON.parse(proc.stdout) as UirigRawReport;
+  } catch (err) {
+    throw new Error(
+      `uirig produced invalid JSON for ${component} (exit=${proc.status}): ${(err as Error).message}`
+    );
+  }
+
   const findings = deduplicateViolations(component, rawReport, darkRgbValues);
 
   return {
@@ -159,9 +201,10 @@ async function main(): Promise<void> {
     buildDistPreviewHarness(LIB_ROOT, VITE_BIN);
   }
 
+  const { lightPath, darkPath } = getTokenSourcePaths(useDist);
   const { darkRgbValues } = writeCombinedTokenScale(
-    LIGHT_TOKENS_PATH,
-    DARK_TOKENS_PATH,
+    lightPath,
+    darkPath,
     COMBINED_TOKENS_PATH
   );
 
@@ -191,6 +234,20 @@ async function main(): Promise<void> {
           `[uirig:audit] ${component}: ${summary.elapsedMs}ms | raw=${summary.rawViolationCount} | defects=${defects} | upstream=${upstream}`
         );
       }
+    } catch (error) {
+      const failureReason =
+        error instanceof Error ? error.message : String(error);
+      const countsByCause = summarizeCounts(results);
+      writeAuditReport({
+        generatedAt: new Date().toISOString(),
+        failed: true,
+        failureReason,
+        auditedComponents: results.length,
+        totalElapsedMs: Date.now() - suiteStart,
+        countsByCause,
+        results,
+      });
+      throw error;
     } finally {
       if (viteProcess) {
         viteProcess.kill('SIGKILL');
@@ -198,36 +255,38 @@ async function main(): Promise<void> {
     }
   }
 
-  const countsByCause: FullAuditReport['countsByCause'] = {
-    'component-defect': 0,
-    'upstream-tool-bug': 0,
-    'harness-artifact': 0,
-    'false-positive': 0,
-  };
-
-  for (const result of results) {
-    for (const finding of result.findings) {
-      countsByCause[finding.cause] += 1;
-    }
-  }
+  const countsByCause = summarizeCounts(results);
+  const nonzeroWithoutKnownOnly = results.some(
+    (r) =>
+      r.exitCode !== 0 &&
+      r.findings.every(
+        (f) => f.cause !== 'upstream-tool-bug' && f.cause !== 'harness-artifact'
+      )
+  );
 
   const report: FullAuditReport = {
     generatedAt: new Date().toISOString(),
+    failed: countsByCause['component-defect'] > 0 || nonzeroWithoutKnownOnly,
+    failureReason:
+      countsByCause['component-defect'] > 0
+        ? `Detected ${countsByCause['component-defect']} component defect(s).`
+        : nonzeroWithoutKnownOnly
+          ? 'One or more component audits exited with a non-zero status.'
+          : null,
     auditedComponents: results.length,
     totalElapsedMs: Date.now() - suiteStart,
     countsByCause,
     results,
   };
 
-  mkdirSync(resolve(LIB_ROOT, '.uirig'), { recursive: true });
-  writeFileSync(REPORT_OUTPUT_PATH, JSON.stringify(report, null, 2), 'utf8');
+  writeAuditReport(report);
 
   console.log(
     `[uirig:audit] Complete (${report.auditedComponents} components in ${report.totalElapsedMs}ms). Report: ${REPORT_OUTPUT_PATH}`
   );
   console.log('[uirig:audit] Counts by cause:', JSON.stringify(countsByCause));
 
-  if (countsByCause['component-defect'] > 0) {
+  if (report.failed) {
     process.exitCode = 1;
   }
 }
