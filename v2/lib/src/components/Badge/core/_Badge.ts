@@ -103,6 +103,9 @@ export class AgBadge extends LitElement implements BadgeProps {
     }
     :host([interactive]) .badge {
       cursor: pointer;
+      min-width: var(--ag-space-6, 1.5rem);
+      min-height: var(--ag-space-6, 1.5rem);
+      box-sizing: border-box;
     }
     :host([interactive]) .badge:hover {
       filter: brightness(1.1);

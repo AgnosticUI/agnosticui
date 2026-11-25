@@ -52,6 +52,13 @@ describe('AgSidebar', () => {
       expect(sidebar.getAttribute('variant')).toBe('bordered');
       expect(sidebar.hasAttribute('no-transition')).toBe(true);
     });
+
+    it('defines :focus-visible indicators and uses display: none when mobile toggle is inactive', () => {
+      const styleContent = AgSidebar.styles.toString();
+      expect(styleContent).toContain('.header-toggle-button:focus-visible');
+      expect(styleContent).toContain('.toggle-button:focus-visible');
+      expect(styleContent).toContain('display: none !important');
+    });
   });
 
   describe('Slots', () => {

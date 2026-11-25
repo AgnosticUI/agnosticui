@@ -316,11 +316,16 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
       transition: background 0.15s;
       flex-shrink: 0;
     }
-    
+
     .header-toggle-button:hover {
       background: var(--ag-background-tertiary);
     }
-    
+
+    .header-toggle-button:focus-visible {
+      outline: var(--ag-focus-width) solid rgba(var(--ag-focus), 0.5);
+      outline-offset: var(--ag-focus-offset);
+    }
+
     .header-toggle-button:active {
       transform: scale(0.95);
     }
@@ -409,7 +414,7 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
        Shared between mobile overlay and desktop disable-compact-mode
        =========================================== */
     :host([show-mobile-toggle]) .toggle-button {
-      display: flex;
+      display: none;
       position: fixed;
       width: var(--ag-space-8);
       height: var(--ag-space-8);
@@ -422,36 +427,34 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
       align-items: center;
       justify-content: center;
       transition: opacity var(--ag-sidebar-transition-duration) var(--ag-sidebar-transition-easing);
-      
-      /* Default hidden on desktop unless disable-compact-mode is active */
-      opacity: 0;
-      pointer-events: none;
     }
 
     /* Show toggle on mobile */
     @media (max-width: 1023px) {
       :host([show-mobile-toggle]) .toggle-button {
-        opacity: 1;
-        pointer-events: auto;
+        display: flex;
       }
     }
 
     /* Show toggle on desktop ONLY if disable-compact-mode is active */
     @media (min-width: 1024px) {
       :host([disable-compact-mode][show-mobile-toggle]) .toggle-button {
-        opacity: 1;
-        pointer-events: auto;
+        display: flex;
       }
     }
 
     /* Always hide toggle when sidebar is open - consumer's header button takes over */
     :host([show-mobile-toggle][open]) .toggle-button {
-      opacity: 0 !important;
-      pointer-events: none !important;
+      display: none !important;
     }
 
     .toggle-button:hover {
       background: var(--ag-background-hover, #f3f4f6);
+    }
+
+    .toggle-button:focus-visible {
+      outline: var(--ag-focus-width) solid rgba(var(--ag-focus), 0.5);
+      outline-offset: var(--ag-focus-offset);
     }
 
     .toggle-button:active {

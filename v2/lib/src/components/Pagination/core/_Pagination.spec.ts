@@ -43,6 +43,13 @@ describe('Pagination - Component Initialization', () => {
     expect(element.firstLastNavigation).toBe(false);
   });
 
+  it('enforces WCAG 2.5.8 minimum target size (--ag-space-6) and mobile flex-wrap on pagination list', () => {
+    const styleContent = Pagination.styles.toString();
+    expect(styleContent).toContain('min-width: var(--ag-space-6, 1.5rem)');
+    expect(styleContent).toContain('min-height: var(--ag-space-6, 1.5rem)');
+    expect(styleContent).toContain('flex-wrap: wrap');
+  });
+
   it('should create navigation with proper ARIA role', async () => {
     await element.updateComplete;
     const nav = element.shadowRoot?.querySelector('nav');

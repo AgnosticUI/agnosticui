@@ -114,7 +114,9 @@ function isSiblingDemoCollision(violation: UirigRawViolation): boolean {
 
   return (
     violation.selector === 'ag-button >> shadow-root >> button' ||
-    violation.selector === 'ag-icon-button >> shadow-root >> button'
+    violation.selector === 'ag-icon-button >> shadow-root >> button' ||
+    violation.selector ===
+      'ag-menu-button >> shadow-root >> ag-button >> shadow-root >> button'
   );
 }
 

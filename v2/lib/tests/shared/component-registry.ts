@@ -1,5 +1,6 @@
 // v2/lib/tests/visual/preview/registry.ts
 import { html } from 'lit';
+import { ref } from 'lit/directives/ref.js';
 
 /**
  * Pure JavaScript component layout mapping matching the verified baseline setup.
@@ -1513,6 +1514,25 @@ Kbd: () => html`
       </ag-selection-card-group>
     </div>
   `,
+  Sidebar: () => html`
+    <div style="padding: 24px; position: relative; min-height: 380px; max-width: 800px; width: 100%;">
+      <ag-sidebar open show-header-toggle variant="bordered" style="height: 340px;">
+        <span slot="ag-header" style="font-weight: 700; font-size: 1rem;">Workspace</span>
+        <ag-sidebar-nav>
+          <ag-sidebar-nav-item active>
+            <a href="#dashboard" style="text-decoration: none; color: inherit; display: block; padding: 6px 8px;">Dashboard</a>
+          </ag-sidebar-nav-item>
+          <ag-sidebar-nav-item>
+            <a href="#projects" style="text-decoration: none; color: inherit; display: block; padding: 6px 8px;">Projects</a>
+          </ag-sidebar-nav-item>
+          <ag-sidebar-nav-item>
+            <a href="#settings" style="text-decoration: none; color: inherit; display: block; padding: 6px 8px;">Settings</a>
+          </ag-sidebar-nav-item>
+        </ag-sidebar-nav>
+        <div slot="ag-footer" style="font-size: 0.75rem; color: var(--ag-text-secondary);">v2.0.0</div>
+      </ag-sidebar>
+    </div>
+  `,
   SkeletonLoader: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 800px;">
       <!-- Section 1: Standard Text Lines & Sizing -->
@@ -1764,8 +1784,26 @@ Kbd: () => html`
         </ag-toast>
       </div>
     </div>
-  `
-
+  `,
+  Tooltip: () => html`
+    <div style="padding: 64px 24px 24px 24px; display: flex; gap: 32px; flex-wrap: wrap; align-items: center; max-width: 800px;">
+      <ag-tooltip content="Helpful contextual tooltip" placement="top">
+        <ag-button variant="secondary">Hover or Focus Trigger</ag-button>
+      </ag-tooltip>
+      <ag-tooltip
+        content="Visible tooltip popup baseline"
+        placement="bottom"
+        ${ref((el) => {
+          const tooltip = el as (HTMLElement & { show?: () => void; updateComplete?: Promise<unknown> }) | undefined;
+          if (tooltip && typeof tooltip.show === 'function') {
+            void Promise.resolve(tooltip.updateComplete).then(() => tooltip.show?.());
+          }
+        })}
+      >
+        <ag-button variant="primary">Open Tooltip Anchor</ag-button>
+      </ag-tooltip>
+    </div>
+  `,
 
 };
 

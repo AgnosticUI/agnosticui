@@ -85,6 +85,14 @@ describe('uirig/triage', () => {
         inShadowDom: true,
         measuredDelta: '+8px',
       },
+      {
+        engine: 'stress',
+        violationType: 'touch_target_collision',
+        selector:
+          'ag-menu-button >> shadow-root >> ag-button >> shadow-root >> button',
+        inShadowDom: true,
+        measuredDelta: '+8px',
+      },
     ];
 
     for (const overrides of cases) {
@@ -95,7 +103,7 @@ describe('uirig/triage', () => {
     }
   });
 
-    it('classifies genuine component violations (including states engine) as component-defect', () => {
+  it('classifies genuine component violations (including states engine) as component-defect', () => {
     const stressViolation = makeViolation({
       engine: 'stress',
       violationType: 'horizontal_overflow',

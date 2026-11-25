@@ -2,7 +2,7 @@
 
 # PRD: Dogfooding `@rlevin/uirig` on AgnosticUI (`v2/lib`)
 
-- **Document Status:** Phase 1 & Gate 1 Complete (`#528` / PR `#529`); `@rlevin/uirig@^0.4.2` Upgraded — Phase 2 In Focus
+- **Document Status:** Phase 1 & Phase 2 Complete (`@rlevin/uirig@^0.4.2`, branch `feat/uirig-phase2-0.4.2`)
 - **Date:** November 23, 2026 (Updated November 25, 2026)
 - **Target Workspace:** `v2/lib` (`agnosticui-core` Lit Web Components)
 - **Upstream Tooling:** `@rlevin/uirig` (`0.4.2`, repository `AgnosticUI/uirig`)
@@ -69,7 +69,7 @@ This initiative establishes an isolated, VitePress-free ("naked page") component
 | :--- | :--- | :--- | :--- | :--- |
 | **Phase 1 (MVP v1): FACE (Form-Associated Custom Elements) & Core Form Controls** | ✅ **Completed** *(PR `#529`)* | `14` (`Button`, `IconButton`, `Input`, `Checkbox`, `Radio`, `Select`, `Combobox`, `Slider`, `Toggle`, `Fieldset`, `SelectionButton`, `SelectionButtonGroup`, `SelectionCard`, `SelectionCardGroup`) | `12` existing `COMPONENT_REGISTRY` entries (`Button`, `IconButton`, `Input`, `Checkbox`, `Radio`, `Select`, `Combobox`, `Slider`, `Toggle`, `Fieldset`, `SelectionButtonGroup`, `SelectionCardGroup`) | Completed across `light` & `dark` themes and `mobile` (`375x812`) & `desktop` (`1440x900`) viewports; shipped WCAG 2.5.8 target size fixes (`Combobox`, `Slider`) and `+30%` text-expansion overflow fixes (`Select`, `Combobox`), verified via `--dist` and `v2/site` manual sanity check. |
 | **Gate 1: Quantitative ROI & Post-Mortem** | ✅ **Completed** *(GO)* | Evaluates Phase 1 metrics | N/A | **GO:** `4` confirmed defects fixed, `< 45s` incremental CI overhead (`~10.6s/component`), `100%` auditable coverage; upstream `@rlevin/uirig` issues (`#54`–`#58`) closed on GitHub (awaiting npm `0.3.2` publish). |
-| **Phase 2: Layout, Feedback, & Navigation** | 🎯 **In Focus / Active** | `14` (`Card`, `Alert`, `Badge`, `Dialog`, `Drawer`, `Tabs`, `Menu`, `Popover`, `Tooltip`, `Toast`, `Header`, `Sidebar`, `Pagination`, `Table`) | `11` existing + `3` new (`Tooltip`, `Sidebar`, `Table`) = `14` total templates | `@rlevin/uirig@^0.4.2` installed (`#54`–`#60`). Overlays (`Dialog`, `Drawer`, `Toast`, `Popover`, `Menu`, `Tooltip`) run strictly in isolated single-component runs. |
+| **Phase 2: Layout, Feedback, & Navigation** | ✅ **Completed** *(Branch `feat/uirig-phase2-0.4.2`)* | `13` (`Card`, `Alert`, `Badge`, `Dialog`, `Drawer`, `Tabs`, `Menu`, `Popover`, `Tooltip`, `Toast`, `Header`, `Sidebar`, `Pagination`; `Table` not yet in `v2/lib`) | `11` existing + `2` new (`Sidebar`, `Tooltip`) = `52` total templates | `@rlevin/uirig@^0.4.2` (`#54`–`#60`, `0` upstream bugs). Fixed `Badge` (`--ag-space-6` interactive target size), `Pagination` (`--ag-space-6` target size + mobile `flex-wrap`), and `Sidebar` (`:focus-visible` + `display: none` on inactive mobile toggle), verified via `--dist` re-audit. |
 | **Phase 3 (Conditional): Decorative & `*Fx` Variants** | 📥 **Backlog / Upcoming** | Remaining catalog components & `*Fx` variants | Existing templates in `COMPONENT_REGISTRY` | Optional polish pass only if Phase 2 demonstrates positive ROI. |
 
 ### 3.2 Gate 1 Quantitative ROI Definitions & Decision Matrix
