@@ -295,6 +295,8 @@ export class Pagination extends LitElement implements PaginationProps {
 
     .pagination {
       display: flex;
+      flex-wrap: wrap;
+      row-gap: var(--ag-space-1);
       list-style: none;
       margin: 0;
       padding: 0;
@@ -316,7 +318,12 @@ export class Pagination extends LitElement implements PaginationProps {
 
     .pagination-button {
       color: var(--ag-primary-text);
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: var(--ag-space-6, 1.5rem);
+      min-height: var(--ag-space-6, 1.5rem);
+      box-sizing: border-box;
       line-height: var(--ag-line-height-4);
       padding-inline-start: var(--ag-space-2);
       padding-inline-end: var(--ag-space-2);

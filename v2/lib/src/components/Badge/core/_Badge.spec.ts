@@ -37,6 +37,13 @@ describe('AgBadge', () => {
       expect(element.max).toBe(99);
       expect(element.interactive).toBe(false);
     });
+
+    it('enforces a minimum 24x24px (--ag-space-6) WCAG 2.5.8 interactive target budget in component styles', () => {
+      const styleContent = AgBadge.styles.toString();
+      expect(styleContent).toContain(':host([interactive]) .badge');
+      expect(styleContent).toContain('min-width: var(--ag-space-6, 1.5rem)');
+      expect(styleContent).toContain('min-height: var(--ag-space-6, 1.5rem)');
+    });
   });
 
   describe('Variants', () => {

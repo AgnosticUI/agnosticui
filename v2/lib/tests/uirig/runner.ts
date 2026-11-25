@@ -1,7 +1,8 @@
 // v2/lib/tests/uirig/runner.ts
 import { spawn, spawnSync, type ChildProcess } from 'node:child_process';
 import { mkdirSync, writeFileSync } from 'node:fs';
-import { resolve } from 'node:path';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import type { ComponentName } from '../shared/component-registry';
 import { resolveAuditScope } from './audit-scope';
 import { parseAuditCliArgs } from './cli-args';
@@ -42,11 +43,28 @@ export interface FullAuditReport {
   results: ComponentAuditSummary[];
 }
 
-const LIB_ROOT = resolve(import.meta.dirname, '../..');
+const CURRENT_FILE = fileURLToPath(import.meta.url);
+const CURRENT_DIR = dirname(CURRENT_FILE);
+const LIB_ROOT = resolve(CURRENT_DIR, '../..');
 const COMBINED_TOKENS_PATH = resolve(LIB_ROOT, '.uirig/ag-tokens-combined.css');
 const REPORT_OUTPUT_PATH = resolve(LIB_ROOT, '.uirig/audit-report.json');
 const UIRIG_BIN = resolve(LIB_ROOT, 'node_modules/.bin/uirig');
 const VITE_BIN = resolve(LIB_ROOT, 'node_modules/.bin/vite');
+export const HARNESS_STAGE_SCOPE = '#uirig-stage';
+
+export function buildUirigCheckArgs(
+  targetUrl: string,
+  tokensPath: string = COMBINED_TOKENS_PATH
+): string[] {
+  return [
+    'check',
+    targetUrl,
+    `--tokens-path=${tokensPath}`,
+    '--themes=light,dark',
+    `--scope=${HARNESS_STAGE_SCOPE}`,
+    '--json',
+  ];
+}
 
 function getTokenSourcePaths(useDist: boolean): {
   lightPath: string;
@@ -115,6 +133,7 @@ async function ensureViteServer(
   child.kill('SIGKILL');
   throw new Error(`Timed out waiting for Vite uirig server at ${harnessBaseUrl}`);
 }
+
 function runSingleComponentAudit(
   component: ComponentName,
   darkRgbValues: ReadonlySet<string>,
@@ -125,13 +144,7 @@ function runSingleComponentAudit(
   const start = Date.now();
   const proc = spawnSync(
     UIRIG_BIN,
-    [
-      'check',
-      targetUrl,
-      `--tokens-path=${COMBINED_TOKENS_PATH}`,
-      '--themes=light,dark',
-      '--json',
-    ],
+    buildUirigCheckArgs(targetUrl, COMBINED_TOKENS_PATH),
     {
       cwd: LIB_ROOT,
       encoding: 'utf8',
@@ -173,7 +186,7 @@ async function main(): Promise<void> {
   const options = parseAuditCliArgs(auditArgs);
 
   const changedPaths = options.changed
-    ? getGitChangedFiles(options.baseRef!)
+    ? getGitChangedFiles(options.baseRef ?? 'HEAD')
     : [];
   const scope = resolveAuditScope(options, changedPaths);
   const targets = scope.components;
@@ -291,4 +304,7 @@ async function main(): Promise<void> {
   }
 }
 
-void main();
+const entryArg = process.argv.at(1);
+if (entryArg !== undefined && resolve(entryArg) === resolve(CURRENT_FILE)) {
+  void main();
+}
