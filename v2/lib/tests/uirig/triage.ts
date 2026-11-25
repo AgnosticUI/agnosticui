@@ -224,12 +224,15 @@ export function deduplicateViolations(
 
   for (const v of report.violations) {
     const normalizedSelector = normalizeSelectorForFingerprint(v.selector);
+    const classification = classifyViolationCause(v, knownDarkTokenValues);
     const fingerprint = [
       component,
       v.engine,
       v.violationType,
       normalizedSelector,
       v.measuredDelta,
+      classification.cause,
+      classification.upstreamTrackingId ?? '',
     ].join('::');
 
     const existing = grouped.get(fingerprint);
@@ -241,7 +244,6 @@ export function deduplicateViolations(
       continue;
     }
 
-    const classification = classifyViolationCause(v, knownDarkTokenValues);
     grouped.set(fingerprint, {
       fingerprint,
       component,

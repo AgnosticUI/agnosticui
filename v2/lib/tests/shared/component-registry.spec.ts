@@ -1,4 +1,5 @@
 // v2/lib/tests/shared/component-registry.spec.ts
+import { render } from 'lit';
 import { describe, it, expect } from 'vitest';
 import {
   COMPONENT_REGISTRY,
@@ -27,11 +28,14 @@ describe('shared/component-registry', () => {
     expect(hasComponentTemplate('toString')).toBe(false);
   });
 
-  it('returns a valid Lit TemplateResult for every registered component', () => {
+  it('renders a valid Lit TemplateResult containing AgnosticUI custom elements for every registered component', () => {
     for (const name of COMPONENT_NAMES) {
-      const template = COMPONENT_REGISTRY[name]();
-      expect(template).toBeDefined();
-      expect(typeof template).toBe('object');
+      const container = document.createElement('div');
+      render(COMPONENT_REGISTRY[name](), container);
+      const customTags = Array.from(container.querySelectorAll('*'))
+        .map((el) => el.tagName.toLowerCase())
+        .filter((tag) => tag.startsWith('ag-'));
+      expect(customTags.length, `Expected at least one <ag-*> tag for ${name}`).toBeGreaterThan(0);
     }
   });
 });

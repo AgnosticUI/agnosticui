@@ -4,7 +4,7 @@ import { COMPONENT_NAMES } from '../shared/component-registry';
 import { getGitChangedFiles, planAuditScope } from './planner';
 
 describe('uirig/planner', () => {
-  it('targets registered components changed under src/components', () => {
+  it('targets registered components changed under src/components (including deletions)', () => {
     const plan = planAuditScope([
       'v2/lib/src/components/Button/core/Button.ts',
       'src/components/Dialog/styles.css',
@@ -36,6 +36,7 @@ describe('uirig/planner', () => {
     'theme-registry/src/index.ts',
     'v2/lib/src/shared/dom.ts',
     'src/utils/color.ts',
+    'v2/lib/src/components/shared/CloseButton/_CloseButton.ts',
   ])('escalates shared path %s to the complete registry', (path) => {
     const plan = planAuditScope([path]);
 
@@ -72,14 +73,17 @@ describe('uirig/planner', () => {
     ]);
   });
 
-  it('reads changed paths from the merge base to HEAD using the supplied executor', () => {
+  it('reads changed and deleted paths from the merge base to HEAD without collapsing renames', () => {
     const execFile = vi
       .fn()
       .mockReturnValueOnce('/repo\n')
-      .mockReturnValueOnce('v2/lib/src/components/Button/Button.ts\nREADME.md\n');
+      .mockReturnValueOnce(
+        'v2/lib/src/components/Button/Button.ts\nv2/lib/src/components/Card/old.css\nREADME.md\n'
+      );
 
     expect(getGitChangedFiles('origin/main', execFile)).toEqual([
       'v2/lib/src/components/Button/Button.ts',
+      'v2/lib/src/components/Card/old.css',
       'README.md',
     ]);
     expect(execFile).toHaveBeenNthCalledWith(
@@ -91,7 +95,14 @@ describe('uirig/planner', () => {
     expect(execFile).toHaveBeenNthCalledWith(
       2,
       'git',
-      ['diff', '--name-only', '--diff-filter=ACMR', 'origin/main...HEAD', '--'],
+      [
+        'diff',
+        '--name-only',
+        '--no-renames',
+        '--diff-filter=ACDMR',
+        'origin/main...HEAD',
+        '--',
+      ],
       {
         cwd: '/repo',
         encoding: 'utf8',

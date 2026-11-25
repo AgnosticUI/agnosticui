@@ -22,11 +22,17 @@ type ExecFile = (
   options: { cwd?: string; encoding: 'utf8' }
 ) => string;
 
+/**
+ * Shared source directories whose changes can affect multiple registered
+ * components (including `src/components/shared/`, e.g. `CloseButton` used by
+ * `Dialog` and `Toast`) and therefore escalate to a full registry sweep.
+ */
 const SHARED_SOURCE_PATHS = [
   /^src\/styles(?:\/|$)/,
   /^(?:v2\/)?theme-registry(?:\/|$)/,
   /^src\/shared(?:\/|$)/,
   /^src\/utils(?:\/|$)/,
+  /^src\/components\/shared(?:\/|$)/,
 ];
 
 const COMPONENT_SOURCE_PATH = /^src\/components\/([^/]+)(?:\/|$)/;
@@ -94,10 +100,9 @@ export function planAuditScope(changedPaths: readonly string[]): AuditScopePlan 
 
 /**
  * Reads changed paths relative to the current repository root using Git's
- * name-only diff output. Renames are reported using their destination path.
- *
- * The optional executor parameter keeps the Git interaction independently
- * testable without requiring a particular local branch or remote reference.
+ * name-only diff output with rename detection disabled (`--no-renames`) and
+ * deletions included (`--diff-filter=ACDMR`) so removed or moved component
+ * files still trigger audits for their affected component.
  */
 export function getGitChangedFiles(
   baseRef: string,
@@ -117,7 +122,8 @@ export function getGitChangedFiles(
     [
       'diff',
       '--name-only',
-      '--diff-filter=ACMR',
+      '--no-renames',
+      '--diff-filter=ACDMR',
       `${normalizedBaseRef}...HEAD`,
       '--',
     ],
