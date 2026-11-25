@@ -13,7 +13,8 @@ export type UirigEngine =
   | 'dark-mode'
   | 'stress'
   | 'cls'
-  | 'dom';
+  | 'dom'
+  | 'runtime';
 
 export interface UirigRawViolation {
   engine: UirigEngine;
@@ -172,6 +173,11 @@ export function classifyViolationCause(
 ): { cause: FindingCause; upstreamTrackingId: string | null } {
   const isDarkContext = violation.viewport.includes('[theme: dark]');
 
+  // Runtime JavaScript errors are genuine defects, never harness artifacts
+  if (violation.engine === 'runtime') {
+    return { cause: 'component-defect', upstreamTrackingId: null };
+  }
+
   // UTB-001 (fixed in @rlevin/uirig@0.3.1, kept for backward compatibility):
   // single tokensPath ignoring ag-tokens-dark.css in dark mode
   if (violation.engine === 'tokens' && isDarkContext) {
@@ -214,6 +220,7 @@ export function classifyViolationCause(
 
   return { cause: 'component-defect', upstreamTrackingId: null };
 }
+
 
 export function deduplicateViolations(
   component: ComponentName,
