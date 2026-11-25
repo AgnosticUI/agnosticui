@@ -101,13 +101,14 @@ function isLightDomHarnessNode(violation: UirigRawViolation): boolean {
 
 /**
  * Matches touch-target spacing collisions caused by adjacent standalone demo
- * instances inside `component-registry.ts` flex rows (`gap: 16px` < `24px`),
- * as opposed to internal multi-thumb collisions inside a single component.
+ * instances inside `component-registry.ts` flex rows (`gap: 16px` -> `+8px` short of `24px`),
+ * while preserving genuine overlaps (e.g. `+25px`) as `component-defect`.
  */
 function isSiblingDemoCollision(violation: UirigRawViolation): boolean {
   if (
     violation.engine !== 'stress' ||
-    violation.violationType !== 'touch_target_collision'
+    violation.violationType !== 'touch_target_collision' ||
+    violation.measuredDelta !== '+8px'
   ) {
     return false;
   }
@@ -138,16 +139,6 @@ export function classifyViolationCause(
   // Runtime JavaScript errors are genuine defects, never harness artifacts
   if (violation.engine === 'runtime') {
     return { cause: 'component-defect', upstreamTrackingId: null };
-  }
-
-  // UTB-002 (AgnosticUI/uirig#54): Shadow DOM <slot> inside native <button>
-  // evaluated against outer document body background in dark mode
-  if (
-    (violation.engine === 'contrast' || violation.engine === 'dark-mode') &&
-    violation.inShadowDom &&
-    violation.selector.endsWith('>> slot')
-  ) {
-    return { cause: 'upstream-tool-bug', upstreamTrackingId: 'UTB-002' };
   }
 
   // Harness container, light-DOM template wrappers, and multi-instance row spacing

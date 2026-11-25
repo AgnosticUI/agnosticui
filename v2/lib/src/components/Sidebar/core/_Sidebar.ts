@@ -724,8 +724,31 @@ export class AgSidebar extends LitElement implements AgSidebarProps {
       this._mainContentRef = mainContent;
     }
     this.updateComplete.then(() => {
-      const firstFocusable = this.shadowRoot?.querySelector('button:not([disabled]), a[href], input:not([disabled]), [tabindex]:not([tabindex="-1"])') as HTMLElement;
-      firstFocusable?.focus();
+      const selector =
+        'button:not([disabled]), a[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+      const sidebarContainer = this.shadowRoot?.querySelector('.sidebar-container') as HTMLElement | null;
+      const shadowCandidates = sidebarContainer
+        ? Array.from(sidebarContainer.querySelectorAll<HTMLElement>(selector))
+        : [];
+      const lightCandidates = Array.from(this.querySelectorAll<HTMLElement>(selector));
+      const isVisible = (el: HTMLElement): boolean =>
+        !el.hidden &&
+        !el.closest('[hidden], [inert]') &&
+        getComputedStyle(el).display !== 'none' &&
+        getComputedStyle(el).visibility !== 'hidden';
+
+      const firstFocusable = [...shadowCandidates, ...lightCandidates].find(isVisible);
+      if (firstFocusable) {
+        firstFocusable.focus();
+        return;
+      }
+
+      if (sidebarContainer) {
+        if (!sidebarContainer.hasAttribute('tabindex')) {
+          sidebarContainer.setAttribute('tabindex', '-1');
+        }
+        sidebarContainer.focus();
+      }
     });
   }
 

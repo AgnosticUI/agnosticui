@@ -185,5 +185,31 @@ describe('AgSidebar', () => {
       const results = await axe(container);
       expect(results).toHaveNoViolations();
     });
+
+    it('moves focus to a visible control inside the sidebar (or sidebar-container fallback) when opened, skipping the hidden floating toggle', async () => {
+      sidebar.showMobileToggle = true;
+      sidebar.showHeaderToggle = true;
+      sidebar.open = true;
+      await sidebar.updateComplete;
+      await new Promise((r) => setTimeout(r, 0));
+
+      const headerToggle = sidebar.shadowRoot?.querySelector('.header-toggle-button') as HTMLElement | null;
+      const floatingToggle = sidebar.shadowRoot?.querySelector('.toggle-button') as HTMLElement | null;
+      expect(sidebar.shadowRoot?.activeElement).toBe(headerToggle);
+      expect(sidebar.shadowRoot?.activeElement).not.toBe(floatingToggle);
+
+      // When no visible focusable controls exist inside the sidebar, fall back to .sidebar-container
+      sidebar.showHeaderToggle = false;
+      sidebar.open = false;
+      await sidebar.updateComplete;
+      sidebar.open = true;
+      await sidebar.updateComplete;
+      await new Promise((r) => setTimeout(r, 0));
+
+      const sidebarContainer = sidebar.shadowRoot?.querySelector('.sidebar-container') as HTMLElement | null;
+      expect(sidebarContainer?.getAttribute('tabindex')).toBe('-1');
+      expect(sidebar.shadowRoot?.activeElement).toBe(sidebarContainer);
+    });
+
   });
 });

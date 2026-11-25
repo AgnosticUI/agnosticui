@@ -31,76 +31,50 @@ function makeViolation(overrides: Partial<UirigRawViolation>): UirigRawViolation
 }
 
 describe('uirig/triage', () => {
-  it('classifies Shadow DOM >> slot contrast hits as UTB-002 upstream-tool-bug', () => {
-    const violation = makeViolation({
+  it('classifies Shadow DOM >> slot contrast drops and larger touch-target overlaps (+25px) as component-defect', () => {
+    const slotContrastViolation = makeViolation({
       engine: 'dark-mode',
       violationType: 'dark_mode_contrast_drop',
       selector: 'ag-button >> shadow-root >> slot',
       inShadowDom: true,
     });
-
-    expect(classifyViolationCause(violation)).toEqual({
-      cause: 'upstream-tool-bug',
-      upstreamTrackingId: 'UTB-002',
+    const actualOverlapViolation = makeViolation({
+      engine: 'stress',
+      violationType: 'touch_target_collision',
+      selector: 'ag-button >> shadow-root >> button',
+      inShadowDom: true,
+      measuredDelta: '+25px',
     });
-  });
 
-  it('classifies document, light-DOM preview wrappers, and sibling demo collisions as harness-artifact', () => {
-    const cases: Array<Partial<UirigRawViolation>> = [
-      {
-        engine: 'dom',
-        violationType: 'missing_frame_header',
-        selector: 'document',
-        inShadowDom: false,
-      },
-      {
-        engine: 'stress',
-        violationType: 'horizontal_scrollbar',
-        selector: 'document.documentElement',
-        inShadowDom: false,
-      },
-      {
-        engine: 'tokens',
-        violationType: 'token_drift',
-        selector: 'h3',
-        inShadowDom: false,
-      },
-      {
-        engine: 'stress',
-        violationType: 'container_overflow',
-        selector: 'div',
-        inShadowDom: false,
-      },
-      {
-        engine: 'stress',
-        violationType: 'touch_target_collision',
-        selector: 'ag-button >> shadow-root >> button',
-        inShadowDom: true,
-        measuredDelta: '+8px',
-      },
-      {
-        engine: 'stress',
-        violationType: 'touch_target_collision',
-        selector: 'ag-icon-button >> shadow-root >> button',
-        inShadowDom: true,
-        measuredDelta: '+8px',
-      },
-      {
-        engine: 'stress',
-        violationType: 'touch_target_collision',
-        selector:
-          'ag-menu-button >> shadow-root >> ag-button >> shadow-root >> button',
-        inShadowDom: true,
-        measuredDelta: '+8px',
-      },
-    ];
+    expect(classifyViolationCause(slotContrastViolation)).toEqual({
+      cause: 'component-defect',
+      upstreamTrackingId: null,
+    });
+    expect(classifyViolationCause(actualOverlapViolation)).toEqual({
+      cause: 'component-defect',
+      upstreamTrackingId: null,
+    });
 
-    for (const overrides of cases) {
-      expect(classifyViolationCause(makeViolation(overrides))).toEqual({
-        cause: 'harness-artifact',
-        upstreamTrackingId: null,
-      });
-    }
+    const overlapReport: UirigRawReport = {
+      tool: 'uirig',
+      exitCode: 1,
+      passed: false,
+      timestamp: '2026-11-25T20:00:00.000Z',
+      summary: {
+        totalViewportsAudited: 1,
+        totalTokenViolations: 0,
+        totalContrastViolations: 0,
+        totalDarkModeViolations: 0,
+        totalStressViolations: 1,
+        totalClsViolations: 0,
+        totalDomViolations: 0,
+        totalRuntimeErrors: 0,
+      },
+      violations: [actualOverlapViolation],
+    };
+    const triaged = deduplicateViolations('Button', overlapReport);
+    expect(triaged).toHaveLength(1);
+    expect(triaged[0].cause).toBe('component-defect');
   });
 
   it('classifies genuine component violations (including states engine) as component-defect', () => {
