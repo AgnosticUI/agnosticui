@@ -810,6 +810,9 @@
     "test:visual": "PW_IN_DOCKER=true npx playwright test",
     "test:visual:update": "PW_IN_DOCKER=true npx playwright test --update-snapshots",
     "test:visual:report": "npx playwright show-report playwright-report",
+    "uirig:server": "vite --config vite.uirig.config.ts",
+    "uirig:poc": "uirig check http://localhost:4174/tests/uirig/poc-button.html --tokens-path=src/styles/ag-tokens.css --themes=light,dark --verbose",
+    "uirig:audit": "npx tsx tests/uirig/runner.ts",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "scaffold": "node ../scripts/scaffold-component.mjs",
@@ -822,6 +825,7 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.64.1",
+    "@rlevin/uirig": "^0.3.1",
     "@sveltejs/vite-plugin-svelte": "^6.2.0",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.8.0",

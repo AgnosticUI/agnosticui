@@ -366,7 +366,7 @@ export class AgSlider extends FaceMixin(LitElement) implements SliderProps {
     /* Sizes */
     :host([size="small"]) {
       --ag-slider-track-height: var(--ag-space-1);
-      --ag-slider-thumb-size: var(--ag-space-5);
+      --ag-slider-thumb-size: var(--ag-space-6);
     }
 
     :host([size="large"]) {

@@ -70,15 +70,16 @@ export const formControlStyles = css`
   .ag-form-control--horizontal select {
     /* Progressive enhancement with field-sizing (Chrome/Safari TP) */
     field-sizing: content;
+    flex: 1 1 auto;
     max-inline-size: 100%;
-    min-inline-size: 100px;
+    min-inline-size: 0;
 
     /* Fallback for browsers without field-sizing support */
     width: 200px;
     box-sizing: border-box;
   }
 
-  /* When field-sizing is supported, allow natural growth */
+  /* When field-sizing is supported, allow natural growth within flex bounds */
   @supports (field-sizing: content) {
     .ag-form-control--horizontal input,
     .ag-form-control--horizontal textarea,

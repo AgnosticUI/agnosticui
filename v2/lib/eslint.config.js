@@ -65,6 +65,7 @@ export default [
   {
     ignores: [
       'dist/**',
+      '.uirig/**',
       'node_modules/**',
       'coverage/**',
       '*.config.js',
