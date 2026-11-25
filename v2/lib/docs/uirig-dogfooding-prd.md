@@ -2,11 +2,11 @@
 
 # PRD: Dogfooding `@rlevin/uirig` on AgnosticUI (`v2/lib`)
 
-- **Document Status:** Investigation & Verification Plan — Architecture Provisional Pending Step 1 Compatibility Gate
-- **Date:** November 23, 2026
+- **Document Status:** Phase 1 (MVP v1) & Gate 1 Complete (`#528` / PR `#529`) — Phase 2 Next on Deck
+- **Date:** November 23, 2026 (Updated November 24, 2026)
 - **Target Workspace:** `v2/lib` (`agnosticui-core` Lit Web Components)
-- **Upstream Tooling:** `@rlevin/uirig` (exact pinned version `0.3.0`, repository `rlevin/uirig`)
-- **Harness Base URL:** `http://127.0.0.1:4174/tests/uirig/uirig-harness.html`
+- **Upstream Tooling:** `@rlevin/uirig` (`0.3.1`, repository `AgnosticUI/uirig`)
+- **Harness Base URL:** `http://localhost:4174/tests/uirig/harness/index.html`
 
 ---
 
@@ -57,14 +57,20 @@ This initiative establishes an isolated, VitePress-free ("naked page") component
 2. **Registry Template:** A named `TemplateResult` factory entry in `COMPONENT_REGISTRY` (one template may render multiple target components).
 3. **Rendered Custom Element:** An active `ag-*` element instance connected in the DOM or open Shadow DOM during execution.
 4. **AuditCase:** A single deterministic execution unit defined by `(TargetComponent, StateFixture, Theme, Viewport, ExpansionLevel)`.
-5. **Eligibility & Dual Coverage Metrics:** An **Eligible Component** belongs to an enabled `rolloutPhase` with an `implemented fixture` (`COMPONENT_REGISTRY` template + typed `IStateFixture`). Any `(Component, State)` blocked by an upstream `0.3.0` limitation is recorded as `status: unsupported` with a tracking issue. Gate 1 tracks both **Execution Disposition Coverage** (`100%` of planned cases reach `passed`, `failed`, or `unsupported`) and **Auditable Coverage** (`>= 90%` of planned cases actually audited by `@rlevin/uirig` rather than `unsupported`).
+5. **Eligibility & Dual Coverage Metrics:** An **Eligible Component** belongs to an enabled `rolloutPhase` with an `implemented fixture` (`COMPONENT_REGISTRY` template + typed `IStateFixture`). Any `(Component, State)` blocked by an upstream limitation is recorded as `status: unsupported` with a tracking issue. Gate 1 tracks both **Execution Disposition Coverage** (`100%` of planned cases reach `passed`, `failed`, or `unsupported`) and **Auditable Coverage** (`>= 90%` of planned cases actually audited by `@rlevin/uirig` rather than `unsupported`).
 
-| Rollout Phase | Target Components (`Count`) | Registry Templates (`Count`) | Coverage & Isolation Rules |
-| :--- | :--- | :--- | :--- |
-| **Phase 1 (MVP v1): FACE (Form-Associated Custom Elements) & Core Form Controls** | `14` (`Button`, `IconButton`, `Input`, `Checkbox`, `Radio`, `Select`, `Combobox`, `Slider`, `Toggle`, `Fieldset`, `SelectionButton`, `SelectionButtonGroup`, `SelectionCard`, `SelectionCardGroup`) | `12` relevant existing `COMPONENT_REGISTRY` entries (`Button`, `IconButton`, `Input`, `Checkbox`, `Radio`, `Select`, `Combobox`, `Slider`, `Toggle`, `Fieldset`, `SelectionButtonGroup`, `SelectionCardGroup`) | Registry entries are candidate template sources, not proof of isolated fixture coverage. `SelectionButton` and `SelectionCard` render inside their respective group templates; each of the `14` target components still requires an explicit `IStateFixture` and `AuditCase` entries. Fixture implementation must verify that each case can reliably isolate and audit its intended target and state. |
-| **Gate 1: Quantitative ROI & Post-Mortem** | Evaluates Phase 1 metrics | N/A | Explicit **Go / Narrow / Stop** decision before creating Phase 2 templates. |
-| **Phase 2 (Conditional): Layout, Feedback, & Navigation** | `14` (`Card`, `Alert`, `Badge`, `Dialog`, `Drawer`, `Tabs`, `Menu`, `Popover`, `Tooltip`, `Toast`, `Header`, `Sidebar`, `Pagination`, `Table`) | `11` existing + `3` new (`Tooltip`, `Sidebar`, `Table`) = `14` total templates | Contingent on Gate 1 **Go**; overlays (`Dialog`, `Drawer`, `Toast`, `Popover`, `Menu`, `Tooltip`) run strictly in isolated single-component runs. |
-| **Phase 3 (Conditional): Decorative & `*Fx` Variants** | Remaining catalog components & `*Fx` variants | Existing templates in `COMPONENT_REGISTRY` | Optional polish pass only if Phase 2 demonstrates positive ROI. |
+**Phase Status Legend:**
+- ✅ **Completed** — Verified, audited, patched, and merged
+- 🎯 **In Focus / Active** — Current work in progress
+- 🔜 **Next on Deck** — Immediate follow-up phase
+- 📥 **Backlog / Upcoming** — Deferred / conditional phase
+
+| Rollout Phase | Status | Target Components (`Count`) | Registry Templates (`Count`) | Coverage & Isolation Rules |
+| :--- | :--- | :--- | :--- | :--- |
+| **Phase 1 (MVP v1): FACE (Form-Associated Custom Elements) & Core Form Controls** | ✅ **Completed** *(PR `#529`)* | `14` (`Button`, `IconButton`, `Input`, `Checkbox`, `Radio`, `Select`, `Combobox`, `Slider`, `Toggle`, `Fieldset`, `SelectionButton`, `SelectionButtonGroup`, `SelectionCard`, `SelectionCardGroup`) | `12` existing `COMPONENT_REGISTRY` entries (`Button`, `IconButton`, `Input`, `Checkbox`, `Radio`, `Select`, `Combobox`, `Slider`, `Toggle`, `Fieldset`, `SelectionButtonGroup`, `SelectionCardGroup`) | Completed across `light` & `dark` themes and `mobile` (`375x812`) & `desktop` (`1440x900`) viewports; shipped WCAG 2.5.8 target size fixes (`Combobox`, `Slider`) and `+30%` text-expansion overflow fixes (`Select`, `Combobox`), verified via `--dist` and `v2/site` manual sanity check. |
+| **Gate 1: Quantitative ROI & Post-Mortem** | ✅ **Completed** *(GO — Narrowed Scope)* | Evaluates Phase 1 metrics | N/A | **GO (Narrowed Scope):** `4` confirmed defects fixed, `< 45s` incremental CI overhead (`~10.6s/component`), `100%` auditable coverage; upstream `@rlevin/uirig` fixes (`#54`–`#58`) batched before Phase 2 expansion. |
+| **Phase 2 (Conditional): Layout, Feedback, & Navigation** | 🔜 **Next on Deck** | `14` (`Card`, `Alert`, `Badge`, `Dialog`, `Drawer`, `Tabs`, `Menu`, `Popover`, `Tooltip`, `Toast`, `Header`, `Sidebar`, `Pagination`, `Table`) | `11` existing + `3` new (`Tooltip`, `Sidebar`, `Table`) = `14` total templates | Contingent on `@rlevin/uirig@0.3.2` upstream fixes (`#54`–`#58`); overlays (`Dialog`, `Drawer`, `Toast`, `Popover`, `Menu`, `Tooltip`) run strictly in isolated single-component runs. |
+| **Phase 3 (Conditional): Decorative & `*Fx` Variants** | 📥 **Backlog / Upcoming** | Remaining catalog components & `*Fx` variants | Existing templates in `COMPONENT_REGISTRY` | Optional polish pass only if Phase 2 demonstrates positive ROI. |
 
 ### 3.2 Gate 1 Quantitative ROI Definitions & Decision Matrix
 All production finding metrics **strictly exclude** seeded canary fixtures (`origin: 'canary'`) and operate on **deduplicated Unique Finding Records** (Section 4.1). Each run logs the exact `@rlevin/uirig` version (`0.3.0`), lockfile integrity hash, and `uirig.config.json` SHA-256 hash.
