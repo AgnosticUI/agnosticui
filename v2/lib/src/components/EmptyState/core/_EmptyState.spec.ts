@@ -98,4 +98,11 @@ describe('AgEmptyState', () => {
     const results = await axe(el);
     expect(results).toHaveNoViolations();
   });
+
+  it('enforces WCAG 2.5.8 minimum touch target size (--ag-space-6) on fallback action button', () => {
+    const styleContent = AgEmptyState.styles.toString();
+    expect(styleContent).toContain('.actions button');
+    expect(styleContent).toContain('min-width: var(--ag-space-6, 1.5rem)');
+    expect(styleContent).toContain('min-height: var(--ag-space-6, 1.5rem)');
+  });
 });

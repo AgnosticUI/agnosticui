@@ -451,6 +451,12 @@ describe('AgBreadcrumb', () => {
       expect(links.length).toBe(1); // Link and Current
       expect(textSpan).toBeTruthy();
     });
+  
+    it('allows breadcrumb items to wrap under +30% text expansion without white-space: nowrap overflow', () => {
+      const styleContent = AgBreadcrumb.styles.toString();
+      expect(styleContent).toContain('flex-wrap: wrap');
+      expect(styleContent).not.toContain('white-space: nowrap');
+    });
   });
 
   describe('Edge Cases and Error Handling', () => {

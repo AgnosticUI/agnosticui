@@ -66,6 +66,12 @@ describe('Divider', () => {
       const dividerEl = el.shadowRoot?.querySelector('.divider');
       expect(dividerEl?.classList.contains('divider-vertical')).toBe(true);
     });
+
+    it('allows vertical divider content to wrap without overflowing narrow vertical bounds', () => {
+      const styleContent = AgDivider.styles.toString();
+      expect(styleContent).toContain('white-space: normal');
+      expect(styleContent).toContain('max-width: 100%');
+    });
   });
 
   describe('Justify', () => {

@@ -86,7 +86,6 @@ export class AgBreadcrumb extends LitElement implements BreadcrumbProps {
       padding: 0;
       margin: 0;
       list-style: none;
-      white-space: nowrap;
     }
 
     .ag-breadcrumb__item {

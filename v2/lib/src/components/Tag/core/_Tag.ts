@@ -124,8 +124,8 @@ export class AgTag extends LitElement implements TagProps {
     .tag-remove-button {
       margin-inline-start: var(--ag-space-1);
       padding: 0;
-      width: var(--ag-space-4);
-      height: var(--ag-space-4);
+      min-width: var(--ag-space-6, 1.5rem);
+      min-height: var(--ag-space-6, 1.5rem);
       color: var(--tag-color);
       display: inline-flex;
       align-items: center;

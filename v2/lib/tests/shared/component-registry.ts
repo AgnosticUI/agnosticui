@@ -68,6 +68,15 @@ export const COMPONENT_REGISTRY = {
       </div>
     </div>
   `,
+  AspectRatio: () => html`
+    <div style="padding: 24px; max-width: 480px; width: 100%;">
+      <ag-aspect-ratio width="16" height="9" max-width="400">
+        <div style="background: var(--ag-background-secondary); border: 1px solid var(--ag-border-subtle); display: flex; align-items: center; justify-content: center; color: var(--ag-text-primary);">
+          16:9 Aspect Ratio Container
+        </div>
+      </ag-aspect-ratio>
+    </div>
+  `,
   Avatar: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 800px;">
       <!-- Section 1: Text Initials & Shapes -->
@@ -917,7 +926,7 @@ export const COMPONENT_REGISTRY = {
       </div>
     </div>
   `,
-Kbd: () => html`
+  Kbd: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 24px; max-width: 800px;">
       <!-- Section 1: Standard Key Layout & Sizing Scales -->
       <div>
@@ -989,6 +998,13 @@ Kbd: () => html`
           <ag-link href="#link" isButton buttonBordered variant="primary">Outlined Link</ag-link>
         </div>
       </div>
+    </div>
+  `,
+  Loader: () => html`
+    <div style="padding: 24px; display: flex; gap: 32px; align-items: center;">
+      <ag-loader size="small" aria-label="Loading small"></ag-loader>
+      <ag-loader aria-label="Loading default"></ag-loader>
+      <ag-loader size="large" aria-label="Loading large"></ag-loader>
     </div>
   `,
   Mark: () => html`
@@ -1369,6 +1385,11 @@ Kbd: () => html`
       </div>
     </div>
   `,
+  ScrollToButton: () => html`
+    <div style="padding: 24px; min-height: 120px; position: relative;">
+      <ag-scroll-to-button visible show-label label="Back to Top"></ag-scroll-to-button>
+    </div>
+  `,
   Select: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 500px;">
       <!-- Standard Dropdown Frame with Slotted Child Options -->
@@ -1608,6 +1629,13 @@ Kbd: () => html`
       </div>
     `;
   },
+  Spinner: () => html`
+    <div style="padding: 24px; display: flex; gap: 24px; align-items: center;">
+      <ag-spinner size="small" aria-label="Small spinner"></ag-spinner>
+      <ag-spinner aria-label="Default spinner"></ag-spinner>
+      <ag-spinner size="large" aria-label="Large spinner"></ag-spinner>
+    </div>
+  `,
   Tabs: () => html`
     <div style="padding: 24px; display: flex; flex-direction: column; gap: 32px; max-width: 800px;">
       <!-- Section 1: Basic Horizontal Tabs -->
@@ -1804,7 +1832,13 @@ Kbd: () => html`
       </ag-tooltip>
     </div>
   `,
-
+    TooltipFx: () => html`
+    <div style="padding: 64px 24px 24px 24px; display: flex; gap: 32px; flex-wrap: wrap; align-items: center; max-width: 800px;">
+      <ag-tooltip-fx content="Animated tooltip fx" fx="bounce" placement="top">
+        <ag-button variant="secondary">Hover or Focus Fx Trigger</ag-button>
+      </ag-tooltip-fx>
+    </div>
+  `,
 };
 
 export type ComponentName = keyof typeof COMPONENT_REGISTRY;
