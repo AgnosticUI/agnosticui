@@ -45,12 +45,26 @@ describe('uirig/planner', () => {
     expect(plan.relevantPaths).toHaveLength(1);
   });
 
-  it('ignores documentation, site, test, and unknown component paths', () => {
+  it.each([
+    'tests/uirig/runner.ts',
+    'v2/lib/tests/shared/component-registry.ts',
+    'v2/lib/vite.uirig.config.ts',
+    'v2/lib/package.json',
+    'v2/lib/package-lock.json',
+    '.github/workflows/uirig-audit.yml',
+  ])('runs a fast 2-component canary smoke audit for harness/dependency/workflow path %s', (path) => {
+    const plan = planAuditScope([path]);
+
+    expect(plan.components).toEqual(['Avatar', 'Button']);
+    expect(plan.fullSweep).toBe(false);
+    expect(plan.relevantPaths).toHaveLength(1);
+  });
+
+  it('ignores documentation, site, and unknown component paths', () => {
     const plan = planAuditScope([
       'README.md',
       'site/src/pages/index.ts',
       'src/components/NotRegistered/index.ts',
-      'tests/uirig/runner.ts',
     ]);
 
     expect(plan.components).toEqual([]);

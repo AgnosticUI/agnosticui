@@ -35,6 +35,21 @@ const SHARED_SOURCE_PATHS = [
   /^src\/components\/shared(?:\/|$)/,
 ];
 
+/**
+ * Harness, dependency, and CI workflow paths that do not modify a specific
+ * component's source files but still warrant a fast 2-component canary smoke
+ * audit (`Avatar`, `Button`) to verify the end-to-end `uirig` pipeline.
+ */
+const CANARY_INFRA_PATHS = [
+  /^tests\/uirig(?:\/|$)/,
+  /^tests\/shared(?:\/|$)/,
+  /^vite\.uirig\.config\.ts$/,
+  /^package(?:-lock)?\.json$/,
+  /^\.github\/workflows\/uirig-audit\.yml$/,
+];
+
+const CANARY_SMOKE_COMPONENTS: readonly ComponentName[] = ['Avatar', 'Button'];
+
 const COMPONENT_SOURCE_PATH = /^src\/components\/([^/]+)(?:\/|$)/;
 
 function normalizeChangedPath(path: string): string {
@@ -54,6 +69,7 @@ function stripLibraryPrefix(path: string): string {
  *
  * Unknown component directories and unrelated paths are ignored rather than
  * guessed. A shared-source change takes precedence and returns every component.
+ * Harness, dependency, and workflow changes run a fast 2-component canary sweep.
  */
 export function planAuditScope(changedPaths: readonly string[]): AuditScopePlan {
   const normalizedPaths = changedPaths
@@ -77,6 +93,14 @@ export function planAuditScope(changedPaths: readonly string[]): AuditScopePlan 
   const relevantPaths: string[] = [];
 
   for (const path of normalizedPaths) {
+    if (CANARY_INFRA_PATHS.some((pattern) => pattern.test(path))) {
+      for (const canary of CANARY_SMOKE_COMPONENTS) {
+        changedComponents.add(canary);
+      }
+      relevantPaths.push(path);
+      continue;
+    }
+
     const match = COMPONENT_SOURCE_PATH.exec(path);
     if (!match) {
       continue;

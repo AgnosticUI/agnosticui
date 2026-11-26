@@ -1,4 +1,4 @@
-name: UIRig Accessibility & Layout Spike
+name: UIRig Accessibility & Layout Audit
 
 on:
   pull_request:
@@ -13,13 +13,13 @@ on:
       - "v2/lib/vite.uirig.config.ts"
       - "v2/lib/package.json"
       - "v2/lib/package-lock.json"
-      - ".github/workflows/uirig-spike.yml"
+      - ".github/workflows/uirig-audit.yml"
 
 permissions:
   contents: read
 
 jobs:
-  uirig-audit-spike:
+  uirig-audit:
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout PR Branch with Base History
@@ -58,15 +58,19 @@ jobs:
         working-directory: v2/lib
         run: npx vitest run tests/uirig tests/shared/component-registry.spec.ts
 
-      - name: Run Diff-Scoped UIRig Audit (Non-Blocking Spike)
+      - name: Build Production Bundle for Dist Audit
+        working-directory: v2/lib
+        run: npm run build:no-sync
+
+      - name: Run Diff-Scoped UIRig Dist Audit
         id: uirig-audit
         working-directory: v2/lib
         continue-on-error: true
         run: |
           START_SECONDS=$SECONDS
-          npm run uirig:audit -- --changed --base=${{ github.event.pull_request.base.sha }}
+          npm run uirig:audit -- --dist --changed --base=${{ github.event.pull_request.base.sha }}
           ELAPSED=$((SECONDS - START_SECONDS))
-          echo "UIRig diff-scoped audit completed in ${ELAPSED}s"
+          echo "UIRig diff-scoped dist audit completed in ${ELAPSED}s"
 
       - name: Upload UIRig Audit Report Artifact
         if: always()
