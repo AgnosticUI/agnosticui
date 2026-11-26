@@ -62,6 +62,7 @@ export class AgCollapsible extends LitElement implements CollapsibleProps {
     details {
       border: none;
       border-radius: var(--ag-radius-md);
+      max-width: 100%;
     }
 
     :host([bordered]) details {
@@ -96,6 +97,9 @@ export class AgCollapsible extends LitElement implements CollapsibleProps {
     .collapsible-content {
       padding: var(--ag-space-4);
       margin-block-end: var(--ag-space-2);
+      max-width: 100%;
+      box-sizing: border-box;
+      overflow-wrap: break-word;
     }
 
     /* Indicator wrapper - visible by default unless noIndicator is set */
