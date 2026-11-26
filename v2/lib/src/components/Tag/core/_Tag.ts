@@ -41,7 +41,6 @@ export class AgTag extends LitElement implements TagProps {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      white-space: nowrap;
       padding: var(--ag-space-1) var(--ag-space-2);
       background-color: var(--tag-background-color);
       color: var(--tag-color);

@@ -57,8 +57,9 @@ describe('Collapsible Component', () => {
     expect(styles.boxShadow).not.toBe('none');
   });
 
-  it('constrains details and collapsible-content width so expanded text wraps without horizontal overflow', () => {
+  it('constrains host and collapsible-content width so expanded text wraps without horizontal overflow', () => {
     const styleContent = AgCollapsible.styles.toString();
+    expect(styleContent).toContain('min-width: 0');
     expect(styleContent).toContain('max-width: 100%');
     expect(styleContent).toContain('box-sizing: border-box');
     expect(styleContent).toContain('overflow-wrap: break-word');

@@ -56,6 +56,7 @@ export class AgCollapsible extends LitElement implements CollapsibleProps {
   static styles = css`
     :host {
       display: block;
+      min-width: 0;
     }
 
     /* Base details element */

@@ -114,6 +114,7 @@ export class AgDivider extends LitElement implements DividerProps {
       padding-block-start: var(--ag-space-3);
       padding-block-end: var(--ag-space-3);
       white-space: normal;
+      overflow-wrap: anywhere;
       text-align: center;
       max-width: 100%;
     }

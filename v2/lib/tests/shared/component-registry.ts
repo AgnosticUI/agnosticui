@@ -1387,7 +1387,12 @@ export const COMPONENT_REGISTRY = {
   `,
   ScrollToButton: () => html`
     <div style="padding: 24px; min-height: 120px; position: relative;">
-      <ag-scroll-to-button visible show-label label="Back to Top"></ag-scroll-to-button>
+      <ag-scroll-to-button
+        visible
+        .showLabel=${true}
+        .scrollThreshold=${-1}
+        label="Back to Top"
+      ></ag-scroll-to-button>
     </div>
   `,
   Select: () => html`

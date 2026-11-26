@@ -1,6 +1,7 @@
 // v2/lib/tests/shared/component-registry.spec.ts
 import { render } from 'lit';
 import { describe, it, expect } from 'vitest';
+import '../../src/components/ScrollToButton/core/ScrollToButton.js';
 import {
   COMPONENT_REGISTRY,
   COMPONENT_NAMES,
@@ -52,6 +53,27 @@ describe('shared/component-registry', () => {
         .map((el) => el.tagName.toLowerCase())
         .filter((tag) => tag.startsWith('ag-'));
       expect(customTags.length, `Expected at least one <ag-*> tag for ${name}`).toBeGreaterThan(0);
+    }
+  });
+
+  it('configures ScrollToButton fixture with scrollThreshold=-1 and showLabel=true so Back to Top stays visible at scrollY=0', async () => {
+    const container = document.createElement('div');
+    document.body.appendChild(container);
+    try {
+      render(COMPONENT_REGISTRY.ScrollToButton(), container);
+      const btn = container.querySelector('ag-scroll-to-button') as HTMLElement & {
+        visible: boolean;
+        showLabel: boolean;
+        scrollThreshold: number;
+        updateComplete: Promise<unknown>;
+      };
+      await btn.updateComplete;
+      expect(btn.scrollThreshold).toBe(-1);
+      expect(btn.showLabel).toBe(true);
+      expect(btn.visible).toBe(true);
+      expect(btn.shadowRoot?.textContent).toContain('Back to Top');
+    } finally {
+      container.remove();
     }
   });
 });

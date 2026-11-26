@@ -124,6 +124,11 @@ describe('<ag-tag>', () => {
       expect(styleContent).toContain('min-width: var(--ag-space-6, 1.5rem)');
       expect(styleContent).toContain('min-height: var(--ag-space-6, 1.5rem)');
     });
+
+    it('does not force white-space: nowrap on .tag-wrapper so narrow tags can wrap', () => {
+      const styleContent = AgTag.styles.toString();
+      expect(styleContent).not.toContain('white-space: nowrap');
+    });
   });
 
   describe('Event Handling Patterns', () => {
