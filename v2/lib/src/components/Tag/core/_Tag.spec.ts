@@ -117,6 +117,18 @@ describe('<ag-tag>', () => {
       expect(onRemoveCallback).toHaveBeenCalledTimes(1);
       expect(addEventListenerCalled).toBe(true);
     });
+
+    it('enforces WCAG 2.5.8 minimum touch target size (--ag-space-6) on remove button', () => {
+      const styleContent = AgTag.styles.toString();
+      expect(styleContent).toContain('.tag-remove-button');
+      expect(styleContent).toContain('min-width: var(--ag-space-6, 1.5rem)');
+      expect(styleContent).toContain('min-height: var(--ag-space-6, 1.5rem)');
+    });
+
+    it('does not force white-space: nowrap on .tag-wrapper so narrow tags can wrap', () => {
+      const styleContent = AgTag.styles.toString();
+      expect(styleContent).not.toContain('white-space: nowrap');
+    });
   });
 
   describe('Event Handling Patterns', () => {

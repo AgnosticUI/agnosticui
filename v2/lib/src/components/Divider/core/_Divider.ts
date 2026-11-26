@@ -109,10 +109,14 @@ export class AgDivider extends LitElement implements DividerProps {
     }
 
     .divider-vertical .divider-has-content {
-      padding-inline-start: var(--ag-space-6);
-      padding-inline-end: var(--ag-space-6);
+      padding-inline-start: var(--ag-space-2);
+      padding-inline-end: var(--ag-space-2);
       padding-block-start: var(--ag-space-3);
       padding-block-end: var(--ag-space-3);
+      white-space: normal;
+      overflow-wrap: anywhere;
+      text-align: center;
+      max-width: 100%;
     }
 
     /* Variants */

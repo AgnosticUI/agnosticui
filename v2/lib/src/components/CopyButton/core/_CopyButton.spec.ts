@@ -129,6 +129,12 @@ describe('AgCopyButton', () => {
       const customError = element.querySelector('.custom-error');
       expect(customError).toBeTruthy();
     });
+
+    it('sets visibility: hidden on inactive icon slots so hidden slots do not occupy visible layout state', () => {
+      const styleContent = AgCopyButton.styles.toString();
+      expect(styleContent).toContain('visibility: hidden');
+      expect(styleContent).toContain('visibility: visible');
+    });
   });
 
   describe('CSS Parts', () => {

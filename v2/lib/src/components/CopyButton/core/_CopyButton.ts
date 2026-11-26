@@ -65,13 +65,17 @@ export class AgCopyButton extends LitElement implements CopyButtonProps {
       display: grid;
       place-items: center;
       opacity: 0;
-      transition: opacity var(--ag-motion-fast, 150ms) ease-in-out;
+      visibility: hidden;
+      transition:
+        opacity var(--ag-motion-fast, 150ms) ease-in-out,
+        visibility var(--ag-motion-fast, 150ms) ease-in-out;
       will-change: opacity;
       pointer-events: none;
     }
 
     .ag-icon-slot.visible {
       opacity: 1;
+      visibility: visible;
       pointer-events: auto;
     }
 

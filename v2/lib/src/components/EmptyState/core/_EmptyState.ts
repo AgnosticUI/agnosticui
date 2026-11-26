@@ -171,6 +171,27 @@ export class AgEmptyState extends LitElement implements EmptyStateProps {
       gap: var(--ag-space-2);
       justify-content: center;
     }
+
+    .actions button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: var(--ag-space-6, 1.5rem);
+      min-height: var(--ag-space-6, 1.5rem);
+      padding: var(--ag-space-2) var(--ag-space-4);
+      font-family: inherit;
+      font-size: var(--ag-font-size-sm);
+      color: var(--ag-text-primary);
+      background-color: var(--ag-background-tertiary);
+      border: var(--ag-border-width-1) solid var(--ag-border);
+      border-radius: var(--ag-radius-md);
+      cursor: pointer;
+    }
+
+    .actions button:focus-visible {
+      outline: var(--ag-focus-width) solid rgba(var(--ag-focus), 0.5);
+      outline-offset: var(--ag-focus-offset);
+    }
   `;
 
   render() {
