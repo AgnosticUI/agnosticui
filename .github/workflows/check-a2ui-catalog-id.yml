@@ -1,0 +1,34 @@
+name: Check A2UI Catalog ID
+
+on:
+  pull_request:
+    paths:
+      - 'v2/a2ui/**'
+      - 'v2/mcp-server/**'
+      - 'v2/site/**'
+      - 'v2/scripts/check-catalog-id.mjs'
+      - '.github/workflows/check-a2ui-catalog-id.yml'
+  push:
+    branches:
+      - master
+    paths:
+      - 'v2/a2ui/**'
+      - 'v2/mcp-server/**'
+      - 'v2/site/**'
+      - 'v2/scripts/check-catalog-id.mjs'
+
+jobs:
+  verify-catalog-id:
+    name: Verify canonical catalogId URL
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Check for truncated or invalid catalogId URLs
+        run: node v2/scripts/check-catalog-id.mjs

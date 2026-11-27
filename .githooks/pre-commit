@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+exec node v2/scripts/check-catalog-id.mjs --staged
