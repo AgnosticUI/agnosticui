@@ -1,0 +1,39 @@
+name: Check A2UI Catalog ID
+
+on:
+  pull_request:
+    paths:
+      - 'v2/a2ui/**'
+      - 'v2/mcp-server/**'
+      - 'v2/site/**'
+      - '.github/workflows/check-a2ui-catalog-id.yml'
+  push:
+    branches:
+      - master
+    paths:
+      - 'v2/a2ui/**'
+      - 'v2/mcp-server/**'
+      - 'v2/site/**'
+
+jobs:
+  verify-catalog-id:
+    name: Verify canonical catalogId URL
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check for truncated or invalid catalogId URLs
+        run: |
+          set +e
+          BAD_MATCHES=$(git grep -nE '(catalogId|Catalog ID|AGNOSTICUI_CATALOG_ID|EXPECTED_CATALOG_ID|agnosticui-catalog\.json).*https://agnosticui\.com' v2/ \
+            | grep -v 'https://agnosticui\.com/a2ui/v1/catalog\.json')
+          set -e
+
+          if [ -n "$BAD_MATCHES" ]; then
+            echo "::error::Truncated or invalid catalogId URL detected. All references must use https://agnosticui.com/a2ui/v1/catalog.json:"
+            echo "$BAD_MATCHES"
+            exit 1
+          fi
+
+          echo "✅ All catalogId references use https://agnosticui.com/a2ui/v1/catalog.json"
