@@ -16,7 +16,7 @@
   },
   "scripts": {
     "prepare": "git config core.hooksPath .githooks || true",
-    "check:catalog-id": "bash .githooks/pre-commit",
+    "check:catalog-id": "node v2/scripts/check-catalog-id.mjs",
     "skins:bundle": "node v2/skins/build-bundle.js"
   },
   "keywords": [
