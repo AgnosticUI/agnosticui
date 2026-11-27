@@ -94,7 +94,7 @@
 ## Phase 6: Pre-Publish Quality Hardening, npm Release & Official `a2ui-project/a2ui` PR (`v1.0`) ✅
 
 * **Task 6.1 — Versioned `catalogId` & Static Hosting Sync** ✅
-  * Standardized `AGNOSTICUI_CATALOG_ID` to `https://agnosticui.com` and synchronized `agnosticui-catalog.json` and `SKILL.md` across `catalog/`, `renderers/lit/`, and `v2/site/docs/public/a2ui/v1/catalog.json`.
+  * Standardized `AGNOSTICUI_CATALOG_ID` to `https://agnosticui.com/a2ui/v1/catalog.json` and synchronized `agnosticui-catalog.json` and `SKILL.md` across `catalog/`, `renderers/lit/`, and `v2/site/docs/public/a2ui/v1/catalog.json`.
 * **Task 6.2 — Port MCP Server Validator & Codebase Audit** ✅
   * Upgraded `v2/mcp-server` `generate_streamed_layout` to validate A2UI `v1.0` wire streams and graphs (`10/10` passing) and purged legacy `v2/sdui` files.
 * **Task 6.3 — Comprehensive 35-component Catalog & Hook Test Suite** ✅
