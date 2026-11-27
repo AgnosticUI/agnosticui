@@ -11,8 +11,8 @@
   "dependencies": {
     "@a2ui/lit": "^0.15.0",
     "@a2ui/web_core": "^0.15.0",
-    "@agnosticui/a2ui-lit": "^2.0.0-alpha.5",
-    "@agnosticui/a2ui-vue": "^2.0.0-alpha.5",
+    "@agnosticui/a2ui-lit": "^2.0.0-alpha.6",
+    "@agnosticui/a2ui-vue": "^2.0.0-alpha.6",
     "agnosticui-core": "^2.0.0-alpha.33",
     "lit": "^3.3.3",
     "lucide-vue-next": "^0.577.0",
